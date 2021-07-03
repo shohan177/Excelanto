@@ -18,56 +18,58 @@
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users"></i> <span> One Stop Service </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('oss_company_request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
-                        <li><a href="{{ route('oss_approved_request') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
-                        <li><a href="{{ route('oss_rejected_request') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
+                        <li><a href="ui-buttons.html"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
+                        <li><a href="ui-panels.html"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
+                        <li><a href="ui-tabs-accordions.html"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users"></i> <span> Welfare Service (UAE) </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('welfare_company_request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
-                        <li><a href="{{ route('welfare_approved_request') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
-                        <li><a href="{{ route('welfare_rejected_request') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
+                        <li><a href="ui-buttons.html"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
+                        <li><a href="ui-panels.html"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
+                        <li><a href="ui-tabs-accordions.html"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users"></i> <span> Bangladesh Embassy </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('bangladesh_embassy_request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
-                        <li><a href="{{ route('bangladesh_embassy_approved_request') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
-                        <li><a href="{{ route('bangladesh_embassy_rejected_request') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
+                        <li><a href="ui-buttons.html"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
+                        <li><a href="ui-panels.html"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
+                        <li><a href="ui-tabs-accordions.html"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="ti-agenda"></i> <span> Job Posts </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="ui-buttons.html"><i class="fa fa-arrow-circle-right"></i> Total Job Posts</a></li>
-                        <li><a href="ui-panels.html"><i class="fa fa-arrow-circle-right"></i> Vacancy Approval</a></li>
+                        <li><a href="{{ route('total_job_post.index') }}"><i class="fa fa-arrow-circle-right"></i> Total Job Posts</a></li>
+                        <li><a href="{{ route('vacancy_approval') }}"><i class="fa fa-arrow-circle-right"></i> Vacancy Approval</a></li>
+
                     </ul>
                 </li>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user"></i> <span> Candidates </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="ui-buttons.html"><i class="fa fa-arrow-circle-right"></i> Candidate Requests</a></li>
-                        <li><a href="ui-panels.html"><i class="fa fa-arrow-circle-right"></i> Forwarded Candidates</a></li>
-                        <li><a href="ui-panels.html"><i class="fa fa-arrow-circle-right"></i> Reviewed Candidates</a></li>
-                        <li><a href="ui-panels.html"><i class="fa fa-arrow-circle-right"></i> Finalized Candidates</a></li>
-                        <li><a href="ui-panels.html"><i class="fa fa-arrow-circle-right"></i> Tickets Booked List</a></li>
+                        <li><a href="{{ route('candidate.requests') }}"><i class="fa fa-arrow-circle-right"></i> Candidate Requests</a></li>
+                        <li><a href="{{ route('candidate.forwarded') }}"><i class="fa fa-arrow-circle-right"></i> Forwarded Candidates</a></li>
+                        <li><a href="{{ route('candidate.reviewed') }}"><i class="fa fa-arrow-circle-right"></i> Reviewed Candidates</a></li>
+                        <li><a href="{{ route('candidate.finalized') }}"><i class="fa fa-arrow-circle-right"></i> Finalized Candidates</a></li>
+                        <li><a href="{{ route('candidate.tickets_booked_List') }}"><i class="fa fa-arrow-circle-right"></i> Tickets Booked List</a></li>
                     </ul>
                 </li>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Visa Process </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="ui-buttons.html"><i class="fa fa-arrow-circle-right"></i> Visa Requested</a></li>
-                        <li><a href="ui-buttons.html"><i class="fa fa-arrow-circle-right"></i> Visa Approved</a></li>
-                        <li><a href="ui-buttons.html"><i class="fa fa-arrow-circle-right"></i> Visa Rejected</a></li>
+                        <li><a href="{{ route('visa_process.requests') }}"><i class="fa fa-arrow-circle-right"></i> Visa Requested</a></li>
+                        <li><a href="{{ route('visa_process.approved') }}"><i class="fa fa-arrow-circle-right"></i> Visa Approved</a></li>
+                        <li><a href="{{ route('visa_process.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Visa Rejected</a></li>
                     </ul>
+
                 </li>
 
                 <!--<li class="has_sub">-->
