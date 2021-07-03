@@ -21,4 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace'=>'BangladeshAdmin'], function (){
    Route::get('/','BangladeshAdminDashboardController@dashboard')->name('bangladeshAdmin.dashboard');
    Route::get('company_request','RecruitingAgencieController@company_request')->name('company_request');
+
+    //    one stop service
+    Route::get('oss_company_request','OneStopServiceController@oss_company_request')->name('oss_company_request');
+    Route::get('oss_approved_request','OneStopServiceController@oss_approved_request')->name('oss_approved_request');
+    Route::get('oss_rejected_request','OneStopServiceController@oss_rejected_request')->name('oss_rejected_request');
+
+     //    Welfare service center
+     Route::get('welfare_company_request','WelfareServiceController@welfare_company_request')->name('welfare_company_request');
 });
