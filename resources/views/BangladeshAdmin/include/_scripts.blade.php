@@ -13,7 +13,7 @@
 <script src="{{asset('assets/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
 
 @yield('js')
-
+@yield('DataTableJs')
 
 <script src="{{asset('assets/pages/dashborad.js')}}"></script>
 
