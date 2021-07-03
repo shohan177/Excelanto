@@ -1,6 +1,6 @@
 @extends("BangladeshAdmin/master")
 
-@section('title', 'Rejected OSS Company')
+@section('title', 'Rejected Welfare Service Center')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
@@ -9,7 +9,6 @@
     <link href="assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
-
 @endsection
 
 @section('main-content')
@@ -24,8 +23,7 @@
                         <h4 class="pull-left page-title">Rejected Requests</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">One Stop Service Center
-                            </a></li>
+                            <li><a href="#">Welfare Service Center</a></li>
                             <li class="active">Rejected Requests</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -38,7 +36,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Rejected OSS Requests</h3>
+                            <h3 class="panel-title">Rejected Welfare Requests</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
@@ -61,9 +59,9 @@
                                     <tr>
                                         <td>1</td>
                                         <td>4365768787</td>
-                                        <td>OSS</td>
-                                        <td>oss.com</td>
-                                        <td>oss@gmail.com</td>
+                                        <td>Welfare Service Center</td>
+                                        <td>welfareservice.com</td>
+                                        <td>welfareservice@gmail.com</td>
                                         <td>
                                             <span class="badge badge-danger">Rejected</span>
                                         </td>

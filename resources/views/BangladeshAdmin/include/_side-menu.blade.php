@@ -27,9 +27,9 @@
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users"></i> <span> Welfare Service (UAE) </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="ui-buttons.html"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
-                        <li><a href="ui-panels.html"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
-                        <li><a href="ui-tabs-accordions.html"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
+                        <li><a href="{{ route('welfare_company_request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
+                        <li><a href="{{ route('welfare_approved_request') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
+                        <li><a href="{{ route('welfare_rejected_request') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
 
