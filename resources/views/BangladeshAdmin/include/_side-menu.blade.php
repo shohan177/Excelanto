@@ -4,7 +4,7 @@
         <div id="sidebar-menu">
             <ul>
                 <li>
-                    <a href="#" class="waves-effect active"><i class="ti-home"></i><span> Dashboard </span></a>
+                    <a href="{{ route('bangladeshAdmin.dashboard') }}" class="waves-effect active"><i class="ti-home"></i><span> Dashboard </span></a>
                 </li>
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users"></i> <span> Recruiting Agencies </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
