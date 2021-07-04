@@ -1,6 +1,6 @@
 @extends("RecruitingAgency/master")
 
-@section('title', 'All Candidates')
+@section('title', 'Select Candidates')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -22,12 +22,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">All Candidates</h4>
+                        <h4 class="pull-left page-title">Select Candidates</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
                             <li><a href="#">Candidates
                                 </a></li>
-                            <li class="active">All Candidates</li>
+                            <li class="active">Select Candidates</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -39,7 +39,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Candidates List</h3>
+                            <h3 class="panel-title">Select candidates for the job</h3>
                         </div>
                         <div class="panel-body">
 

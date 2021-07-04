@@ -1,6 +1,6 @@
 @extends("RecruitingAgency/master")
 
-@section('title', 'All Candidates')
+@section('title', 'Selected Candidates')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -22,12 +22,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">All Candidates</h4>
+                        <h4 class="pull-left page-title">Selected Candidates</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
                             <li><a href="#">Candidates
                                 </a></li>
-                            <li class="active">All Candidates</li>
+                            <li class="active">Selected Candidates</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -39,7 +39,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Candidates List</h3>
+                            <h3 class="panel-title">Selected candidates for the approved vacancies</h3>
                         </div>
                         <div class="panel-body">
 
@@ -47,13 +47,11 @@
                                 <thead>
                                     <tr>
                                         <th>SL No</th>
-                                        <th>Candidate Name</th>
+                                        <th>Recruiter Name</th>
+                                        <th>Company Name</th>
                                         <th>Job Category</th>
-                                        <th>Phone No</th>
-                                        <th>Email</th>
-                                        <th>Photo</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Approved Vacancies</th>
+                                        <th>Candidates</th>
                                     </tr>
                                 </thead>
 
@@ -61,33 +59,25 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>imran</td>
+                                        <td>RC</td>
+                                        <td>Best Buy</td>
                                         <td>welding</td>
-                                        <td>01825646464</td>
-                                        <td>imran@gmail.com</td>
-                                        <td>User_image</td>
+                                        <td>50</td>
                                         <td>
-                                            <span class="badge badge-warning">Reviewed</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
+                                            <a class="btn btn-info btn-sm" href="{{ route('RecruitingAgency.candidate.viewSelected') }}">
+                                                <i class="fa fa-users"></i>
                                             </a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>sharif</td>
-                                        <td>cooker</td>
-                                        <td>01825444464</td>
-                                        <td>sharif@gmail.com</td>
-                                        <td>User_image</td>
+                                        <td>demo com</td>
+                                        <td>DC</td>
+                                        <td>front end developer</td>
+                                        <td>85</td>
                                         <td>
-                                            <span class="badge badge-info">Active</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
+                                            <a class="btn btn-info btn-sm" href="{{ route('RecruitingAgency.candidate.viewSelected') }}">
+                                                <i class="fa fa-users"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -95,13 +85,11 @@
                                 <tfoot>
                                     <tr>
                                         <th>SL No</th>
-                                        <th>Candidate Name</th>
+                                        <th>Recruiter Name</th>
+                                        <th>Company Name</th>
                                         <th>Job Category</th>
-                                        <th>Phone No</th>
-                                        <th>Email</th>
-                                        <th>Photo</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Approved Vacancies</th>
+                                        <th>Candidates</th>
                                     </tr>
                                 </tfoot>
                             </table>

@@ -60,6 +60,7 @@ Route::group(['namespace' => 'BangladeshAdmin'], function () {
 });
 
 
+    // recruiting agency route
 Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency', 'as' => 'RecruitingAgency.'], function () {
     Route::get('/dashboard', 'RecruitingAgencyDashboardController@dashboard')->name('dashboard');
 
@@ -69,4 +70,6 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
 
     //Candidates
     Route::get('all-candidates', 'CandidateController@all')->name('candidate.all');
+    Route::get('selected-candidates', 'CandidateController@selected')->name('candidate.selected');
+    Route::get('view-selected-candidates', 'CandidateController@viewSelected')->name('candidate.viewSelected');
 });

@@ -87,6 +87,16 @@
                                         </td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>SL No</th>
+                                        <th>Company Name</th>
+                                        <th>Job Category</th>
+                                        <th>Post Date</th>
+                                        <th>End Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 class WelfareServiceCenterController extends Controller
 {
     public function request(){
-        return view('BangladeshAdmin.welfare_service_centers.request');
+        return view('BangladeshAdmin.welfareServiceCenters.request');
     }
 
     public function approved(){
-        return view('BangladeshAdmin.welfare_service_centers.approved');
+        return view('BangladeshAdmin.welfareServiceCenters.approved');
     }
 
     public function rejected(){
-        return view('BangladeshAdmin.welfare_service_centers.rejected');
+        return view('BangladeshAdmin.welfareServiceCenters.rejected');
     }
 }

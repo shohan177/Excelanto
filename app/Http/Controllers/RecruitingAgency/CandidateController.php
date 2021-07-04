@@ -10,4 +10,14 @@ class CandidateController extends Controller
     public function all(){
         return view('RecruitingAgency.candidate.all');
     }
+
+    public function selected(){
+        return view('RecruitingAgency.candidate.selected');
+    }
+
+    public function viewSelected(){
+        return view('RecruitingAgency.candidate.viewSelected');
+    }
+
+
 }
