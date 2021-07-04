@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class CandidateController extends Controller
 {
+    public function new(){
+        return view('RecruitingAgency.candidate.new');
+    }
+
     public function all(){
         return view('RecruitingAgency.candidate.all');
     }

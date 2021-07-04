@@ -18,7 +18,7 @@
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Candidates</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('RecruitingAgency.candidate.all') }}"><i class="fa fa-arrow-circle-right"></i> New Candidates</a></li>
+                        <li><a href="{{ route('RecruitingAgency.candidate.new') }}"><i class="fa fa-arrow-circle-right"></i> New Candidates</a></li>
                         <li><a href="{{ route('RecruitingAgency.candidate.all') }}"><i class="fa fa-arrow-circle-right"></i> All Candidates</a></li>
                         <li><a href="{{ route('RecruitingAgency.candidate.selected') }}"><i class="fa fa-arrow-circle-right"></i> Selected Candidates</a></li>
                     </ul>
