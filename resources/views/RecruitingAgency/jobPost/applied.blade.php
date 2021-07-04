@@ -55,7 +55,7 @@
                                         <th>Approved Vacancies</th>
                                         <th>Applied Date</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <th style="width: 8%">Action</th>
                                     </tr>
                                 </thead>
 

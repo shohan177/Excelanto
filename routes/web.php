@@ -60,7 +60,7 @@ Route::group(['namespace' => 'BangladeshAdmin'], function () {
 });
 
 
-    // recruiting agency route
+// recruiting agency route
 Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency', 'as' => 'RecruitingAgency.'], function () {
     Route::get('/dashboard', 'RecruitingAgencyDashboardController@dashboard')->name('dashboard');
 
