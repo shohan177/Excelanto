@@ -1,6 +1,6 @@
 @extends("BangladeshAdmin/master")
 
-@section('title', 'Company Request')
+@section('title', 'Approved Request')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
@@ -16,26 +16,28 @@
     <!-- Start content -->
     <div class="content">
         <div class="container">
+
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">New Requests</h4>
+                        <h4 class="pull-left page-title">Rejected Requests</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Employer Requests</a></li>
-                            <li class="active">New Requests</li>
+                            <li><a href="#">Rejected Employer Requests</a></li>
+                            <li class="active">Rejected Requests</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
 
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">New Employer Requests</h3>
+                            <h3 class="panel-title">Rejected Employer Requests</h3>
                         </div>
                         <div class="panel-body">
 
@@ -63,7 +65,7 @@
                                         <td>basis.com</td>
                                         <td>basis@gmail.com</td>
                                         <td>
-                                            <span class="badge badge-warning">Pending</span>
+                                            <span class="badge badge-danger">Rejected</span>
                                         </td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="#">
@@ -83,7 +85,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>

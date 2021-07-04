@@ -10,35 +10,35 @@
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users"></i> <span> Recruiting Agencies </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
                         <li><a href="{{ route('company_request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
-                        <li><a href="ui-panels.html"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
-                        <li><a href="ui-tabs-accordions.html"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
+                        <li><a href="{{ route('company_approved_request') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
+                        <li><a href="{{ route('company_rejected_request') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users"></i> <span> One Stop Service </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('oss_company_request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
-                        <li><a href="{{ route('oss_approved_request') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
-                        <li><a href="{{ route('oss_rejected_request') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
+                        <li><a href="{{ route('request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
+                        <li><a href="{{ route('approved') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
+                        <li><a href="{{ route('oneStopService.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users"></i> <span> Welfare Service (UAE) </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('welfare_company_request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
-                        <li><a href="{{ route('welfare_approved_request') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
-                        <li><a href="{{ route('welfare_rejected_request') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
+                        <li><a href="{{ route('welfareServiceCenter.request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
+                        <li><a href="{{ route('welfareServiceCenter.approved') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
+                        <li><a href="{{ route('welfareServiceCenter.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users"></i> <span> Bangladesh Embassy </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('bangladesh_embassy_request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
-                        <li><a href="{{ route('bangladesh_embassy_approved_request') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
-                        <li><a href="{{ route('bangladesh_embassy_rejected_request') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
+                        <li><a href="{{ route('bangladeshEmbassy.request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
+                        <li><a href="{{ route('bangladeshEmbassy.approved') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
+                        <li><a href="{{ route('bangladeshEmbassy.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
 
