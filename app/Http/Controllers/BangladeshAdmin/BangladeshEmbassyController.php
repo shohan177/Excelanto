@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 
 class BangladeshEmbassyController extends Controller
 {
-    public function bangladesh_embassy_request(){
-        return view('BangladeshAdmin.bangladeshEmbassy.bangladesh_embassy_request');
+    public function request(){
+        return view('BangladeshAdmin.bangladeshEmbassy.request');
     }
 
-    public function bangladesh_embassy_approved_request(){
-        return view('BangladeshAdmin.bangladeshEmbassy.bangladesh_embassy_approved_request');
+    public function approved(){
+        return view('BangladeshAdmin.bangladeshEmbassy.approved');
     }
 
-    public function bangladesh_embassy_rejected_request(){
-        return view('BangladeshAdmin.bangladeshEmbassy.bangladesh_embassy_rejected_request');
+    public function rejected(){
+        return view('BangladeshAdmin.bangladeshEmbassy.rejected');
     }
 }
