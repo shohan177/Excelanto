@@ -85,6 +85,19 @@
                                         </td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>SL No</th>
+                                        <th>Register No</th>
+                                        <th>Company Name</th>
+                                        <th>Domain</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th>View</th>
+                                        <th>Accept</th>
+                                        <th>Reject</th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
