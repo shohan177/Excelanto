@@ -58,3 +58,15 @@ Route::group(['namespace' => 'BangladeshAdmin'], function () {
     Route::get('visa-process-approved', 'VisaProcessController@approved')->name('visa_process.approved');
     Route::get('visa-process-rejected', 'VisaProcessController@rejected')->name('visa_process.rejected');
 });
+
+
+Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency', 'as' => 'RecruitingAgency.'], function () {
+    Route::get('/dashboard', 'RecruitingAgencyDashboardController@dashboard')->name('dashboard');
+
+    //Job Posts
+    Route::get('all-job-post', 'JobPostController@all')->name('jobPost.all');
+    Route::get('applied-job-post', 'JobPostController@applied')->name('jobPost.applied');
+
+    //Candidates
+    Route::get('all-candidates', 'CandidateController@all')->name('candidate.all');
+});
