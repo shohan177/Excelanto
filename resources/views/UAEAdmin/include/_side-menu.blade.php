@@ -24,6 +24,13 @@
                         <li><a href="{{ route('UAEAdmin.UAEEmbassy.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Job Category</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('UAEAdmin.jobCategory.create') }}"><i class="fa fa-arrow-circle-right"></i> Add Job Category</a></li>
+                        <li><a href="{{ route('UAEAdmin.jobCategory.index') }}"><i class="fa fa-arrow-circle-right"></i> View Job Categories</a></li>
+                    </ul>
+                </li>
 
                 <!--<li class="has_sub">-->
                 <!--<a href="javascript:void(0);" class="waves-effect"><i class="ti-share"></i><span>Multi Menu </span><span class="pull-right"><i class="mdi mdi-plus"></i></span></a>-->
