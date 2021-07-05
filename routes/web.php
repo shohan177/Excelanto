@@ -74,3 +74,8 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
     Route::get('selected-candidates', 'CandidateController@selected')->name('candidate.selected');
     Route::get('view-selected-candidates', 'CandidateController@viewSelected')->name('candidate.viewSelected');
 });
+
+// Welfare Company route
+Route::group(['prefix' => 'welfare_centre/', 'namespace' => 'WelfareCentre', 'as' => 'WelfareCentre.'], function () {
+    Route::get('/dashboard', 'WelfareDashboardController@dashboard')->name('dashboard');
+});
