@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('BangladeshAdmin.welcome');
-});*/
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
-Route::group(['namespace' => 'BangladeshAdmin'], function () {
-    Route::get('/', 'BangladeshAdminDashboardController@dashboard')->name('bangladeshAdmin.dashboard');
+Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin', 'as' => 'BangladeshAdmin.'], function () {
+    Route::get('/dashboard', 'BangladeshAdminDashboardController@dashboard')->name('dashboard');
 
     //    Recruiting agency
     Route::get('company_request', 'RecruitingAgencieController@company_request')->name('company_request');
