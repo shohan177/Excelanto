@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class CandidateController extends Controller
 {
-    //
+    public function travelReceived(){
+        return view('UAEAdmin.candidate.travel-received');
+    }
 }

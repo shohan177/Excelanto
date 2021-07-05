@@ -96,4 +96,7 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
     Route::get('requested-visa', 'VisaRequestController@requested')->name('visa.requested');
     Route::get('approved-visa', 'VisaRequestController@approved')->name('visa.approved');
     Route::get('rejected-visa', 'VisaRequestController@rejected')->name('visa.rejected');
+
+     // candidates --- ready to travel
+     Route::get('travel-received-candidates', 'CandidateController@travelReceived')->name('candidate.travelReceived');
 });

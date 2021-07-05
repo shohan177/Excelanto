@@ -39,6 +39,12 @@
                         <li><a href="{{ route('UAEAdmin.visa.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Visa Rejected</a></li>
                     </ul>
                 </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Candidates</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('UAEAdmin.candidate.travelReceived') }}"><i class="fa fa-arrow-circle-right"></i> Ready To Travel</a></li>
+                    </ul>
+                </li>
 
                 <!--<li class="has_sub">-->
                 <!--<a href="javascript:void(0);" class="waves-effect"><i class="ti-share"></i><span>Multi Menu </span><span class="pull-right"><i class="mdi mdi-plus"></i></span></a>-->
