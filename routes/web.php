@@ -91,5 +91,30 @@ Route::group(['prefix' => 'welfare_centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/create-awareness-event', 'AwarenessEventController@create')->name('awarenessevent.create');
     Route::get('/upcoming-events', 'AwarenessEventController@upcoming_events')->name('awarenessevent.upcoming_events');
     Route::get('/total-events', 'AwarenessEventController@total_events')->name('awarenessevent.total_events');
+});
 
+// UAE Admin route
+Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEAdmin.'], function () {
+    Route::get('/dashboard', 'UAEAdminDashboardController@dashboard')->name('dashboard');
+
+    // Employer Requests
+    Route::get('new-employer-request', 'EmployerRequestController@new')->name('employerRequest.new');
+    Route::get('approved-employer-request', 'EmployerRequestController@approved')->name('employerRequest.approved');
+    Route::get('rejected-employer-request', 'EmployerRequestController@rejected')->name('employerRequest.rejected');
+
+    // UAE Embassy
+    Route::get('new-uae-embassy-request', 'UAEEmbassyController@new')->name('UAEEmbassy.new');
+    Route::get('approved-uae-embassy-request', 'UAEEmbassyController@approved')->name('UAEEmbassy.approved');
+    Route::get('rejected-uae-embassy-request', 'UAEEmbassyController@rejected')->name('UAEEmbassy.rejected');
+
+    // job category route
+    Route::resource('jobCategory', 'JobCategoryController');
+
+    // Visa Process
+    Route::get('requested-visa', 'VisaRequestController@requested')->name('visa.requested');
+    Route::get('approved-visa', 'VisaRequestController@approved')->name('visa.approved');
+    Route::get('rejected-visa', 'VisaRequestController@rejected')->name('visa.rejected');
+
+     // candidates --- ready to travel
+     Route::get('travel-received-candidates', 'CandidateController@travelReceived')->name('candidate.travelReceived');
 });
