@@ -25,10 +25,18 @@
                     </ul>
                 </li>
                 <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Job Category</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-adjust"></i> <span> Job Category</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
                         <li><a href="{{ route('UAEAdmin.jobCategory.create') }}"><i class="fa fa-arrow-circle-right"></i> Add Job Category</a></li>
                         <li><a href="{{ route('UAEAdmin.jobCategory.index') }}"><i class="fa fa-arrow-circle-right"></i> View Job Categories</a></li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Visa Process</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('UAEAdmin.visa.requested') }}"><i class="fa fa-arrow-circle-right"></i> Visa Requested</a></li>
+                        <li><a href="{{ route('UAEAdmin.visa.approved') }}"><i class="fa fa-arrow-circle-right"></i> Visa Approved</a></li>
+                        <li><a href="{{ route('UAEAdmin.visa.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Visa Rejected</a></li>
                     </ul>
                 </li>
 
