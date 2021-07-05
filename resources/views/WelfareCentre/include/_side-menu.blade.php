@@ -9,14 +9,14 @@
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Job Approval </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>  New Posts</a></li>
-                        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Approved Posts</a></li>
+                        <li><a href="{{ route('WelfareCentre.NewJobPost') }}"><i class="fa fa-arrow-circle-right"></i>  New Posts</a></li>
+                        <li><a href="{{ route('WelfareCentre.jobApproved') }}"><i class="fa fa-arrow-circle-right"></i> Approved Posts</a></li>
                     </ul>
                 </li>
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Travel Candidates</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Ready To Travel</a></li>
+                        <li><a href="{{ route('WelfareCentre.TravelCandidates') }}"><i class="fa fa-arrow-circle-right"></i>Ready To Travel</a></li>
                     </ul>
                 </li>
                 <li class="has_sub">
@@ -173,17 +173,17 @@
                         </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="#">
+                            <a href="{{ route('WelfareCentre.awarenessevent.create') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Create new event
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('WelfareCentre.awarenessevent.upcoming_events') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Upcoming events
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('WelfareCentre.awarenessevent.total_events') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Total events
                             </a>
                         </li>

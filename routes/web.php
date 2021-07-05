@@ -77,5 +77,19 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
 
 // Welfare Company route
 Route::group(['prefix' => 'welfare_centre/', 'namespace' => 'WelfareCentre', 'as' => 'WelfareCentre.'], function () {
+
     Route::get('/dashboard', 'WelfareDashboardController@dashboard')->name('dashboard');
+
+    //Job Approval
+    Route::get('/new-job-posts', 'JobApprovalController@NewJobPost')->name('NewJobPost');
+    Route::get('/job-approved', 'JobApprovalController@jobApproved')->name('jobApproved');
+
+    //Travel Candidates
+    Route::get('/travel_received_list', 'TravelCandidatesController@TravelCandidates')->name('TravelCandidates');
+
+    //awareness event
+    Route::get('/create-awareness-event', 'AwarenessEventController@create')->name('awarenessevent.create');
+    Route::get('/upcoming-events', 'AwarenessEventController@upcoming_events')->name('awarenessevent.upcoming_events');
+    Route::get('/total-events', 'AwarenessEventController@total_events')->name('awarenessevent.total_events');
+
 });
