@@ -1,6 +1,6 @@
-@extends("BangladeshAdmin/master")
+@extends("OneStopService/master")
 
-@section('title', 'Company Request')
+@section('title', 'New OSC Requests')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -21,35 +21,38 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Visa approved candidates</h4>
+                        <h4 class="pull-left page-title">New Requests</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Candidates</a></li>
-                            <li class="active"> Visa approved</li>
+                            <li><a href="#">OSC Agency</a></li>
+                            <li class="active">New Requests</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
 
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Visa Approved List</h3>
+                            <h3 class="panel-title">New OSC Requests</h3>
                         </div>
                         <div class="panel-body">
 
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Candidate Name</th>
-                                        <th>Job Category</th>
+                                        <th>SL No</th>
+                                        <th>Register No</th>
+                                        <th>Company Name</th>
+                                        <th>Domain</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <th>View</th>
+                                        <th>Accept</th>
+                                        <th>Reject</th>
                                     </tr>
                                 </thead>
 
@@ -57,31 +60,52 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Candidate2</td>
-                                        <td>Developer</td>
-                                        <td>candiate2@gmail.com</td>
-                                        <td>2222222222</td>
-                                        <td><button type="button" name="Visa-Applied"
-                                                class="btn btn-success btn-xs update">Visa-Aproved</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a></td>
+                                        <td>4365768787</td>
+                                        <td>OSS</td>
+                                        <td>oss.com</td>
+                                        <td>oss@gmail.com</td>
+                                        <td>
+                                            <span class="badge badge-warning">Pending</span>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="#">
+                                                <i class="mdi mdi-eye"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-success btn-sm" href="#">
+                                                <i class="mdi mdi-check"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger btn-sm" href="#">
+                                                <i class="mdi mdi-close"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>SL No</th>
+                                        <th>Register No</th>
+                                        <th>Company Name</th>
+                                        <th>Domain</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th>View</th>
+                                        <th>Accept</th>
+                                        <th>Reject</th>
+                                    </tr>
+                                </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div> <!-- End Row -->
-
-
         </div> <!-- container -->
-
     </div>
     <!--End content -->
 @endsection
-
 
 @section('DataTableJs')
     <!-- Datatables-->
@@ -103,3 +127,7 @@
     <!-- Datatable init js -->
     <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
 @endsection
+
+
+
+

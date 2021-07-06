@@ -115,6 +115,18 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
     Route::get('approved-visa', 'VisaRequestController@approved')->name('visa.approved');
     Route::get('rejected-visa', 'VisaRequestController@rejected')->name('visa.rejected');
 
-     // candidates --- ready to travel
-     Route::get('travel-received-candidates', 'CandidateController@travelReceived')->name('candidate.travelReceived');
+    // candidates --- ready to travel
+    Route::get('travel-received-candidates', 'CandidateController@travelReceived')->name('candidate.travelReceived');
+});
+
+// One Stop Service route
+Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 'as' => 'OneStopService.'], function () {
+    Route::get('/dashboard', 'OneStopServiceDashboardController@dashboard')->name('dashboard');
+
+
+    // child oss agency
+    Route::get('child-osc-request', 'OSCAgencyController@request')->name('childOsc.request');
+    Route::get('child-osc-approved', 'OSCAgencyController@approved')->name('childOsc.approved');
+    Route::get('child-osc-rejected', 'OSCAgencyController@rejected')->name('childOsc.rejected');
+
 });
