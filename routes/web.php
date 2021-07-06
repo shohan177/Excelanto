@@ -235,3 +235,27 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('approved-travel-quotations', 'TravelQuotationController@approved')->name('travelQuotation.approved');
     Route::get('ticket-booked-travel-enquiry', 'TravelQuotationController@ticketBooked')->name('travelQuotation.ticketBooked');
 });
+
+
+// employer_company Route
+Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany', 'as' => 'employerCompany.'], function () {
+    Route::get('/dashboard', 'EmployerCompanyDashboardController@dashboard')->name('dashboard');
+
+    // job post
+    Route::get('post_new_job', 'PostJobController@create')->name('postJob.create');
+    Route::get('posted_job', 'PostJobController@index')->name('postJob.index');
+
+    // candidates --- ready to travel
+    Route::get('new_candidates', 'CandidateController@new_candidates')->name('new_candidates');
+    Route::get('candidates_result', 'CandidateController@candidates_result')->name('candidates_result');
+    Route::get('finalized_candidates', 'CandidateController@finalized_candidates')->name('finalized_candidates');
+    Route::get('tickets_booked_list', 'CandidateController@tickets_booked_list')->name('tickets_booked_list');
+
+    // Visa Process
+    Route::get('visa_required', 'VisaProcessController@visa_required')->name('visa_required');
+    Route::get('visa_requested', 'VisaProcessController@visa_requested')->name('visa_requested');
+    Route::get('visa_approved', 'VisaProcessController@visa_approved')->name('visa_approved');
+    Route::get('visa_rejected', 'VisaProcessController@visa_rejected')->name('visa_rejected');
+
+
+});
