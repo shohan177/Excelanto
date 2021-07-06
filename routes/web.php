@@ -138,4 +138,9 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('training-agency-request', 'TrainingAgencyController@request')->name('trainingAgency.request');
     Route::get('approved-training-agency', 'TrainingAgencyController@approved')->name('trainingAgency.approved');
     Route::get('rejected-training-agency', 'TrainingAgencyController@rejected')->name('trainingAgency.rejected');
+
+    // travel-agency
+    Route::get('travel-agency-request', 'TravelAgencyController@request')->name('travelAgency.request');
+    Route::get('approved-travel-agency', 'TravelAgencyController@approved')->name('travelAgency.approved');
+    Route::get('rejected-travel-agency', 'TravelAgencyController@rejected')->name('travelAgency.rejected');
 });
