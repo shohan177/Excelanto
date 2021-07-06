@@ -70,6 +70,15 @@
                     </ul>
                 </li>
 
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="nav-icon fa fa-tachometer"></i></i><span>Travel Enquiries</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('OneStopService.travelEnquiry.readyToTravel') }}"><i class="fa fa-arrow-circle-right"></i> Ready To Travel</a></li>
+                        <li><a href="{{ route('OneStopService.travelEnquiry.newTravel') }}"><i class="fa fa-arrow-circle-right"></i> New Travel Enquiry</a></li>
+                        <li><a href="{{ route('OneStopService.travelEnquiry.postedTravel') }}"><i class="fa fa-arrow-circle-right"></i> Posted Enquiries</a></li>
+                    </ul>
+                </li>
+
                 <!--<li class="has_sub">-->
                 <!--<a href="javascript:void(0);" class="waves-effect"><i class="ti-share"></i><span>Multi Menu </span><span class="pull-right"><i class="mdi mdi-plus"></i></span></a>-->
                 <!--<ul>-->
