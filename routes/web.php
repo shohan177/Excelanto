@@ -126,8 +126,8 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
 
     // child oss agency
     Route::get('child-osc-request', 'OSCAgencyController@request')->name('childOsc.request');
-    Route::get('child-osc-approved', 'OSCAgencyController@approved')->name('childOsc.approved');
-    Route::get('child-osc-rejected', 'OSCAgencyController@rejected')->name('childOsc.rejected');
+    Route::get('approved-child-osc', 'OSCAgencyController@approved')->name('childOsc.approved');
+    Route::get('rejected-child-osc', 'OSCAgencyController@rejected')->name('childOsc.rejected');
 
     // medical-agency
     Route::get('medical-agency-request', 'MedicalAgencyController@request')->name('medicalAgency.request');
@@ -143,4 +143,9 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('travel-agency-request', 'TravelAgencyController@request')->name('travelAgency.request');
     Route::get('approved-travel-agency', 'TravelAgencyController@approved')->name('travelAgency.approved');
     Route::get('rejected-travel-agency', 'TravelAgencyController@rejected')->name('travelAgency.rejected');
+
+    // biometric-agency
+    Route::get('biometric-agency-request', 'BiometricAgencyController@request')->name('biometricAgency.request');
+    Route::get('approved-biometric-agency', 'BiometricAgencyController@approved')->name('biometricAgency.approved');
+    Route::get('rejected-biometric-agency', 'BiometricAgencyController@rejected')->name('biometricAgency.rejected');
 });
