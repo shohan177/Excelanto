@@ -52,6 +52,24 @@
                     </ul>
                 </li>
 
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="nav-icon fa fa-users"></i></i><span> Candidates</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('OneStopService.candidate.request') }}"><i class="fa fa-arrow-circle-right"></i> Selected Candidates</a></li>
+                        <li><a href="{{ route('OneStopService.candidate.approved') }}"><i class="fa fa-arrow-circle-right"></i> Interview Candidates</a></li>
+                        <li><a href="{{ route('OneStopService.candidate.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Finalized Candidates</a></li>
+                        <li><a href="{{ route('OneStopService.candidate.ticketBooked') }}"><i class="fa fa-arrow-circle-right"></i> Appointed Candidates</a></li>
+                    </ul>
+                </li>
+
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="nav-icon fa fa-tachometer"></i></i><span>Visa Process</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('OneStopService.visa.approved') }}"><i class="fa fa-arrow-circle-right"></i> Visa Approved</a></li>
+                        <li><a href="{{ route('OneStopService.visa.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Visa Rejected</a></li>
+                    </ul>
+                </li>
+
                 <!--<li class="has_sub">-->
                 <!--<a href="javascript:void(0);" class="waves-effect"><i class="ti-share"></i><span>Multi Menu </span><span class="pull-right"><i class="mdi mdi-plus"></i></span></a>-->
                 <!--<ul>-->

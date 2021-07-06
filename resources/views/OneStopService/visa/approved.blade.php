@@ -1,6 +1,6 @@
-@extends("UAEAdmin/master")
+@extends("OneStopService/master")
 
-@section('title', 'Travel Received Candidates List')
+@section('title', 'Visa Approved Candidates')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -21,11 +21,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Received Candidates</h4>
+                        <h4 class="pull-left page-title">Visa Approved Candidates</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Candidates</a></li>
-                            <li class="active">Received Candidates</li>
+                            <li><a href="#">Visa Process</a></li>
+                            <li class="active">Visa Approved</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -37,7 +37,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Travel Received Candidates List</h3>
+                            <h3 class="panel-title">Visa Approved List</h3>
                         </div>
                         <div class="panel-body">
 
@@ -45,7 +45,6 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Travel Agency</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
                                         <th>Email</th>
@@ -59,13 +58,12 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>kamrul group travel</td>
                                         <td>Candidate2</td>
                                         <td>Developer</td>
                                         <td>candiate2@gmail.com</td>
                                         <td>2222222222</td>
                                         <td>
-                                            <span class="badge badge-success">Activated</span>
+                                            <span class="badge badge-success">Visa-Approved</span>
                                         </td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="#">
@@ -75,13 +73,12 @@
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>New  travel</td>
                                         <td>Candidate3</td>
                                         <td>Developer</td>
                                         <td>candiate3@gmail.com</td>
                                         <td>222225522222</td>
                                         <td>
-                                            <span class="badge badge-success">Activated</span>
+                                            <span class="badge badge-success">Visa-Approved</span>
                                         </td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="#">
@@ -93,7 +90,6 @@
                                 <tfoot>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Travel Agency</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
                                         <th>Email</th>

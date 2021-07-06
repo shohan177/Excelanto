@@ -1,11 +1,12 @@
-@extends("UAEAdmin/master")
+@extends("OneStopService/master")
 
-@section('title', 'Travel Received Candidates List')
+@section('title', 'Selected Candidates')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -21,23 +22,22 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Received Candidates</h4>
+                        <h4 class="pull-left page-title">Selected Candidates</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
                             <li><a href="#">Candidates</a></li>
-                            <li class="active">Received Candidates</li>
+                            <li class="active">Selected Candidates</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Travel Received Candidates List</h3>
+                            <h3 class="panel-title">Candidates selected by employer</h3>
                         </div>
                         <div class="panel-body">
 
@@ -45,7 +45,6 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Travel Agency</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
                                         <th>Email</th>
@@ -59,33 +58,18 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>kamrul group travel</td>
-                                        <td>Candidate2</td>
+                                        <td>shavo</td>
                                         <td>Developer</td>
-                                        <td>candiate2@gmail.com</td>
-                                        <td>2222222222</td>
+                                        <td>sharifshuvo00@gmail.com</td>
+                                        <td>01756492875</td>
                                         <td>
-                                            <span class="badge badge-success">Activated</span>
+                                            <button type="button" name="Forwarded"
+                                                class="btn btn-info btn-xs update">Assigned</button>
                                         </td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>New  travel</td>
-                                        <td>Candidate3</td>
-                                        <td>Developer</td>
-                                        <td>candiate3@gmail.com</td>
-                                        <td>222225522222</td>
-                                        <td>
-                                            <span class="badge badge-success">Activated</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
+                                            <a class="btn btn-info btn-xs"
+                                                href="view_candidate_profile.php?candidate_id=60 ">
+                                                <i class="fa fa-eye"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -93,7 +77,6 @@
                                 <tfoot>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Travel Agency</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
                                         <th>Email</th>
@@ -103,14 +86,20 @@
                                     </tr>
                                 </tfoot>
                             </table>
+
                         </div>
                     </div>
                 </div>
+
             </div> <!-- End Row -->
+
+
         </div> <!-- container -->
+
     </div>
     <!--End content -->
 @endsection
+
 
 @section('DataTableJs')
     <!-- Datatables-->

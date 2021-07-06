@@ -148,4 +148,14 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('biometric-agency-request', 'BiometricAgencyController@request')->name('biometricAgency.request');
     Route::get('approved-biometric-agency', 'BiometricAgencyController@approved')->name('biometricAgency.approved');
     Route::get('rejected-biometric-agency', 'BiometricAgencyController@rejected')->name('biometricAgency.rejected');
+
+    // candidate
+    Route::get('selected-candidate', 'CandidateController@selected')->name('candidate.request');
+    Route::get('interview-candidate', 'CandidateController@interview')->name('candidate.approved');
+    Route::get('finalized-candidate', 'CandidateController@finalized')->name('candidate.rejected');
+    Route::get('ticket-booked-candidate', 'CandidateController@ticketBooked')->name('candidate.ticketBooked');
+
+    // Visa Process
+    Route::get('approved-visa', 'VisaProcessController@approved')->name('visa.approved');
+    Route::get('rejected-visa', 'VisaProcessController@rejected')->name('visa.rejected');
 });
