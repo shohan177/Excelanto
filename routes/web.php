@@ -163,4 +163,9 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('ready-to-travel', 'TravelEnquiryController@readyToTravel')->name('travelEnquiry.readyToTravel');
     Route::get('new-travel-enquiry', 'TravelEnquiryController@newTravel')->name('travelEnquiry.newTravel');
     Route::get('posted-travel-enquiry', 'TravelEnquiryController@postedTravel')->name('travelEnquiry.postedTravel');
+
+    // Travel  quotations
+    Route::get('received-travel-quotations', 'TravelQuotationController@received')->name('travelQuotation.received');
+    Route::get('approved-travel-quotations', 'TravelQuotationController@approved')->name('travelQuotation.approved');
+    Route::get('ticket-booked-travel-enquiry', 'TravelQuotationController@ticketBooked')->name('travelQuotation.ticketBooked');
 });

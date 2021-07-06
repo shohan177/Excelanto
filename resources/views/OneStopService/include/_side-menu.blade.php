@@ -79,6 +79,15 @@
                     </ul>
                 </li>
 
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="nav-icon fa fa-tachometer"></i></i><span>Travel Quotations</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('OneStopService.travelQuotation.received') }}"><i class="fa fa-arrow-circle-right"></i>Received Quotations</a></li>
+                        <li><a href="{{ route('OneStopService.travelQuotation.approved') }}"><i class="fa fa-arrow-circle-right"></i> Approved Quotations</a></li>
+                        <li><a href="{{ route('OneStopService.travelQuotation.ticketBooked') }}"><i class="fa fa-arrow-circle-right"></i> Ticket Booked List</a></li>
+                    </ul>
+                </li>
+
                 <!--<li class="has_sub">-->
                 <!--<a href="javascript:void(0);" class="waves-effect"><i class="ti-share"></i><span>Multi Menu </span><span class="pull-right"><i class="mdi mdi-plus"></i></span></a>-->
                 <!--<ul>-->
