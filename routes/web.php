@@ -129,4 +129,8 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('child-osc-approved', 'OSCAgencyController@approved')->name('childOsc.approved');
     Route::get('child-osc-rejected', 'OSCAgencyController@rejected')->name('childOsc.rejected');
 
+    // medical-agency
+    Route::get('medical-agency-request', 'MedicalAgencyController@request')->name('medicalAgency.request');
+    Route::get('medical-agency-approved', 'MedicalAgencyController@approved')->name('medicalAgency.approved');
+    Route::get('medical-agency-rejected', 'MedicalAgencyController@rejected')->name('medicalAgency.rejected');
 });

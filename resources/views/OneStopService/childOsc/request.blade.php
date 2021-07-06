@@ -56,14 +56,13 @@
                                     </tr>
                                 </thead>
 
-
                                 <tbody>
                                     <tr>
                                         <td>1</td>
                                         <td>4365768787</td>
-                                        <td>OSS</td>
-                                        <td>oss.com</td>
-                                        <td>oss@gmail.com</td>
+                                        <td>rana multinational company</td>
+                                        <td>rmc.com</td>
+                                        <td>rmc@gmail.com</td>
                                         <td>
                                             <span class="badge badge-warning">Pending</span>
                                         </td>
@@ -127,7 +126,3 @@
     <!-- Datatable init js -->
     <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
 @endsection
-
-
-
-

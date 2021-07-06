@@ -5,17 +5,17 @@ namespace App\Http\Controllers\OneStopService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class OSCAgencyController extends Controller
+class MedicalAgencyController extends Controller
 {
     public function request(){
-        return view('OneStopService.medicalAgency.request');
+        return view('OneStopService.childOsc.request');
     }
 
     public function approved(){
-        return view('OneStopService.medicalAgency.approved');
+        return view('OneStopService.childOsc.approved');
     }
 
     public function rejected(){
-        return view('OneStopService.medicalAgency.rejected');
+        return view('OneStopService.childOsc.rejected');
     }
 }
