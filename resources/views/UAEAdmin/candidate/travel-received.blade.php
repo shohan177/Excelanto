@@ -47,7 +47,7 @@
                                         <th>ID</th>
                                         <th>Travel Agency</th>
                                         <th>Candidate Name</th>
-                                        <th>JOb Category</th>
+                                        <th>Job Category</th>
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Status</th>
@@ -95,7 +95,7 @@
                                         <th>ID</th>
                                         <th>Travel Agency</th>
                                         <th>Candidate Name</th>
-                                        <th>JOb Category</th>
+                                        <th>Job Category</th>
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Status</th>
