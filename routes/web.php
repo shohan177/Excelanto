@@ -181,8 +181,59 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
     Route::get('approved-visa', 'VisaRequestController@approved')->name('visa.approved');
     Route::get('rejected-visa', 'VisaRequestController@rejected')->name('visa.rejected');
 
-     // candidates --- ready to travel
-     Route::get('travel-received-candidates', 'CandidateController@travelReceived')->name('candidate.travelReceived');
+    // candidates --- ready to travel
+    Route::get('travel-received-candidates', 'CandidateController@travelReceived')->name('candidate.travelReceived');
+});
+
+// One Stop Service route
+Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 'as' => 'OneStopService.'], function () {
+    Route::get('/dashboard', 'OneStopServiceDashboardController@dashboard')->name('dashboard');
+
+
+    // child oss agency
+    Route::get('child-osc-request', 'OSCAgencyController@request')->name('childOsc.request');
+    Route::get('approved-child-osc', 'OSCAgencyController@approved')->name('childOsc.approved');
+    Route::get('rejected-child-osc', 'OSCAgencyController@rejected')->name('childOsc.rejected');
+
+    // medical-agency
+    Route::get('medical-agency-request', 'MedicalAgencyController@request')->name('medicalAgency.request');
+    Route::get('approved-medical-agency', 'MedicalAgencyController@approved')->name('medicalAgency.approved');
+    Route::get('rejected-medical-agency', 'MedicalAgencyController@rejected')->name('medicalAgency.rejected');
+
+    // training-agency
+    Route::get('training-agency-request', 'TrainingAgencyController@request')->name('trainingAgency.request');
+    Route::get('approved-training-agency', 'TrainingAgencyController@approved')->name('trainingAgency.approved');
+    Route::get('rejected-training-agency', 'TrainingAgencyController@rejected')->name('trainingAgency.rejected');
+
+    // travel-agency
+    Route::get('travel-agency-request', 'TravelAgencyController@request')->name('travelAgency.request');
+    Route::get('approved-travel-agency', 'TravelAgencyController@approved')->name('travelAgency.approved');
+    Route::get('rejected-travel-agency', 'TravelAgencyController@rejected')->name('travelAgency.rejected');
+
+    // biometric-agency
+    Route::get('biometric-agency-request', 'BiometricAgencyController@request')->name('biometricAgency.request');
+    Route::get('approved-biometric-agency', 'BiometricAgencyController@approved')->name('biometricAgency.approved');
+    Route::get('rejected-biometric-agency', 'BiometricAgencyController@rejected')->name('biometricAgency.rejected');
+
+    // candidate
+    Route::get('selected-candidate', 'CandidateController@selected')->name('candidate.request');
+    Route::get('interview-candidate', 'CandidateController@interview')->name('candidate.approved');
+    Route::get('finalized-candidate', 'CandidateController@finalized')->name('candidate.rejected');
+    Route::get('ticket-booked-candidate', 'CandidateController@ticketBooked')->name('candidate.ticketBooked');
+
+    // Visa Process
+    Route::get('approved-visa', 'VisaProcessController@approved')->name('visa.approved');
+    Route::get('rejected-visa', 'VisaProcessController@rejected')->name('visa.rejected');
+
+    // Travel  enquiry
+    Route::get('ready-to-travel', 'TravelEnquiryController@readyToTravel')->name('travelEnquiry.readyToTravel');
+    Route::get('new-travel-enquiry', 'TravelEnquiryController@newTravel')->name('travelEnquiry.newTravel');
+    Route::get('posted-travel-enquiry', 'TravelEnquiryController@postedTravel')->name('travelEnquiry.postedTravel');
+
+    // Travel  quotations
+    Route::get('received-travel-quotations', 'TravelQuotationController@received')->name('travelQuotation.received');
+    Route::get('approved-travel-quotations', 'TravelQuotationController@approved')->name('travelQuotation.approved');
+    Route::get('ticket-booked-travel-enquiry', 'TravelQuotationController@ticketBooked')->name('travelQuotation.ticketBooked');
 });
 
 
