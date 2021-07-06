@@ -58,7 +58,7 @@
                                     <tr>
                                         <td>1</td>
                                         <td>4365768787</td>
-                                        <td>savar training</td>
+                                        <td>savar medical</td>
                                         <td>rc.com</td>
                                         <td>rc@gmail.com</td>
                                         <td>

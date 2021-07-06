@@ -1,6 +1,6 @@
 @extends("OneStopService/master")
 
-@section('title', 'New Medical Agency Requests')
+@section('title', 'Rejected Training Agency Requests')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -21,11 +21,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">New Requests</h4>
+                        <h4 class="pull-left page-title">Rejected Requests</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Medical Agency</a></li>
-                            <li class="active">New Requests</li>
+                            <li><a href="#">Training Agency</a></li>
+                            <li class="active">Rejected Requests</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -37,7 +37,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">New Medical Agency Requests</h3>
+                            <h3 class="panel-title">Rejected Training Agency Requests</h3>
                         </div>
                         <div class="panel-body">
 
@@ -50,9 +50,7 @@
                                         <th>Domain</th>
                                         <th>Email</th>
                                         <th>Status</th>
-                                        <th>View</th>
-                                        <th>Accept</th>
-                                        <th>Reject</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
 
@@ -60,25 +58,15 @@
                                     <tr>
                                         <td>1</td>
                                         <td>4365768787</td>
-                                        <td>savar medical</td>
+                                        <td>savar training</td>
                                         <td>rc.com</td>
                                         <td>rc@gmail.com</td>
                                         <td>
-                                            <span class="badge badge-warning">Pending</span>
+                                            <span class="badge badge-danger">Rejected</span>
                                         </td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="#">
                                                 <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm" href="#">
-                                                <i class="mdi mdi-check"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="mdi mdi-close"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -91,9 +79,7 @@
                                         <th>Domain</th>
                                         <th>Email</th>
                                         <th>Status</th>
-                                        <th>View</th>
-                                        <th>Accept</th>
-                                        <th>Reject</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>

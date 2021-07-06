@@ -133,4 +133,9 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('medical-agency-request', 'MedicalAgencyController@request')->name('medicalAgency.request');
     Route::get('approved-medical-agency', 'MedicalAgencyController@approved')->name('medicalAgency.approved');
     Route::get('rejected-medical-agency', 'MedicalAgencyController@rejected')->name('medicalAgency.rejected');
+
+    // training-agency
+    Route::get('training-agency-request', 'TrainingAgencyController@request')->name('trainingAgency.request');
+    Route::get('approved-training-agency', 'TrainingAgencyController@approved')->name('trainingAgency.approved');
+    Route::get('rejected-training-agency', 'TrainingAgencyController@rejected')->name('trainingAgency.rejected');
 });

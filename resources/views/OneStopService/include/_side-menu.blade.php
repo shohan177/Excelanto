@@ -26,11 +26,11 @@
                 </li>
 
                 <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-hospital"></i></i><span> Training Agencies </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="nav-icon fa fa-university"></i><span> Training Agencies </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('OneStopService.medicalAgency.request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
-                        <li><a href="{{ route('OneStopService.medicalAgency.approved') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
-                        <li><a href="{{ route('OneStopService.medicalAgency.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
+                        <li><a href="{{ route('OneStopService.trainingAgency.request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
+                        <li><a href="{{ route('OneStopService.trainingAgency.approved') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
+                        <li><a href="{{ route('OneStopService.trainingAgency.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
 

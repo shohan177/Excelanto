@@ -1,6 +1,6 @@
 @extends("OneStopService/master")
 
-@section('title', 'New Medical Agency Requests')
+@section('title', 'New Training Agency Requests')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -24,7 +24,7 @@
                         <h4 class="pull-left page-title">New Requests</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Medical Agency</a></li>
+                            <li><a href="#">Training Agency</a></li>
                             <li class="active">New Requests</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -37,7 +37,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">New Medical Agency Requests</h3>
+                            <h3 class="panel-title">New Training Agency Requests</h3>
                         </div>
                         <div class="panel-body">
 
@@ -60,7 +60,7 @@
                                     <tr>
                                         <td>1</td>
                                         <td>4365768787</td>
-                                        <td>savar medical</td>
+                                        <td>savar training</td>
                                         <td>rc.com</td>
                                         <td>rc@gmail.com</td>
                                         <td>
