@@ -131,6 +131,6 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
 
     // medical-agency
     Route::get('medical-agency-request', 'MedicalAgencyController@request')->name('medicalAgency.request');
-    Route::get('medical-agency-approved', 'MedicalAgencyController@approved')->name('medicalAgency.approved');
-    Route::get('medical-agency-rejected', 'MedicalAgencyController@rejected')->name('medicalAgency.rejected');
+    Route::get('approved-medical-agency', 'MedicalAgencyController@approved')->name('medicalAgency.approved');
+    Route::get('rejected-medical-agency', 'MedicalAgencyController@rejected')->name('medicalAgency.rejected');
 });
