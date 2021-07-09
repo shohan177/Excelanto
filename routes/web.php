@@ -19,6 +19,14 @@ Route::get('/', function () {
 });
 
 
+// Super Admin route
+Route::group(['prefix' => 'super-admin/', 'namespace' => 'SuperAdmin', 'as' => 'SuperAdmin.'], function () {
+    Route::get('/dashboard', 'SuperAdminDashboardController@dashboard')->name('dashboard');
+
+});
+
+
+// Bangladesh Admin route
 Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin', 'as' => 'BangladeshAdmin.'], function () {
     Route::get('/dashboard', 'BangladeshAdminDashboardController@dashboard')->name('dashboard');
 
