@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+/*Route::get('/', 'HomeController@index')->name('admin.login');*/
 
 // Super Admin route
 
@@ -269,6 +270,9 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
 
 });
 
-Auth::routes();
+Auth::routes([
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*Route::get('/home', 'HomeController@index')->name('home');*/
