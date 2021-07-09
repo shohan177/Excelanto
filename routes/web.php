@@ -268,3 +268,7 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
 
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
