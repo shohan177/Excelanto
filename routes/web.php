@@ -18,11 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 // Super Admin route
+
 Route::group(['prefix' => 'super-admin/', 'namespace' => 'SuperAdmin', 'as' => 'SuperAdmin.'], function () {
     Route::get('/dashboard', 'SuperAdminDashboardController@dashboard')->name('dashboard');
-
+    Route::resource('role', 'RoleController');
+    Route::resource('country', 'CountryController');
 });
 
 
