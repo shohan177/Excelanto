@@ -15,7 +15,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-
+        $roles = Role::all();
+        return view('SuperAdmin.role.index', compact('roles'));
     }
 
     /**
@@ -25,7 +26,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('SuperAdmin.role.create');
     }
 
     /**
@@ -36,7 +37,19 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'status' => 'required',
+        ]);
+
+        $data = new Role();
+        $data->name = $request->name;
+        $data->slug = Str::slug($request->name);
+        $data->status = $request->status;
+
+        $data->save();
+
+        return redirect()->route('SuperAdmin.roles.index');
     }
 
     /**
