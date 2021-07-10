@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RoleController extends Controller
 {
@@ -49,7 +50,9 @@ class RoleController extends Controller
 
         $data->save();
 
-        return redirect()->route('SuperAdmin.roles.index');
+        //Toastr::success('Tag successfully create', 'Success');
+
+        return redirect()->route('SuperAdmin.role.index');
     }
 
     /**
@@ -60,7 +63,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        //
+
     }
 
     /**
@@ -71,7 +74,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        return view('SuperAdmin.role.edit', compact('role'));
     }
 
     /**
@@ -83,7 +86,20 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'status' => 'required',
+        ]);
+
+        $role->name = $request->name;
+        $role->slug = Str::slug($request->name);
+        $role->status = $request->status;
+
+        $role->update();
+
+        //Toastr::success('Tag successfully Updated', 'Success');
+
+        return redirect()->route('SuperAdmin.role.index');
     }
 
     /**

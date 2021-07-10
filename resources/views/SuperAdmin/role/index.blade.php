@@ -61,9 +61,8 @@
                                     <td>{{$key}}</td>
                                     <td>{{$role->name}}</td>
                                     <td>{{$role->slug}}</td>
-                                    <td><span class="badge badge-success text-capitalize">{{$role->status}}</span></td>
+                                    <td><span class="badge @if($role->status=='active') {{'badge-success'}} @else {{'badge-warning'}} @endif text-capitalize">{{$role->status}}</span></td>
                                     <td>
-                                        <a class="btn btn-info btn-xs" href="{{route('SuperAdmin.role.show', $role->id)}}"><i class="fa fa-eye"></i></a>
                                         <a class="btn btn-warning btn-xs" href="{{route('SuperAdmin.role.edit', $role->id)}}"><i class="fa fa-edit"></i></a>
                                     </td>
                                 </tr>
