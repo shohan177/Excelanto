@@ -58,7 +58,7 @@
                                 <tbody>
                                 @foreach($roles as $key => $role)
                                 <tr>
-                                    <td>{{$key}}</td>
+                                    <td>{{$key+1}}</td>
                                     <td>{{$role->name}}</td>
                                     <td>{{$role->slug}}</td>
                                     <td><span class="badge @if($role->status=='active') {{'badge-success'}} @else {{'badge-warning'}} @endif text-capitalize">{{$role->status}}</span></td>
