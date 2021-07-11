@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Country;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CountryController extends Controller
 {
@@ -15,7 +16,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return "Country";
+        $countries = Country::all();
+        return view('SuperAdmin.country.index', compact('countries'));
     }
 
     /**
@@ -25,7 +27,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('SuperAdmin.country.create');
     }
 
     /**
@@ -36,7 +38,22 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'country_code' => 'required',
+            'country_name' => 'required',
+            'status' => 'required',
+        ]);
+
+        $data = new Country();
+        $data->country_code = $request->country_code;
+        $data->country_name = $request->country_name;
+        $data->status = $request->status;
+
+        $data->save();
+
+        //Toastr::success('Tag successfully create', 'Success');
+
+        return redirect()->route('SuperAdmin.country.index');
     }
 
     /**
@@ -47,7 +64,7 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        //
+        //show data
     }
 
     /**
@@ -58,7 +75,7 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        //
+        return view('SuperAdmin.country.edit', compact('country'));
     }
 
     /**
@@ -70,7 +87,24 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
-        //
+
+        $request->validate([
+            'country_code' => 'required',
+            'country_name' => 'required',
+            'status' => 'required',
+        ]);
+
+
+        $country->country_code = $request->country_code;
+        $country->country_name = $request->country_name;
+        $country->status = $request->status;
+
+        //return $country;
+        $country->update();
+
+        //Toastr::success('Tag successfully Updated', 'Success');
+
+        return redirect()->route('SuperAdmin.country.index');
     }
 
     /**
@@ -81,6 +115,9 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        //
+        $country->delete();
+        // Toastr::success('Tag successfully Deleted', 'Success');
+
+        return redirect()->route('SuperAdmin.country.index');
     }
 }
