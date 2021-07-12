@@ -5,7 +5,8 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -56,31 +57,33 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>4365768787</td>
-                                        <td>BASIS</td>
-                                        <td>basis.com</td>
-                                        <td>basis@gmail.com</td>
-                                        <td>
-                                            <span class="badge badge-warning">Pending</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm" href="#">
-                                                <i class="mdi mdi-check"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="mdi mdi-close"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($pendingRequests as $pendingRequest)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $pendingRequest->company_register_number }}</td>
+                                            <td>{{ $pendingRequest->company_name }}</td>
+                                            <td>{{ $pendingRequest->domain }}</td>
+                                            <td>{{ $pendingRequest->email }}</td>
+                                            <td>
+                                                <span class="badge badge-warning">{{ $pendingRequest->active_status }}</span>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="#">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-success btn-sm" href="#">
+                                                    <i class="mdi mdi-check"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-danger btn-sm" href="#">
+                                                    <i class="mdi mdi-close"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
