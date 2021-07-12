@@ -14,8 +14,8 @@
                         <h4 class="pull-left page-title">Role</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Super Admin</a></li>
-                            <li><a href="#">Role</a></li>
+                            <li><a href="{{route('SuperAdmin.dashboard')}}">Super Admin</a></li>
+                            <li><a href="{{route('SuperAdmin.role.index')}}">Role</a></li>
                             <li class="active">Update role</li>
                         </ol>
                         <div class="clearfix"></div>

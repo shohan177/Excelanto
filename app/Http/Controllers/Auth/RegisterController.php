@@ -52,7 +52,10 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:5'],
+            'country' => 'required',
+            'role' => 'required',
+            'terms' => 'required',
         ]);
     }
 
@@ -64,10 +67,53 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $userType = "";
+        if ($data['role'] == 1)
+        {
+            $userType = "super-admin";
+        }elseif ($data['role'] == 2){
+            $userType = "recruiter-company";
+        }elseif ($data['role'] == 3){
+            $userType = "welfare-service-center-company";
+        }elseif ($data['role'] == 4){
+            $userType = "bangladeshi-embassy";
+        }elseif ($data['role'] == 5){
+            $userType = "master-one-stop-service";
+        }elseif ($data['role'] == 6){
+            $userType = "one-stop-service-agency";
+        }elseif ($data['role'] == 7){
+            $userType = "medical-company";
+        }elseif ($data['role'] == 8){
+            $userType = "training-company";
+        }elseif ($data['role'] == 9){
+            $userType = "travel-company";
+        }elseif ($data['role'] == 10){
+            $userType = "biometric-company";
+        }elseif ($data['role'] == 11){
+            $userType = "recruiting-agency";
+        }elseif ($data['role'] == 12){
+            $userType = "bangladeshi-admin";
+        }elseif ($data['role'] == 13){
+            $userType = "employer";
+        }elseif ($data['role'] == 14){
+            $userType = "uae-admin";
+        }elseif ($data['role'] == 15){
+            $userType = "";
+        }else{
+            echo "some this wrong";
+        }
+
+        //$user = new User();
+
+        //dd($data['name']." ".$data['email']." ".$data['password']." ".$data['role']." ".$userType." ".$data['country']);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id' => $data['role'],
+            'user_type' => $userType,
+            'country_id' => $data['country'],
         ]);
     }
 
