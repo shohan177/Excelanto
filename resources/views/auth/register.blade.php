@@ -28,60 +28,65 @@
         <div class="card-body register-card-body">
             <p class="login-box-msg">Register a new membership</p>
 
-            <form action="" method="post" name="RegisterForm">
+            <form action="{{route('register')}}" method="post" name="RegisterForm">
+                @csrf
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="RegisterName" placeholder="Name" required>
+                    <input type="text" class="form-control d-block" name="name" placeholder="Enter your Name" required>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
                     </div>
                 </div>
+                @error('name')
+                <div class="text-danger d-block"><p>{{ $message }}</p></div>
+                @enderror
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" name="RegisterEmail" placeholder="Email" required>
+                    <input type="email" class="form-control d-block" name="email" placeholder="Enter your Email" required>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
-                    <span style="background-color: yellow;"></span>
                 </div>
+                @error('email')
+                <div class="text-danger d-block"><p>{{ $message }}</p></div>
+                @enderror
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="RegisterPassword" placeholder="Password" required>
+                    <input type="password" class="form-control" name="password" placeholder="Enter your Password" required>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
                         </div>
                     </div>
                 </div>
+                @error('password')
+                <div class="text-danger d-block"><p>{{ $message }}</p></div>
+                @enderror
 
                 <div class="form-group">
-                    <select class="form-control" name="RegisterType" >
-                        <option selected disabled value="">Select user country</option>
-                        <option value="3">Bangladesh</option>
-                        <option value="4">India</option>
-                        <option value="5">Pakistan</option>
-                        <option value="13">USA</option>
-                        <option value="7">UK</option>
+                    <select class="form-control" name="country" >
+                        <option disabled value="">Select user country</option>
+                        @foreach($countries as $country)
+                            <option value="{{$country->id}}">{{$country->country_name}}</option>
+                        @endforeach
                     </select>
                 </div>
+                @error('country')
+                <div class="text-danger d-block"><p>{{ $message }}</p></div>
+                @enderror
                 <div class="form-group">
-                    <select class="form-control" name="RegisterType" required>
-                        <option selected disabled value="">Select user type</option>
-                        <!--            <option value="1">Admin (UAE)</option>
-                                   <option value="2">Admin (Bangladesh)</option> -->
-                        <option value="3">Employer Company (UAE)</option>
-                        <option value="4">Welfare Service Center (UAE)</option>
-                        <option value="5">Bangladesh Embassy (UAE)</option>
-                        <option value="13">One Stop Service</option>
-                        <option value="7">Medical Company</option>
-                        <option value="8">Training Company</option>
-                        <option value="9">Travel Company</option>
-                        <option value="10">Biometric Company</option>
-                        <option value="11">Recruiting Agency (Bangladesh)</option>
-                        <option value="12">UAE Embassy(Bangladesh)</option>
+                    <select class="form-control" name="role" required>
+                        <option disabled value="">Select user type</option>
+                        @foreach($roles as $role)
+                            <option value="{{$role->id}}">{{$role->name}}</option>
+                        @endforeach
                     </select>
                 </div>
+                @error('role')
+                <div class="text-danger d-block"><p>{{ $message }}</p></div>
+                @enderror
+
                 <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">
@@ -91,6 +96,11 @@
                             </label>
                         </div>
                     </div>
+
+                    @error('terms')
+                        <div class="text-danger d-block"><p>{{ $message }}</p></div>
+                    <br>
+                    @enderror
                     <!-- /.col -->
                     <div class="col-4">
                         <button type="submit" name="btnRegister" class="btn btn-primary btn-block">Register</button>
