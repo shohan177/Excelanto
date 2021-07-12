@@ -28,24 +28,34 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
 
-            <form action="" method="post">
+            <form action="{{route('login')}}" method="post">
+                @csrf
                 <h4 style= color:red;></h4>
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" name="UserEmail" placeholder="Email" required>
+                    <input type="email" class="form-control" name="email" placeholder="Enter your Email" required>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
                 </div>
+                @error('email')
+                <div class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></div>
+                @enderror
+
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="UserPassword" placeholder="Password" required>
+                    <input type="password" class="form-control" name="password" placeholder="Enter your Password" required>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
                         </div>
                     </div>
                 </div>
+
+                @error('password')
+                <div class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></div>
+                @enderror
+
                 <div class="row">
                     <div class="col-12">
                         <button type="submit" name="loginBtn" class="btn btn-primary btn-block">Sign In</button>
