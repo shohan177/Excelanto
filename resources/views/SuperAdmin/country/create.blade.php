@@ -14,7 +14,7 @@
                         <h4 class="pull-left page-title">Country</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Super Admin</a></li>
+                            <li><a href="{{route('SuperAdmin.dashboard')}}">Super Admin</a></li>
                             <li class="active">Country</li>
                         </ol>
                         <div class="clearfix"></div>
