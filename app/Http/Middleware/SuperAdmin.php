@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class SuperAdmin
 {
@@ -15,6 +16,11 @@ class SuperAdmin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::check() && (Auth::user()->user_type == 'super-admin')) {
+            return $next($request);
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 }

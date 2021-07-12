@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 // Super Admin route
 
-Route::group(['prefix' => 'super-admin/', 'namespace' => 'SuperAdmin', 'as' => 'SuperAdmin.'], function () {
+Route::group(['prefix' => 'super-admin/', 'namespace' => 'SuperAdmin', 'as' => 'SuperAdmin.', 'middleware' => ['auth', 'super-admin']], function () {
     Route::get('/dashboard', 'SuperAdminDashboardController@dashboard')->name('dashboard');
     Route::resource('role', 'RoleController');
     Route::resource('country', 'CountryController');
@@ -71,7 +71,7 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
 
 
 // recruiting agency route
-Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency', 'as' => 'RecruitingAgency.'], function () {
+Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency', 'as' => 'RecruitingAgency.','middleware' => ['auth', 'recruiting-agency']], function () {
     Route::get('/dashboard', 'RecruitingAgencyDashboardController@dashboard')->name('dashboard');
 
     //Job Posts
@@ -86,7 +86,7 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
 });
 
 // Welfare Company route
-Route::group(['prefix' => 'welfare_centre/', 'namespace' => 'WelfareCentre', 'as' => 'WelfareCentre.'], function () {
+Route::group(['prefix' => 'welfare_centre/', 'namespace' => 'WelfareCentre', 'as' => 'WelfareCentre.','middleware' => ['auth', 'welfare-centre']], function () {
 
     Route::get('/dashboard', 'WelfareDashboardController@dashboard')->name('dashboard');
 
@@ -170,7 +170,7 @@ Route::group(['prefix' => 'welfare_centre/', 'namespace' => 'WelfareCentre', 'as
 });
 
 // UAE Admin route
-Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEAdmin.'], function () {
+Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEAdmin.', 'middleware' => ['auth', 'uae-admin']], function () {
     Route::get('/dashboard', 'UAEAdminDashboardController@dashboard')->name('dashboard');
 
     // Employer Requests
@@ -196,7 +196,7 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
 });
 
 // One Stop Service route
-Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 'as' => 'OneStopService.'], function () {
+Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 'as' => 'OneStopService.', 'middleware' => ['auth', 'one-stop-service']], function () {
     Route::get('/dashboard', 'OneStopServiceDashboardController@dashboard')->name('dashboard');
 
 
@@ -248,7 +248,7 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
 
 
 // employer_company Route
-Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany', 'as' => 'employerCompany.'], function () {
+Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany', 'as' => 'employerCompany.','middleware' => ['auth', 'employer-company']], function () {
     Route::get('/dashboard', 'EmployerCompanyDashboardController@dashboard')->name('dashboard');
 
     // job post
