@@ -29,7 +29,7 @@ Route::group(['prefix' => 'super-admin/', 'namespace' => 'SuperAdmin', 'as' => '
 
 
 // Bangladesh Admin route
-Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin', 'as' => 'BangladeshAdmin.'], function () {
+Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin', 'as' => 'BangladeshAdmin.', 'middleware' => ['auth', 'bangladesh-admin']], function () {
     Route::get('/dashboard', 'BangladeshAdminDashboardController@dashboard')->name('dashboard');
 
     //    Recruiting agency

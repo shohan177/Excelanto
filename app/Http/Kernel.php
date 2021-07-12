@@ -77,6 +77,5 @@ class Kernel extends HttpKernel
         'uae-admin'=>UaeAdmin::class,
         'one-stop-service'=>OneStopService::class,
         'employer-company'=>EmployerCompany::class,
-
     ];
 }

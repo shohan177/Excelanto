@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class BangladeshAdmin
 {
@@ -15,6 +16,11 @@ class BangladeshAdmin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::check() && (Auth::user()->user_type == 'bangladeshi-admin')) {
+            return $next($request);
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 }
