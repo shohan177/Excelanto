@@ -22,5 +22,15 @@ class UserSeeder extends Seeder
         $user->active_status = "New";
         $user->password = Hash::make('12345');
         $user->save();
+
+        $user = new User();
+        $user->name = 'One Stop Service';
+        $user->email = 'oss@gmail.com';
+        $user->country_id = 3;
+        $user->user_type = 13;
+        $user->role_id = 13;
+        $user->active_status = "New";
+        $user->password = Hash::make('12345');
+        $user->save();
     }
 }

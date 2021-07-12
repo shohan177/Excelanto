@@ -56,16 +56,16 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($pendingRequests as $pendingRequest)
+                                    @foreach ($users as $user)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $pendingRequest->company_register_number }}</td>
-                                            <td>{{ $pendingRequest->company_name }}</td>
-                                            <td>{{ $pendingRequest->domain }}</td>
-                                            <td>{{ $pendingRequest->email }}</td>
+                                            <td>{{ $user->company_register_number }}</td>
+                                            <td>{{ $user->company_name }}</td>
+                                            <td>{{ $user->domain }}</td>
+                                            <td>{{ $user->email }}</td>
                                             <td>
                                                 <span
-                                                    class="badge badge-danger">{{ $pendingRequest->active_status }}</span>
+                                                    class="badge badge-danger">{{ $user->active_status }}</span>
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="#">

@@ -35,10 +35,13 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     //    Recruiting agency
     Route::get('company_request', 'RecruitingAgencieController@company_request')->name('company_request');
     Route::post('company_request-approve/{company_id}', 'RecruitingAgencieController@approveNow')->name('company_requestApprove');
+    Route::post('company_request-reject/{company_id}', 'RecruitingAgencieController@rejectNow')->name('company_requestReject');
     Route::get('company-approved-request', 'RecruitingAgencieController@company_approved_request')->name('company_approved_request');
     Route::get('company-rejected-request', 'RecruitingAgencieController@company_rejected_request')->name('company_rejected_request');
 
     //    one stop services
+    Route::post('oss-company-request-approve/{company_id}', 'OneStopServiceController@approveNow')->name('oneStopService.approveNow');
+    Route::post('oss-company-request-reject/{company_id}', 'OneStopServiceController@rejectNow')->name('oneStopService.rejectNow');
     Route::get('oss-company-request', 'OneStopServiceController@request')->name('request');
     Route::get('oss-approved-request', 'OneStopServiceController@approved')->name('approved');
     Route::get('oss-rejected-request', 'OneStopServiceController@rejected')->name('oneStopService.rejected');
@@ -200,6 +203,7 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
 // One Stop Service route
 Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 'as' => 'OneStopService.'], function () {
     Route::get('/dashboard', 'OneStopServiceDashboardController@dashboard')->name('dashboard');
+    Route::post('/company-prfile-submit', 'OneStopServiceDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
 
     // child oss agency

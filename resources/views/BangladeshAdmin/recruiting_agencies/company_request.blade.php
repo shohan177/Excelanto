@@ -57,16 +57,16 @@
 
 
                                 <tbody>
-                                    @foreach ($pendingRequests as $pendingRequest)
+                                    @foreach ($users as $user)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $pendingRequest->company_register_number }}</td>
-                                            <td>{{ $pendingRequest->company_name }}</td>
-                                            <td>{{ $pendingRequest->domain }}</td>
-                                            <td>{{ $pendingRequest->email }}</td>
+                                            <td>{{ $user->company_register_number }}</td>
+                                            <td>{{ $user->company_name }}</td>
+                                            <td>{{ $user->domain }}</td>
+                                            <td>{{ $user->email }}</td>
                                             <td>
                                                 <span
-                                                    class="badge badge-warning">{{ $pendingRequest->active_status }}</span>
+                                                    class="badge badge-warning">{{ $user->active_status }}</span>
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="#">
@@ -75,14 +75,14 @@
                                             </td>
                                             <td>
                                                 <button class="btn btn-success" onclick="approve(this)"
-                                                    value="{{ route('BangladeshAdmin.company_requestApprove', $pendingRequest->id) }}">
+                                                    value="{{ route('BangladeshAdmin.company_requestApprove', $user->id) }}">
                                                     <i class="mdi mdi-check"></i> </button>
 
                                             </td>
                                             <td>
-                                                <a class="btn btn-danger btn-sm" href="#">
-                                                    <i class="mdi mdi-close"></i>
-                                                </a>
+                                                <button class="btn btn-danger" onclick="reject(this)"
+                                                value="{{ route('BangladeshAdmin.company_requestReject', $user->id) }}">
+                                                <i class="mdi mdi-close"></i> </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -110,11 +110,6 @@
     </div>
     <!--End content -->
     <script>
-        $(document).ready(function() {
-
-
-        });
-
         function approve(objButton) {
             var url = objButton.value;
             // alert(objButton.value)
@@ -140,6 +135,48 @@
                                 Swal.fire(
                                     'Approved !',
                                     'This company has been Approved. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+        function reject(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Reject !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN':  "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Rejected !',
+                                    'This company has been Rejected. ' + data.message,
                                     'success'
                                 )
                                 setTimeout(function() {

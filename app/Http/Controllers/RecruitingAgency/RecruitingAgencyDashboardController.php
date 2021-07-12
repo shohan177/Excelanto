@@ -40,7 +40,7 @@ class RecruitingAgencyDashboardController extends Controller
 
         if ($request->hasFile('logo')) {
             $image             = $request->file('logo');
-            $folder_path       = 'uploads/recruitingAgency/';
+            $folder_path       = 'uploads/profile/';
             $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->save($folder_path . $image_new_name);
@@ -48,7 +48,7 @@ class RecruitingAgencyDashboardController extends Controller
         }
         if ($request->hasFile('document1')) {
             $image             = $request->file('document1');
-            $folder_path       = 'uploads/recruitingAgency/';
+            $folder_path       = 'uploads/profile/';
             $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->save($folder_path . $image_new_name);
@@ -56,7 +56,7 @@ class RecruitingAgencyDashboardController extends Controller
         }
         if ($request->hasFile('document2')) {
             $image             = $request->file('document2');
-            $folder_path       = 'uploads/recruitingAgency/';
+            $folder_path       = 'uploads/profile/';
             $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->save($folder_path . $image_new_name);
