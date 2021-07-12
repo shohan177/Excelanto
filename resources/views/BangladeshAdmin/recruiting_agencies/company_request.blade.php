@@ -65,7 +65,8 @@
                                             <td>{{ $pendingRequest->domain }}</td>
                                             <td>{{ $pendingRequest->email }}</td>
                                             <td>
-                                                <span class="badge badge-warning">{{ $pendingRequest->active_status }}</span>
+                                                <span
+                                                    class="badge badge-warning">{{ $pendingRequest->active_status }}</span>
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="#">
@@ -73,9 +74,10 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-success btn-sm" href="#">
-                                                    <i class="mdi mdi-check"></i>
-                                                </a>
+                                                <button class="btn btn-success" onclick="approve(this)"
+                                                    value="{{ route('BangladeshAdmin.company_requestApprove', $pendingRequest->id) }}">
+                                                    <i class="mdi mdi-check"></i> </button>
+
                                             </td>
                                             <td>
                                                 <a class="btn btn-danger btn-sm" href="#">
@@ -85,8 +87,21 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                            </table>
 
+                                <tfoot>
+                                    <tr>
+                                        <th>SL No</th>
+                                        <th>Register No</th>
+                                        <th>Company Name</th>
+                                        <th>Domain</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th>View</th>
+                                        <th>Accept</th>
+                                        <th>Reject</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -94,6 +109,55 @@
         </div> <!-- container -->
     </div>
     <!--End content -->
+    <script>
+        $(document).ready(function() {
+
+
+        });
+
+        function approve(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Approve !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN':  "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Approved !',
+                                    'This company has been Approved. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+    </script>
 @endsection
 
 
