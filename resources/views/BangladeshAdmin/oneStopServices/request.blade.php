@@ -77,13 +77,13 @@
                                             </td>
                                             <td>
                                                 <button class="btn btn-success" onclick="approve(this)"
-                                                    value="{{ route('BangladeshAdmin.company_requestApprove', $user->id) }}">
+                                                    value="{{ route('BangladeshAdmin.oneStopService.approveNow', $user->id) }}">
                                                     <i class="mdi mdi-check"></i> </button>
 
                                             </td>
                                             <td>
                                                 <button class="btn btn-danger" onclick="reject(this)"
-                                                value="{{ route('BangladeshAdmin.company_requestReject', $user->id) }}">
+                                                value="{{ route('BangladeshAdmin.oneStopService.rejectNow', $user->id) }}">
                                                 <i class="mdi mdi-close"></i> </button>
                                             </td>
                                         </tr>

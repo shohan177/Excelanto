@@ -32,5 +32,15 @@ class UserSeeder extends Seeder
         $user->active_status = "New";
         $user->password = Hash::make('12345');
         $user->save();
+
+        $user = new User();
+        $user->name = 'Welfare Service Center';
+        $user->email = 'wsc@gmail.com';
+        $user->country_id = 3;
+        $user->user_type = 4;
+        $user->role_id = 4;
+        $user->active_status = "New";
+        $user->password = Hash::make('12345');
+        $user->save();
     }
 }

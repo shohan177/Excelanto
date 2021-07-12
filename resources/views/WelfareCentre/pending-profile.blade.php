@@ -1,4 +1,4 @@
-@extends("OneStopService/pending-profile-master")
+@extends("WelfareCentre/pending-profile-master")
 @section('main-content')
     <div class="content">
         <div class="container">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="panel-body">
                                 <form role="form" method="POST" enctype="multipart/form-data"
-                                    action="{{ route('OneStopService.companyPrfileSubmit') }}">
+                                    action="{{ route('WelfareCentre.companyPrfileSubmit') }}">
                                     @csrf
                                     <div class="row">
                                         <!-- Basic example -->

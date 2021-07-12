@@ -47,6 +47,8 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     Route::get('oss-rejected-request', 'OneStopServiceController@rejected')->name('oneStopService.rejected');
 
     //    Welfare service centers
+    Route::post('welfare-company-request-approve/{company_id}', 'WelfareServiceCenterController@approveNow')->name('welfareServiceCenter.approveNow');
+    Route::post('welfare-company-request-reject/{company_id}', 'WelfareServiceCenterController@rejectNow')->name('welfareServiceCenter.rejectNow');
     Route::get('welfare-company-request', 'WelfareServiceCenterController@request')->name('welfareServiceCenter.request');
     Route::get('welfare-approved-request', 'WelfareServiceCenterController@approved')->name('welfareServiceCenter.approved');
     Route::get('welfare-rejected-request', 'WelfareServiceCenterController@rejected')->name('welfareServiceCenter.rejected');
@@ -94,6 +96,7 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
 Route::group(['prefix' => 'welfare_centre/', 'namespace' => 'WelfareCentre', 'as' => 'WelfareCentre.'], function () {
 
     Route::get('/dashboard', 'WelfareDashboardController@dashboard')->name('dashboard');
+    Route::post('/company-prfile-submit', 'WelfareDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
     //Job Approval
     Route::get('/new-job-posts', 'JobApprovalController@NewJobPost')->name('NewJobPost');

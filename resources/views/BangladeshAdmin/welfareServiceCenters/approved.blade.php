@@ -50,40 +50,30 @@
                                         <th>Domain</th>
                                         <th>Email</th>
                                         <th>Status</th>
-                                        <th>View</th>
-                                        <th>Accept</th>
-                                        <th>Reject</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
 
-
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>4365768787</td>
-                                        <td>Welfare Service Center</td>
-                                        <td>welfareservice.com</td>
-                                        <td>welfareservice@gmail.com</td>
-                                        <td>
-                                            <span class="badge badge-success">Approved</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm" href="#">
-                                                <i class="mdi mdi-check"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="mdi mdi-close"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $user->company_register_number }}</td>
+                                            <td>{{ $user->company_name }}</td>
+                                            <td>{{ $user->domain }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>
+                                                <span class="badge badge-success">{{ $user->active_status }}</span>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="#">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
+
                                 <tfoot>
                                     <tr>
                                         <th>SL No</th>
@@ -92,9 +82,7 @@
                                         <th>Domain</th>
                                         <th>Email</th>
                                         <th>Status</th>
-                                        <th>View</th>
-                                        <th>Accept</th>
-                                        <th>Reject</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
