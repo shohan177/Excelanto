@@ -5,7 +5,8 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -25,7 +26,7 @@
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
                             <li><a href="#">One Stop Service Center
-                            </a></li>
+                                </a></li>
                             <li class="active">Rejected Requests</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -50,40 +51,30 @@
                                         <th>Domain</th>
                                         <th>Email</th>
                                         <th>Status</th>
-                                        <th>View</th>
-                                        <th>Accept</th>
-                                        <th>Reject</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
 
-
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>4365768787</td>
-                                        <td>OSS</td>
-                                        <td>oss.com</td>
-                                        <td>oss@gmail.com</td>
-                                        <td>
-                                            <span class="badge badge-danger">Rejected</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm" href="#">
-                                                <i class="mdi mdi-check"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="mdi mdi-close"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $user->company_register_number }}</td>
+                                            <td>{{ $user->company_name }}</td>
+                                            <td>{{ $user->domain }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>
+                                                <span class="badge badge-danger">{{ $user->active_status }}</span>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="#">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
+
                                 <tfoot>
                                     <tr>
                                         <th>SL No</th>
@@ -92,9 +83,7 @@
                                         <th>Domain</th>
                                         <th>Email</th>
                                         <th>Status</th>
-                                        <th>View</th>
-                                        <th>Accept</th>
-                                        <th>Reject</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>

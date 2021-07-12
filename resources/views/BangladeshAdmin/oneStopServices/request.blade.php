@@ -5,7 +5,8 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -25,7 +26,7 @@
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
                             <li><a href="#">One Stop Service Center
-                            </a></li>
+                                </a></li>
                             <li class="active">New Requests</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -59,31 +60,35 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>4365768787</td>
-                                        <td>OSS</td>
-                                        <td>oss.com</td>
-                                        <td>oss@gmail.com</td>
-                                        <td>
-                                            <span class="badge badge-warning">Pending</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm" href="#">
-                                                <i class="mdi mdi-check"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="mdi mdi-close"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $user->company_register_number }}</td>
+                                            <td>{{ $user->company_name }}</td>
+                                            <td>{{ $user->domain }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>
+                                                <span class="badge badge-warning">{{ $user->active_status }}</span>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="#">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-success" onclick="approve(this)"
+                                                    value="{{ route('BangladeshAdmin.oneStopService.approveNow', $user->id) }}">
+                                                    <i class="mdi mdi-check"></i> </button>
+
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger" onclick="reject(this)"
+                                                value="{{ route('BangladeshAdmin.oneStopService.rejectNow', $user->id) }}">
+                                                <i class="mdi mdi-close"></i> </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -106,6 +111,92 @@
         </div> <!-- container -->
     </div>
     <!--End content -->
+    <script>
+        function approve(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Approve !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN':  "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Approved !',
+                                    'This company has been Approved. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+        function reject(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Reject !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN':  "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Rejected !',
+                                    'This company has been Rejected. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+    </script>
 @endsection
 
 @section('DataTableJs')

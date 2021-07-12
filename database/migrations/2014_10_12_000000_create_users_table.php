@@ -22,13 +22,14 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('user_type')->nullable();
-            $table->enum('active_status', ['Pending', 'Approved', 'Rejected'])->nullable();
+            $table->enum('active_status', ['New','Pending', 'Approved', 'Rejected'])->nullable();
             $table->integer('quata')->nullable();
             $table->string('company_regno')->nullable();
             $table->string('domain')->nullable();
             $table->string('company_name')->nullable();
+            $table->string('company_register_number')->nullable();
             $table->string('abbr')->nullable();
-            $table->string('mobile')->nullable();
+            $table->string('phone')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->text('address1')->nullable();
@@ -39,8 +40,8 @@ class CreateUsersTable extends Migration
             $table->enum('status', ['active', 'inactive'])->nullable();
             $table->integer('childosc_id')->nullable();
             $table->string('cosc_assigned_status')->nullable();
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->foreign('country_id')->references('id')->on('countries');
+            // $table->foreign('role_id')->references('id')->on('roles');
+            // $table->foreign('country_id')->references('id')->on('countries');
             $table->rememberToken();
             $table->timestamps();
         });

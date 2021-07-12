@@ -14,6 +14,8 @@
 
 @yield('js')
 @yield('DataTableJs')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@include('sweetalert::alert')
 
 <script src="{{asset('assets/pages/dashborad.js')}}"></script>
 

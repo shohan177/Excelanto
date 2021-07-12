@@ -4,18 +4,56 @@ namespace App\Http\Controllers\BangladeshAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
 
 class WelfareServiceCenterController extends Controller
 {
     public function request(){
-        return view('BangladeshAdmin.welfareServiceCenters.request');
+        $users = User::where('active_status', 'Pending')->get();
+        return view('BangladeshAdmin.welfareServiceCenters.request',compact('users'));
     }
 
     public function approved(){
-        return view('BangladeshAdmin.welfareServiceCenters.approved');
+        $users = User::where('active_status', 'Approved')->get();
+        return view('BangladeshAdmin.welfareServiceCenters.approved',compact('users'));
     }
 
     public function rejected(){
-        return view('BangladeshAdmin.welfareServiceCenters.rejected');
+        $users = User::where('active_status', 'Rejected')->get();
+        return view('BangladeshAdmin.welfareServiceCenters.rejected',compact('users'));
+    }
+
+    public function approveNow($id){
+        $user = User::findOrFail($id);
+        $user->active_status = "Approved";
+        try {
+            $user->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Stored'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    public function rejectNow($id){
+        $user = User::findOrFail($id);
+        $user->active_status = "Rejected";
+        try {
+            $user->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Updated'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 }
