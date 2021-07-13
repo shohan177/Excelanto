@@ -54,6 +54,8 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     Route::get('welfare-rejected-request', 'WelfareServiceCenterController@rejected')->name('welfareServiceCenter.rejected');
 
     //    Bangladesh Embassy
+    Route::post('bangladesh-embassy-request-approve/{company_id}', 'BangladeshEmbassyController@approveNow')->name('bangladeshEmbassy.approveNow');
+    Route::post('bangladesh-embassy-request-reject/{company_id}', 'BangladeshEmbassyController@rejectNow')->name('bangladeshEmbassy.rejectNow');
     Route::get('bangladesh-embassy-request', 'BangladeshEmbassyController@request')->name('bangladeshEmbassy.request');
     Route::get('bangladesh-embassy-approved-request', 'BangladeshEmbassyController@approved')->name('bangladeshEmbassy.approved');
     Route::get('bangladesh-embassy-rejected-request', 'BangladeshEmbassyController@rejected')->name('bangladeshEmbassy.rejected');

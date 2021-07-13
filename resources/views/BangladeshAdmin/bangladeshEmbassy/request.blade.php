@@ -76,13 +76,13 @@
                                             </td>
                                             <td>
                                                 <button class="btn btn-success" onclick="approve(this)"
-                                                    value="{{ route('BangladeshAdmin.oneStopService.approveNow', $user->id) }}">
+                                                    value="{{ route('BangladeshAdmin.bangladeshEmbassy.approveNow', $user->id) }}">
                                                     <i class="mdi mdi-check"></i> </button>
 
                                             </td>
                                             <td>
                                                 <button class="btn btn-danger" onclick="reject(this)"
-                                                    value="{{ route('BangladeshAdmin.oneStopService.rejectNow', $user->id) }}">
+                                                    value="{{ route('BangladeshAdmin.bangladeshEmbassy.rejectNow', $user->id) }}">
                                                     <i class="mdi mdi-close"></i> </button>
                                             </td>
                                         </tr>
@@ -109,6 +109,93 @@
         </div> <!-- container -->
     </div>
     <!--End content -->
+    <script>
+        function approve(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Approve !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Approved !',
+                                    'This company has been Approved. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+
+        function reject(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Reject !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Rejected !',
+                                    'This company has been Rejected. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+    </script>
 @endsection
 
 @section('DataTableJs')
