@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
 
 use App\User;
@@ -14,7 +15,7 @@ class RecruitingAgencyDashboardController extends Controller
 {
     public function dashboard()
     {
-        $user = User::find(1);
+        $user = User::find(Auth::user()->id);
         if ($user->active_status == "New" || $user->active_status == 'Pending' || $user->active_status == 'Rejected') {
             return view('RecruitingAgency.pending-profile', compact('user'));
         }
@@ -24,7 +25,7 @@ class RecruitingAgencyDashboardController extends Controller
     public function companyPrfileSubmit(Request $request)
     {
 
-        $user = User::find(1);
+        $user = User::find(Auth::user()->id);
         // dd($user->active_status);
 
         $user->company_name    =   $request->companyName;

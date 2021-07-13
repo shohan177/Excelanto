@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('user_type')->nullable();
-            $table->enum('active_status', ['New','Pending', 'Approved', 'Rejected'])->nullable();
+            $table->enum('active_status', ['New','Pending', 'Approved', 'Rejected'])->default('New');
             $table->integer('quata')->nullable();
             $table->string('company_regno')->nullable();
             $table->string('domain')->nullable();
