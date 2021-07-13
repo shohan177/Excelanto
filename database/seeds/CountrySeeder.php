@@ -314,19 +314,19 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+        /*Country::create([
             'id' => 45,
             'country_code' => 61,
             'country_name' => 'Christmas Island(+61)',
             'status' => 'active'
-        ]);
+        ]);*/
 
-        Country::create([
+       /* Country::create([
             'id' => 46,
             'country_code' => 61,
             'country_name' => 'Cocos (Keeling) Islands(+61)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 47,
@@ -426,12 +426,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+/*        Country::create([
             'id' => 61,
             'country_code' => 1809,
             'country_name' => 'Dominican Republic (+1809)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 62,
@@ -489,12 +489,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+/*        Country::create([
             'id' => 70,
             'country_code' => 672,
             'country_name' => 'External Territories of Australia(+672)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 71,
@@ -671,12 +671,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+        /*Country::create([
             'id' => 96,
             'country_code' => 672,
             'country_name' => 'Heard and McDonald Islands',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 97,
@@ -769,12 +769,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+        /*Country::create([
             'id' => 110,
             'country_code' => 44,
             'country_name' => 'Jersey(+44)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 111,
@@ -951,12 +951,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+        /*Country::create([
             'id' => 136,
             'country_code' => 44,
             'country_name' => 'Man (Isle of)(+44)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 137,
@@ -986,12 +986,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+        /*Country::create([
             'id' => 141,
             'country_code' => 269,
             'country_name' => 'Mayotte (+269)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 142,
@@ -1133,19 +1133,19 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+       /* Country::create([
             'id' => 162,
             'country_code' => 672,
             'country_name' => 'Norfolk Islands (+672)',
             'status' => 'active'
-        ]);
+        ]);*/
 
-        Country::create([
+    /*    Country::create([
             'id' => 163,
             'country_code' => 1,
             'country_name' => 'Northern Mariana Islands(+1)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 164,
@@ -1217,12 +1217,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+      /*  Country::create([
             'id' => 174,
             'country_code' => 64,
             'country_name' => 'Pitcairn Island(+64)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 175,
@@ -1252,12 +1252,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+        /*Country::create([
             'id' => 179,
             'country_code' => 262,
             'country_name' => 'Reunion (+262)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 180,
@@ -1266,12 +1266,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+       /* Country::create([
             'id' => 181,
             'country_code' => 7,
             'country_name' => 'Russia (+7)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 182,
@@ -1392,12 +1392,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+        /*Country::create([
             'id' => 199,
             'country_code' => 44,
             'country_name' => 'Smaller Territories of the UK',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 200,
@@ -1420,12 +1420,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+     /*   Country::create([
             'id' => 203,
             'country_code' => 500,
             'country_name' => 'South Georgia(+500)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 204,
@@ -1462,12 +1462,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+      /*  Country::create([
             'id' => 209,
             'country_code' => 47,
             'country_name' => 'Svalbard And Jan Mayen Islands(+41)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 210,
@@ -1504,12 +1504,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+        /*Country::create([
             'id' => 215,
             'country_code' => 7,
             'country_name' => 'Tajikstan (+7)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 216,
@@ -1567,12 +1567,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+      /*  Country::create([
             'id' => 224,
             'country_code' => 7,
             'country_name' => 'Turkmenistan (+7)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 225,
@@ -1609,26 +1609,26 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+       /* Country::create([
             'id' => 230,
             'country_code' => 44,
             'country_name' => 'UK (+44)',
             'status' => 'active'
-        ]);
+        ]);*/
 
-        Country::create([
+        /*Country::create([
             'id' => 231,
             'country_code' => 1,
             'country_name' => 'USA (+1)',
             'status' => 'active'
-        ]);
+        ]);*/
 
-        Country::create([
+    /*    Country::create([
             'id' => 232,
             'country_code' => 246,
             'country_name' => 'United States Minor Outlying Islands(+246)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 233,
@@ -1637,12 +1637,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+      /*  Country::create([
             'id' => 234,
             'country_code' => 7,
             'country_name' => 'Uzbekistan (+7)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 235,
@@ -1672,19 +1672,19 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+      /*  Country::create([
             'id' => 239,
             'country_code' => 84,
             'country_name' => 'Virgin Islands - British (+1284)',
             'status' => 'active'
-        ]);
+        ]);*/
 
-        Country::create([
+      /*  Country::create([
             'id' => 240,
             'country_code' => 84,
             'country_name' => 'Virgin Islands - US (+1340)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 241,
@@ -1693,12 +1693,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
+     /*   Country::create([
             'id' => 242,
             'country_code' => 212,
             'country_name' => 'Western Sahara(+212)',
             'status' => 'active'
-        ]);
+        ]);*/
 
         Country::create([
             'id' => 243,
