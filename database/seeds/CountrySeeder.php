@@ -202,12 +202,12 @@ class CountrySeeder extends Seeder
             'status' => 'active'
         ]);
 
-        Country::create([
-            'id' => 29,
-            'country_code' => 55,
-            'country_name' => 'Bouvet Island(+55)',
-            'status' => 'active'
-        ]);
+        // Country::create([
+        //     'id' => 29,
+        //     'country_code' => 55,
+        //     'country_name' => 'Bouvet Island(+55)',
+        //     'status' => 'active'
+        // ]);
 
         Country::create([
             'id' => 30,
