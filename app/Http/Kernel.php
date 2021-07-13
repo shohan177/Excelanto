@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\BangladeshAdmin;
+use App\Http\Middleware\BangladeshEmbassy;
 use App\Http\Middleware\EmployerCompany;
 use App\Http\Middleware\OneStopService;
 use App\Http\Middleware\RecruitingAgency;
@@ -79,5 +80,6 @@ class Kernel extends HttpKernel
         'uae-admin'=>UaeAdmin::class,
         'one-stop-service'=>OneStopService::class,
         'employer-company'=>EmployerCompany::class,
+        'bangladesh-embassy'=>BangladeshEmbassy::class,
     ];
 }

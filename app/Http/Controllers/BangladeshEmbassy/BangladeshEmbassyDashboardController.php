@@ -1,25 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\RecruitingAgency;
+namespace App\Http\Controllers\BangladeshEmbassy;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
 
-use App\User;
-
-class RecruitingAgencyDashboardController extends Controller
+class BangladeshEmbassyDashboardController extends Controller
 {
-    public function dashboard()
-    {
+    public function dashboard(){
         $user = User::find(Auth::user()->id);
         if ($user->active_status == "New" || $user->active_status == 'Pending' || $user->active_status == 'Rejected') {
-            return view('RecruitingAgency.pending-profile', compact('user'));
+            return view('BangladeshEmbassy.pending-profile', compact('user'));
         }
-        return view('RecruitingAgency.welcome');
+        return view('BangladeshEmbassy.welcome');
     }
 
     public function companyPrfileSubmit(Request $request)

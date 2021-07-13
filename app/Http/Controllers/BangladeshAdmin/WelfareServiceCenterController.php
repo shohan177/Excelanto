@@ -9,17 +9,17 @@ use App\User;
 class WelfareServiceCenterController extends Controller
 {
     public function request(){
-        $users = User::where('active_status', 'Pending')->get();
+        $users = User::where('user_type','welfare-service-center-company')->where('active_status', 'Pending')->get();
         return view('BangladeshAdmin.welfareServiceCenters.request',compact('users'));
     }
 
     public function approved(){
-        $users = User::where('active_status', 'Approved')->get();
+        $users = User::where('user_type','welfare-service-center-company')->where('active_status', 'Approved')->get();
         return view('BangladeshAdmin.welfareServiceCenters.approved',compact('users'));
     }
 
     public function rejected(){
-        $users = User::where('active_status', 'Rejected')->get();
+        $users = User::where('user_type','welfare-service-center-company')->where('active_status', 'Rejected')->get();
         return view('BangladeshAdmin.welfareServiceCenters.rejected',compact('users'));
     }
 
