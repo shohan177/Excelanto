@@ -203,6 +203,8 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
     Route::get('travel-received-candidates', 'CandidateController@travelReceived')->name('candidate.travelReceived');
 });
 
+
+
 // One Stop Service route
 Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 'as' => 'OneStopService.', 'middleware' => ['auth', 'one-stop-service']], function () {
     Route::get('/dashboard', 'OneStopServiceDashboardController@dashboard')->name('dashboard');
@@ -275,7 +277,13 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
     Route::get('visa_requested', 'VisaProcessController@visa_requested')->name('visa_requested');
     Route::get('visa_approved', 'VisaProcessController@visa_approved')->name('visa_approved');
     Route::get('visa_rejected', 'VisaProcessController@visa_rejected')->name('visa_rejected');
+});
 
+// Bangladesh-Embassy route
+Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbassy', 'as' => 'BangladeshEmbassy.', 'middleware' => ['auth', 'bangladesh-embassy']], function () {
+    Route::get('/dashboard', 'BangladeshEmbassyDashboardController@dashboard')->name('dashboard');
+
+    Route::post('/company-prfile-submit', 'BangladeshEmbassyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
 });
 

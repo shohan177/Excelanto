@@ -5,7 +5,8 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -58,31 +59,34 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>4365768787</td>
-                                        <td>Bangladesh Embassy</td>
-                                        <td>BangladeshEmbassy.com</td>
-                                        <td>BangladeshEmbassy@gmail.com</td>
-                                        <td>
-                                            <span class="badge badge-warning">Pending</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm" href="#">
-                                                <i class="mdi mdi-check"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="mdi mdi-close"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $user->company_register_number }}</td>
+                                            <td>{{ $user->company_name }}</td>
+                                            <td>{{ $user->domain }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>
+                                                <span class="badge badge-warning">{{ $user->active_status }}</span>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="#">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-success" onclick="approve(this)"
+                                                    value="{{ route('BangladeshAdmin.oneStopService.approveNow', $user->id) }}">
+                                                    <i class="mdi mdi-check"></i> </button>
+
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger" onclick="reject(this)"
+                                                    value="{{ route('BangladeshAdmin.oneStopService.rejectNow', $user->id) }}">
+                                                    <i class="mdi mdi-close"></i> </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

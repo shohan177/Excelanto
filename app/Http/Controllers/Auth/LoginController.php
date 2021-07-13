@@ -41,7 +41,7 @@ class LoginController extends Controller
             return redirect()->route('WelfareCentre.dashboard');
         }elseif(Auth::user()->user_type == 'bangladeshi-embassy')
         {
-            //return redirect()->route('OneStopService.dashboard');
+            return redirect()->route('BangladeshEmbassy.dashboard');
         }elseif(Auth::user()->user_type == 'uae-admin')
         {
             return redirect()->route('UAEAdmin.dashboard');
