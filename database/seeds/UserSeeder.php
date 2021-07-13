@@ -13,34 +13,74 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = new User();
-        $user->name = 'Recruiting Agency';
-        $user->email = 'ra@gmail.com';
-        $user->country_id = 3;
-        $user->user_type = 11;
-        $user->role_id = 11;
-        $user->active_status = "New";
-        $user->password = Hash::make('12345');
-        $user->save();
+        User::create([
+            'role_id' => 1,
+            'country_id' => 2,
+            'name' => 'Super admin',
+            'email' => 'sa@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'super-admin',
+            'active_status' => 'New',
+        ]);
 
-        $user = new User();
-        $user->name = 'One Stop Service';
-        $user->email = 'oss@gmail.com';
-        $user->country_id = 3;
-        $user->user_type = 13;
-        $user->role_id = 13;
-        $user->active_status = "New";
-        $user->password = Hash::make('12345');
-        $user->save();
+        User::create([
+            'role_id' => 12,
+            'country_id' => 2,
+            'name' => 'Bangladesh admin',
+            'email' => 'ba@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'bangladeshi-admin',
+            'active_status' => 'New',
+        ]);
 
-        $user = new User();
-        $user->name = 'Welfare Service Center';
-        $user->email = 'wsc@gmail.com';
-        $user->country_id = 3;
-        $user->user_type = 4;
-        $user->role_id = 4;
-        $user->active_status = "New";
-        $user->password = Hash::make('12345');
-        $user->save();
+        User::create([
+            'role_id' => 11,
+            'country_id' => 2,
+            'name' => 'Recruiting agency',
+            'email' => 'rea@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'recruiting-agency',
+            'active_status' => 'Approved',
+        ]);
+
+        User::create([
+            'role_id' => 3,
+            'country_id' => 2,
+            'name' => 'Welfare sevice centre',
+            'email' => 'wsc@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'welfare-service-center-company',
+            'active_status' => 'New',
+        ]);
+
+        User::create([
+            'role_id' => 5,
+            'country_id' => 2,
+            'name' => 'Master One stop service',
+            'email' => 'moss@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'master-one-stop-service',
+            'active_status' => 'New',
+        ]);
+
+        User::create([
+            'role_id' => 2,
+            'country_id' => 2,
+            'name' => 'Employer company',
+            'email' => 'ec@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'recruiter-company',
+            'active_status' => 'New',
+        ]);
+
+        User::create([
+            'role_id' => 4,
+            'country_id' => 2,
+            'name' => 'Bangladesh Embassy',
+            'email' => 'be@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'bangladeshi-embassy',
+            'active_status' => 'New',
+        ]);
     }
 }
