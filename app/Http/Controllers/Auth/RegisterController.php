@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Country;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Role;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -29,7 +32,43 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo;
+
+    public function redirectTo()
+    {
+        if (Auth::user()->user_type == 'super-admin') {
+            return RouteServiceProvider::SuperAdmin;
+        } elseif (Auth::user()->user_type == 'employer-company') {
+            return RouteServiceProvider::EmployerCompany;
+        } elseif (Auth::user()->user_type == 'welfare-service-center-company') {
+            return RouteServiceProvider::WelfareCentre;
+        } elseif (Auth::user()->user_type == 'bangladeshi-embassy') {
+            return RouteServiceProvider::BangladeshEmbassy;
+        } elseif (Auth::user()->user_type == 'uae-admin') {
+            return RouteServiceProvider::UAEAdmin;
+        } elseif (Auth::user()->user_type == 'master-one-stop-service') {
+            return RouteServiceProvider::OneStopService;
+        } elseif (Auth::user()->user_type == 'one-stop-service-agency') {
+            //return route('.dashboard');
+        } elseif (Auth::user()->user_type == 'medical-company') {
+            //return route('.dashboard');
+        } elseif (Auth::user()->user_type == 'training-company') {
+            //return route('.dashboard');
+        } elseif (Auth::user()->user_type == 'travel-company') {
+            //return route('.dashboard');
+        } elseif (Auth::user()->user_type == 'biometric-company') {
+            //return route('.dashboard');
+        } elseif (Auth::user()->user_type == 'recruiting-agency') {
+            return RouteServiceProvider::RecruitingAgency;
+        } elseif (Auth::user()->user_type == 'bangladeshi-admin') {
+            //return route('BangladeshAdmin.dashboard');
+        } elseif (Auth::user()->user_type == 'employer') {
+            //return route('.dashboard');
+        } else {
+            return route('register');
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -69,38 +108,37 @@ class RegisterController extends Controller
     {
 
         $userType = "";
-        if ($data['role'] == 1)
-        {
+        if ($data['role'] == 1) {
             $userType = "super-admin";
-        }elseif ($data['role'] == 2){
+        } elseif ($data['role'] == 2) {
             $userType = "recruiter-company";
-        }elseif ($data['role'] == 3){
+        } elseif ($data['role'] == 3) {
             $userType = "welfare-service-center-company";
-        }elseif ($data['role'] == 4){
+        } elseif ($data['role'] == 4) {
             $userType = "bangladeshi-embassy";
-        }elseif ($data['role'] == 5){
+        } elseif ($data['role'] == 5) {
             $userType = "master-one-stop-service";
-        }elseif ($data['role'] == 6){
+        } elseif ($data['role'] == 6) {
             $userType = "one-stop-service-agency";
-        }elseif ($data['role'] == 7){
+        } elseif ($data['role'] == 7) {
             $userType = "medical-company";
-        }elseif ($data['role'] == 8){
+        } elseif ($data['role'] == 8) {
             $userType = "training-company";
-        }elseif ($data['role'] == 9){
+        } elseif ($data['role'] == 9) {
             $userType = "travel-company";
-        }elseif ($data['role'] == 10){
+        } elseif ($data['role'] == 10) {
             $userType = "biometric-company";
-        }elseif ($data['role'] == 11){
+        } elseif ($data['role'] == 11) {
             $userType = "recruiting-agency";
-        }elseif ($data['role'] == 12){
+        } elseif ($data['role'] == 12) {
             $userType = "bangladeshi-admin";
-        }elseif ($data['role'] == 13){
+        } elseif ($data['role'] == 13) {
             $userType = "employer";
-        }elseif ($data['role'] == 14){
+        } elseif ($data['role'] == 14) {
             $userType = "uae-admin";
-        }elseif ($data['role'] == 15){
+        } elseif ($data['role'] == 15) {
             $userType = "";
-        }else{
+        } else {
             echo "some this wrong";
         }
 
@@ -117,5 +155,9 @@ class RegisterController extends Controller
             'country_id' => $data['country'],
         ]);
     }
-
+    public function showRegistrationForm(){
+        $countries=Country::where('status','active')->get();
+        $roles=Role::where('status','active')->get();
+        return view('auth.register', compact('countries','roles'));
+    }
 }

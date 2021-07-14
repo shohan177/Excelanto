@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 /*Route::get('/', 'HomeController@index')->name('admin.login');*/
 
 // Super Admin route
