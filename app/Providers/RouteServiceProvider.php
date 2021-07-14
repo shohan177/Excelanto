@@ -21,6 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
+
     // public const HOME = '/home';
 
     public const SuperAdmin = '/super-admin/dashboard';
@@ -31,6 +32,7 @@ class RouteServiceProvider extends ServiceProvider
     public const OneStopService = '/one-stop-service/dashboard';
     public const RecruitingAgency = '/recruiting-agency/dashboard';
     public const BangladeshAdmin = '/bangladesh-admin/dashboard';
+
 
     /**
      * Define your route model bindings, pattern filters, etc.
