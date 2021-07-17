@@ -419,7 +419,7 @@ INSERT INTO `users` (`id`, `role_id`, `country_id`, `name`, `email`, `email_veri
 (4, 11, 2, 'Recruiting agency', 'rea@gmail.com', NULL, '$2y$10$HCO1voMsfykna7I9n1iJQuoI8Edcv2E03.2UzCrA2U1qtvCzi2/.O', 'recruiting-agency', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-12 02:43:41', '2021-07-12 02:43:41'),
 (5, 3, 2, 'Welfare sevice centre', 'wsc@gmail.com', NULL, '$2y$10$K8FpdUM6OtdOknErZ4vSAO4yGIhG4vR57J0tmFvoMsvcJsEpFeMRi', 'welfare-service-center-company', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-12 02:44:18', '2021-07-12 02:44:18'),
 (6, 5, 2, 'Master One stop service', 'moss@gmail.com', NULL, '$2y$10$OLTKs0Ib3AubTrEh..74KOmQb9H9EJiyN458Jpds89Btg.w.6EYz2', 'master-one-stop-service', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-12 02:45:26', '2021-07-12 02:45:26'),
-(7, 2, 2, 'Employer company', 'ec@gmail.com', NULL, '$2y$10$GTq4SaBJ7ANDPqO6bGT6FOCsVUI2Q0FtfBv3G4OfGju7t37QTkeuO', 'recruiter-company', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-12 02:46:10', '2021-07-12 02:46:10');
+(7, 2, 2, 'Employer company', 'ec@gmail.com', NULL, '$2y$10$GTq4SaBJ7ANDPqO6bGT6FOCsVUI2Q0FtfBv3G4OfGju7t37QTkeuO', 'employer-company', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-12 02:46:10', '2021-07-12 02:46:10');
 
 --
 -- Indexes for dumped tables

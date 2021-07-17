@@ -34,7 +34,7 @@ class LoginController extends Controller
         if (Auth::user()->user_type == 'super-admin'){
 
             return 'super-admin/dashboard';
-        }elseif(Auth::user()->user_type == 'recruiter-company')
+        }elseif(Auth::user()->user_type == 'employer-company')
         {
             return 'employer-company/dashboard';
         }elseif(Auth::user()->user_type == 'welfare-service-center-company')

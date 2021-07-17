@@ -186,6 +186,8 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
 
     // Employer Requests
     Route::get('new-employer-request', 'EmployerRequestController@new')->name('employerRequest.new');
+    Route::get('new-employer-request/edit/{id}', 'EmployerRequestController@edit')->name('employerRequest.edit');
+    Route::post('new-employer-request/update/{id}', 'EmployerRequestController@update')->name('employerRequest.update');
     Route::get('approved-employer-request', 'EmployerRequestController@approved')->name('employerRequest.approved');
     Route::get('rejected-employer-request', 'EmployerRequestController@rejected')->name('employerRequest.rejected');
 
@@ -262,8 +264,9 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
 
 
 // employer_company Route
-Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany', 'as' => 'employerCompany.','middleware' => ['auth', 'employer-company']], function () {
+Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany', 'as' => 'EmployerCompany.','middleware' => ['auth', 'employer-company']], function () {
     Route::get('/dashboard', 'EmployerCompanyDashboardController@dashboard')->name('dashboard');
+    Route::post('/company-prfile-submit', 'EmployerCompanyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
     // job post
     Route::get('post_new_job', 'PostJobController@create')->name('postJob.create');
