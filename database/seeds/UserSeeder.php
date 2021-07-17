@@ -69,7 +69,7 @@ class UserSeeder extends Seeder
             'name' => 'Employer company',
             'email' => 'ec@gmail.com',
             'password' => Hash::make('12345'),
-            'user_type' => 'recruiter-company',
+            'user_type' => 'employer-company',
             'active_status' => 'New',
         ]);
 

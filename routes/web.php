@@ -262,7 +262,7 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
 
 
 // employer_company Route
-Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany', 'as' => 'employerCompany.','middleware' => ['auth', 'employer-company']], function () {
+Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany', 'as' => 'EmployerCompany.','middleware' => ['auth', 'employer-company']], function () {
     Route::get('/dashboard', 'EmployerCompanyDashboardController@dashboard')->name('dashboard');
 
     // job post
