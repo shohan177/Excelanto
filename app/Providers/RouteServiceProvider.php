@@ -22,16 +22,9 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
 
-    // public const HOME = '/home';
+    public const HOME = '/home';
 
-    public const SuperAdmin = '/super-admin/dashboard';
-    public const EmployerCompany = '/employer-company/dashboard';
-    public const WelfareCentre = '/welfare_centre/dashboard';
-    public const BangladeshEmbassy = '/bangladesh-embassy/dashboard';
-    public const UAEAdmin = '/uae-admin/dashboard';
-    public const OneStopService = '/one-stop-service/dashboard';
-    public const RecruitingAgency = '/recruiting-agency/dashboard';
-    public const BangladeshAdmin = '/bangladesh-admin/dashboard';
+
 
 
     /**

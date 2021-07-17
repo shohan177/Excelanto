@@ -96,7 +96,7 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
 });
 
 // Welfare Company route
-Route::group(['prefix' => 'welfare_centre/', 'namespace' => 'WelfareCentre', 'as' => 'WelfareCentre.','middleware' => ['auth', 'welfare-centre']], function () {
+Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as' => 'WelfareCentre.','middleware' => ['auth', 'welfare-centre']], function () {
 
     Route::get('/dashboard', 'WelfareDashboardController@dashboard')->name('dashboard');
     Route::post('/company-prfile-submit', 'WelfareDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');

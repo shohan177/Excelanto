@@ -32,46 +32,57 @@ class LoginController extends Controller
     public function redirectTo()
     {
         if (Auth::user()->user_type == 'super-admin'){
-            return route('SuperAdmin.dashboard');
-        }elseif(Auth::user()->user_type == 'employer-company')
+
+            return 'super-admin/dashboard';
+        }elseif(Auth::user()->user_type == 'recruiter-company')
         {
-            return route('EmployerCompany.dashboard');
+            return 'employer-company/dashboard';
         }elseif(Auth::user()->user_type == 'welfare-service-center-company')
         {
-            return route('WelfareCentre.dashboard');
+            return 'welfare-centre/dashboard';
+
         }elseif(Auth::user()->user_type == 'bangladeshi-embassy')
         {
-            return route('BangladeshEmbassy.dashboard');
+            return '/dashboard';
+
         }elseif(Auth::user()->user_type == 'uae-admin')
         {
-            return route('UAEAdmin.dashboard');
+            return 'uae-admin/dashboard';
+
         }elseif(Auth::user()->user_type == 'master-one-stop-service')
         {
-            return route('OneStopService.dashboard');
+            return 'one-stop-service/dashboard';
+
         }elseif(Auth::user()->user_type == 'one-stop-service-agency')
         {
-            //return route('.dashboard');
+            return '/dashboard';
+
         }elseif(Auth::user()->user_type == 'medical-company')
         {
-            //return route('.dashboard');
+            return '/dashboard';
+
         }elseif(Auth::user()->user_type == 'training-company')
         {
-            //return route('.dashboard');
+            return '/dashboard';
+
         }elseif(Auth::user()->user_type == 'travel-company')
         {
-            //return route('.dashboard');
+            return '/dashboard';
+
         }elseif(Auth::user()->user_type == 'biometric-company')
         {
-            //return route('.dashboard');
+            return '/dashboard';
+
         }elseif(Auth::user()->user_type == 'recruiting-agency')
         {
-            return route('RecruitingAgency.dashboard');
+            return 'recruiting-agency/dashboard';
+
         }elseif(Auth::user()->user_type == 'bangladeshi-admin')
         {
-            return route('BangladeshAdmin.dashboard');
+            return 'bangladesh-admin/dashboard';
+
         }elseif(Auth::user()->user_type == 'employer')
         {
-            //return route('.dashboard');
         }else
         {
             return route('login');
