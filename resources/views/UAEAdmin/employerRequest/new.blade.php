@@ -56,36 +56,26 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>12345</td>
-                                        <td>best buy</td>
-                                        <td>sharifbuilders.com</td>
-                                        <td>imran@gmail.com</td>
-                                        <td>
-                                            <span class="badge badge-info">Pending</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>25</td>
-                                        <td>4545</td>
-                                        <td>dhydfhgfu buy</td>
-                                        <td>dddd.com</td>
-                                        <td>ddddd@gmail.com</td>
-                                        <td>
-                                            <span class="badge badge-info">Pending</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $user->company_register_number }}</td>
+                                            <td>{{ $user->company_name }}</td>
+                                            <td>{{ $user->domain }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>
+                                                <span class="badge badge-warning">{{ $user->active_status }}</span>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="#">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                                <a class="btn btn-primary btn-sm" href="{{ route('UAEAdmin.employerRequest.edit', $user->id) }}">
+                                                    <i class="mdi mdi-pen"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

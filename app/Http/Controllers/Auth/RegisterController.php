@@ -110,9 +110,10 @@ class RegisterController extends Controller
         $userType = "";
         if ($data['role'] == 1) {
             $userType = "super-admin";
-        } elseif ($data['role'] == 2) {
-            $userType = "recruiter-company";
-        } elseif ($data['role'] == 3) {
+        }elseif ($data['role'] == 2){
+            $userType = "employer-company";
+        }elseif ($data['role'] == 3){
+
             $userType = "welfare-service-center-company";
         } elseif ($data['role'] == 4) {
             $userType = "bangladeshi-embassy";

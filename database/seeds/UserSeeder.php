@@ -69,7 +69,7 @@ class UserSeeder extends Seeder
             'name' => 'Employer company',
             'email' => 'ec@gmail.com',
             'password' => Hash::make('12345'),
-            'user_type' => 'recruiter-company',
+            'user_type' => 'employer-company',
             'active_status' => 'New',
         ]);
 
@@ -80,6 +80,16 @@ class UserSeeder extends Seeder
             'email' => 'be@gmail.com',
             'password' => Hash::make('12345'),
             'user_type' => 'bangladeshi-embassy',
+            'active_status' => 'New',
+        ]);
+
+        User::create([
+            'role_id' => 14,
+            'country_id' => 2,
+            'name' => 'Uae Admin',
+            'email' => 'uaeadmin@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'uae-admin',
             'active_status' => 'New',
         ]);
     }
