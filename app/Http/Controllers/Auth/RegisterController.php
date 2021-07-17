@@ -73,7 +73,7 @@ class RegisterController extends Controller
         {
             $userType = "super-admin";
         }elseif ($data['role'] == 2){
-            $userType = "recruiter-company";
+            $userType = "employer-company";
         }elseif ($data['role'] == 3){
             $userType = "welfare-service-center-company";
         }elseif ($data['role'] == 4){
