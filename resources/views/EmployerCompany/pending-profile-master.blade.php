@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    @include('BangladeshEmbassy.include._header')
+    @include('EmployerCompany.include._header')
 </head>
 
 
@@ -12,13 +12,13 @@
 <div id="wrapper">
 
     <!-- Top Bar Start -->
-    @include("BangladeshEmbassy.include._topbar")
+    @include("EmployerCompany.include._topbar")
     <!-- Top Bar End -->
 
 
     <!-- ========== Left Sidebar Start ========== -->
 
-    {{-- @include("BangladeshEmbassy.include._side-menu") --}}
+    {{-- @include("EmployerCompany.include._side-menu") --}}
     <!-- Left Sidebar End -->
 
     <!-- Start right Content here -->
@@ -26,14 +26,14 @@
 
     <div class="content-page">
         @yield('main-content')
-        @include('BangladeshEmbassy.include._footer')
+        @include('EmployerCompany.include._footer')
     </div>
 
 </div>
 
 
 <!-- jQuery  -->
-@include("BangladeshEmbassy.include._scripts")
+@include("EmployerCompany.include._scripts")
 
 </body>
 </html>

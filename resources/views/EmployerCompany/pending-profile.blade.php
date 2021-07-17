@@ -1,4 +1,4 @@
-@extends("BangladeshEmbassy/pending-profile-master")
+@extends("EmployerCompany/pending-profile-master")
 @section('main-content')
     <div class="content">
         <div class="container">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="panel-body">
                                 <form role="form" method="POST" enctype="multipart/form-data"
-                                    action="{{ route('BangladeshEmbassy.companyPrfileSubmit') }}">
+                                    action="{{ route('EmployerCompany.companyPrfileSubmit') }}">
                                     @csrf
                                     <div class="row">
                                         <!-- Basic example -->
