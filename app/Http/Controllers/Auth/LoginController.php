@@ -32,6 +32,7 @@ class LoginController extends Controller
     public function redirectTo()
     {
         if (Auth::user()->user_type == 'super-admin'){
+
             return 'super-admin/dashboard';
         }elseif(Auth::user()->user_type == 'recruiter-company')
         {
@@ -82,10 +83,9 @@ class LoginController extends Controller
 
         }elseif(Auth::user()->user_type == 'employer')
         {
-
         }else
         {
-            return redirect()->route('login');
+            return route('login');
         }
     }
 
