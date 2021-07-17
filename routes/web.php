@@ -186,6 +186,7 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
 
     // Employer Requests
     Route::get('new-employer-request', 'EmployerRequestController@new')->name('employerRequest.new');
+    Route::get('new-employer-request/edit/{id}', 'EmployerRequestController@edit')->name('employerRequest.edit');
     Route::get('approved-employer-request', 'EmployerRequestController@approved')->name('employerRequest.approved');
     Route::get('rejected-employer-request', 'EmployerRequestController@rejected')->name('employerRequest.rejected');
 
