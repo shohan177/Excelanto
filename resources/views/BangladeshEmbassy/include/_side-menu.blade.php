@@ -8,28 +8,14 @@
                 </li>
 
                 <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-building"></i></i> <span> UI </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-building"></i></i> <span>
+                            Employer Demand </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>UI Not Ready</a></li>
-
+                        <li><a href="{{ route('BangladeshEmbassy.employerDemand.received') }}"><i class="fa fa-arrow-circle-right"></i>Received Demand</a></li>
+                        <li><a href="{{ route('BangladeshEmbassy.employerDemand.approved') }}"><i class="fa fa-arrow-circle-right"></i>Approved Demand</a></li>
+                        <li><a href="{{ route('BangladeshEmbassy.employerDemand.rejected') }}"><i class="fa fa-arrow-circle-right"></i>Rejected Demand</a></li>
                     </ul>
                 </li>
-
-                <!--<li class="has_sub">-->
-                <!--<a href="javascript:void(0);" class="waves-effect"><i class="ti-share"></i><span>Multi Menu </span><span class="pull-right"><i class="mdi mdi-plus"></i></span></a>-->
-                <!--<ul>-->
-                <!--<li class="has_sub">-->
-                <!--<a href="javascript:void(0);" class="waves-effect"><span>Menu Item 1.1</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>-->
-                <!--<ul style="">-->
-                <!--<li><a href="javascript:void(0);"><span>Menu Item 2.1</span></a></li>-->
-                <!--<li><a href="javascript:void(0);"><span>Menu Item 2.2</span></a></li>-->
-                <!--</ul>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<a href="javascript:void(0);"><span>Menu Item 1.2</span></a>-->
-                <!--</li>-->
-                <!--</ul>-->
-                <!--</li>-->
             </ul>
         </div>
         <div class="clearfix"></div>

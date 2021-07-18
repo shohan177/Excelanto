@@ -301,6 +301,12 @@ Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbas
 
     Route::post('/company-prfile-submit', 'BangladeshEmbassyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
+      // Visa Process
+      Route::get('received-employer-demand', 'EmployerDemandController@received')->name('employerDemand.received');
+      Route::get('approved-employer-demand', 'EmployerDemandController@approved')->name('employerDemand.approved');
+      Route::get('rejected-employer-demand', 'EmployerDemandController@rejected')->name('employerDemand.rejected');
+      Route::get('show-employer-demand/{id}', 'EmployerDemandController@show')->name('employerDemand.show');
+
 });
 
 Auth::routes([
