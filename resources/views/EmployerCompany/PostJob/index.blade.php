@@ -76,7 +76,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-sm" href="{{ route('employerCompany.postJob.show', $job_post->id )}}">
+                                                <a class="btn btn-info btn-sm" href="{{ route('EmployerCompany.postJob.show', $job_post->id )}}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </td>

@@ -13,11 +13,21 @@ class JobCategorySeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             DB::table('job_categories')->insert([
                 'category_name' => Str::random(10),
                 'status' => 'active',
-           ]);
-       }
+            ]);
+        }
+
+        DB::table('job_categories')->insert([
+            'category_name' => "Web Developer",
+            'status' => 'active',
+        ]);
+
+        DB::table('job_categories')->insert([
+            'category_name' => "Doctor",
+            'status' => 'active',
+        ]);
     }
 }
