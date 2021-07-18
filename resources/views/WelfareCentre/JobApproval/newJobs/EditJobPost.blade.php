@@ -45,60 +45,38 @@
                             <h3 class="panel-title">Edit appointment and job post</h3>
                         </div>
                         <div class="panel-body">
-
                             <div class="row">
-                                <div class="offset-lg-4"></div>
-                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Appointment Date</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">
-                                                    <i class="far fa-calendar-alt"></i>
-                                                </span>
+                                <div class="col-lg-4"></div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label for="appointmentDate">Appointment Date</label>
+                                                <input type="date" value="{{ $new_job->appointment_date }}"
+                                                    class="form-control" id="appointmentDate" name="appointmentDate">
                                             </div>
-                                            {!! date('m/d/Y', strtotime($new_job->appointment_time)) !!}
-                                            <input type="date" class="form-control float-right" id="AppointmentDate" value="{!! date('m/d/Y', strtotime($new_job->appointment_time)) !!}" name="appointment_date">
-                                        </div>
-                                        <!-- /.input group -->
-                                    </div>
-                                    <div class="bootstrap-timepicker">
-                                        <div class="form-group">
-                                            <label>Appointment Time</label>
-                                            {{ date('H:i:s', strtotime($new_job->appointment_time))  }}
-                                            <div class="input-group date" id="AppointmentTime" data-target-input="nearest">
-                                                <input type="time" class="form-control datetimepicker-input"  data-target="#AppointmentTime" placeholder="HH:MM AM/PM" value="{{ $new_job->appointment_time }}" name="appointment_time">
-                                                <div class="input-group-append" data-target="#AppointmentTime"
-                                                    data-toggle="datetimepicker">
-                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="appointmentTime">Appointment Time</label>
+                                                    <input type="time" value="{{ $new_job->appointment_time }}"
+                                                        class="form-control" id="appointmentTime" name="appointmentTime">
                                                 </div>
                                             </div>
-                                            <!-- /.input group -->
-                                        </div>
-                                        <!-- /.form group -->
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Job post status">Job post status</label>
-                                        <select class="form-control" name="job_post_status" id="job_post_status"
-                                            required="">
-                                            <option selected="" disabled="" value="">Select status</option>
-                                            <option {{ $new_job->status == 'new' ? 'selected' : ''}} value="new">Pending</option>
-                                            <option {{ $new_job->status == 'verified' ? 'selected' : ''}}  value="verified">Verified</option>
-                                            <option {{ $new_job->status == 'rejected' ? 'selected' : ''}}  value="rejected">Rejected</option>
-                                            <option  {{ $new_job->status == 'pending' ? 'selected' : ''}} value="pending">pending</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group" id="reason_input" style="display: none;">
-                                        <label for="Reason to reject">Reason to reject</label>
-                                        <textarea class="form-control" rows="3" placeholder="Write reason.."
-                                            name="reject_reason"></textarea>
-                                    </div>
-                                </div>
+                                            <div class="form-group">
+                                                <label for="jobPostStatus">Job post status</label>
+                                                <select class="form-control" name="jobPostStatus" id="jobPostStatus"
+                                                    required="">
+                                                    <option selected="" disabled="" value="">Select status</option>
+                                                    <option {{ $new_job->status == 'Pending' ? 'selected' : ''}} value="Pending">Pending</option>
+                                                    <option {{ $new_job->status == 'Verified' ? 'selected' : ''}}  value="Verified">Verified</option>
+                                                    <option {{ $new_job->status == 'Rejected' ? 'selected' : ''}}  value="Rejected">Rejected</option>
+                                                </select>
+                                            </div>
+                                        </div><!-- panel-body -->
+                                    </div> <!-- col-->
                                 <div class="col-lg-4"></div>
                             </div>
-
                         </div>
-                        <div class="panel-footer">
+                        <div class="panel-footer float-right">
                             <button type="submit" name="btnupdate" class="btn btn-primary float-right">Submit</button>
                         </div>
                     </div>

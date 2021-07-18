@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\EmployerCompany;
 
 use App\Http\Controllers\Controller;
+use App\JobCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\JobPost;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PostJobController extends Controller
 {
@@ -16,7 +22,7 @@ class PostJobController extends Controller
      */
     public function index()
     {
-        $job_posts = JobPost::orderby('id', 'DESC')->get();
+        $job_posts = JobPost::orderby('id', 'DESC')->where('company_id',Auth::user()->id)->get();
         return view('EmployerCompany.PostJob.index', compact('job_posts'));
     }
 
@@ -27,8 +33,9 @@ class PostJobController extends Controller
      */
     public function create()
     {
-        $job_categories = DB::select('select * from job_categories');
-        return view('EmployerCompany.PostJob.create', compact('job_categories'));
+        $job_categories = JobCategory::where('status','active')->get();
+        $welfares = User::where('user_type','welfare-service-center-company')->get();
+        return view('EmployerCompany.PostJob.create', compact('job_categories','welfares'));
     }
 
     /**
@@ -41,38 +48,50 @@ class PostJobController extends Controller
     {
         // return $request;
         $this->validate($request, [
-            'employment_type' => 'required',
+            'employmentType' => 'required',
             'gender' => 'required',
-            'age_limit' => 'required',
+            'ageLimit' => 'required',
             'salary' => 'required',
-            'job_location' => 'required',
-            'job_vacancy' => 'required',
-            'end_date' => 'required',
-            'demand_letter' => 'nullable',
-            'selected_wsc' => 'required',
-            'appointment_date' => 'required',
-            'appointment_time' => 'required',
+            'jobLocation' => 'required',
+            'jobCategory' => 'required',
+            'jobVacancy' => 'required|numeric',
+            'endDate' => 'required',
+            'demandLetter' => 'nullable',
+            'wsc' => 'required',
+            'appointmentDate' => 'required',
+            'appointmentTime' => 'required',
         ]);
 
         $job_post = new JobPost();
-        $job_post ->job_category_id = $request->job_category_id;
-        $job_post ->user_id = $request->user_id;
-        $job_post ->company_id = $request->company_id;
-        $job_post ->employment_type = $request->employment_type;
+        $job_post ->job_category_id = $request->jobCategory;
+        $job_post ->user_id = Auth::user()->id;
+        $job_post ->company_id = Auth::user()->id;
+        $job_post ->employment_type = $request->employmentType;
         $job_post ->gender = $request->gender;
-        $job_post ->age_limit = $request->age_limit;
+        $job_post ->age_limit = $request->ageLimit;
         $job_post ->salary = $request->salary;
-        $job_post ->job_location = $request->job_location;
-        $job_post ->job_vacancy = $request->job_vacancy;
-        $job_post ->end_date = $request->end_date;
-        $job_post ->demand_letter = $request->demand_letter;
-        $job_post ->selected_wsc = $request->selected_wsc;
-        $job_post ->appointment_date = $request->appointment_date;
-        $job_post ->appointment_time = $request->appointment_time;
-        if($job_post->save()){
-            return 'Success';
+        $job_post ->job_location = $request->jobLocation;
+        $job_post ->job_vacancy = $request->jobVacancy;
+        $job_post ->end_date = $request->endDate;
+        $job_post ->selected_wsc = $request->wsc;
+        $job_post ->appointment_date = $request->appointmentDate;
+        $job_post ->appointment_time = $request->appointmentTime;
+
+        if ($request->hasFile('demandLetter')) {
+            $image             = $request->file('demandLetter');
+            $folder_path       = 'uploads/demand-letter/';
+            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
+            $job_post->demand_letter   = $folder_path . $image_new_name;
         }
-        return 'wrong';
+
+        try {
+            $job_post->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
 
     }
 

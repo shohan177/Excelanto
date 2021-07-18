@@ -25,14 +25,19 @@ class  JobApprovalController extends Controller
     public function postUpdate(Request $req){
         // return $req;
         $new_job = JobPost::FindOrFail($req->id);
-        $new_job->appointment_date = $req->appointment_date;
-        $new_job->appointment_time = $req->appointment_time;
-        $new_job->status = $req->job_post_status;
+        $new_job->appointment_date = $req->appointmentDate;
+        $new_job->appointment_time = $req->appointmentTime;
+        $new_job->status = $req->jobPostStatus;
         $new_job->save();
-        return $this->NewJobPost();
+        try {
+            $new_job->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
     }
     public function jobApproved(){
-        $new_jobs = JobPost::orderby('id', 'DESC')->where('status', 'approved')->get();
+        $new_jobs = JobPost::orderby('id', 'DESC')->where('status', 'Approved')->get();
         return view('WelfareCentre.JobApproval.JobsApproved.jobApproved', compact('new_jobs'));
     }
 }
