@@ -59,7 +59,7 @@
 
 
                                 <tbody>
-                                    @if( count($new_jobs) != 0)
+                                @if( count($new_jobs) != 0)
                                     @foreach ($new_jobs as $key => $new_job )
                                     <tr>
                                         <td>{{ $key+1 }}</td>
@@ -85,19 +85,11 @@
                                         <td>
                                             <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.NewJobPostShow', $new_job->id)}}">
                                                 <i class="fa fa-eye"></i></a>
-                                            <a class="btn btn-success btn-xs" href="{{ route('WelfareCentre.EditJobPost', $new_job->id)}}">
-                                                <i class="fa fa-edit"></i>
                                             </a>
                                         </td>
                                     </tr>
 
                                     @endforeach
-                                @else
-                                <tr>
-                                    <td colspan="8">
-                                        No data available
-                                    </td>
-                                </tr>
                                 @endif
                                 </tbody>
                                 <tfoot>
