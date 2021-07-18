@@ -59,38 +59,47 @@
 
 
                                 <tbody>
-                                @if( count($new_jobs) != 0)
-                                    @foreach ($new_jobs as $key => $new_job )
-                                    <tr>
-                                        <td>{{ $key+1 }}</td>
-                                        <td>{{ $new_job->company->company_name}}</td>
-                                        <td>{{ $new_job->job_category->category_name}}</td>
-                                        <td>{{ $new_job->job_location}}</td>
-                                        <td>{{ $new_job->appointment_date}}</td>
-                                        <td>{{ $new_job->appointment_time}}</td>
-                                        <td>
-                                            @if ($new_job->status == 'new')
-                                            <button type="button" name="New" class="btn btn-primary btn-xs update">New</button>
-                                            @elseif($new_job->status == 'approved')
+                                    @if (count($new_jobs) != 0)
+                                        @foreach ($new_jobs as $key => $new_job)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $new_job->company->company_name }}</td>
+                                                <td>{{ $new_job->job_category->category_name }}</td>
+                                                <td>{{ $new_job->job_location }}</td>
+                                                <td>{{ $new_job->appointment_date }}</td>
+                                                <td>{{ $new_job->appointment_time }}</td>
+                                                <td>
+                                                    @if ($new_job->status == 'New')
+                                                        <button type="button" name="New"
+                                                            class="btn btn-primary btn-xs update">New</button>
+                                                    @elseif($new_job->status == 'Approved')
 
-                                            <button type="button" name="New" class="btn btn-primary btn-xs update">Approved</button>
-                                            @elseif($new_job->status == 'pending')
+                                                        <button type="button" name="Approved"
+                                                            class="btn btn-primary btn-xs update">Approved</button>
+                                                    @elseif($new_job->status == 'Pending')
 
-                                            <button type="button" name="New" class="btn btn-primary btn-xs update">pending</button>
-                                            @elseif($new_job->status == 'verified')
+                                                        <button type="button" name="Pending"
+                                                            class="btn btn-primary btn-xs update">Pending</button>
+                                                    @elseif($new_job->status == 'Verified')
 
-                                            <button type="button" name="New" class="btn btn-primary btn-xs update">verified</button>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.NewJobPostShow', $new_job->id)}}">
-                                                <i class="fa fa-eye"></i></a>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                                        <button type="button" name="Verified"
+                                                            class="btn btn-primary btn-xs update">Verified</button>
+                                                    @elseif($new_job->status == 'Rejected')
 
-                                    @endforeach
-                                @endif
+                                                        <button type="button" name="Rejected"
+                                                            class="btn btn-primary btn-xs update">Rejected</button>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-info btn-xs"
+                                                        href="{{ route('WelfareCentre.NewJobPostShow', $new_job->id) }}">
+                                                        <i class="fa fa-eye"></i></a>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                        @endforeach
+                                    @endif
                                 </tbody>
                                 <tfoot>
                                     <tr>

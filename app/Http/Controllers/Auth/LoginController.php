@@ -43,7 +43,7 @@ class LoginController extends Controller
 
         }elseif(Auth::user()->user_type == 'bangladeshi-embassy')
         {
-            return '/dashboard';
+            return 'bangladesh-embassy/dashboard';
 
         }elseif(Auth::user()->user_type == 'uae-admin')
         {
