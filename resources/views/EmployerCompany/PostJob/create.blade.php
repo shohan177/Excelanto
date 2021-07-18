@@ -59,8 +59,8 @@
                                                     <option value="">Select job category</option>
                                                     @foreach ($job_categories as $cat)
                                                         <option
-                                                            {{ old('jobCategory') == $cat->category_name ? 'selected' : '' }}
-                                                            value="{{ $cat->category_name }}">{{ $cat->category_name }}
+                                                            {{ old('jobCategory') == $cat->id ? 'selected' : '' }}
+                                                            value="{{ $cat->id }}">{{ $cat->category_name }}
                                                         </option>
                                                     @endforeach
                                                 </select>

@@ -22,7 +22,7 @@ class PostJobController extends Controller
      */
     public function index()
     {
-        $job_posts = JobPost::orderby('id', 'DESC')->get();
+        $job_posts = JobPost::orderby('id', 'DESC')->where('company_id',Auth::user()->id)->get();
         return view('EmployerCompany.PostJob.index', compact('job_posts'));
     }
 
@@ -53,6 +53,7 @@ class PostJobController extends Controller
             'ageLimit' => 'required',
             'salary' => 'required',
             'jobLocation' => 'required',
+            'jobCategory' => 'required',
             'jobVacancy' => 'required|numeric',
             'endDate' => 'required',
             'demandLetter' => 'nullable',
@@ -62,7 +63,7 @@ class PostJobController extends Controller
         ]);
 
         $job_post = new JobPost();
-        $job_post ->job_category_id = $request->job_category_id;
+        $job_post ->job_category_id = $request->jobCategory;
         $job_post ->user_id = Auth::user()->id;
         $job_post ->company_id = Auth::user()->id;
         $job_post ->employment_type = $request->employmentType;

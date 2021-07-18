@@ -17,7 +17,6 @@
     <!-- Start content -->
     <div class="content">
         <div class="container">
-
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
@@ -33,7 +32,6 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -41,7 +39,6 @@
                             <h3 class="panel-title">Posted Jobs</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -56,11 +53,10 @@
                                     </tr>
                                 </thead>
 
-
                                 <tbody>
-                                    @foreach ($job_posts as $key => $job_post)
+                                    @foreach ($job_posts as  $job_post)
                                         <tr>
-                                            <td>{{ $key+1 }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $job_post->company_id ?? '-'}}</td>
                                             <td>{{ $job_post->category_id ?? '-'}}</td>
                                             <td>{{ $job_post->job_location ?? '-'}}</td>
