@@ -58,21 +58,30 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>zed</td>
-                                        <td>welding</td>
-                                        <td>saudi arab</td>
-                                        <td>06/25/2021</td>
-                                        <td>11:00 AM</td>
-                                        <td><button type="button" name="New"
-                                                class="btn btn-warning btn-xs update">Pending</button></td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($job_posts as $key => $job_post)
+                                        <tr>
+                                            <td>{{ $key+1 }}</td>
+                                            <td>{{ $job_post->company_id ?? '-'}}</td>
+                                            <td>{{ $job_post->category_id ?? '-'}}</td>
+                                            <td>{{ $job_post->job_location ?? '-'}}</td>
+                                            <td>{{ $job_post->appointment_date ?? '-'}}</td>
+                                            <td>{{ $job_post->appointment_time ?? '-'}}</td>
+                                            <td>
+                                                @if ( $job_post->status == 1)
+                                                <button type="button" name="New" class="btn btn-warning btn-xs update">Pending</button>
+                                                @elseif ($job_post->status == 0)
+                                                <button type="button" name="New" class="btn btn-warning btn-xs update">Rejected</button>
+                                                @else
+                                                <button type="button" name="New" class="btn btn-warning btn-xs update">Success</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="{{ route('employerCompany.postJob.show', $job_post->id )}}">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

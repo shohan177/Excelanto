@@ -63,6 +63,7 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
 
     //job posts
     Route::get('total-job-post', 'JobPostController@index')->name('total_job_post.index');
+    Route::get('job-posts-show/{id}', 'JobPostController@JobPostShow')->name('JobPostShow');
     Route::get('vacancy_approval', 'JobPostController@vacancy_approval')->name('vacancy_approval');
 
     //Candidate
@@ -103,6 +104,9 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
 
     //Job Approval
     Route::get('/new-job-posts', 'JobApprovalController@NewJobPost')->name('NewJobPost');
+    Route::get('/new-job-posts-show/{id}', 'JobApprovalController@NewJobPostShow')->name('NewJobPostShow');
+    Route::get('/edit-job-posts/{id}', 'JobApprovalController@EditJobPost')->name('EditJobPost');
+    Route::post('/job-post-update', 'JobApprovalController@postUpdate')->name('postUpdate');
     Route::get('/job-approved', 'JobApprovalController@jobApproved')->name('jobApproved');
 
     //Travel Candidates
@@ -269,8 +273,14 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
     Route::post('/company-prfile-submit', 'EmployerCompanyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
     // job post
-    Route::get('post_new_job', 'PostJobController@create')->name('postJob.create');
-    Route::get('posted_job', 'PostJobController@index')->name('postJob.index');
+    Route::resource('job_post', 'PostJobController', [
+        'names' => [
+            'index' => 'postJob.index',
+            'create' => 'postJob.create',
+            'store' => 'postJob.store',
+            'show' => 'postJob.show',
+        ]
+    ]);
 
     // candidates --- ready to travel
     Route::get('new_candidates', 'CandidateController@new_candidates')->name('new_candidates');
