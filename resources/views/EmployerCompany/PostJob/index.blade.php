@@ -54,25 +54,35 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($job_posts as  $job_post)
+                                    @foreach ($job_posts as $job_post)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $job_post->company_id ?? '-'}}</td>
-                                            <td>{{ $job_post->category_id ?? '-'}}</td>
-                                            <td>{{ $job_post->job_location ?? '-'}}</td>
-                                            <td>{{ $job_post->appointment_date ?? '-'}}</td>
-                                            <td>{{ $job_post->appointment_time ?? '-'}}</td>
+                                            <td>{{ $job_post->company->name ?? '-' }}</td>
+                                            <td>{{ $job_post->job_category->category_name ?? '-' }}</td>
+                                            <td>{{ $job_post->job_location ?? '-' }}</td>
+                                            <td>{{ $job_post->appointment_date ?? '-' }}</td>
+                                            <td>{{ $job_post->appointment_time ?? '-' }}</td>
                                             <td>
-                                                @if ( $job_post->status == 1)
-                                                <button type="button" name="New" class="btn btn-warning btn-xs update">Pending</button>
-                                                @elseif ($job_post->status == 0)
-                                                <button type="button" name="New" class="btn btn-warning btn-xs update">Rejected</button>
-                                                @else
-                                                <button type="button" name="New" class="btn btn-warning btn-xs update">Success</button>
+                                                @if ($job_post->status == "New")
+                                                    <button type="button" name="New"
+                                                        class="btn btn-primary btn-xs update">New</button>
+                                                @elseif ($job_post->status == "Rejected")
+                                                    <button type="button" name="Rejected"
+                                                        class="btn btn-warning btn-xs update">Rejected</button>
+                                                @elseif ($job_post->status == "Pending")
+                                                    <button type="button" name="Pending"
+                                                        class="btn btn-warning btn-xs update">Pending</button>
+                                                @elseif ($job_post->status == "Approved")
+                                                    <button type="button" name="Approved"
+                                                        class="btn btn-success btn-xs update">Approved</button>
+                                                @elseif ($job_post->status == "Verified")
+                                                    <button type="button" name="Verified"
+                                                        class="btn btn-info btn-xs update">Verified</button>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-sm" href="{{ route('EmployerCompany.postJob.show', $job_post->id )}}">
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('EmployerCompany.postJob.show', $job_post->id) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </td>
