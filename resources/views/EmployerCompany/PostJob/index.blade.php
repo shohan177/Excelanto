@@ -17,7 +17,6 @@
     <!-- Start content -->
     <div class="content">
         <div class="container">
-
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
@@ -33,7 +32,6 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -41,7 +39,6 @@
                             <h3 class="panel-title">Posted Jobs</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -56,23 +53,41 @@
                                     </tr>
                                 </thead>
 
-
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>zed</td>
-                                        <td>welding</td>
-                                        <td>saudi arab</td>
-                                        <td>06/25/2021</td>
-                                        <td>11:00 AM</td>
-                                        <td><button type="button" name="New"
-                                                class="btn btn-warning btn-xs update">Pending</button></td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($job_posts as $job_post)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $job_post->company->name ?? '-' }}</td>
+                                            <td>{{ $job_post->job_category->category_name ?? '-' }}</td>
+                                            <td>{{ $job_post->job_location ?? '-' }}</td>
+                                            <td>{{ $job_post->appointment_date ?? '-' }}</td>
+                                            <td>{{ $job_post->appointment_time ?? '-' }}</td>
+                                            <td>
+                                                @if ($job_post->status == "New")
+                                                    <button type="button" name="New"
+                                                        class="btn btn-primary btn-xs update">New</button>
+                                                @elseif ($job_post->status == "Rejected")
+                                                    <button type="button" name="Rejected"
+                                                        class="btn btn-warning btn-xs update">Rejected</button>
+                                                @elseif ($job_post->status == "Pending")
+                                                    <button type="button" name="Pending"
+                                                        class="btn btn-warning btn-xs update">Pending</button>
+                                                @elseif ($job_post->status == "Approved")
+                                                    <button type="button" name="Approved"
+                                                        class="btn btn-success btn-xs update">Approved</button>
+                                                @elseif ($job_post->status == "Verified")
+                                                    <button type="button" name="Verified"
+                                                        class="btn btn-info btn-xs update">Verified</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('EmployerCompany.postJob.show', $job_post->id) }}">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

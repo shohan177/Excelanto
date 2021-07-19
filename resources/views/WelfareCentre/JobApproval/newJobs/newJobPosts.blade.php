@@ -59,22 +59,50 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>zed</td>
-                                        <td>welding</td>
-                                        <td>saudi arab</td>
-                                        <td>06/25/2021</td>
-                                        <td>11:00 AM</td>
-                                        <td><button type="button" name="New" class="btn btn-primary btn-xs update">New</button></td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>
-                                            <a class="btn btn-success btn-xs" href="#">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @if (count($new_jobs) != 0)
+                                        @foreach ($new_jobs as $key => $new_job)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $new_job->company->company_name }}</td>
+                                                <td>{{ $new_job->job_category->category_name }}</td>
+                                                <td>{{ $new_job->job_location }}</td>
+                                                <td>{{ $new_job->appointment_date }}</td>
+                                                <td>{{ $new_job->appointment_time }}</td>
+                                                <td>
+                                                    @if ($new_job->status == 'New')
+                                                        <button type="button" name="New"
+                                                            class="btn btn-primary btn-xs update">New</button>
+                                                    @elseif($new_job->status == 'Approved')
+
+                                                        <button type="button" name="Approved"
+                                                            class="btn btn-primary btn-xs update">Approved</button>
+                                                    @elseif($new_job->status == 'Pending')
+
+                                                        <button type="button" name="Pending"
+                                                            class="btn btn-primary btn-xs update">Pending</button>
+                                                    @elseif($new_job->status == 'Verified')
+
+                                                        <button type="button" name="Verified"
+                                                            class="btn btn-primary btn-xs update">Verified</button>
+                                                    @elseif($new_job->status == 'Rejected')
+
+                                                        <button type="button" name="Rejected"
+                                                            class="btn btn-primary btn-xs update">Rejected</button>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-info btn-xs"
+                                                        href="{{ route('WelfareCentre.NewJobPostShow', $new_job->id) }}">
+                                                        <i class="fa fa-eye"></i></a>
+                                                    <a class="btn btn-success btn-xs"
+                                                        href="{{ route('WelfareCentre.EditJobPost', $new_job->id) }}">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                        @endforeach
+                                    @endif
                                 </tbody>
                                 <tfoot>
                                     <tr>

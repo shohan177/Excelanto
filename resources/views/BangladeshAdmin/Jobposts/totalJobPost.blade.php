@@ -55,18 +55,22 @@
 
 
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Kamrul Group</td>
-                                    <td>Software Engineer</td>
-                                    <td>30-06-2021</td>
-                                    <td>30-07-2021</td>
-                                    <td>
-                                        <a class="btn btn-info btn-xs" href="#">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    @if( count($job_posts) != 0)
+                                    @foreach ($job_posts as $key => $job_post )
+                                    <tr>
+                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $job_post->company->company_name}}</td>
+                                        <td>{{ $job_post->job_category->category_name}}</td>
+                                        <td>{{ $job_post->created_at}}</td>
+                                        <td>{{ $job_post->end_date}}</td>
+                                        <td>
+                                            <a class="btn btn-info btn-xs" href="{{ route('BangladeshAdmin.JobPostShow', $job_post->id)}}">
+                                                <i class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
 

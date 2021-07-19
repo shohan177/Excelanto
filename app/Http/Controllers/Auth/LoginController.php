@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -26,7 +27,67 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo;
+
+    public function redirectTo()
+    {
+        if (Auth::user()->user_type == 'super-admin'){
+
+            return 'super-admin/dashboard';
+        }elseif(Auth::user()->user_type == 'employer-company')
+        {
+            return 'employer-company/dashboard';
+        }elseif(Auth::user()->user_type == 'welfare-service-center-company')
+        {
+            return 'welfare-centre/dashboard';
+
+        }elseif(Auth::user()->user_type == 'bangladeshi-embassy')
+        {
+            return 'bangladesh-embassy/dashboard';
+
+        }elseif(Auth::user()->user_type == 'uae-admin')
+        {
+            return 'uae-admin/dashboard';
+
+        }elseif(Auth::user()->user_type == 'master-one-stop-service')
+        {
+            return 'one-stop-service/dashboard';
+
+        }elseif(Auth::user()->user_type == 'one-stop-service-agency')
+        {
+            return '/dashboard';
+
+        }elseif(Auth::user()->user_type == 'medical-company')
+        {
+            return '/dashboard';
+
+        }elseif(Auth::user()->user_type == 'training-company')
+        {
+            return '/dashboard';
+
+        }elseif(Auth::user()->user_type == 'travel-company')
+        {
+            return '/dashboard';
+
+        }elseif(Auth::user()->user_type == 'biometric-company')
+        {
+            return '/dashboard';
+
+        }elseif(Auth::user()->user_type == 'recruiting-agency')
+        {
+            return 'recruiting-agency/dashboard';
+
+        }elseif(Auth::user()->user_type == 'bangladeshi-admin')
+        {
+            return 'bangladesh-admin/dashboard';
+
+        }elseif(Auth::user()->user_type == 'employer')
+        {
+        }else
+        {
+            return route('login');
+        }
+    }
 
     /**
      * Create a new controller instance.

@@ -2,6 +2,14 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\BangladeshAdmin;
+use App\Http\Middleware\BangladeshEmbassy;
+use App\Http\Middleware\EmployerCompany;
+use App\Http\Middleware\OneStopService;
+use App\Http\Middleware\RecruitingAgency;
+use App\Http\Middleware\SuperAdmin;
+use App\Http\Middleware\UaeAdmin;
+use App\Http\Middleware\WelfareCentre;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -37,6 +45,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
+            \RealRashid\SweetAlert\ToSweetAlert::class,
         ],
 
         'api' => [
@@ -53,6 +63,14 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'super-admin'=>SuperAdmin::class,
+        'bangladesh-admin'=>BangladeshAdmin::class,
+        'recruiting-agency'=>RecruitingAgency::class,
+        'welfare-centre'=>WelfareCentre::class,
+        'uae-admin'=>UaeAdmin::class,
+        'one-stop-service'=>OneStopService::class,
+        'employer-company'=>EmployerCompany::class,
+        'bangladesh-embassy'=>BangladeshEmbassy::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,

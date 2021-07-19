@@ -4,18 +4,56 @@ namespace App\Http\Controllers\BangladeshAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
 
 class OneStopServiceController extends Controller
 {
     public function request(){
-        return view('BangladeshAdmin.oneStopServices.request');
+        $users = User::where('user_type','master-one-stop-service')->where('active_status', 'Pending')->get();
+        return view('BangladeshAdmin.oneStopServices.request',compact('users'));
     }
 
     public function approved(){
-        return view('BangladeshAdmin.oneStopServices.approved');
+        $users = User::where('user_type','master-one-stop-service')->where('active_status', 'Approved')->get();
+        return view('BangladeshAdmin.oneStopServices.approved',compact('users'));
     }
 
     public function rejected(){
-        return view('BangladeshAdmin.oneStopServices.rejected');
+        $users = User::where('user_type','master-one-stop-service')->where('active_status', 'Rejected')->get();
+        return view('BangladeshAdmin.oneStopServices.rejected',compact('users'));
+    }
+
+    public function approveNow($id){
+        $user = User::findOrFail($id);
+        $user->active_status = "Approved";
+        try {
+            $user->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Stored'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    public function rejectNow($id){
+        $user = User::findOrFail($id);
+        $user->active_status = "Rejected";
+        try {
+            $user->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Updated'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 }

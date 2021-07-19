@@ -15,7 +15,14 @@ class JobPostController extends Controller
      */
     public function index()
     {
-        return view('BangladeshAdmin.Jobposts.totalJobPost');
+        $job_posts = JobPost::orderby('id', 'DESC')->where('bd_embasy_status', 'approved')->get();
+        return view('BangladeshAdmin.Jobposts.totalJobPost', compact('job_posts'));
+
+    }
+    public function JobPostShow($id)
+    {
+        $job_post = JobPost::FindOrFail($id);
+        return view('BangladeshAdmin.Jobposts.JobPostsShow', compact('job_post'));
 
     }
     public function vacancy_approval()
