@@ -22,7 +22,7 @@ class CreateAwarenessEventsTable extends Migration
             $table->string('event_time',100)->nullable();
             $table->string('place')->nullable();
             $table->string('event_description')->nullable();
-            $table->string('created_at')->nullable();
+            // $table->string('created_at')->nullable();
             $table->integer('created_id')->nullable();
             $table->string('event_status')->nullable();
             $table->integer('deleted')->nullable();

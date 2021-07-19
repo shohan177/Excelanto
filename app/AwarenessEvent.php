@@ -16,7 +16,7 @@ class AwarenessEvent extends Model
         'place',
         'event_description',
         'created_at',
-        'created_id',
+        // 'created_id',
         'event_status',
         'deleted',
     ];

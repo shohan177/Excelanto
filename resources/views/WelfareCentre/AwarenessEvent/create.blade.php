@@ -44,84 +44,61 @@
                                 <div class="row">
                                     <!-- Basic example -->
                                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                            <div class="panel-body">
+                                        <div class="panel-body">
 
-                                                    <div class="form-group">
-                                                        <label for="Event category">Event category</label>
-                                                        <select class="form-control" name="event_category" required="">
-                                                            <option selected="" disabled="" value="">Select category</option>
-                                                            <option value="Immigration system">Immigration system</option>
-                                                            <option value="Health and safety">Health and safety</option>
-                                                            <option value="Drug handling">Drug handling</option>
-                                                            <option value="Human trafficking">Human trafficking</option>
-                                                            <option value="Smuggling of gold">Smuggling of gold</option>
-                                                            <option value="Money laundering">Money laundering</option>
-                                                            <option value="Sexual Transmission Diseases(STD)">Sexual Transmission
-                                                                Diseases(STD)</option>
-                                                            <option value="Remittance">Remittance</option>
-                                                        </select>
-                                                    </div>
+                                            <div class="form-group">
+                                                <label for="event_category">Event category</label>
+                                                <select class="form-control" id="event_category" name="event_category"
+                                                    required="">
+                                                    <option selected="" disabled="" value="">Select category</option>
+                                                    @foreach ($eventCategories as $eventCategory)
+                                                        <option @if (old('event_category') === $eventCategory->id) selected @endif
+                                                            value="{{ $eventCategory->id }}">
+                                                            {{ $eventCategory->category_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
 
-                                                    <div class="form-group">
-                                                        <label for="Event agenda">Event agenda</label>
-                                                        <input type="text" class="form-control" id="agenda" name="event_agenda"
-                                                            placeholder="Enter agenda">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="Conducting person">Conducting person</label>
-                                                        <input type="text" class="form-control" id="conducting" name="conducted_by"
-                                                            placeholder="Enter conducting person name">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Date of event</label>
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text">
-                                                                    <i class="far fa-calendar-alt"></i>
-                                                                </span>
-                                                            </div>
-                                                            <input type="text" class="form-control float-right" id="EventDate"
-                                                                name="event_date">
-                                                        </div>
-                                                    </div>
-                                            </div><!-- panel-body -->
+                                            <div class="form-group">
+                                                <label for="event_agenda">Event agenda</label>
+                                                <input type="text" class="form-control" id="event_agenda"
+                                                    name="event_agenda" placeholder="Enter agenda">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="conducted_by">Conducting person</label>
+                                                <input type="text" class="form-control" id="conducted_by"
+                                                    name="conducted_by" placeholder="Enter conducting person name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="event_date">Date of event</label>
+                                                <input type="date" class="form-control" id="event_date" name="event_date">
+                                            </div>
+                                        </div><!-- panel-body -->
                                     </div> <!-- col-->
                                     <!-- Horizontal form -->
                                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                            <div class="panel-body">
-                                                    <!-- time Picker -->
-                                                    <div class="bootstrap-timepicker">
-                                                        <div class="form-group">
-                                                            <label>Event time</label>
-                                                            <div class="input-group date" id="EventTime" data-target-input="nearest">
-                                                                <input type="text" class="form-control datetimepicker-input"
-                                                                    data-target="#EventTime" placeholder="HH:MM AM/PM"
-                                                                    name="event_time">
-                                                                <div class="input-group-append" data-target="#EventTime"
-                                                                    data-toggle="datetimepicker">
-                                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="Place">Place</label>
-                                                        <input type="text" class="form-control" id="place" name="place"
-                                                            placeholder="Enter place name">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="Description">Event description</label>
-                                                        <textarea class="form-control" rows="5" name="event_desc"
-                                                            placeholder="Type description here.."></textarea>
-                                                    </div>
-                                            </div> <!-- panel-body -->
+                                        <div class="panel-body">
+                                            <!-- time Picker -->
+                                            <div class="form-group">
+                                                <label for="event_time">Event time</label>
+                                                <input type="time" class="form-control" id="event_time" name="event_time">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="place">Place</label>
+                                                <input type="text" class="form-control" id="place" name="place"
+                                                    placeholder="Enter place name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description">Event description</label>
+                                                <textarea class="form-control" id="description" rows="5" name="description"
+                                                    placeholder="Type description here.."></textarea>
+                                            </div>
+                                        </div> <!-- panel-body -->
                                     </div> <!-- col -->
                                 </div> <!-- End row -->
-                                <div class="panel-footer">
-                                    <button type="submit" name="btnsave" class="btn btn-md btn-primary float-right">Submit</button>
+                                <div class="panel-footer text-right">
+                                    <button type="submit" name="btnsave"
+                                        class="btn btn-md btn-primary float-right">Submit</button>
                                 </div>
                             </form>
                         </div><!-- panel-body -->

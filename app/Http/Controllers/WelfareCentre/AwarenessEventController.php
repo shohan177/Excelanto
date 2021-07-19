@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\WelfareCentre;
 
+use App\EventCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class  AwarenessEventController extends Controller
 {
     public function create(){
-        return view('WelfareCentre.AwarenessEvent.create');
+        $eventCategories = EventCategory::where('status','active')->get();
+        return view('WelfareCentre.AwarenessEvent.create', compact('eventCategories'));
     }
     public function upcoming_events(){
         return view('WelfareCentre.AwarenessEvent.upcoming');
