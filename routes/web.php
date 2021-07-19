@@ -180,7 +180,10 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
 
     //awareness event
     Route::get('/create-awareness-event', 'AwarenessEventController@create')->name('awarenessevent.create');
-    Route::get('/store-awareness-event', 'AwarenessEventController@store')->name('awarenessevent.store');
+    Route::post('/store-awareness-event', 'AwarenessEventController@store')->name('awarenessevent.store');
+    Route::get('/show-awareness-event/{id}', 'AwarenessEventController@show')->name('awarenessevent.show');
+    Route::get('/edit-awareness-event/{id}', 'AwarenessEventController@edit')->name('awarenessevent.edit');
+    Route::post('/update-awareness-event/{id}', 'AwarenessEventController@update')->name('awarenessevent.update');
     Route::get('/upcoming-events', 'AwarenessEventController@upcoming_events')->name('awarenessevent.upcoming_events');
     Route::get('/total-events', 'AwarenessEventController@total_events')->name('awarenessevent.total_events');
 });
