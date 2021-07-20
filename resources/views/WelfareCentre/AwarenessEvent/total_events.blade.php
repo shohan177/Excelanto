@@ -51,25 +51,27 @@
                                         <th>Agenda</th>
                                         <th>Date</th>
                                         <th>Updated on</th>
-                                        <th>Status</th>
+                                        <th>status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+
+
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Health and safety</td>
-                                        <td>helth</td>
-                                        <td>12/22/2020</td>
-                                        <td>2020/12/22 01:33:27pm</td>
-                                        <td><button type="button" name="Visa-Applied"
-                                                class="btn btn-success btn-xs update">New</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a>
+                                    @foreach ($totalEvents as $totalEvent)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $totalEvent->eventCategory->category_name }}</td>
+                                            <td>{{ $totalEvent->event_agenda }}</td>
+                                            <td>{{ $totalEvent->event_date }}</td>
+                                            <td>{{ $totalEvent->updated_at }}</td>
+                                            <td><button type="button" name="Visa-Applied" class="btn btn-success btn-xs update">{{ $totalEvent->event_status }}</button></td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.awarenessevent.show', $totalEvent->id) }}">
+                                                    <i class="fa fa-eye"></i></a>
                                             </td>
-                                    </tr>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
