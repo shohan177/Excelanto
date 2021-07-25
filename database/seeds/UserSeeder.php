@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'email' => 'sa@gmail.com',
             'password' => Hash::make('12345'),
             'user_type' => 'super-admin',
-            'active_status' => 'New',
+            'active_status' => 'Approved',
         ]);
 
         User::create([
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'email' => 'ba@gmail.com',
             'password' => Hash::make('12345'),
             'user_type' => 'bangladeshi-admin',
-            'active_status' => 'New',
+            'active_status' => 'Approved',
         ]);
 
         User::create([
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             'email' => 'rea@gmail.com',
             'password' => Hash::make('12345'),
             'user_type' => 'recruiting-agency',
-            'active_status' => 'New',
+            'active_status' => 'Approved',
         ]);
 
         User::create([
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
             'email' => 'wsc@gmail.com',
             'password' => Hash::make('12345'),
             'user_type' => 'welfare-service-center-company',
-            'active_status' => 'New',
+            'active_status' => 'Approved',
         ]);
 
         User::create([
@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
             'email' => 'moss@gmail.com',
             'password' => Hash::make('12345'),
             'user_type' => 'master-one-stop-service',
-            'active_status' => 'New',
+            'active_status' => 'Approved',
         ]);
 
         User::create([
@@ -70,7 +70,7 @@ class UserSeeder extends Seeder
             'email' => 'ec@gmail.com',
             'password' => Hash::make('12345'),
             'user_type' => 'employer-company',
-            'active_status' => 'New',
+            'active_status' => 'Approved',
         ]);
 
         User::create([
@@ -80,7 +80,7 @@ class UserSeeder extends Seeder
             'email' => 'be@gmail.com',
             'password' => Hash::make('12345'),
             'user_type' => 'bangladeshi-embassy',
-            'active_status' => 'New',
+            'active_status' => 'Approved',
         ]);
 
         User::create([
@@ -90,7 +90,7 @@ class UserSeeder extends Seeder
             'email' => 'uaeadmin@gmail.com',
             'password' => Hash::make('12345'),
             'user_type' => 'uae-admin',
-            'active_status' => 'New',
+            'active_status' => 'Approved',
         ]);
     }
 }

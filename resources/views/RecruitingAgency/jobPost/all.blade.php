@@ -5,7 +5,8 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -25,7 +26,7 @@
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
                             <li><a href="#">Job Posts
-                            </a></li>
+                                </a></li>
                             <li class="active">All Job Posts</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -56,36 +57,23 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>best buy</td>
-                                        <td>welding</td>
-                                        <td>2020-08-23 21:58:23</td>
-                                        <td>08/23/2020</td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                            <a class="btn btn-success btn-sm" href="#">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>sharif builders</td>
-                                        <td>Java Developer</td>
-                                        <td>2020-08-23 21:58:23</td>
-                                        <td>08/23/2020</td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                            <a class="btn btn-success btn-sm" href="#">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($jobPosts as $jobPost)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $jobPost->company->user_name }}</td>
+                                            <td>{{ $jobPost->job_category->category_name }}</td>
+                                            <td>{{ $jobPost->created_at }}</td>
+                                            <td>{{ $jobPost->end_date }}</td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="#">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                                <a class="btn btn-success btn-sm" href="{{ route('RecruitingAgency.jobPost.edit', $jobPost->id ) }}">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

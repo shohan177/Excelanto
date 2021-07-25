@@ -1,6 +1,6 @@
 @extends("RecruitingAgency/master")
 
-@section('title', 'Edit awareness event')
+@section('title', 'Apply Job')
 @section('DataTableCss')
 
 @endsection
@@ -14,11 +14,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Edit awareness event</h4>
+                        <h4 class="pull-left page-title">Apply Job</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="#">Welfare Centre</a></li>
-                            <li><a href="#"> Awareness </a></li>
-                            <li class="active">Edit event</li>
+                            <li><a href="#">Job Posts</a></li>
+                            <li><a href="#">Recruiting Agency</a></li>
+                            <li><a href="#"> Apply Job </a></li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -29,63 +29,47 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Edit awarenss event/programme</h3>
+                            <h3 class="panel-title">Apply for the job</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" method="POST" action="{{ route('WelfareCentre.awarenessevent.update', $awarenessEvent->id) }}" enctype="multipart/form-data">
+                            <form role="form" method="POST" action="{{ route('RecruitingAgency.jobPost.update', $jobPost->id) }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <!-- Basic example -->
-                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3"></div>
+                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="panel-body">
 
                                             <div class="form-group">
-                                                <label for="event_category">Event category</label>
-                                                <select class="form-control" id="event_category" name="event_category"
-                                                    required="">
-                                                    <option selected="" disabled="" value="">Select category</option>
-                                                    @foreach ($eventCategories as $eventCategory)
-                                                        <option @if ( $awarenessEvent->event_category_id === $eventCategory->id) selected @endif
-                                                            value="{{ $eventCategory->id }}">
-                                                            {{ $eventCategory->category_name }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <label for="username">User Name</label>
+                                                <input type="text" class="form-control" id="username" readonly name="username" value="{{ $jobPost->company->user_name }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="companyName">Company Name</label>
+                                                <input type="text" class="form-control" id="companyName" readonly name="companyName" value="{{ $jobPost->company->company_name }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="jobCategory">Job Category</label>
+                                                <input type="text" class="form-control" id="jobCategory" readonly name="jobCategory" value="{{ $jobPost->job_category->category_name }}">
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="event_agenda">Event agenda</label>
-                                                <input type="text" class="form-control" id="event_agenda"
-                                                    name="event_agenda" value="{{ $awarenessEvent->event_agenda }}">
+                                                <label for="jobVacancy">Job Vacancy</label>
+                                                <input type="text" class="form-control" id="jobVacancy" readonly name="jobVacancy" value="{{ $jobPost->job_vacancy }}">
                                             </div>
+
                                             <div class="form-group">
-                                                <label for="conducted_by">Conducting person</label>
-                                                <input type="text" class="form-control" id="conducted_by"
-                                                    name="conducted_by" value="{{ $awarenessEvent->conducted_by }}">
+                                                <label for="appliedVacancy">No. of vacancy can apply</label>
+                                                <input type="text" class="form-control" id="appliedVacancy" name="appliedVacancy" value="{{ $jobPost->applied_vacancy }}">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="event_date">Date of event</label>
-                                                <input type="date" class="form-control" id="event_date" name="event_date" value="{{ $awarenessEvent->event_date }}">
+                                            <div class="form-group" id="remarks">
+                                                <label for="remarks">Remarks / Comments (if any)</label>
+                                                <textarea class="form-control" rows="3" placeholder="Write Remarks.."
+                                                    name="remarks"></textarea>
                                             </div>
-                                        </div><!-- panel-body -->
-                                    </div> <!-- col-->
-                                    <!-- Horizontal form -->
-                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                        <div class="panel-body">
-                                            <!-- time Picker -->
-                                            <div class="form-group">
-                                                <label for="event_time">Event time</label>
-                                                <input type="time" class="form-control" id="event_time" name="event_time" value="{{ $awarenessEvent->event_time }}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="place">Place</label>
-                                                <input type="text" class="form-control" id="place" name="place" value="{{ $awarenessEvent->place }}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="description">Event description</label>
-                                                <textarea class="form-control" id="description" rows="5" name="description">{{ $awarenessEvent->event_description }}</textarea>
-                                            </div>
-                                        </div> <!-- panel-body -->
-                                    </div> <!-- col -->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3"></div>
                                 </div> <!-- End row -->
                                 <div class="panel-footer text-right">
                                     <button type="submit" name="btnsave"
