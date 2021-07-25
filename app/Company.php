@@ -14,4 +14,8 @@ class Company extends Model
         'company_email',
         'status'
     ];
+
+    public function jobPosts(){
+        return $this->hasMany(JobPost::class, 'company_id');
+    }
 }

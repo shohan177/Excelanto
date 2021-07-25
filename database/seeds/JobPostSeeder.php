@@ -29,9 +29,9 @@ class JobPostSeeder extends Seeder
                 'selected_wsc'  => rand(1,10),
                 'appointment_date'  => now(),
                 'appointment_time'  => now(),
-                'rejection_reason'  => Str::random(10),
+                // 'rejection_reason'  => Str::random(10),
                 'status'  => 'new',
-                'bd_embasy_status' => 'approved'
+                'bd_embasy_status' => 'Approved'
            ]);
        }
     }
