@@ -65,7 +65,7 @@
                                             <td>{{ $jobPost->created_at }}</td>
                                             <td>{{ $jobPost->end_date }}</td>
                                             <td>
-                                                <a class="btn btn-info btn-sm" href="#">
+                                                <a class="btn btn-info btn-sm" href="{{ route('RecruitingAgency.jobPost.show', $jobPost->id ) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                                 <a class="btn btn-success btn-sm" href="{{ route('RecruitingAgency.jobPost.edit', $jobPost->id ) }}">

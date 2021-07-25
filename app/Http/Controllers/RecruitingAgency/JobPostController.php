@@ -24,11 +24,18 @@ class JobPostController extends Controller
         return view('RecruitingAgency.jobPost.edit', compact('jobPost'));
     }
 
+    public function show($id)
+    {
+        $jobPost = JobPost::findOrFail($id);
+        return view('RecruitingAgency.jobPost.show', compact('jobPost'));
+    }
+
     public function update(Request $request , $id){
         $job_post = JobPost::findOrFail($id);
 
         $job_post->job_vacancy    =   $request->jobVacancy;
         $job_post->applied_vacancy    =  $request->appliedVacancy;
+        $job_post->status    =  "Applied";
 
         try {
             $job_post->save();

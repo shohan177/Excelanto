@@ -87,6 +87,7 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
 
     //Job Posts
     Route::get('all-job-post', 'JobPostController@all')->name('jobPost.all');
+    Route::get('show-job-post/{id}', 'JobPostController@show')->name('jobPost.show');
     Route::get('edit-job-post/{id}', 'JobPostController@edit')->name('jobPost.edit');
     Route::post('update-job-post/{id}', 'JobPostController@update')->name('jobPost.update');
     Route::get('applied-job-post', 'JobPostController@applied')->name('jobPost.applied');

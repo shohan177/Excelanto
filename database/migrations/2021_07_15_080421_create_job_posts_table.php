@@ -32,7 +32,7 @@ class CreateJobPostsTable extends Migration
             $table->string('rejection_reason',500)->nullable();
             $table->text('remarks')->nullable();
             $table->string('applied_vacancy')->nullable();
-            $table->enum('status',['New','Approved','Verified','Rejected','Pending'])->default('New');
+            $table->enum('status',['New','Verified','Approved','Applied','Rejected','Pending'])->default('New');
             $table->enum('bd_embasy_status',['Approved','Rejected'])->nullable();
             $table->timestamps();
         });
