@@ -77,7 +77,7 @@
                                             <a class="btn btn-info btn-sm" href="#">
                                                 <i class="mdi mdi-eye"></i>
                                             </a>
-                                            <a class="btn btn-success btn-sm" href="#">
+                                            {{-- <a class="btn btn-success btn-sm" href="{{ route('RecruitingAgency.jobPost.edit',) }}"> --}}
                                                 <i class="fa fa-user-plus"></i>
                                             </a>
                                         </td>

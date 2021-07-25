@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             'email' => 'rea@gmail.com',
             'password' => Hash::make('12345'),
             'user_type' => 'recruiting-agency',
-            'active_status' => 'Approved',
+            'active_status' => 'New',
         ]);
 
         User::create([
