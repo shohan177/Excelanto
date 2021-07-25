@@ -5,7 +5,8 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -26,7 +27,7 @@
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
                             <li><a href="#">Job Posts
-                            </a></li>
+                                </a></li>
                             <li class="active">Applied Job Posts</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -61,48 +62,49 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>RC</td>
-                                        <td>best buy</td>
-                                        <td>welding</td>
-                                        <td>50</td>
-                                        <td>45</td>
-                                        <td>40</td>
-                                        <td>2021-06-22 01:30:22</td>
-                                        <td>
-                                            <span class="badge badge-success">Approved</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                            {{-- <a class="btn btn-success btn-sm" href="{{ route('RecruitingAgency.jobPost.edit',) }}"> --}}
-                                                <i class="fa fa-user-plus"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>imran</td>
-                                        <td>sharif builders</td>
-                                        <td>front end developer</td>
-                                        <td>60</td>
-                                        <td>55</td>
-                                        <td>55</td>
-                                        <td>2021-06-22 01:30:22</td>
-                                        <td>
-                                            <span class="badge badge-success">Approved</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                            <a class="btn btn-success btn-sm" href="#">
-                                                <i class="fa fa-user-plus"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($jobPosts as $jobPost)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $jobPost->company->user_name }}</td>
+                                            <td>{{ $jobPost->company->company_name }}</td>
+                                            <td>{{ $jobPost->job_category->category_name }}</td>
+                                            <td>{{ $jobPost->job_vacancy }}</td>
+                                            <td>{{ $jobPost->applied_vacancy }}</td>
+                                            <td>{{ $jobPost->approved_vacancy }}</td>
+                                            <td>{{ $jobPost->applied_date }}</td>
+                                            <td>
+                                                @if ($jobPost->status == 'New')
+                                                    <button type="button" name="New"
+                                                        class="btn btn-primary btn-xs update">New</button>
+                                                @elseif ($jobPost->status == "Rejected")
+                                                    <button type="button" name="Rejected"
+                                                        class="btn btn-warning btn-xs update">Rejected</button>
+                                                @elseif ($jobPost->status == "Pending")
+                                                    <button type="button" name="Pending"
+                                                        class="btn btn-warning btn-xs update">Pending</button>
+                                                @elseif ($jobPost->status == "Approved")
+                                                    <button type="button" name="Approved"
+                                                        class="btn btn-success btn-xs update">Approved</button>
+                                                @elseif ($jobPost->status == "Verified")
+                                                    <button type="button" name="Verified"
+                                                        class="btn btn-info btn-xs update">Verified</button>
+                                                @elseif ($jobPost->status == "Applied")
+                                                    <button type="button" name="Applied"
+                                                        class="btn btn-info btn-xs update">Applied</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('RecruitingAgency.jobPost.show', $jobPost->id) }}">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                                <a class="btn btn-success btn-sm"
+                                                    href="{{ route('RecruitingAgency.jobPost.selectCandidates', $jobPost->id) }}">
+                                                    <i class="fa fa-user-plus"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -129,22 +131,22 @@
 @endsection
 
 @section('DataTableJs')
-     <!-- Datatables-->
-     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/jszip.min.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/pdfmake.min.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/buttons.print.min.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/dataTables.keyTable.min.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
-     <script src="{{ asset('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
+    <!-- Datatables-->
+    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
 
-     <!-- Datatable init js -->
-     <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
+    <!-- Datatable init js -->
+    <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
 @endsection

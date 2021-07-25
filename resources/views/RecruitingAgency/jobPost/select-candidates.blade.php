@@ -1,6 +1,6 @@
-@extends("WelfareCentre/master")
+@extends("RecruitingAgency/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Select Candidates')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -22,12 +22,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Approved Job Posts</h4>
+                        <h4 class="pull-left page-title">Select Candidates</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="#">Welfare Centre</a></li>
-                            <li><a href="#"> Job Approved
+                            <li><a href="#">Excelanto</a></li>
+                            <li><a href="#">Candidates
                                 </a></li>
-                            <li class="active">Approved job posts</li>
+                            <li class="active">Select Candidates</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -39,7 +39,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Approved job posts from employers</h3>
+                            <h3 class="panel-title">Select candidates for the job</h3>
                         </div>
                         <div class="panel-body">
 
@@ -47,11 +47,11 @@
                                 <thead>
                                     <tr>
                                         <th>SL No</th>
-                                        <th>Company Name</th>
+                                        <th>Candidate Name</th>
                                         <th>Job Category</th>
-                                        <th>Job Location</th>
-                                        <th>Appointment Date</th>
-                                        <th>Appointment Time</th>
+                                        <th>Phone No</th>
+                                        <th>Email</th>
+                                        <th>Photo</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -59,60 +59,47 @@
 
 
                                 <tbody>
-                                    @if (count($new_jobs) != 0)
-                                        @foreach ($new_jobs as $key => $new_job)
-                                            <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{ $new_job->company->company_name }}</td>
-                                                <td>{{ $new_job->job_category->category_name }}</td>
-                                                <td>{{ $new_job->job_location }}</td>
-                                                <td>{{ $new_job->appointment_date }}</td>
-                                                <td>{{ $new_job->appointment_time }}</td>
-                                                <td>
-                                                    @if ($new_job->status == 'New')
-                                                        <button type="button" name="New"
-                                                            class="btn btn-primary btn-xs update">New</button>
-                                                    @elseif($new_job->status == 'Approved')
-
-                                                        <button type="button" name="Approved"
-                                                            class="btn btn-primary btn-xs update">Approved</button>
-                                                    @elseif($new_job->status == 'Pending')
-
-                                                        <button type="button" name="Pending"
-                                                            class="btn btn-primary btn-xs update">Pending</button>
-                                                    @elseif($new_job->status == 'Verified')
-
-                                                        <button type="button" name="Verified"
-                                                            class="btn btn-primary btn-xs update">Verified</button>
-                                                    @elseif($new_job->status == 'Rejected')
-
-                                                        <button type="button" name="Rejected"
-                                                            class="btn btn-primary btn-xs update">Rejected</button>
-                                                    @elseif($new_job->status == 'Applied')
-
-                                                        <button type="button" name="Applied"
-                                                            class="btn btn-primary btn-xs update">Applied</button>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-info btn-xs"
-                                                        href="{{ route('WelfareCentre.NewJobPostShow', $new_job->id) }}">
-                                                        <i class="fa fa-eye"></i></a>
-                                                    </a>
-                                                </td>
-                                            </tr>
-
-                                        @endforeach
-                                    @endif
+                                    <tr>
+                                        <td>1</td>
+                                        <td>imran</td>
+                                        <td>welding</td>
+                                        <td>01825646464</td>
+                                        <td>imran@gmail.com</td>
+                                        <td>User_image</td>
+                                        <td>
+                                            <span class="badge badge-warning">Reviewed</span>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="#">
+                                                <i class="mdi mdi-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>sharif</td>
+                                        <td>cooker</td>
+                                        <td>01825444464</td>
+                                        <td>sharif@gmail.com</td>
+                                        <td>User_image</td>
+                                        <td>
+                                            <span class="badge badge-info">Active</span>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="#">
+                                                <i class="mdi mdi-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>SL No</th>
-                                        <th>Company Name</th>
+                                        <th>Candidate Name</th>
                                         <th>Job Category</th>
-                                        <th>Job Location</th>
-                                        <th>Appointment Date</th>
-                                        <th>Appointment Time</th>
+                                        <th>Phone No</th>
+                                        <th>Email</th>
+                                        <th>Photo</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>

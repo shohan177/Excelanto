@@ -4,6 +4,7 @@ namespace App\Http\Controllers\RecruitingAgency;
 
 use App\Http\Controllers\Controller;
 use App\JobPost;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class JobPostController extends Controller
@@ -14,7 +15,7 @@ class JobPostController extends Controller
     }
 
     public function applied(){
-        $jobPosts = JobPost::where('status','Approved')->get();
+        $jobPosts = JobPost::where('status','Applied')->get();
         return view('RecruitingAgency.jobPost.applied', compact('jobPosts'));
     }
 
@@ -33,8 +34,9 @@ class JobPostController extends Controller
     public function update(Request $request , $id){
         $job_post = JobPost::findOrFail($id);
 
-        $job_post->job_vacancy    =   $request->jobVacancy;
         $job_post->applied_vacancy    =  $request->appliedVacancy;
+        $job_post->remarks    =  $request->remarks;
+        $job_post->applied_date    =  Carbon::now();
         $job_post->status    =  "Applied";
 
         try {
@@ -43,6 +45,12 @@ class JobPostController extends Controller
         } catch (\Exception $exception) {
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
+    }
+
+    public function selectCandidates($id)
+    {
+        $jobPost = JobPost::findOrFail($id);
+        return view('RecruitingAgency.jobPost.show', compact('jobPost'));
     }
 
 }
