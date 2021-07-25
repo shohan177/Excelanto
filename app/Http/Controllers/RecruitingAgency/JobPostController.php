@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class JobPostController extends Controller
 {
     public function all(){
-        $jobPost = JobPost::where('status')
-        return view('RecruitingAgency.jobPost.all');
+        $jobPosts = JobPost::where('status','Approved')->get();
+        return view('RecruitingAgency.jobPost.all', compact('jobPosts'));
     }
 
     public function applied(){

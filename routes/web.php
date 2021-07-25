@@ -300,7 +300,7 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
     Route::get('visa_rejected', 'VisaProcessController@visa_rejected')->name('visa_rejected');
 });
 
-// Bangladesh-Embassy route
+// Bangladesh Embassy route
 Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbassy', 'as' => 'BangladeshEmbassy.', 'middleware' => ['auth', 'bangladesh-embassy']], function () {
     Route::get('/dashboard', 'BangladeshEmbassyDashboardController@dashboard')->name('dashboard');
 
@@ -308,6 +308,8 @@ Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbas
 
       // Visa Process
       Route::get('received-employer-demand', 'EmployerDemandController@received')->name('employerDemand.received');
+      Route::get('edit-employer-demand/{id}', 'EmployerDemandController@edit')->name('employerDemand.edit');
+      Route::post('update-employer-demand/{id}', 'EmployerDemandController@update')->name('employerDemand.update');
       Route::get('approved-employer-demand', 'EmployerDemandController@approved')->name('employerDemand.approved');
       Route::get('rejected-employer-demand', 'EmployerDemandController@rejected')->name('employerDemand.rejected');
       Route::get('show-employer-demand/{id}', 'EmployerDemandController@show')->name('employerDemand.show');
