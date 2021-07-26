@@ -33,14 +33,15 @@
                             <h3 class="panel-title">Add New Candidate</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" enctype="multipart/form-data">
+                            <form role="form" action="{{ route('RecruitingAgency.candidate.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <!-- Basic example -->
                                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                             <div class="panel-body">
                                                 <div class="form-group">
                                                     <label for="candidateName">Candidate Name</label>
-                                                    <input type="text" class="form-control" id="candidateName">
+                                                    <input type="text" class="form-control" id="candidateName" name="candidateName">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jobCategory">Job Category</label>
@@ -51,7 +52,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="dateOfBirth">Date of Birth</label>
-                                                    <input type="date" class="form-control" id="dateOfBirth">
+                                                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="gender">Gender</label>
@@ -63,19 +64,19 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="passportNo">Passport Number</label>
-                                                    <input type="text" class="form-control" id="passportNo">
+                                                    <input type="text" class="form-control" name="passportNo" id="passportNo">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="phoneNo">Phone Number</label>
-                                                    <input type="text" class="form-control" id="phoneNo">
+                                                    <input type="text" class="form-control" name="phoneNo" id="phoneNo">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email">Email</label>
-                                                    <input type="email" class="form-control" id="email">
+                                                    <input type="email" class="form-control" name="email" id="email">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nationality">Nationality</label>
-                                                    <input type="text" class="form-control" id="nationality">
+                                                    <input type="text" class="form-control" id="nationality" name="nationality">
                                                 </div>
                                             </div><!-- panel-body -->
                                     </div> <!-- col-->
@@ -100,28 +101,28 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="photo">Photo</label>
-                                                    <input type="file" class="form-control" id="photo">
+                                                    <input type="file" class="form-control" id="photo" name="photo">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="bioData">Bio-data(Resume)</label>
-                                                    <input type="file" class="form-control" id="bioData">
+                                                    <input type="file" class="form-control" id="bioData" name="bioData">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="passport">Passport</label>
-                                                    <input type="file" class="form-control" id="passport">
+                                                    <input type="file" class="form-control" id="passport" name="passport">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="preMedicalCertificate">Pre-Medical Certificate (Only PDF)</label>
-                                                    <input type="file" class="form-control" id="preMedicalCertificate">
+                                                    <input type="file" class="form-control" id="preMedicalCertificate" name="preMedicalCertificate">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="preTrainingCertificate">Pre-Training Certificate (Only PDF)</label>
-                                                    <input type="file" class="form-control" id="preTrainingCertificate">
+                                                    <input type="file" class="form-control" id="preTrainingCertificate" name="preTrainingCertificate">
                                                 </div>
                                             </div> <!-- panel-body -->
                                     </div> <!-- col -->
-                                    <div class=" text-center">
-                                        <button type="submit" class="btn btn-dark waves-effect waves-ligh">Submit</button>
+                                    <div class=" text-right">
+                                        <button type="submit" class="btn btn-info waves-effect waves-ligh">Submit</button>
                                     </div>
                                 </div> <!-- End row -->
                             </form>
