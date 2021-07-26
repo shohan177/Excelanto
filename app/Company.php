@@ -18,4 +18,8 @@ class Company extends Model
     public function jobPosts(){
         return $this->hasMany(JobPost::class, 'company_id');
     }
+
+    public function candidates(){
+        return $this->hasMany(Candidate::class, 'company_id');
+    }
 }

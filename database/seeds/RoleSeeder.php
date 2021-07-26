@@ -109,5 +109,12 @@ class RoleSeeder extends Seeder
             'slug' => 'uae-admin',
             'status' => 'active'
         ]);
+
+        Role::create([
+            'id' => 15,
+            'name' => 'Candidate',
+            'slug' => 'candidate',
+            'status' => 'active'
+        ]);
     }
 }
