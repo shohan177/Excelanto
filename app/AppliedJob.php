@@ -29,7 +29,7 @@ class AppliedJob extends Model
 
     public function jobPost()
     {
-        return $this->hasOne(JobPost::class, 'job_post_id');
+        return $this->hasOne(JobPost::class, 'id');
     }
 
     public function company()

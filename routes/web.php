@@ -91,7 +91,8 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
     Route::get('select-candidates/{id}', 'JobPostController@selectCandidates')->name('jobPost.selectCandidates');
     Route::get('edit-job-post/{id}', 'JobPostController@edit')->name('jobPost.edit');
     Route::post('update-job-post/{id}', 'JobPostController@update')->name('jobPost.update');
-    Route::get('applied-job-post', 'JobPostController@applied')->name('jobPost.applied');
+    Route::get('applied-job', 'AppliedJobController@applied')->name('appliedJob.applied');
+    Route::get('show-applied-job/{id}', 'AppliedJobController@show')->name('appliedJob.show');
 
     //Candidates
     Route::get('new-candidates', 'CandidateController@new')->name('candidate.new');

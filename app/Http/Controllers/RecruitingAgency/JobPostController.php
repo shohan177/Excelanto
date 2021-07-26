@@ -16,11 +16,6 @@ class JobPostController extends Controller
         return view('RecruitingAgency.jobPost.all', compact('jobPosts'));
     }
 
-    public function applied(){
-        $jobPosts = JobPost::where('status','Applied')->get();
-        return view('RecruitingAgency.jobPost.applied', compact('jobPosts'));
-    }
-
     public function edit($id)
     {
         $jobPost = JobPost::findOrFail($id);
