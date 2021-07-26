@@ -30,10 +30,6 @@ class CreateJobPostsTable extends Migration
             $table->string('appointment_date',100)->nullable();
             $table->string('appointment_time',100)->nullable();
             $table->string('rejection_reason',500)->nullable();
-            $table->text('remarks')->nullable();
-            $table->string('applied_vacancy')->nullable();
-            $table->string('applied_date')->nullable();
-            $table->string('approved_vacancy')->nullable();
             $table->enum('status',['New','Verified','Approved','Applied','Rejected','Pending'])->default('New');
             $table->enum('bd_embasy_status',['Approved','Rejected'])->nullable();
             $table->timestamps();

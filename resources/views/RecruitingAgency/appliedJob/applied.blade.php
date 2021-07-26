@@ -62,44 +62,44 @@
 
 
                                 <tbody>
-                                    @foreach ($jobPosts as $jobPost)
+                                    @foreach ($appliedJobs as $appliedJob)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $jobPost->company->user_name }}</td>
-                                            <td>{{ $jobPost->company->company_name }}</td>
-                                            <td>{{ $jobPost->job_category->category_name }}</td>
-                                            <td>{{ $jobPost->job_vacancy }}</td>
-                                            <td>{{ $jobPost->applied_vacancy }}</td>
-                                            <td>{{ $jobPost->approved_vacancy }}</td>
-                                            <td>{{ $jobPost->applied_date }}</td>
+                                            <td>{{ $appliedJob->jobPost->company->user_name }}</td>
+                                            <td>{{ $appliedJob->jobPost->company->company_name }}</td>
+                                            <td>{{ $appliedJob->jobPost->job_category->category_name }}</td>
+                                            <td>{{ $appliedJob->job_vacancy }}</td>
+                                            <td>{{ $appliedJob->applied_vacancy }}</td>
+                                            <td>{{ $appliedJob->approved_vacancy }}</td>
+                                            <td>{{ $appliedJob->datetime }}</td>
                                             <td>
-                                                @if ($jobPost->status == 'New')
+                                                @if ($appliedJob->status == 'New')
                                                     <button type="button" name="New"
                                                         class="btn btn-primary btn-xs update">New</button>
-                                                @elseif ($jobPost->status == "Rejected")
+                                                @elseif ($appliedJob->status == "Rejected")
                                                     <button type="button" name="Rejected"
                                                         class="btn btn-warning btn-xs update">Rejected</button>
-                                                @elseif ($jobPost->status == "Pending")
+                                                @elseif ($appliedJob->status == "Pending")
                                                     <button type="button" name="Pending"
                                                         class="btn btn-warning btn-xs update">Pending</button>
-                                                @elseif ($jobPost->status == "Approved")
+                                                @elseif ($appliedJob->status == "Approved")
                                                     <button type="button" name="Approved"
                                                         class="btn btn-success btn-xs update">Approved</button>
-                                                @elseif ($jobPost->status == "Verified")
+                                                @elseif ($appliedJob->status == "Verified")
                                                     <button type="button" name="Verified"
                                                         class="btn btn-info btn-xs update">Verified</button>
-                                                @elseif ($jobPost->status == "Applied")
+                                                @elseif ($appliedJob->status == "Applied")
                                                     <button type="button" name="Applied"
                                                         class="btn btn-info btn-xs update">Applied</button>
                                                 @endif
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-sm"
-                                                    href="{{ route('RecruitingAgency.jobPost.show', $jobPost->id) }}">
+                                                    href="{{ route('RecruitingAgency.appliedJob.show', $appliedJob->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                                 <a class="btn btn-success btn-sm"
-                                                    href="{{ route('RecruitingAgency.jobPost.selectCandidates', $jobPost->id) }}">
+                                                    href="{{ route('RecruitingAgency.jobPost.selectCandidates', $appliedJob->id) }}">
                                                     <i class="fa fa-user-plus"></i>
                                                 </a>
                                             </td>

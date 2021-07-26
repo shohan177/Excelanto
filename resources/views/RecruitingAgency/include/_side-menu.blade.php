@@ -11,7 +11,7 @@
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Job Posts </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
                         <li><a href="{{ route('RecruitingAgency.jobPost.all') }}"><i class="fa fa-arrow-circle-right"></i> All Job Posts</a></li>
-                        <li><a href="{{ route('RecruitingAgency.jobPost.applied') }}"><i class="fa fa-arrow-circle-right"></i> Applied Job</a></li>
+                        <li><a href="{{ route('RecruitingAgency.appliedJob.applied') }}"><i class="fa fa-arrow-circle-right"></i> Applied Job</a></li>
                     </ul>
                 </li>
 
