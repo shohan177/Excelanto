@@ -18,8 +18,8 @@ class CreateAppliedJobsTable extends Migration
             $table->unsignedBigInteger('job_post_id');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('applier_id');
-            $table->unsignedBigInteger('selected_medical_id');
-            $table->unsignedBigInteger('selected_training_id');
+            $table->unsignedBigInteger('selected_medical_id')->nullable();
+            $table->unsignedBigInteger('selected_training_id')->nullable();
             $table->string('job_vacancy')->nullable();
             $table->string('applied_vacancy')->nullable();
             $table->text('remarks')->nullable();
