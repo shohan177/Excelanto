@@ -18,7 +18,8 @@ class CandidateController extends Controller
     }
 
     public function all(){
-        return view('RecruitingAgency.candidate.all');
+        $candidates = Candidate::where('created_id', Auth::user()->id)->get();
+        return view('RecruitingAgency.candidate.all', compact('candidates'));
     }
 
     public function selected(){
@@ -54,6 +55,9 @@ class CandidateController extends Controller
         $candidate->phone_number    = $request->phoneNo;
         $candidate->candidate_email    = $request->email;
         $candidate->active_status    = $request->status;
+        $candidate->nationality    = $request->nationality;
+        $candidate->present_address    = $request->presentAddress;
+        $candidate->permanent_address    = $request->permanentAddress;
         $candidate->created_id    = Auth::user()->id;
         $candidate->created_at    = Carbon::now();
 
