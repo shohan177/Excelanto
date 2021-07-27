@@ -59,38 +59,45 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>imran</td>
-                                        <td>welding</td>
-                                        <td>01825646464</td>
-                                        <td>imran@gmail.com</td>
-                                        <td>User_image</td>
-                                        <td>
-                                            <span class="badge badge-warning">Reviewed</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>sharif</td>
-                                        <td>cooker</td>
-                                        <td>01825444464</td>
-                                        <td>sharif@gmail.com</td>
-                                        <td>User_image</td>
-                                        <td>
-                                            <span class="badge badge-info">Active</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($candidates as $candidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $candidate->candidate_name }}</td>
+                                            <td>{{ $candidate->job_category->category_name }}</td>
+                                            <td>{{ $candidate->phone_number }}</td>
+                                            <td>{{ $candidate->candidate_email }}</td>
+                                            <td>
+                                                @if ($candidate->candidate_picture)
+                                                    <img height="70px;" src="{{ asset($candidate->candidate_picture) }}"
+                                                        width="70px;" class="rounded-circle" />
+                                                @else
+                                                    User_image
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($candidate->active_status == 'Active')
+                                                    <span class=" badge badge-info">Active</span>
+                                                @elseif ($candidate->active_status == "Reviewed")
+                                                    <span class="badge badge-warning">Reviewed</span>
+                                                @elseif ($candidate->active_status == "Forwarded")
+                                                    <span class="badge badge-warning">Forwarded</span>
+                                                @elseif ($candidate->active_status == "Interview")
+                                                    <span class="badge badge-warning">Interview</span>
+                                                @elseif ($candidate->active_status == "Inactive")
+                                                    <span class="badge badge-danger">Inactive</span>
+                                                @elseif ($candidate->active_status == "Selected")
+                                                    <span class="badge badge-success">Selected</span>
+                                                @else
+                                                <span class="badge badge-info">{{ $candidate->active_status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="{{ route('RecruitingAgency.candidate.show',$candidate->id ) }}">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

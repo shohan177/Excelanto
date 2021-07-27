@@ -7,7 +7,7 @@
     <link href="assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 @endsection
@@ -43,35 +43,46 @@
 
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
-                                <tr>
-                                    <th>SL No</th>
-                                    <th>Company Name</th>
-                                    <th>Job Category</th>
-                                    <th>Post Date</th>
-                                    <th>End Date</th>
-                                    <th>Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>SL No</th>
+                                        <th>Company Name</th>
+                                        <th>Job Category</th>
+                                        <th>Post Date</th>
+                                        <th>End Date</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </thead>
 
 
                                 <tbody>
-                                    @if( count($job_posts) != 0)
-                                    @foreach ($job_posts as $key => $job_post )
-                                    <tr>
-                                        <td>{{ $key+1 }}</td>
-                                        <td>{{ $job_post->company->company_name}}</td>
-                                        <td>{{ $job_post->job_category->category_name}}</td>
-                                        <td>{{ $job_post->created_at}}</td>
-                                        <td>{{ $job_post->end_date}}</td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs" href="{{ route('BangladeshAdmin.JobPostShow', $job_post->id)}}">
-                                                <i class="fa fa-eye"></i></a>
-                                        </td>
-                                    </tr>
+                                    @if (count($job_posts) != 0)
+                                        @foreach ($job_posts as $key => $job_post)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $job_post->company->company_name }}</td>
+                                                <td>{{ $job_post->job_category->category_name }}</td>
+                                                <td>{{ $job_post->created_at }}</td>
+                                                <td>{{ $job_post->end_date }}</td>
+                                                <td>
+                                                    <a class="btn btn-info btn-xs"
+                                                        href="{{ route('BangladeshAdmin.JobPostShow', $job_post->id) }}">
+                                                        <i class="fa fa-eye"></i></a>
+                                                </td>
+                                            </tr>
 
-                                    @endforeach
-                                @endif
+                                        @endforeach
+                                    @endif
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>SL No</th>
+                                        <th>Company Name</th>
+                                        <th>Job Category</th>
+                                        <th>Post Date</th>
+                                        <th>End Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
 
                         </div>
@@ -80,31 +91,29 @@
 
             </div> <!-- End Row -->
 
-
         </div> <!-- container -->
 
     </div>
     <!--End content -->
 @endsection
 
-
 @section('DataTableJs')
-<!-- Datatables-->
-<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-<script src="assets/plugins/datatables/dataTables.buttons.min.js"></script>
-<script src="assets/plugins/datatables/buttons.bootstrap.min.js"></script>
-<script src="assets/plugins/datatables/jszip.min.js"></script>
-<script src="assets/plugins/datatables/pdfmake.min.js"></script>
-<script src="assets/plugins/datatables/vfs_fonts.js"></script>
-<script src="assets/plugins/datatables/buttons.html5.min.js"></script>
-<script src="assets/plugins/datatables/buttons.print.min.js"></script>
-<script src="assets/plugins/datatables/dataTables.fixedHeader.min.js"></script>
-<script src="assets/plugins/datatables/dataTables.keyTable.min.js"></script>
-<script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
-<script src="assets/plugins/datatables/responsive.bootstrap.min.js"></script>
-<script src="assets/plugins/datatables/dataTables.scroller.min.js"></script>
+    <!-- Datatables-->
+    <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/datatables/buttons.bootstrap.min.js"></script>
+    <script src="assets/plugins/datatables/jszip.min.js"></script>
+    <script src="assets/plugins/datatables/pdfmake.min.js"></script>
+    <script src="assets/plugins/datatables/vfs_fonts.js"></script>
+    <script src="assets/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="assets/plugins/datatables/buttons.print.min.js"></script>
+    <script src="assets/plugins/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="assets/plugins/datatables/dataTables.keyTable.min.js"></script>
+    <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="assets/plugins/datatables/responsive.bootstrap.min.js"></script>
+    <script src="assets/plugins/datatables/dataTables.scroller.min.js"></script>
 
-<!-- Datatable init js -->
-<script src="assets/pages/datatables.init.js"></script>
+    <!-- Datatable init js -->
+    <script src="assets/pages/datatables.init.js"></script>
 @endsection

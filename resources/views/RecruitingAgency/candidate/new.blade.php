@@ -95,8 +95,8 @@
                                                     <label for="status">Status</label>
                                                     <select class="form-control"  name="status" id="status">
                                                         <option value="">Select Status</option>
-                                                        <option value="true">Active</option>
-                                                        <option value="false">Inactive</option>
+                                                        <option @if(old('status') == "Active") selected @endif value="Active">Active</option>
+                                                        <option @if(old('status') == "Inactive") selected @endif value="Inactive">Inactive</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">

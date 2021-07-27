@@ -29,7 +29,7 @@ class CreateCandidatesTable extends Migration
             $table->string('nationality')->nullable();
             $table->text('present_address')->nullable();
             $table->text('permanent_address')->nullable();
-            $table->string('active_status')->nullable();
+            $table->string('active_status')->default('Active');
             $table->string('candidate_picture')->nullable();
             $table->string('candidate_resume')->nullable();
             $table->string('passport')->nullable();
