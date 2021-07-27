@@ -41,7 +41,6 @@
                             <h3 class="panel-title">Applied vacancies for the job posts</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -57,7 +56,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
 
                                 <tbody>
                                     @foreach ($appliedVacancies as $appliedVacancy)
@@ -76,15 +74,35 @@
                                                 @elseif($appliedVacancy->status == "Rejected")
                                                     <span class="badge badge-danger">Rejected</span>
                                                 @elseif($appliedVacancy->status == "Approved")
-                                                    <span class="badge badge-danger">Approved</span>
+                                                    <span class="badge badge-success">Approved</span>
                                                 @else
-                                                    <span class="badge badge-danger">{{ $appliedVacancy->status }}</span>
+                                                    <span class="badge badge-info">{{ $appliedVacancy->status }}</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-xs" href="{{ route('BangladeshAdmin.jobPost.viewVacancy', $appliedVacancy->id) }}">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
+                                                @if ($appliedVacancy->status == 'Applied')
+                                                    <a class="btn btn-info btn-xs"
+                                                        href="{{ route('BangladeshAdmin.jobPost.viewVacancy', $appliedVacancy->id) }}">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a class="btn btn-success btn-xs"
+                                                        href="{{ route('BangladeshAdmin.jobPost.approveVacancy', $appliedVacancy->id) }}">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+
+                                                    <button type="button"
+                                                        class="btn btn-danger btn-xs" onclick="reject(this)"
+                                                        value="{{ route('BangladeshAdmin.jobPost.rejectVacancy', $appliedVacancy->id) }}" >
+                                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                                    </button>
+
+                                                @else
+                                                    <a class="btn btn-info btn-xs"
+                                                        href="{{ route('BangladeshAdmin.jobPost.viewVacancy', $appliedVacancy->id) }}">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                @endif
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -104,22 +122,62 @@
                                     </tr>
                                 </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div> <!-- End Row -->
-
-
         </div> <!-- container -->
-
     </div>
     <!--End content -->
+
+    <script>
+        function reject(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Reject !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Rejected !',
+                                    'This company has been Rejected. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+    </script>
 @endsection
 
 
-@section('DataTableJs')
+@section(' DataTableJs')
     <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
