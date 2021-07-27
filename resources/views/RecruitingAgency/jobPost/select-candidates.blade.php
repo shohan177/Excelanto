@@ -1,6 +1,6 @@
-@extends("WelfareCentre/master")
+@extends("RecruitingAgency/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Select Candidates')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -22,12 +22,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Total Awareness Events
-                        </h4>
+                        <h4 class="pull-left page-title">Select Candidates</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="#">Welfare Centre</a></li>
-                            <li><a href="#"> Awareness </a></li>
-                            <li class="active">Total events</li>
+                            <li><a href="#">Excelanto</a></li>
+                            <li><a href="#">Candidates
+                                </a></li>
+                            <li class="active">Select Candidates</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -39,48 +39,68 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Total awareness events organised</h3>
+                            <h3 class="panel-title">Select candidates for the job</h3>
                         </div>
                         <div class="panel-body">
 
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Category</th>
-                                        <th>Agenda</th>
-                                        <th>Date</th>
-                                        <th>Updated on</th>
-                                        <th>status</th>
+                                        <th>SL No</th>
+                                        <th>Candidate Name</th>
+                                        <th>Job Category</th>
+                                        <th>Phone No</th>
+                                        <th>Email</th>
+                                        <th>Photo</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
-                                    @foreach ($totalEvents as $totalEvent)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $totalEvent->eventCategory->category_name }}</td>
-                                            <td>{{ $totalEvent->event_agenda }}</td>
-                                            <td>{{ $totalEvent->event_date }}</td>
-                                            <td>{{ $totalEvent->updated_at }}</td>
-                                            <td><button type="button" name="Visa-Applied" class="btn btn-success btn-xs update">{{ $totalEvent->event_status }}</button></td>
-                                            <td>
-                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.awarenessevent.show', $totalEvent->id) }}">
-                                                    <i class="fa fa-eye"></i></a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    <tr>
+                                        <td>1</td>
+                                        <td>imran</td>
+                                        <td>welding</td>
+                                        <td>01825646464</td>
+                                        <td>imran@gmail.com</td>
+                                        <td>User_image</td>
+                                        <td>
+                                            <span class="badge badge-warning">Reviewed</span>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="#">
+                                                <i class="mdi mdi-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>sharif</td>
+                                        <td>cooker</td>
+                                        <td>01825444464</td>
+                                        <td>sharif@gmail.com</td>
+                                        <td>User_image</td>
+                                        <td>
+                                            <span class="badge badge-info">Active</span>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="#">
+                                                <i class="mdi mdi-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Category</th>
-                                        <th>Agenda</th>
-                                        <th>Date</th>
-                                        <th>Updated on</th>
-                                        <th>status</th>
+                                        <th>SL No</th>
+                                        <th>Candidate Name</th>
+                                        <th>Job Category</th>
+                                        <th>Phone No</th>
+                                        <th>Email</th>
+                                        <th>Photo</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>

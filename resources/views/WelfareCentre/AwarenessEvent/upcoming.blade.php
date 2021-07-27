@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Upcoming Awareness Events')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -57,20 +57,22 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Health and safety</td>
-                                        <td>helth</td>
-                                        <td>12/22/2020</td>
-                                        <td>2020/12/22 01:33:27pm</td>
-                                        <td><button type="button" name="Visa-Applied"
-                                                class="btn btn-success btn-xs update">New</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a>
+                                    @foreach ($upcomingEvents as $upcomingEvent)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $upcomingEvent->eventCategory->category_name }}</td>
+                                            <td>{{ $upcomingEvent->event_agenda }}</td>
+                                            <td>{{ $upcomingEvent->event_date }}</td>
+                                            <td>{{ $upcomingEvent->updated_at }}</td>
+                                            <td><button type="button" name="Visa-Applied" class="btn btn-success btn-xs update">{{ $upcomingEvent->event_status }}</button></td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.awarenessevent.show', $upcomingEvent->id) }}">
+                                                    <i class="fa fa-eye"></i></a>&nbsp;
+                                                <a class="btn btn-primary btn-xs"
+                                                    href="{{ route('WelfareCentre.awarenessevent.edit', $upcomingEvent->id) }}"><i class="fa fa-edit"></i></a>
                                             </td>
-                                    </tr>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

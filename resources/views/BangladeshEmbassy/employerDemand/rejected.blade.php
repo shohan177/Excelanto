@@ -63,7 +63,7 @@
                                             <td>{{ $job_post->appointment_date ?? '-' }}</td>
                                             <td>{{ $job_post->appointment_time ?? '-' }}</td>
                                             <td>
-                                                @if ($job_post->status == "New")
+                                               @if ($job_post->status == 'New')
                                                     <button type="button" name="New"
                                                         class="btn btn-primary btn-xs update">New</button>
                                                 @elseif ($job_post->status == "Rejected")
@@ -78,6 +78,9 @@
                                                 @elseif ($job_post->status == "Verified")
                                                     <button type="button" name="Verified"
                                                         class="btn btn-info btn-xs update">Verified</button>
+                                                @elseif ($job_post->status == "Applied")
+                                                    <button type="button" name="Applied"
+                                                        class="btn btn-info btn-xs update">Applied</button>
                                                 @endif
                                             </td>
                                             <td>

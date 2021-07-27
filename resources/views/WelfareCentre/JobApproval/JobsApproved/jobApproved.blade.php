@@ -88,6 +88,10 @@
 
                                                         <button type="button" name="Rejected"
                                                             class="btn btn-primary btn-xs update">Rejected</button>
+                                                    @elseif($new_job->status == 'Applied')
+
+                                                        <button type="button" name="Applied"
+                                                            class="btn btn-primary btn-xs update">Applied</button>
                                                     @endif
                                                 </td>
                                                 <td>

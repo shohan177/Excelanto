@@ -1,4 +1,4 @@
-@extends("WelfareCentre/master")
+@extends("BangladeshEmbassy/master")
 
 @section('title', 'Edit Job Post')
 @section('DataTableCss')
@@ -24,9 +24,8 @@
                     <div class="page-header-title">
                         <h4 class="pull-left page-title">Edit Job Post</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="#">Welfare Centre</a></li>
-                            <li><a href="#"> Job Approval
-                                </a></li>
+                            <li><a href="#">Bangladesh Embassy</a></li>
+                            <li><a href="#"> Job Posts</a></li>
                             <li class="active">Edit Job Post</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -37,55 +36,81 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('WelfareCentre.postUpdate')}}" method="post" enctype="multipart/form-data">
-                    <div class="panel panel-primary">
-                            <input type="hidden" value="{{ $new_job->id}}" name="id">
+                    <form action="{{ route('BangladeshEmbassy.employerDemand.update', $job_post->id) }}" method="post"
+                        enctype="multipart/form-data">
+                        <div class="panel panel-primary">
+                            <input type="hidden" value="{{ $job_post->id }}" name="id">
                             @csrf
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Edit appointment and job post</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-4"></div>
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Edit appointment and job post</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4"></div>
                                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                         <div class="panel-body">
-                                            <div class="form-group">
-                                                <label for="appointmentDate">Appointment Date</label>
-                                                <input type="date" value="{{ $new_job->appointment_date }}"
-                                                    class="form-control" id="appointmentDate" name="appointmentDate">
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="form-group">
-                                                    <label for="appointmentTime">Appointment Time</label>
-                                                    <input type="time" value="{{ $new_job->appointment_time }}"
-                                                        class="form-control" id="appointmentTime" name="appointmentTime">
-                                                </div>
-                                            </div>
                                             <div class="form-group">
                                                 <label for="jobPostStatus">Job post status</label>
                                                 <select class="form-control" name="jobPostStatus" id="jobPostStatus"
                                                     required="">
                                                     <option selected="" disabled="" value="">Select status</option>
-                                                    <option {{ $new_job->status == 'Pending' ? 'selected' : ''}} value="Pending">Pending</option>
-                                                    <option {{ $new_job->status == 'Verified' ? 'selected' : ''}}  value="Verified">Verified</option>
-                                                    <option {{ $new_job->status == 'Rejected' ? 'selected' : ''}}  value="Rejected">Rejected</option>
+                                                    <option {{ $job_post->status == 'Approved' ? 'selected' : '' }}
+                                                        value="Approved">Approved</option>
+                                                    <option {{ $job_post->status == 'Rejected' ? 'selected' : '' }}
+                                                        value="Rejected">Rejected</option>
                                                 </select>
+                                            </div>
+                                            <div class="form-group" id="demandLetter" style="display: none;">
+                                                <label for="demandLetter">Demand Letter</label>
+                                                <div class="input-group">
+                                                    <div class="col-sm-4" style="padding-top:6px;">
+                                                        <input type="file" name="demandLetter">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="reasonToReject" style="display: none;">
+                                                <label for="reasonToReject">Reason to reject</label>
+                                                <textarea class="form-control" rows="3" placeholder="Write reason.."
+                                                    name="reasonToReject"></textarea>
                                             </div>
                                         </div><!-- panel-body -->
                                     </div> <!-- col-->
-                                <div class="col-lg-4"></div>
+                                    <div class="col-lg-4"></div>
+                                </div>
+                            </div>
+                            <div class="panel-footer text-right">
+                                <button type="submit" name="btnupdate" class="btn btn-primary float-right">Submit</button>
                             </div>
                         </div>
-                        <div class="panel-footer text-right">
-                            <button type="submit" name="btnupdate" class="btn btn-primary float-right">Submit</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
                 </div>
             </div> <!-- End Row -->
         </div> <!-- container -->
     </div>
     <!--End content -->
+@endsection
+@section('js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(document).on("change", "#jobPostStatus", function() {
+                var post_status = $("#jobPostStatus").val();
+                if (post_status == "Rejected") {
+                    $("#reasonToReject").show();
+                } else {
+                    $("#reasonToReject").hide();
+                }
+            });
+
+            $(document).on("change", "#jobPostStatus", function() {
+                var post_status = $("#jobPostStatus").val();
+                if (post_status == "Approved") {
+                    $("#demandLetter").show();
+                } else {
+                    $("#demandLetter").hide();
+                }
+            });
+        });
+    </script>
 @endsection
 
 @section('DataTableJs')

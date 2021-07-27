@@ -1,6 +1,6 @@
 @extends("RecruitingAgency/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Applied Job Posts')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -10,6 +10,7 @@
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+
 
 @endsection
 
@@ -22,12 +23,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">All Job Posts</h4>
+                        <h4 class="pull-left page-title">Applied Job Posts</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
                             <li><a href="#">Job Posts
                                 </a></li>
-                            <li class="active">All Job Posts</li>
+                            <li class="active">Applied Job Posts</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -39,7 +40,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">All Job Posts</h3>
+                            <h3 class="panel-title">Applied job posts in detail</h3>
                         </div>
                         <div class="panel-body">
 
@@ -47,29 +48,59 @@
                                 <thead>
                                     <tr>
                                         <th>SL No</th>
+                                        <th>Recruiter Name</th>
                                         <th>Company Name</th>
                                         <th>Job Category</th>
-                                        <th>Post Date</th>
-                                        <th>End Date</th>
-                                        <th>Action</th>
+                                        <th>Job Vacancies</th>
+                                        <th>Applied Vacancies</th>
+                                        <th>Approved Vacancies</th>
+                                        <th>Applied Date</th>
+                                        <th>Status</th>
+                                        <th style="width: 8%">Action</th>
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
-                                    @foreach ($jobPosts as $jobPost)
+                                    @foreach ($appliedJobs as $appliedJob)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $jobPost->company->user_name }}</td>
-                                            <td>{{ $jobPost->job_category->category_name }}</td>
-                                            <td>{{ $jobPost->created_at }}</td>
-                                            <td>{{ $jobPost->end_date }}</td>
+                                            <td>{{ $appliedJob->jobPost->company->user_name }}</td>
+                                            <td>{{ $appliedJob->jobPost->company->company_name }}</td>
+                                            <td>{{ $appliedJob->jobPost->job_category->category_name }}</td>
+                                            <td>{{ $appliedJob->job_vacancy }}</td>
+                                            <td>{{ $appliedJob->applied_vacancy }}</td>
+                                            <td>{{ $appliedJob->approved_vacancy }}</td>
+                                            <td>{{ $appliedJob->datetime }}</td>
                                             <td>
-                                                <a class="btn btn-info btn-sm" href="{{ route('RecruitingAgency.jobPost.show', $jobPost->id ) }}">
+                                                @if ($appliedJob->status == 'New')
+                                                    <button type="button" name="New"
+                                                        class="btn btn-primary btn-xs update">New</button>
+                                                @elseif ($appliedJob->status == "Rejected")
+                                                    <button type="button" name="Rejected"
+                                                        class="btn btn-warning btn-xs update">Rejected</button>
+                                                @elseif ($appliedJob->status == "Pending")
+                                                    <button type="button" name="Pending"
+                                                        class="btn btn-warning btn-xs update">Pending</button>
+                                                @elseif ($appliedJob->status == "Approved")
+                                                    <button type="button" name="Approved"
+                                                        class="btn btn-success btn-xs update">Approved</button>
+                                                @elseif ($appliedJob->status == "Verified")
+                                                    <button type="button" name="Verified"
+                                                        class="btn btn-info btn-xs update">Verified</button>
+                                                @elseif ($appliedJob->status == "Applied")
+                                                    <button type="button" name="Applied"
+                                                        class="btn btn-info btn-xs update">Applied</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('RecruitingAgency.appliedJob.show', $appliedJob->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
-                                                <a class="btn btn-success btn-sm" href="{{ route('RecruitingAgency.jobPost.edit', $jobPost->id ) }}">
-                                                    <i class="fa fa-edit"></i>
+                                                <a class="btn btn-success btn-sm"
+                                                    href="{{ route('RecruitingAgency.jobPost.selectCandidates', $appliedJob->id) }}">
+                                                    <i class="fa fa-user-plus"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -78,10 +109,14 @@
                                 <tfoot>
                                     <tr>
                                         <th>SL No</th>
+                                        <th>Recruiter Name</th>
                                         <th>Company Name</th>
                                         <th>Job Category</th>
-                                        <th>Post Date</th>
-                                        <th>End Date</th>
+                                        <th>Job Vacancies</th>
+                                        <th>Applied Vacancies</th>
+                                        <th>Approved Vacancies</th>
+                                        <th>Applied Date</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
