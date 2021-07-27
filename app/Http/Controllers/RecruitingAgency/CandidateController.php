@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\RecruitingAgency;
 
+use App\AppliedJob;
 use App\Candidate;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
@@ -28,7 +29,8 @@ class CandidateController extends Controller
     }
 
     public function selected(){
-        return view('RecruitingAgency.candidate.selected');
+        $selectedCandidates = AppliedJob::where('applier_id', Auth::user()->id)->get();
+        return view('RecruitingAgency.candidate.selected', compact('selectedCandidates'));
     }
 
     public function viewSelected(){

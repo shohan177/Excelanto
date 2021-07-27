@@ -57,30 +57,26 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>RC</td>
-                                        <td>Best Buy</td>
-                                        <td>welding</td>
-                                        <td>50</td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="{{ route('RecruitingAgency.candidate.viewSelected') }}">
-                                                <i class="fa fa-users"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>demo com</td>
-                                        <td>DC</td>
-                                        <td>front end developer</td>
-                                        <td>85</td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="{{ route('RecruitingAgency.candidate.viewSelected') }}">
-                                                <i class="fa fa-users"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($selectedCandidates as $selectedCandidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $selectedCandidate->jobPost->company->user_name }}</td>
+                                            <td>{{ $selectedCandidate->jobPost->company->company_name }}</td>
+                                            <td>{{ $selectedCandidate->jobPost->job_category->category_name }}</td>
+                                            <td>{{ $selectedCandidate->approved_vacancy }}</td>
+                                            <td>
+                                                @if ($selectedCandidate->status == 'Applied')
+
+                                                    <a class="btn btn-info btn-sm" href="{{ route('RecruitingAgency.appliedJob.show', $selectedCandidate->id) }}">
+                                                        <i class="fa fa-eye"></i></a>
+                                                @elseif ($selectedCandidate->status == "Approved")
+                                                    <a class="btn btn-info btn-sm"
+                                                        href="{{ route('RecruitingAgency.candidate.viewSelected') }}"><i
+                                                            class="fa fa-users"></i></a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -102,7 +98,7 @@
     <!--End content -->
 @endsection
 
-@section('DataTableJs')
+@section(' DataTableJs')
     <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
