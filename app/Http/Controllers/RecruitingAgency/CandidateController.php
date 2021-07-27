@@ -22,6 +22,11 @@ class CandidateController extends Controller
         return view('RecruitingAgency.candidate.all', compact('candidates'));
     }
 
+    public function show($id){
+        $candidate = Candidate::findOrFail($id);
+        return view('RecruitingAgency.candidate.show', compact('candidate'));
+    }
+
     public function selected(){
         return view('RecruitingAgency.candidate.selected');
     }

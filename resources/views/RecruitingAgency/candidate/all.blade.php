@@ -92,7 +92,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-sm" href="#">
+                                                <a class="btn btn-info btn-sm" href="{{ route('RecruitingAgency.candidate.show',$candidate->id ) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                             </td>
