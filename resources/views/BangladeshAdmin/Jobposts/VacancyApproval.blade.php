@@ -5,7 +5,8 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -59,23 +60,49 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>vowmibazaaar</td>
-                                        <td>best buy</td>
-                                        <td>welding</td>
-                                        <td>50</td>
-                                        <td>45</td>
-                                        <td>40</td>
-                                        <td>2021-06-22 01:30:22</td>
-                                        <td><span class="badge badge-success">Approved</span></td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($appliedVacancies as $appliedVacancy)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $appliedVacancy->jobPost->company->user_name }}</td>
+                                            <td>{{ $appliedVacancy->jobPost->company->company_name }}</td>
+                                            <td>{{ $appliedVacancy->jobPost->job_category->category_name }}</td>
+                                            <td>{{ $appliedVacancy->job_vacancy }}</td>
+                                            <td>{{ $appliedVacancy->applied_vacancy }}</td>
+                                            <td>{{ $appliedVacancy->approved_vacancy }}</td>
+                                            <td>{{ $appliedVacancy->datetime }}</td>
+                                            <td>
+                                                @if ($appliedVacancy->status == 'Applied')
+                                                    <span class="badge badge-info">Applied</span>
+                                                @elseif($appliedVacancy->status == "Rejected")
+                                                    <span class="badge badge-danger">Rejected</span>
+                                                @elseif($appliedVacancy->status == "Approved")
+                                                    <span class="badge badge-danger">Approved</span>
+                                                @else
+                                                    <span class="badge badge-danger">{{ $appliedVacancy->status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="#">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>SL No</th>
+                                        <th>Recruiter Name</th>
+                                        <th>Company Name</th>
+                                        <th>Job Category</th>
+                                        <th>Job Vacancies</th>
+                                        <th>Applied Vacancies</th>
+                                        <th>Approved Vacancies</th>
+                                        <th>Applied Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
 
                         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BangladeshAdmin;
 
+use App\AppliedJob;
 use App\JobPost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,7 @@ class JobPostController extends Controller
      */
     public function index()
     {
-        $job_posts = JobPost::orderby('id', 'DESC')->where('bd_embasy_status', 'approved')->get();
+        $job_posts = JobPost::orderby('id', 'DESC')->where('status', 'Approved')->get();
         return view('BangladeshAdmin.Jobposts.totalJobPost', compact('job_posts'));
 
     }
@@ -27,7 +28,8 @@ class JobPostController extends Controller
     }
     public function vacancy_approval()
     {
-        return view('BangladeshAdmin.Jobposts.VacancyApproval');
+        $appliedVacancies = AppliedJob::all();
+        return view('BangladeshAdmin.Jobposts.VacancyApproval', compact('appliedVacancies'));
 
     }
 
