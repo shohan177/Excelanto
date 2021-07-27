@@ -26,6 +26,13 @@ class JobPostController extends Controller
         return view('BangladeshAdmin.Jobposts.JobPostsShow', compact('job_post'));
 
     }
+
+    public function viewVacancy($applied_job_id)
+    {
+        $appliedJob = AppliedJob::FindOrFail($applied_job_id);
+        return view('BangladeshAdmin.Jobposts.view-vacancy', compact('appliedJob'));
+
+    }
     public function vacancy_approval()
     {
         $appliedVacancies = AppliedJob::all();

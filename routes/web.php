@@ -65,6 +65,7 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     Route::get('total-job-post', 'JobPostController@index')->name('total_job_post.index');
     Route::get('job-posts-show/{id}', 'JobPostController@JobPostShow')->name('JobPostShow');
     Route::get('vacancy_approval', 'JobPostController@vacancy_approval')->name('vacancy_approval');
+    Route::get('view-vacancy/{applied_job_id}', 'JobPostController@viewVacancy')->name('jobPost.viewVacancy');
 
     //Candidate
     Route::get('candidate-requests', 'CandidateController@requests')->name('candidate.requests');

@@ -82,7 +82,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-xs" href="#">
+                                                <a class="btn btn-info btn-xs" href="{{ route('BangladeshAdmin.jobPost.viewVacancy', $appliedVacancy->id) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </td>
