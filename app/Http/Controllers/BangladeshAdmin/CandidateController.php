@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BangladeshAdmin;
 
+use App\AppliedJob;
 use App\Candidate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,30 +10,34 @@ use App\Http\Controllers\Controller;
 class CandidateController extends Controller
 {
 
-   public function requests()
+    public function requests()
     {
-        return view('BangladeshAdmin.Candidate.requests');
-
+        $appliedJobs = AppliedJob::where('status', 'Approved')->get();
+        return view('BangladeshAdmin.Candidate.requests', compact('appliedJobs'));
     }
-   public function forwarded()
+    public function viewRequested($applied_job_id)
     {
-                return view('BangladeshAdmin.Candidate.forwarded');
+        $appliedJob = AppliedJob::findOrFail($applied_job_id);
+        $selectedCandidates = Candidate::where('job_category_id',$appliedJob->jobPost->job_category->id)
+                                       ->where('created_id',$appliedJob->applier_id)->get();
 
+        return view('BangladeshAdmin.Candidate.view-requests', compact('selectedCandidates'));
     }
-   public function reviewed()
+    public function forwarded()
     {
-                return view('BangladeshAdmin.Candidate.reviewed');
-
+        return view('BangladeshAdmin.Candidate.forwarded');
     }
-   public function finalized()
+    public function reviewed()
     {
-                return view('BangladeshAdmin.Candidate.finalized');
-
+        return view('BangladeshAdmin.Candidate.reviewed');
     }
-   public function tickets_booked_List()
+    public function finalized()
     {
-                return view('BangladeshAdmin.Candidate.tickets_booked_List');
-
+        return view('BangladeshAdmin.Candidate.finalized');
+    }
+    public function tickets_booked_List()
+    {
+        return view('BangladeshAdmin.Candidate.tickets_booked_List');
     }
 
 

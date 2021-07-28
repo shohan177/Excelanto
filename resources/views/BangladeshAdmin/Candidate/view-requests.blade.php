@@ -1,6 +1,6 @@
 @extends("BangladeshAdmin/master")
 
-@section('title', 'Candidate Request')
+@section('title', 'Selected Candidates')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -22,11 +22,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Candidate Requests</h4>
+                        <h4 class="pull-left page-title">Selected Candidates</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
                             <li><a href="#">Candidates</a></li>
-                            <li class="active"> Candidate Requests</li>
+                            <li class="active"> Selected Candidates</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -37,7 +37,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Selected candidates for the approved vacancies</h3>
+                            <h3 class="panel-title">Selected candidates for the job</h3>
                         </div>
                         <div class="panel-body">
 
@@ -45,49 +45,76 @@
                                 <thead>
                                     <tr>
                                         <th>SL No</th>
-                                        <th>Recruiter Name</th>
-                                        <th>Company Name</th>
+                                        <th>Candidate Name</th>
                                         <th>Job Category</th>
-                                        <th>Approved Vacancies</th>
-                                        <th>Candidates</th>
+                                        <th>Phone No</th>
+                                        <th>Email</th>
+                                        <th>Photo</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
-                                    @foreach($appliedJobs as $appliedJob)
+                                    @foreach ($selectedCandidates as $candidate)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $appliedJob->applier_agency_name }}</td>
-                                            <td>{{ $appliedJob->company_name }}</td>
-                                            <td>{{ $appliedJob->jobPost->job_category->category_name }}</td>
-                                            <td>{{ $appliedJob->approved_vacancy }}</td>
+                                            <td>{{ $candidate->candidate_name }}</td>
+                                            <td>{{ $candidate->job_category->category_name }}</td>
+                                            <td>{{ $candidate->phone_number }}</td>
+                                            <td>{{ $candidate->candidate_email }}</td>
                                             <td>
-                                                <a class="btn btn-info btn-sm" href="{{ route('BangladeshAdmin.candidate.viewRequested', $appliedJob->id) }}"><i class="fa fa-users"></i>
+                                                @if ($candidate->candidate_picture)
+                                                    <img height="70px;" src="{{ asset($candidate->candidate_picture) }}"
+                                                        width="70px;" class="rounded-circle" />
+                                                @else
+                                                    User_image
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($candidate->active_status == 'Active')
+                                                    <span class=" badge badge-info">Active</span>
+                                                @elseif ($candidate->active_status == "Reviewed")
+                                                    <span class="badge badge-warning">Reviewed</span>
+                                                @elseif ($candidate->active_status == "Forwarded")
+                                                    <span class="badge badge-warning">Forwarded</span>
+                                                @elseif ($candidate->active_status == "Interview")
+                                                    <span class="badge badge-warning">Interview</span>
+                                                @elseif ($candidate->active_status == "Inactive")
+                                                    <span class="badge badge-danger">Inactive</span>
+                                                @elseif ($candidate->active_status == "Selected")
+                                                    <span class="badge badge-success">Selected</span>
+                                                @else
+                                                    <span class="badge badge-info">{{ $candidate->active_status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('RecruitingAgency.candidate.show', $candidate->id) }}">
+                                                    <i class="mdi mdi-eye"></i>
                                                 </a>
                                             </td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>SL No</th>
-                                        <th>Recruiter Name</th>
-                                        <th>Company Name</th>
+                                        <th>Candidate Name</th>
                                         <th>Job Category</th>
-                                        <th>Approved Vacancies</th>
-                                        <th>Candidates</th>
+                                        <th>Phone No</th>
+                                        <th>Email</th>
+                                        <th>Photo</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div> <!-- End Row -->
-
 
         </div> <!-- container -->
 

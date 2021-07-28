@@ -72,6 +72,7 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
 
     //Candidate
     Route::get('candidate-requests', 'CandidateController@requests')->name('candidate.requests');
+    Route::get('view-requested-candidates/{applied_job_id}', 'CandidateController@viewRequested')->name('candidate.viewRequested');
     Route::get('candidate-forwarded', 'CandidateController@forwarded')->name('candidate.forwarded');
     Route::get('candidate-reviewed', 'CandidateController@reviewed')->name('candidate.reviewed');
     Route::get('candidate-finalized', 'CandidateController@finalized')->name('candidate.finalized');

@@ -1,6 +1,6 @@
 @extends("BangladeshAdmin/master")
 
-@section('title', 'Company Request')
+@section('title', 'Finalized Candidates')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
