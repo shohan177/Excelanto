@@ -94,14 +94,25 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-sm"
-                                                    href="{{ route('RecruitingAgency.appliedJob.show', $appliedJob->id) }}">
-                                                    <i class="mdi mdi-eye"></i>
-                                                </a>
-                                                <a class="btn btn-success btn-sm"
-                                                    href="{{ route('RecruitingAgency.jobPost.selectCandidates', $appliedJob->id) }}">
-                                                    <i class="fa fa-user-plus"></i>
-                                                </a>
+
+                                                @if ($appliedJob->status == 'Rejected')
+
+                                                @elseif ($appliedJob->status == "Approved")
+                                                    <a class="btn btn-info btn-sm"
+                                                        href="{{ route('RecruitingAgency.appliedJob.show', $appliedJob->id) }}">
+                                                        <i class="mdi mdi-eye"></i>
+                                                    </a>
+                                                    <a class="btn btn-success btn-sm"
+                                                        href="{{ route('RecruitingAgency.jobPost.selectCandidates', $appliedJob->id) }}">
+                                                        <i class="fa fa-user-plus"></i>
+                                                    </a>
+                                                @else
+                                                    <a class="btn btn-info btn-sm"
+                                                        href="{{ route('RecruitingAgency.appliedJob.show', $appliedJob->id) }}">
+                                                        <i class="mdi mdi-eye"></i>
+                                                    </a>
+                                                @endif
+
                                             </td>
                                         </tr>
                                     @endforeach

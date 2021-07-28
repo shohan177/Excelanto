@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +32,8 @@ class JobPostSeeder extends Seeder
                 'appointment_time'  => now(),
                 // 'rejection_reason'  => Str::random(10),
                 'status'  => 'Approved',
-                'bd_embasy_status' => 'Approved'
+                'bd_embasy_status' => 'Approved',
+                'created_at' => Carbon::now()
            ]);
        }
     }

@@ -51,7 +51,7 @@ class CreateCandidatesTable extends Migration
             $table->string('pre_training_dt')->nullable();
             $table->string('pre_medical_comments')->nullable();
             $table->string('pre_training_comments')->nullable();
-            $table->boolean('status')->default(true);
+            $table->string('status')->default('Active');
             $table->timestamps();
         });
     }

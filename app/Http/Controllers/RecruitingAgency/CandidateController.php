@@ -67,6 +67,7 @@ class CandidateController extends Controller
         $candidate->nationality    = $request->nationality;
         $candidate->present_address    = $request->presentAddress;
         $candidate->permanent_address    = $request->permanentAddress;
+        $candidate->status    = "Active";
         $candidate->created_id    = Auth::user()->id;
         $candidate->created_at    = Carbon::now();
 
@@ -123,7 +124,39 @@ class CandidateController extends Controller
         } catch (\Exception $exception) {
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
+    }
 
+    public function approveNow($id){
+        $candidate = Candidate::findOrFail($id);
+        $candidate->status = "Selected";
+        try {
+            $candidate->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Stored'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
 
+    public function rejectNow($id){
+        $candidate = Candidate::findOrFail($id);
+        $candidate->status = "Active";
+        try {
+            $candidate->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Stored'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 }

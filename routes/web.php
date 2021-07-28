@@ -92,7 +92,7 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
     //Job Posts
     Route::get('all-job-post', 'JobPostController@all')->name('jobPost.all');
     Route::get('show-job-post/{id}', 'JobPostController@show')->name('jobPost.show');
-    Route::get('select-candidates/{id}', 'JobPostController@selectCandidates')->name('jobPost.selectCandidates');
+    Route::get('select-candidates/{applied_job_id}', 'JobPostController@selectCandidates')->name('jobPost.selectCandidates');
     Route::get('edit-job-post/{id}', 'JobPostController@edit')->name('jobPost.edit');
     Route::post('update-job-post/{id}', 'JobPostController@update')->name('jobPost.update');
     Route::get('applied-job', 'AppliedJobController@applied')->name('appliedJob.applied');
@@ -100,6 +100,8 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
 
     //Candidates
     Route::get('new-candidates', 'CandidateController@new')->name('candidate.new');
+    Route::post('approve-candidate/{id}', 'CandidateController@approveNow')->name('candidate.approveNow');
+    Route::post('reject-candidate/{id}', 'CandidateController@rejectNow')->name('candidate.rejectNow');
     Route::post('store-candidates', 'CandidateController@store')->name('candidate.store');
     Route::get('all-candidates', 'CandidateController@all')->name('candidate.all');
     Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');

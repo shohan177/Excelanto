@@ -59,38 +59,69 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>imran</td>
-                                        <td>welding</td>
-                                        <td>01825646464</td>
-                                        <td>imran@gmail.com</td>
-                                        <td>User_image</td>
-                                        <td>
-                                            <span class="badge badge-warning">Reviewed</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>sharif</td>
-                                        <td>cooker</td>
-                                        <td>01825444464</td>
-                                        <td>sharif@gmail.com</td>
-                                        <td>User_image</td>
-                                        <td>
-                                            <span class="badge badge-info">Active</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($candidates as $candidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $candidate->candidate_name }}</td>
+                                            <td>{{ $candidate->job_category->category_name }}</td>
+                                            <td>{{ $candidate->phone_number }}</td>
+                                            <td>{{ $candidate->candidate_email }}</td>
+                                            <td>
+                                                @if ($candidate->candidate_picture)
+                                                    <img height="70px;" src="{{ asset($candidate->candidate_picture) }}"
+                                                        width="70px;" class="rounded-circle" />
+                                                @else
+                                                    User_image
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($candidate->status == 'Active')
+                                                    <button type="button" class="btn btn-info btn-xs ">Waiting</button>
+                                                @elseif ($candidate->status == "Inactive")
+                                                    <button type="button" class="btn btn-danger btn-xs ">Not
+                                                        Selected</button>
+                                                @elseif ($candidate->status == "Selected")
+                                                    <button type="button" class="btn btn-success btn-xs ">Selected</button>
+                                                @elseif ($candidate->status == "Forwarded")
+                                                    <button type="button" class="btn btn-success btn-xs ">Selected</button>
+                                                @elseif ($candidate->status == "Reviewed")
+                                                    <button type="button" class="btn btn-success btn-xs ">Reviewed</button>
+                                                @elseif ($candidate->status == "Interview")
+                                                    <button type="button" class="btn btn-success btn-xs ">Interview</button>
+                                                @else
+                                                    <span class="badge badge-info">{{ $candidate->status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs"
+                                                    href="{{ route('RecruitingAgency.candidate.show', $candidate->id) }}"><i
+                                                        class="fa fa-eye"></i></a>
+                                                @if ($candidate->status == 'Active')
+                                                    <button class="btn btn-success btn-xs" onclick="approve(this)"
+                                                        value="{{ route('RecruitingAgency.candidate.approveNow', $candidate->id) }}">
+                                                        <i class="mdi mdi-check"></i> </button>
+                                                @elseif ($candidate->status == "Inactive")
+
+                                                    <button class="btn btn-success btn-xs" onclick="approve(this)" disabled
+                                                        value="{{ route('RecruitingAgency.candidate.approveNow', $candidate->id) }}">
+                                                        <i class="mdi mdi-check"></i> </button>
+                                                @elseif ($candidate->status == "Selected")
+                                                    <button class="btn btn-danger btn-xs" onclick="reject(this)"
+                                                        value="{{ route('RecruitingAgency.candidate.rejectNow', $candidate->id) }}">
+                                                        <i class="fa fa-times" aria-hidden="true"></i> </button>
+
+                                                @elseif ($candidate->status == "Forwarded")
+                                                    <button class="btn btn-danger btn-xs" onclick="reject(this)"
+                                                        value="{{ route('RecruitingAgency.candidate.rejectNow', $candidate->id) }}">
+                                                        <i class="fa fa-times" aria-hidden="true"></i> </button>
+                                                @elseif ($candidate->status == "Reviewed")
+                                                    <button class="btn btn-danger btn-xs" onclick="reject(this)"
+                                                        value="{{ route('RecruitingAgency.candidate.rejectNow', $candidate->id) }}">
+                                                        <i class="fa fa-times" aria-hidden="true"></i> </button>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -112,6 +143,93 @@
         </div> <!-- container -->
     </div>
     <!--End content -->
+    <script>
+        function approve(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Approve !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Approved !',
+                                    'This company has been Approved. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+
+        function reject(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Reject !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Rejected !',
+                                    'This company has been Rejected. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+    </script>
 @endsection
 
 @section('DataTableJs')

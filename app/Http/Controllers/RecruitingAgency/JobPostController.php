@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\RecruitingAgency;
 
 use App\AppliedJob;
+use App\Candidate;
 use App\Http\Controllers\Controller;
 use App\JobPost;
 use Carbon\Carbon;
@@ -56,10 +57,12 @@ class JobPostController extends Controller
         }
     }
 
-    public function selectCandidates($id)
+    public function selectCandidates($applied_job_id)
     {
-        $jobPost = JobPost::findOrFail($id);
-        return view('RecruitingAgency.jobPost.show', compact('jobPost'));
+        $appliedJOb = AppliedJob::findOrFail($applied_job_id);
+        $candidates = Candidate::where('job_category_id',$appliedJOb->jobPost->job_category->id)
+                               ->where('created_id',Auth::user()->id)->get();
+        return view('RecruitingAgency.jobPost.select-candidates', compact('candidates'));
     }
 
 }
