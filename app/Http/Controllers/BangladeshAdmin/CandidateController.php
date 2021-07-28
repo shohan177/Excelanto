@@ -19,7 +19,8 @@ class CandidateController extends Controller
     {
         $appliedJob = AppliedJob::findOrFail($applied_job_id);
         $selectedCandidates = Candidate::where('job_category_id',$appliedJob->jobPost->job_category->id)
-                                       ->where('created_id',$appliedJob->applier_id)->get();
+                                       ->where('created_id',$appliedJob->applier_id)
+                                       ->where('status',"Selected")->get();
 
         return view('BangladeshAdmin.Candidate.view-requests', compact('selectedCandidates'));
     }
@@ -79,9 +80,26 @@ class CandidateController extends Controller
      * @param  \App\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function show(Candidate $candidate)
-    {
-        //
+    public function show($id){
+        $candidate = Candidate::findOrFail($id);
+        return view('BangladeshAdmin.Candidate.show-profile', compact('candidate'));
+    }
+
+    public function forwardNow($id){
+        $candidate = Candidate::findOrFail($id);
+        $candidate->status = "Forwarded";
+        try {
+            $candidate->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Stored'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 
     /**

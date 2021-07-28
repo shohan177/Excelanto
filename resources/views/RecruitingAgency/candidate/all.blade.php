@@ -75,20 +75,20 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($candidate->active_status == 'Active')
+                                                @if ($candidate->status == 'Active')
                                                     <span class=" badge badge-info">Active</span>
-                                                @elseif ($candidate->active_status == "Reviewed")
+                                                @elseif ($candidate->status == "Reviewed")
                                                     <span class="badge badge-warning">Reviewed</span>
-                                                @elseif ($candidate->active_status == "Forwarded")
+                                                @elseif ($candidate->status == "Forwarded")
                                                     <span class="badge badge-warning">Forwarded</span>
-                                                @elseif ($candidate->active_status == "Interview")
+                                                @elseif ($candidate->status == "Interview")
                                                     <span class="badge badge-warning">Interview</span>
-                                                @elseif ($candidate->active_status == "Inactive")
+                                                @elseif ($candidate->status == "Inactive")
                                                     <span class="badge badge-danger">Inactive</span>
-                                                @elseif ($candidate->active_status == "Selected")
+                                                @elseif ($candidate->status == "Selected")
                                                     <span class="badge badge-success">Selected</span>
                                                 @else
-                                                <span class="badge badge-info">{{ $candidate->active_status }}</span>
+                                                <span class="badge badge-info">{{ $candidate->status }}</span>
                                                 @endif
                                             </td>
                                             <td>

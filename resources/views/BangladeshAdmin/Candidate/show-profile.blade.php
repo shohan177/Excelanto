@@ -1,4 +1,4 @@
-@extends("RecruitingAgency/master")
+@extends("BangladeshAdmin/master")
 
 @section('title', 'Candidate Profile')
 @section('DataTableCss')
@@ -58,10 +58,25 @@
                                         class="float-right badge badge-info">{{ $candidate->status }}</span>
                                 </li>
                             </ul>
+
                             <a href="#" download class="btn btn-secondary btn-block"> <b> <i class="fa fa-download"></i>
                                     Bio-data </b></a>
                             <a href="#" download class="btn btn-secondary btn-block"><b><i class="fa fa-download"></i>
                                     Passport </b></a>
+
+                            @if ($candidate->status == 'Selected')
+
+
+                                <button class="btn btn-primary btn-block" onclick="forward(this)"
+                                    value="{{ route('BangladeshAdmin.candidate.forwardNow', $candidate->id) }}">
+                                    <i class="fa fa-share"></i> Forward to
+                                    recruiter</button>
+                            @else
+                                <button class="btn btn-primary btn-block" onclick="forward(this)" disabled
+                                    value="{{ route('BangladeshAdmin.candidate.forwardNow', $candidate->id) }}">
+                                    <i class="fa fa-share"></i> Forward to
+                                    recruiter</button>
+                            @endif
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -126,6 +141,50 @@
         </div> <!-- container -->
     </div>
     <!--End content -->
+    <script>
+        function forward(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Forward !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Forwarded !',
+                                    'This company has been Forwarded. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+    </script>
 @endsection
 
 @section('DataTableJs')

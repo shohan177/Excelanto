@@ -63,11 +63,10 @@ class CandidateController extends Controller
         $candidate->passport_number    = $request->passportNo;
         $candidate->phone_number    = $request->phoneNo;
         $candidate->candidate_email    = $request->email;
-        $candidate->active_status    = $request->status;
+        $candidate->status    = $request->status;
         $candidate->nationality    = $request->nationality;
         $candidate->present_address    = $request->presentAddress;
         $candidate->permanent_address    = $request->permanentAddress;
-        $candidate->status    = "Active";
         $candidate->created_id    = Auth::user()->id;
         $candidate->created_at    = Carbon::now();
 
