@@ -122,7 +122,7 @@
                             <hr>
 
                             <strong><i class="fa fa-money mr-1"></i> Salary</strong>
-                            <p class="text-muted">35000</p>
+                            <p class="text-muted">{{ $new_job->salary}}</p>
                           </div>
                     </div>
                 </div>

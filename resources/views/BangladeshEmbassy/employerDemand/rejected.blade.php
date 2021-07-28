@@ -57,7 +57,7 @@
                                     @foreach ($job_posts as $job_post)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $job_post->company->name ?? '-' }}</td>
+                                            <td>{{ $job_post->company->company_name ?? '-' }}</td>
                                             <td>{{ $job_post->job_category->category_name ?? '-' }}</td>
                                             <td>{{ $job_post->job_location ?? '-' }}</td>
                                             <td>{{ $job_post->appointment_date ?? '-' }}</td>

@@ -24,6 +24,7 @@ class CreateJobPostsTable extends Migration
             $table->string('salary',100)->nullable();
             $table->string('job_location',100)->nullable();
             $table->integer('job_vacancy')->nullable();
+            $table->integer('app_vacancy')->nullable();
             $table->string('end_date',100)->nullable();
             $table->binary('demand_letter')->nullable();
             $table->integer('selected_wsc')->nullable();

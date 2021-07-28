@@ -41,7 +41,7 @@
 
                             <h3 style="font-weight:bolder;text-align:center;color:blue;">Company Details</h3>
 
-                            <h4 style="font-weight:bolder;text-align:center;">{{ $job_post->company_id }}</h4>
+                            <h4 style="font-weight:bolder;text-align:center;">{{ $job_post->company->company_name }}</h4>
 
                             <h6 style="text-align:center;">{{ $job_post->company->email }}</h6>
 

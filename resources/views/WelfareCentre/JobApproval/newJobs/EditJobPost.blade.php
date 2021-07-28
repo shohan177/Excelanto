@@ -54,6 +54,7 @@
                                                 <input type="date" value="{{ $new_job->appointment_date }}"
                                                     class="form-control" id="appointmentDate" name="appointmentDate">
                                             </div>
+
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <label for="appointmentTime">Appointment Time</label>
@@ -63,13 +64,19 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="jobPostStatus">Job post status</label>
-                                                <select class="form-control" name="jobPostStatus" id="jobPostStatus"
+                                                <select class="form-control my-select-changer" name="jobPostStatus" id="jobPostStatus"
                                                     required="">
                                                     <option selected="" disabled="" value="">Select status</option>
                                                     <option {{ $new_job->status == 'Pending' ? 'selected' : ''}} value="Pending">Pending</option>
                                                     <option {{ $new_job->status == 'Verified' ? 'selected' : ''}}  value="Verified">Verified</option>
                                                     <option {{ $new_job->status == 'Rejected' ? 'selected' : ''}}  value="Rejected">Rejected</option>
                                                 </select>
+                                            </div>
+                                            <div class="form-group input-to-hide" style="display: none">
+                                                <div class="form-group">
+                                                    <label for="appointmentTime">Reject Reason</label>
+                                                    <textarea class="form-control" name="reject_reason" id=""></textarea>
+                                                </div>
                                             </div>
                                         </div><!-- panel-body -->
                                     </div> <!-- col-->
@@ -107,4 +114,15 @@
 
     <!-- Datatable init js -->
     <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
+
+    <script type='text/javascript'>
+        $(".my-select-changer").change( function() {
+            var selectedValue = $(this).val();
+            if (selectedValue == "Rejected") {
+                $(".input-to-hide").show();
+            } else {
+                $(".input-to-hide").hide();
+            }
+        });
+    </script>
 @endsection
