@@ -1,4 +1,4 @@
-@extends("RecruitingAgency/master")
+@extends("EmployerCompany/master")
 
 @section('title', 'Candidate Profile')
 @section('DataTableCss')

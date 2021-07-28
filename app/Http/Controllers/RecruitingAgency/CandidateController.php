@@ -5,6 +5,7 @@ namespace App\Http\Controllers\RecruitingAgency;
 use App\AppliedJob;
 use App\Candidate;
 use App\Http\Controllers\Controller;
+use App\JobCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -15,7 +16,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 class CandidateController extends Controller
 {
     public function new(){
-        return view('RecruitingAgency.candidate.new');
+        $jobCategories = JobCategory::where('status','active')->get();
+        return view('RecruitingAgency.candidate.new', compact('jobCategories'));
     }
 
     public function all(){
@@ -61,7 +63,7 @@ class CandidateController extends Controller
         $candidate->passport_number    = $request->passportNo;
         $candidate->phone_number    = $request->phoneNo;
         $candidate->candidate_email    = $request->email;
-        $candidate->active_status    = $request->status;
+        $candidate->status    = $request->status;
         $candidate->nationality    = $request->nationality;
         $candidate->present_address    = $request->presentAddress;
         $candidate->permanent_address    = $request->permanentAddress;
@@ -121,7 +123,39 @@ class CandidateController extends Controller
         } catch (\Exception $exception) {
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
+    }
 
+    public function approveNow($id){
+        $candidate = Candidate::findOrFail($id);
+        $candidate->status = "Selected";
+        try {
+            $candidate->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Stored'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
 
+    public function rejectNow($id){
+        $candidate = Candidate::findOrFail($id);
+        $candidate->status = "Active";
+        try {
+            $candidate->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Stored'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 }

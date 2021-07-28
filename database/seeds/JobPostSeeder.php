@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,7 @@ class JobPostSeeder extends Seeder
     {
         for ($i=0; $i < 10; $i++) {
             DB::table('job_posts')->insert([
-                'job_category_id' => rand(1, 10),
+                'job_category_id' => rand(5, 12),
                 'user_id' => rand(1, 10),
                 'company_id' => rand(1, 10),
                 'employment_type' => Str::random(10),
@@ -31,7 +32,8 @@ class JobPostSeeder extends Seeder
                 'appointment_time'  => now(),
                 // 'rejection_reason'  => Str::random(10),
                 'status'  => 'Approved',
-                'bd_embasy_status' => 'Approved'
+                'bd_embasy_status' => 'Approved',
+                'created_at' => Carbon::now()
            ]);
        }
     }
