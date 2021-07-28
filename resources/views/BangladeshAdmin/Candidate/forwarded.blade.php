@@ -1,6 +1,6 @@
 @extends("BangladeshAdmin/master")
 
-@section('title', 'Company Request')
+@section('title', 'Forwarded Candidates')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -43,11 +43,11 @@
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
+                                        <th>Phone No</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Photo</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -56,23 +56,50 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>shavo</td>
-                                        <td>Developer</td>
-                                        <td>sharifshuvo00@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <img style="width: 50px;" class="table-avatar" src="https://thumbs.dreamstime.com/b/faceless-businessman-avatar-man-suit-blue-tie-human-profile-userpic-face-features-web-picture-gentlemen-85824471.jpg" alt="User_Image">
-                                        </td>
-                                        <td>
-                                            <button type="button" name="Forwarded" class="btn btn-danger btn-xs update">Forwarded</button>
+                                    @foreach ($forwardedCandidates as $candidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $candidate->candidate_name }}</td>
+                                            <td>{{ $candidate->job_category->category_name }}</td>
+                                            <td>{{ $candidate->phone_number }}</td>
+                                            <td>{{ $candidate->candidate_email }}</td>
+                                            <td>
+                                                @if ($candidate->candidate_picture)
+                                                    <img height="70px;" src="{{ asset($candidate->candidate_picture) }}"
+                                                        width="70px;" class="rounded-circle" />
+                                                @else
+                                                    User_image
+                                                @endif
                                             </td>
-                                        <td><a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i></a></td>
-                                    </tr>
+                                            <td>
+                                                @if ($candidate->status == "Forwarded")
+                                                    <span class="badge badge-danger">Forwarded</span>
+
+                                                @else
+                                                    <span class="badge badge-info">{{ $candidate->status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('BangladeshAdmin.candidate.show', $candidate->id) }}">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>SL No</th>
+                                        <th>Candidate Name</th>
+                                        <th>Job Category</th>
+                                        <th>Phone No</th>
+                                        <th>Email</th>
+                                        <th>Photo</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
 
                         </div>

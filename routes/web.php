@@ -84,9 +84,17 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     Route::get('total-job-post', 'JobPostController@index')->name('total_job_post.index');
     Route::get('job-posts-show/{id}', 'JobPostController@JobPostShow')->name('JobPostShow');
     Route::get('vacancy_approval', 'JobPostController@vacancy_approval')->name('vacancy_approval');
+    Route::get('view-vacancy/{applied_job_id}', 'JobPostController@viewVacancy')->name('jobPost.viewVacancy');
+    Route::get('approve-vacancy/{applied_job_id}', 'JobPostController@approveVacancy')->name('jobPost.approveVacancy');
+    Route::post('approve-vacancy-store/{applied_job_id}', 'JobPostController@approveVacancyStore')->name('jobPost.approveVacancyStore');
+    Route::post('reject-vacancy/{applied_job_id}', 'JobPostController@rejectVacancy')->name('jobPost.rejectVacancy');
 
     //Candidate
     Route::get('candidate-requests', 'CandidateController@requests')->name('candidate.requests');
+    Route::get('view-requested-candidates/{applied_job_id}', 'CandidateController@viewRequested')->name('candidate.viewRequested');
+
+    Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
+    Route::post('forward-candidate/{id}', 'CandidateController@forwardNow')->name('candidate.forwardNow');
     Route::get('candidate-forwarded', 'CandidateController@forwarded')->name('candidate.forwarded');
     Route::get('candidate-reviewed', 'CandidateController@reviewed')->name('candidate.reviewed');
     Route::get('candidate-finalized', 'CandidateController@finalized')->name('candidate.finalized');
@@ -108,7 +116,7 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
     //Job Posts
     Route::get('all-job-post', 'JobPostController@all')->name('jobPost.all');
     Route::get('show-job-post/{id}', 'JobPostController@show')->name('jobPost.show');
-    Route::get('select-candidates/{id}', 'JobPostController@selectCandidates')->name('jobPost.selectCandidates');
+    Route::get('select-candidates/{applied_job_id}', 'JobPostController@selectCandidates')->name('jobPost.selectCandidates');
     Route::get('edit-job-post/{id}', 'JobPostController@edit')->name('jobPost.edit');
     Route::post('update-job-post/{id}', 'JobPostController@update')->name('jobPost.update');
     Route::get('applied-job', 'AppliedJobController@applied')->name('appliedJob.applied');
@@ -116,8 +124,11 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
 
     //Candidates
     Route::get('new-candidates', 'CandidateController@new')->name('candidate.new');
+    Route::post('approve-candidate/{id}', 'CandidateController@approveNow')->name('candidate.approveNow');
+    Route::post('reject-candidate/{id}', 'CandidateController@rejectNow')->name('candidate.rejectNow');
     Route::post('store-candidates', 'CandidateController@store')->name('candidate.store');
     Route::get('all-candidates', 'CandidateController@all')->name('candidate.all');
+    Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
     Route::get('selected-candidates', 'CandidateController@selected')->name('candidate.selected');
     Route::get('view-selected-candidates', 'CandidateController@viewSelected')->name('candidate.viewSelected');
 
@@ -315,6 +326,8 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
 
     // candidates --- ready to travel
     Route::get('new_candidates', 'CandidateController@new_candidates')->name('new_candidates');
+    Route::get('new-candidate-list/{applied_job_id}', 'CandidateController@newCandidateList')->name('candidate.newCandidateList');
+    Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
     Route::get('candidates_result', 'CandidateController@candidates_result')->name('candidates_result');
     Route::get('finalized_candidates', 'CandidateController@finalized_candidates')->name('finalized_candidates');
     Route::get('tickets_booked_list', 'CandidateController@tickets_booked_list')->name('tickets_booked_list');

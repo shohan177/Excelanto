@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\BangladeshAdmin;
 
+use App\AppliedJob;
 use App\JobPost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class JobPostController extends Controller
 {
@@ -15,7 +18,7 @@ class JobPostController extends Controller
      */
     public function index()
     {
-        $job_posts = JobPost::orderby('id', 'DESC')->where('bd_embasy_status', 'approved')->get();
+        $job_posts = JobPost::orderby('id', 'DESC')->where('status', 'Approved')->get();
         return view('BangladeshAdmin.Jobposts.totalJobPost', compact('job_posts'));
 
     }
@@ -25,9 +28,69 @@ class JobPostController extends Controller
         return view('BangladeshAdmin.Jobposts.JobPostsShow', compact('job_post'));
 
     }
+
+    public function viewVacancy($applied_job_id)
+    {
+        $appliedJob = AppliedJob::FindOrFail($applied_job_id);
+        return view('BangladeshAdmin.Jobposts.view-vacancy', compact('appliedJob'));
+
+    }
+
+    public function approveVacancy($applied_job_id)
+    {
+        $appliedJob = AppliedJob::FindOrFail($applied_job_id);
+        return view('BangladeshAdmin.Jobposts.approve-vacancy', compact('appliedJob'));
+
+    }
+
+    public function approveVacancyStore(Request $request,$id)
+    {
+        $request->validate([
+            'approvedVacancy' =>  'required|numeric',
+        ]);
+
+        $appliedJob = AppliedJob::FindOrFail($id);
+
+        $appliedJob->approved_vacancy  = $request->approvedVacancy;
+        $appliedJob->approved_company_name   = Auth::user()->company_name;
+        $appliedJob->approved_by   = Auth::user()->name;
+        $appliedJob->approved_id  = Auth::user()->id;
+        $appliedJob->approved_date   = Carbon::now();
+        $appliedJob->approved_remarks      = $request->comments;
+        $appliedJob->status       = "Approved";
+        try {
+            $appliedJob->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
+
+
+    }
+
+    public function rejectVacancy($id){
+        $appliedJob = AppliedJob::FindOrFail($id);
+        $appliedJob->status = "Rejected";
+        try {
+            $appliedJob->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Rejected'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+
+
     public function vacancy_approval()
     {
-        return view('BangladeshAdmin.Jobposts.VacancyApproval');
+        $appliedVacancies = AppliedJob::all();
+        return view('BangladeshAdmin.Jobposts.VacancyApproval', compact('appliedVacancies'));
 
     }
 

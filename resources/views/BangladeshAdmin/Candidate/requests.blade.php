@@ -1,11 +1,12 @@
 @extends("BangladeshAdmin/master")
 
-@section('title', 'Company Request')
+@section('title', 'Candidate Request')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -54,19 +55,31 @@
 
 
                                 <tbody>
-                                    <tr role="row" class="odd">
-                                        <td>1</td>
-                                        <td>vowmibazaaar</td>
-                                        <td>best buy</td>
-                                        <td>welding</td>
-                                        <td>40</td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#"><i
-                                                class="fa fa-users"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach($appliedJobs as $appliedJob)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $appliedJob->applier_agency_name }}</td>
+                                            <td>{{ $appliedJob->company_name }}</td>
+                                            <td>{{ $appliedJob->jobPost->job_category->category_name }}</td>
+                                            <td>{{ $appliedJob->approved_vacancy }}</td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="{{ route('BangladeshAdmin.candidate.viewRequested', $appliedJob->id) }}"><i class="fa fa-users"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>SL No</th>
+                                        <th>Recruiter Name</th>
+                                        <th>Company Name</th>
+                                        <th>Job Category</th>
+                                        <th>Approved Vacancies</th>
+                                        <th>Candidates</th>
+                                    </tr>
+                                </tfoot>
                             </table>
 
                         </div>
