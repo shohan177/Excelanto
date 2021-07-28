@@ -5,6 +5,7 @@ namespace App\Http\Controllers\RecruitingAgency;
 use App\AppliedJob;
 use App\Candidate;
 use App\Http\Controllers\Controller;
+use App\JobCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -15,7 +16,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 class CandidateController extends Controller
 {
     public function new(){
-        return view('RecruitingAgency.candidate.new');
+        $jobCategories = JobCategory::where('status','active')->get();
+        return view('RecruitingAgency.candidate.new', compact('jobCategories'));
     }
 
     public function all(){

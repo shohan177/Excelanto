@@ -15,7 +15,7 @@ class JobPostSeeder extends Seeder
     {
         for ($i=0; $i < 10; $i++) {
             DB::table('job_posts')->insert([
-                'job_category_id' => rand(1, 10),
+                'job_category_id' => rand(5, 12),
                 'user_id' => rand(1, 10),
                 'company_id' => rand(1, 10),
                 'employment_type' => Str::random(10),

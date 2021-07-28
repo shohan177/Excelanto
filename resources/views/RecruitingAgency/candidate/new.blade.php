@@ -43,11 +43,17 @@
                                                     <label for="candidateName">Candidate Name</label>
                                                     <input type="text" class="form-control" id="candidateName" name="candidateName">
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label for="jobCategory">Job Category</label>
-                                                    <select class="form-control"  name="jobCategory" id="jobCategory">
-                                                        <option value="1">Developer</option>
-                                                        <option value="2">Project Manager</option>
+                                                    <select class="form-control" name="jobCategory" required="">
+                                                        <option value="">Select job category</option>
+                                                        @foreach ($jobCategories as $cat)
+                                                            <option
+                                                                {{ old('jobCategory') == $cat->id ? 'selected' : '' }}
+                                                                value="{{ $cat->id }}">{{ $cat->category_name }}
+                                                            </option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
