@@ -26,7 +26,8 @@ class CandidateController extends Controller
     }
     public function forwarded()
     {
-        return view('BangladeshAdmin.Candidate.forwarded');
+        $forwardedCandidates = Candidate::where('status',"Forwarded")->get();
+        return view('BangladeshAdmin.Candidate.forwarded', compact('forwardedCandidates'));
     }
     public function reviewed()
     {
