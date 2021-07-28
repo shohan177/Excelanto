@@ -59,8 +59,8 @@ class JobPostController extends Controller
 
     public function selectCandidates($applied_job_id)
     {
-        $appliedJOb = AppliedJob::findOrFail($applied_job_id);
-        $candidates = Candidate::where('job_category_id',$appliedJOb->jobPost->job_category->id)
+        $appliedJob = AppliedJob::findOrFail($applied_job_id);
+        $candidates = Candidate::where('job_category_id',$appliedJob->jobPost->job_category->id)
                                ->where('created_id',Auth::user()->id)->get();
         return view('RecruitingAgency.jobPost.select-candidates', compact('candidates'));
     }
