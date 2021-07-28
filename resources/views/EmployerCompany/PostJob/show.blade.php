@@ -46,7 +46,7 @@
 
                             <h3 style="font-weight:bolder;text-align:center;color:blue;">Company Details</h3>
 
-                            <h4 style="font-weight:bolder;text-align:center;">{{ $job_post->company_id}}</h4>
+                            <h4 style="font-weight:bolder;text-align:center;">{{ $job_post->company->company_name}}</h4>
 
                             <h6 style="text-align:center;">recruiter@gmail.com</h6>
 
@@ -79,7 +79,7 @@
                         </div>
                         <div class="panel-body">
                             <strong><i class="fa fa-book mr-1"></i> Job Category</strong>
-                            <p class="text-muted">{{ $job_post->job_category_id}}</p>
+                            <p class="text-muted">{{ $job_post->job_category->category_name}}</p>
 
                             <hr>
 
@@ -120,7 +120,7 @@
                             <hr>
 
                             <strong><i class="fa fa-money mr-1"></i> Salary</strong>
-                            <p class="text-muted">35000</p>
+                            <p class="text-muted">{{ $job_post->salary}}</p>
                           </div>
                     </div>
                 </div>

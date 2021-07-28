@@ -28,6 +28,7 @@ class  JobApprovalController extends Controller
         $new_job->appointment_date = $req->appointmentDate;
         $new_job->appointment_time = $req->appointmentTime;
         $new_job->status = $req->jobPostStatus;
+        $new_job->rejection_reason = $req->reject_reason;
         $new_job->save();
         try {
             $new_job->save();
