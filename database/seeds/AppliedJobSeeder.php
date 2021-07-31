@@ -13,26 +13,26 @@ class AppliedJobSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 10; $i++) {
-            DB::table('applied_jobs')->insert([
-                'job_post_id' => rand(1, 10),
-                'company_id' => rand(1, 10),
-                'applier_id' => rand(1, 10),
-                'selected_medical_id' => rand(1, 10),
-                'selected_training_id' => rand(1, 10),
-                'job_vacancy' => rand(1, 10),
-                'applied_vacancy' => rand(1, 10),
-                'approved_vacancy' => rand(1, 10),
-                'remarks'  => Str::random(10),
-                'applier_agency_name'  => Str::random(10),
-                'datetime'  => now(),
-                'status' => 'active',
-                'approved_by' => 'admin',
-                'approved_date' => now(),
-                'approved_company_name'  => Str::random(10),
-                'approved_id' => rand(1, 10),
-                'approved_remarks'  => Str::random(10),
-           ]);
-       }
+    //     for ($i=0; $i < 10; $i++) {
+    //         DB::table('applied_jobs')->insert([
+    //             'job_post_id' => rand(1, 10),
+    //             'company_id' => rand(1, 10),
+    //             'applier_id' => rand(1, 10),
+    //             'selected_medical_id' => rand(1, 10),
+    //             'selected_training_id' => rand(1, 10),
+    //             'job_vacancy' => rand(1, 10),
+    //             'applied_vacancy' => rand(1, 10),
+    //             'approved_vacancy' => rand(1, 10),
+    //             'remarks'  => Str::random(10),
+    //             'applier_agency_name'  => Str::random(10),
+    //             'datetime'  => now(),
+    //             'status' => 'active',
+    //             'approved_by' => 'admin',
+    //             'approved_date' => now(),
+    //             'approved_company_name'  => Str::random(10),
+    //             'approved_id' => rand(1, 10),
+    //             'approved_remarks'  => Str::random(10),
+    //        ]);
+    //    }
     }
 }
