@@ -65,4 +65,8 @@ class Candidate extends Model
     {
         return $this->hasOne(OfferedCandidate::class, 'candidate_id');
     }
+    public function lost_passport_service()
+    {
+        return $this->hasOne(LostPassportService::class, 'candidate_id');
+    }
 }

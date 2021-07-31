@@ -27,7 +27,6 @@ class CreateOfferedCandidatesTable extends Migration
             $table->unsignedBigInteger('welfare_center_id')->nullable();
             $table->string('candidate_name')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('phone_number')->nullable();
             $table->string('candidate_email')->nullable();
             $table->unsignedBigInteger('candidate_user_id')->nullable();
             $table->string('candidate_password')->nullable();
