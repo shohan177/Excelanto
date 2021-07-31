@@ -89,7 +89,7 @@ class JobPostController extends Controller
 
     public function vacancy_approval()
     {
-        $appliedVacancies = AppliedJob::all();
+        $appliedVacancies = AppliedJob::orderby('id', 'DESC')->get();
         return view('BangladeshAdmin.Jobposts.VacancyApproval', compact('appliedVacancies'));
 
     }

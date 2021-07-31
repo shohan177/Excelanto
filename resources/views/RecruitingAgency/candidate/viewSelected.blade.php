@@ -59,38 +59,51 @@
 
 
                                 <tbody>
+                                    @if ( count($CandidatesList) != 0)
+                                        @foreach ($CandidatesList as $candidate)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $candidate->candidate_name }}</td>
+                                                <td>{{ $candidate->job_category->category_name }}</td>
+                                                <td>{{ $candidate->phone_number }}</td>
+                                                <td>{{ $candidate->candidate_email }}</td>
+                                                <td>
+                                                    @if ($candidate->candidate_picture)
+                                                        <img height="70px;" src="{{ asset($candidate->candidate_picture) }}"
+                                                            width="70px;" class="rounded-circle" />
+                                                    @else
+                                                        <img class="rounded-circle" height="70px;" src="{{asset('assets/images/users/avatar-1.jpg')}}" width="70px;" />
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($candidate->status == 'Active')
+                                                        <span class=" badge badge-info">Active</span>
+                                                    @elseif ($candidate->status == "Reviewed")
+                                                        <span class="badge badge-warning">Reviewed</span>
+                                                    @elseif ($candidate->status == "Forwarded")
+                                                        <span class="badge badge-warning">Forwarded</span>
+                                                    @elseif ($candidate->status == "Interview")
+                                                        <span class="badge badge-warning">Interview</span>
+                                                    @elseif ($candidate->status == "Inactive")
+                                                        <span class="badge badge-danger">Inactive</span>
+                                                    @elseif ($candidate->status == "Selected")
+                                                        <span class="badge badge-success">Selected</span>
+                                                    @else
+                                                    <span class="badge badge-info">{{ $candidate->status }}</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-info btn-sm" href="{{ route('RecruitingAgency.candidate.show',$candidate->id ) }}">
+                                                        <i class="mdi mdi-eye"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
                                     <tr>
-                                        <td>1</td>
-                                        <td>imran</td>
-                                        <td>welding</td>
-                                        <td>01825646464</td>
-                                        <td>imran@gmail.com</td>
-                                        <td>User_image</td>
-                                        <td>
-                                            <span class="badge badge-warning">Reviewed</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
+                                        <td colspan="8">No data available </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>sharif</td>
-                                        <td>cooker</td>
-                                        <td>01825444464</td>
-                                        <td>sharif@gmail.com</td>
-                                        <td>User_image</td>
-                                        <td>
-                                            <span class="badge badge-info">Active</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @endif
                                 </tbody>
                                 <tfoot>
                                     <tr>
