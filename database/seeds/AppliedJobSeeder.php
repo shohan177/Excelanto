@@ -13,6 +13,7 @@ class AppliedJobSeeder extends Seeder
      */
     public function run()
     {
+
         for ($i=0; $i < 10; $i++) {
             DB::table('applied_jobs')->insert([
                 'job_post_id' => rand(1, 10),
@@ -34,5 +35,6 @@ class AppliedJobSeeder extends Seeder
                 'approved_remarks'  => Str::random(10),
            ]);
        }
+
     }
 }
