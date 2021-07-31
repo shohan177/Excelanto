@@ -25,4 +25,9 @@ class Company extends Model
     public function user(){
         return $this->hasOne(User::class, 'company_id');
     }
+
+    public function charity_service()
+    {
+        return $this->hasOne(CharityService::class, 'company_id');
+    }
 }

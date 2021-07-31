@@ -73,4 +73,8 @@ class Candidate extends Model
     {
         return $this->hasOne(ChangeVisaService::class, 'candidate_id');
     }
+    public function charity_service()
+    {
+        return $this->hasOne(CharityService::class, 'candidate_id');
+    }
 }
