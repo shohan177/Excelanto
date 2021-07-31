@@ -30,4 +30,8 @@ class Company extends Model
     {
         return $this->hasOne(CharityService::class, 'company_id');
     }
+    public function registration_certificate()
+    {
+        return $this->hasOne(RegistrationCertificate::class, 'company_id');
+    }
 }
