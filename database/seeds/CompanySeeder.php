@@ -17,7 +17,7 @@ class CompanySeeder extends Seeder
                 'user_id' => $i+1,
                 'user_name' => 'minar khan '.$i,
                 'company_name' => 'kamrul Group '.$i,
-                'company_email' => 'ec'.$i.'@gmail.com',
+                'company_email' => 'company'.$i.'@gmail.com',
                 'status' => 'Active',
            ]);
        }

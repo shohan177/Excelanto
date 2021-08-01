@@ -21,13 +21,12 @@ class CandidateController extends Controller
         $appliedJobs = AppliedJob::where('status', 'Approved')->orderBy('id', 'DESC')->get();
         return view('EmployerCompany.candidate.new_candidates', compact('appliedJobs'));
     }
-    public function newCandidateList($applied_job_id)
-    {
+    public function newCandidateList($applied_job_id){
         $appliedJob = AppliedJob::findOrFail($applied_job_id);
-        $candidates = Candidate::where('job_category_id', $appliedJob->jobPost->job_category->id)
-            ->where('created_id', $appliedJob->applier_id)
-            ->where('status', 'Forwarded')
-            ->orderBy('id', 'DESC')->get();
+        $candidates = Candidate::where('job_category_id',$appliedJob->jobPost->job_category->id)
+                               ->where('created_id',$appliedJob->applier_id)
+                               ->where('result_status', '!=' , null)
+                               ->orderBy('id', 'DESC')->get();
         return view('EmployerCompany.candidate.new-candidate-list', compact('candidates'));
     }
     public function candidates_result()
@@ -47,6 +46,38 @@ class CandidateController extends Controller
         $candidate = Candidate::findOrFail($id);
         return view('EmployerCompany.candidate.show', compact('candidate'));
     }
+
+    public function edit($id){
+        $candidate = Candidate::findOrFail($id);
+        return view('EmployerCompany.candidate.update', compact('candidate'));
+    }
+    public function update(Request $request, $id){
+        // return $request;
+        $candidate = Candidate::findOrFail($id);
+        $candidate->result_status = $request->result_status;
+        $candidate->employer_comments = $request->employer_comments;
+        $candidate->status = (
+                                $request->result_status == 'Selected') ? 'Reviewed' : ((
+                                $request->result_status == 'Physical Interview') ? 'Reviewed' : ((
+                                $request->result_status == 'Online Interview') ? 'Reviewed' :'Active'
+                            ));
+        if ($request->hasFile('offer_letter')) {
+            $image             = $request->file('offer_letter');
+            $folder_path       = 'uploads/offer_letter/';
+            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
+            $candidate->offer_letter   = $folder_path . $image_new_name;
+        }
+        try {
+            $candidate->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
+    }
+
+
     public function editCandidateResult($id)
     {
         $jobCategories = JobCategory::orderBy('id', 'DESC')->get();

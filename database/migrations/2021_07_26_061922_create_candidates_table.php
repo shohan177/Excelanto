@@ -51,7 +51,10 @@ class CreateCandidatesTable extends Migration
             $table->string('pre_training_dt')->nullable();
             $table->string('pre_medical_comments')->nullable();
             $table->string('pre_training_comments')->nullable();
-            $table->enum('status', ['Active', 'Inactive', 'Reviewed', 'Forwarded', 'Interview', 'Selected']);
+            $table->enum('status', ['Active', 'Inactive', 'Selected', 'Reviewed', 'Forwarded', 'Interview', 'confirmed'])->nullable();
+            $table->enum('result_status',['New','Physical Interview','Online Interview','Selected','Rejected'])->nullable();
+            $table->string('offer_letter')->nullable();
+            $table->string('employer_comments')->nullable();
             // $table->string('status')->default('Active');
             $table->timestamps();
         });

@@ -6,21 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class User extends Authenticatable
 {
     use Notifiable;
@@ -53,6 +38,6 @@ class User extends Authenticatable
     ];
 
     public function company(){
-        return $this->belongsTo(Company::class, 'company_id');
+        return $this->hasOne(Company::class);
     }
 }

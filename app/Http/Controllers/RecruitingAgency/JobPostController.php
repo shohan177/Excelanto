@@ -62,7 +62,7 @@ class JobPostController extends Controller
         $appliedJob = AppliedJob::findOrFail($applied_job_id);
         $candidates = Candidate::where('job_category_id',$appliedJob->jobPost->job_category->id)
                                ->where('created_id',Auth::user()->id)->orderBy('id','DESC')->get();
-        return view('RecruitingAgency.jobPost.select-candidates', compact('candidates'));
+        return view('RecruitingAgency.jobPost.select-candidates', compact('candidates', 'appliedJob'));
     }
 
 }

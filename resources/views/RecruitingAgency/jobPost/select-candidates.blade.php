@@ -83,7 +83,7 @@
                                                 @elseif ($candidate->status == "Selected")
                                                     <button type="button" class="btn btn-success btn-xs ">Selected</button>
                                                 @elseif ($candidate->status == "Forwarded")
-                                                    <button type="button" class="btn btn-success btn-xs ">Selected</button>
+                                                    <button type="button" class="btn btn-success btn-xs ">Forwarded</button>
                                                 @elseif ($candidate->status == "Reviewed")
                                                     <button type="button" class="btn btn-success btn-xs ">Reviewed</button>
                                                 @elseif ($candidate->status == "Interview")
@@ -98,12 +98,12 @@
                                                         class="fa fa-eye"></i></a>
                                                 @if ($candidate->status == 'Active')
                                                     <button class="btn btn-success btn-xs" onclick="approve(this)"
-                                                        value="{{ route('RecruitingAgency.candidate.approveNow', $candidate->id) }}">
+                                                        value="{{ route('RecruitingAgency.candidate.approveNow', [$candidate->id, $appliedJob->id]) }}">
                                                         <i class="mdi mdi-check"></i> </button>
                                                 @elseif ($candidate->status == "Inactive")
 
                                                     <button class="btn btn-success btn-xs" onclick="approve(this)" disabled
-                                                        value="{{ route('RecruitingAgency.candidate.approveNow', $candidate->id) }}">
+                                                        value="{{ route('RecruitingAgency.candidate.approveNow', [$candidate->id, $appliedJob->id]) }}">
                                                         <i class="mdi mdi-check"></i> </button>
                                                 @elseif ($candidate->status == "Selected")
                                                     <button class="btn btn-danger btn-xs" onclick="reject(this)"
@@ -116,7 +116,7 @@
                                                         <i class="fa fa-times" aria-hidden="true"></i> </button>
                                                 @elseif ($candidate->status == "Reviewed")
                                                     <button class="btn btn-danger btn-xs" onclick="reject(this)"
-                                                        value="{{ route('RecruitingAgency.candidate.rejectNow', $candidate->id) }}">
+                                                        value="{{ route('RecruitingAgency.candidate.rejectNow', $candidate->id ) }}">
                                                         <i class="fa fa-times" aria-hidden="true"></i> </button>
                                                 @endif
                                             </td>

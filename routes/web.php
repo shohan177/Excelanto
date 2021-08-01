@@ -104,7 +104,7 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
 
     //Candidates
     Route::get('new-candidates', 'CandidateController@new')->name('candidate.new');
-    Route::post('approve-candidate/{id}', 'CandidateController@approveNow')->name('candidate.approveNow');
+    Route::post('approve-candidate/{candidate_id}/{applied_job_id}', 'CandidateController@approveNow')->name('candidate.approveNow');
     Route::post('reject-candidate/{id}', 'CandidateController@rejectNow')->name('candidate.rejectNow');
     Route::post('store-candidates', 'CandidateController@store')->name('candidate.store');
     Route::get('all-candidates', 'CandidateController@all')->name('candidate.all');
@@ -307,8 +307,10 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
     Route::get('new_candidates', 'CandidateController@new_candidates')->name('new_candidates');
     Route::get('new-candidate-list/{applied_job_id}', 'CandidateController@newCandidateList')->name('candidate.newCandidateList');
     Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
-    Route::get('edit-candidate-result/{id}', 'CandidateController@editCandidateResult')->name('candidate.editCandidateResult');
-    Route::post('update-candidate-result/{id}', 'CandidateController@updateCandidateResult')->name('candidate.updateCandidateResult');
+    Route::get('candidate-edit/{id}', 'CandidateController@edit')->name('candidate.edit');
+    Route::post('candidate-update/{id}', 'CandidateController@update')->name('candidate.update');
+    // Route::get('edit-candidate-result/{id}', 'CandidateController@editCandidateResult')->name('candidate.editCandidateResult');
+    // Route::post('update-candidate-result/{id}', 'CandidateController@updateCandidateResult')->name('candidate.updateCandidateResult');
     Route::get('candidates_result', 'CandidateController@candidates_result')->name('candidates_result');
     Route::get('finalized_candidates', 'CandidateController@finalized_candidates')->name('finalized_candidates');
     Route::get('tickets_booked_list', 'CandidateController@tickets_booked_list')->name('tickets_booked_list');
