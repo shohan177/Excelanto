@@ -127,9 +127,12 @@ class CandidateController extends Controller
         }
     }
 
-    public function approveNow($id){
-        $candidate = Candidate::findOrFail($id);
+    public function approveNow($candidate_id, $applied_job_id){
+        $appliedJob = AppliedJob::findOrFail($applied_job_id);
+        $candidate = Candidate::findOrFail($candidate_id);
         $candidate->status = "Selected";
+        $candidate->job_id = $appliedJob->job_post_id;
+        $candidate->company_id = $appliedJob->company_id;
         try {
             $candidate->save();
             return response()->json([
@@ -147,6 +150,8 @@ class CandidateController extends Controller
     public function rejectNow($id){
         $candidate = Candidate::findOrFail($id);
         $candidate->status = "Active";
+        $candidate->job_id = null;
+        $candidate->company_id = null;
         try {
             $candidate->save();
             return response()->json([

@@ -58,12 +58,15 @@
                                         class="float-right badge badge-info">{{ $candidate->status }}</span>
                                 </li>
                             </ul>
-                            @if ($candidate->status == 'Reviewed')
+                            
+                            <a href="{{ route('EmployerCompany.candidate.edit', $candidate->id ) }}" class="btn btn-primary btn-block"><b><i class="fa fa-pencil mr-1"></i> Result</b></a>
+
+                            {{-- @if ($candidate->status == 'Reviewed')
                                 <button type="button" disabled class="btn btn-primary btn-block "> <i
                                         class="fa fa-pencil mr-1"></i> Result</b></button>
                             @else
                                 <a href="{{ route('EmployerCompany.candidate.editCandidateResult', $candidate->id) }}" class="btn btn-primary btn-block"><b><i class="fa fa-pencil mr-1"></i>Result</b></a>
-                            @endif
+                            @endif --}}
                             <a href="#" download class="btn btn-secondary btn-block"> <b> <i class="fa fa-download"></i> Bio-data </b></a>
                             <a href="#" download class="btn btn-secondary btn-block"><b><i class="fa fa-download"></i> Passport </b></a>
                         </div>

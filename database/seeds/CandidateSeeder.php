@@ -17,16 +17,16 @@ class CandidateSeeder extends Seeder
     {
         for ($i=0; $i < 10; $i++) {
             DB::table('candidates')->insert([
-                'candidate_name' =>   Str::random(10),
+                'candidate_name' =>   'Demo Nmae '. $i,
                 'role_id' => 15,
                 'job_id' => rand(1, 10),
                 'company_id' => rand(1, 10),
                 'job_category_id' => rand(1, 10),
                 'candidate_dob' => '2021-30-07',
                 'candidate_gender' => 'male',
-                'passport_number' => Str::random(10),
+                'passport_number' => Str::random(18),
                 'phone_number' => '01856230550',
-                'candidate_email' => Str::random(10). '@gmail.com',
+                'candidate_email' => 'demon'. $i. '@gmail.com',
                 'status' => 'Active',
                 'nationality' => 'bangladesh',
                 'present_address' => 'dhaka bangladesh',

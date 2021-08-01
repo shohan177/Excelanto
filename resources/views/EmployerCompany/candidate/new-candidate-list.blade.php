@@ -75,10 +75,10 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($candidate->status == "Forwarded")
-                                                    <span class="badge badge-warning">Forwarded</span>
+                                                @if ($candidate->result_status == "New")
+                                                    <span class="badge badge-success">New</span>
                                                 @else
-                                                    <span class="badge badge-info">{{ $candidate->status }}</span>
+                                                    <span class="badge badge-info">{{ $candidate->result_status }}</span>
                                                 @endif
                                             </td>
                                             <td>

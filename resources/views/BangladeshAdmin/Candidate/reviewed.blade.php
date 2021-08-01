@@ -55,23 +55,24 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>din</td>
-                                        <td>welding</td>
-                                        <td>sharifshuvo00@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" name="Under-Interview-Process"
-                                                class="btn btn-warning btn-xs update">Under-Process</button>
+                                    @foreach ($ReviewedCandidates as $candidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $candidate->candidate_name }}</td>
+                                            <td>{{ $candidate->job_category->category_name }}</td>
+                                            <td>{{ $candidate->candidate_email }}</td>
+                                            <td>{{ $candidate->phone_number }}</td>
+                                            <td>
+                                                <span class="btn btn-success btn-sm">{{ $candidate->result_status == 'Selected' ? $candidate->result_status : 'Under Process'  }}</span>
                                             </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="#">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                            <td>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('BangladeshAdmin.candidate.show', $candidate->id) }}">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
