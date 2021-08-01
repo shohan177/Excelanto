@@ -60,7 +60,7 @@ class CandidateController extends Controller
             'resultStatus' =>  'required',
         ]);
         $candidate = Candidate::findOrFail($id);
-        $candidate->status = $request->resultStatus;
+        $candidate->status = "Reviewed";
         $candidate->save();
 
         $offeredCandidate = new OfferedCandidate();
