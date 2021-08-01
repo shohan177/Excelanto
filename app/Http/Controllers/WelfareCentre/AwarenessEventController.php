@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 class  AwarenessEventController extends Controller
 {
     public function create(){
-        $eventCategories = EventCategory::where('status','active')->get();
+        $eventCategories = EventCategory::where('status','active')->orderBy('id','DESC')->get();
         return view('WelfareCentre.AwarenessEvent.create', compact('eventCategories'));
     }
     public function upcoming_events(){
-        $upcomingEvents = AwarenessEvent::whereDate('event_date', '>=', Carbon::now())->get();
+        $upcomingEvents = AwarenessEvent::whereDate('event_date', '>=', Carbon::now())->orderBy('id','DESC')->get();
         return view('WelfareCentre.AwarenessEvent.upcoming', compact('upcomingEvents'));
     }
     public function total_events(){
@@ -58,7 +58,7 @@ class  AwarenessEventController extends Controller
 
     public function edit($id){
         $awarenessEvent = AwarenessEvent::findOrFail($id);
-        $eventCategories = EventCategory::where('status','active')->get();
+        $eventCategories = EventCategory::where('status','active')->orderBy('id','DESC')->get();
         return view('WelfareCentre.AwarenessEvent.edit', compact('awarenessEvent','eventCategories'));
     }
 

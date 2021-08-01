@@ -22,7 +22,7 @@ class PostJobController extends Controller
      */
     public function index()
     {
-        $job_posts = JobPost::orderby('id', 'DESC')->where('company_id',Auth::user()->id)->get();
+        $job_posts = JobPost::where('company_id',Auth::user()->id)->orderBy('id','DESC')->get();
         return view('EmployerCompany.PostJob.index', compact('job_posts'));
     }
 
@@ -33,8 +33,8 @@ class PostJobController extends Controller
      */
     public function create()
     {
-        $job_categories = JobCategory::where('status','active')->get();
-        $welfares = User::where('user_type','welfare-service-center-company')->get();
+        $job_categories = JobCategory::where('status','active')->orderBy('id','DESC')->get();
+        $welfares = User::where('user_type','welfare-service-center-company')->orderBy('id','DESC')->get();
         return view('EmployerCompany.PostJob.create', compact('job_categories','welfares'));
     }
 

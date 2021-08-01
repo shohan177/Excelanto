@@ -16,12 +16,12 @@ use Intervention\Image\ImageManagerStatic as Image;
 class CandidateController extends Controller
 {
     public function new(){
-        $jobCategories = JobCategory::where('status','active')->get();
+        $jobCategories = JobCategory::where('status','active')->orderBy('id','DESC')->get();
         return view('RecruitingAgency.candidate.new', compact('jobCategories'));
     }
 
     public function all(){
-        $candidates = Candidate::where('created_id', Auth::user()->id)->get();
+        $candidates = Candidate::where('created_id', Auth::user()->id)->orderBy('id','DESC')->get();
         return view('RecruitingAgency.candidate.all', compact('candidates'));
     }
 
@@ -31,12 +31,12 @@ class CandidateController extends Controller
     }
 
     public function selected(){
-        $selectedCandidates = AppliedJob::where('applier_id', Auth::user()->id)->get();
+        $selectedCandidates = AppliedJob::where('applier_id', Auth::user()->id)->orderBy('id','DESC')->get();
         return view('RecruitingAgency.candidate.selected', compact('selectedCandidates'));
     }
 
     public function viewSelected($id){
-        $CandidatesList = Candidate::where('job_id', $id)->get();
+        $CandidatesList = Candidate::where('job_id', $id)->orderBy('id','DESC')->get();
         return view('RecruitingAgency.candidate.viewSelected', compact('CandidatesList'));
     }
 

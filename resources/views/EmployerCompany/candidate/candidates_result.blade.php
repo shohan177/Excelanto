@@ -65,8 +65,7 @@
                                         <td>01756492875</td>
                                         <td><button type="button" name="Under-Interview-Process"
                                                 class="btn btn-warning btn-xs update">Under-Process</button></td>
-                                        <td><a class="btn btn-info btn-xs"
-                                                href="#">
+                                        <td><a class="btn btn-info btn-xs" href="#">
                                                 <i class="fa fa-eye"></i></a></td>
                                     </tr>
                                 </tbody>
