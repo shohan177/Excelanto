@@ -13,6 +13,7 @@ class AppliedJobSeeder extends Seeder
      */
     public function run()
     {
+
         for ($i=0; $i < 10; $i++) {
             DB::table('applied_jobs')->insert([
                 'job_post_id' => rand(1, 10),
@@ -20,13 +21,13 @@ class AppliedJobSeeder extends Seeder
                 'applier_id' => rand(1, 10),
                 'selected_medical_id' => rand(1, 10),
                 'selected_training_id' => rand(1, 10),
-                'job_vacancy' => rand(1, 10),
-                'applied_vacancy' => rand(1, 10),
-                'approved_vacancy' => rand(1, 10),
+                'job_vacancy' => rand(50, 99),
+                'applied_vacancy' => rand(30, 50),
+                'approved_vacancy' => rand(20, 30),
                 'remarks'  => Str::random(10),
                 'applier_agency_name'  => Str::random(10),
                 'datetime'  => now(),
-                'status' => 'active',
+                'status' => $i % 2 == 0 ? 'Approved' : 'Applied',
                 'approved_by' => 'admin',
                 'approved_date' => now(),
                 'approved_company_name'  => Str::random(10),
@@ -34,5 +35,6 @@ class AppliedJobSeeder extends Seeder
                 'approved_remarks'  => Str::random(10),
            ]);
        }
+
     }
 }

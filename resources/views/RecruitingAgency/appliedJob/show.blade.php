@@ -34,17 +34,17 @@
                         </div>
                         <div class="panel-body">
                             <strong><i class="fa fa-book mr-1"></i> Company Name</strong>
-                            <p class="text-muted">{{  $appliedJob->jobPost->company->company_name}}</p>
+                            <p class="text-muted">{{  $appliedJob->company->company_name ?? ''}}</p>
 
                             <hr>
 
-                            <strong><i class="fas fa-pencil-alt mr-1"></i> Job Category</strong>
-                            <p class="text-muted">{{  $appliedJob->jobPost->job_category->category_name}}</p>
+                            <strong><i class="fa fa-pencil mr-1"></i> Job Category</strong>
+                            <p class="text-muted">{{  $appliedJob->jobPost->job_category->category_name ?? ''}}</p>
 
                             <hr>
 
-                            <strong><i class="far fa-envelope mr-1"></i> Total Vacancies</strong>
-                            <p class="text-muted">{{  $appliedJob->job_vacancy}}</p>
+                            <strong><i class="fa fa-envelope mr-1"></i> Total Vacancies</strong>
+                            <p class="text-muted">{{  $appliedJob->job_vacancy ?? ''}}</p>
 
 
                         </div>
@@ -66,7 +66,7 @@
 
                             <hr>
 
-                            <strong><i class="fas fa-pencil-alt mr-1"></i> Remarks / Comments</strong>
+                            <strong><i class="fa fa-pencil mr-1"></i> Remarks / Comments</strong>
                             <p class="text-muted">{{  $appliedJob->remarks}}</p>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
 
                             <hr>
 
-                            <strong><i class="fas fa-pencil-alt mr-1"></i> Remarks / Comments</strong>
+                            <strong><i class="fa fa-pencil mr-1"></i> Remarks / Comments</strong>
                             <p class="text-muted">{{  $appliedJob->approved_remarks}}</p>
                         </div>
                         <div class="panel-footer">

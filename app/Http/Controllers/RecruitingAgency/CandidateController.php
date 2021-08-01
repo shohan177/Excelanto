@@ -35,11 +35,13 @@ class CandidateController extends Controller
         return view('RecruitingAgency.candidate.selected', compact('selectedCandidates'));
     }
 
-    public function viewSelected(){
-        return view('RecruitingAgency.candidate.viewSelected');
+    public function viewSelected($id){
+        $CandidatesList = Candidate::where('job_id', $id)->get();
+        return view('RecruitingAgency.candidate.viewSelected', compact('CandidatesList'));
     }
 
     public function store(Request $request){
+        // return $request;
         $request->validate([
             'candidateName' => ['required', 'string', 'max:255'],
             'jobCategory' =>  'required',
@@ -51,10 +53,10 @@ class CandidateController extends Controller
             'status' =>  'required'
         ]);
 
+        // return $request;
+
 
         $candidate = new Candidate();
-
-
         $candidate->candidate_name    =   $request->candidateName;
         $candidate->role_id    = 15;
         $candidate->job_category_id    = $request->jobCategory;
@@ -63,7 +65,7 @@ class CandidateController extends Controller
         $candidate->passport_number    = $request->passportNo;
         $candidate->phone_number    = $request->phoneNo;
         $candidate->candidate_email    = $request->email;
-        $candidate->status    = $request->status;
+        $candidate->status    = $request->status == 'Active' ? 1 : 0;
         $candidate->nationality    = $request->nationality;
         $candidate->present_address    = $request->presentAddress;
         $candidate->permanent_address    = $request->permanentAddress;

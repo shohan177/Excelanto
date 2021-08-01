@@ -71,7 +71,7 @@
                                                     <img height="70px;" src="{{ asset($candidate->candidate_picture) }}"
                                                         width="70px;" class="rounded-circle" />
                                                 @else
-                                                    User_image
+                                                    <img class="rounded-circle" height="70px;" src="{{asset('assets/images/users/avatar-1.jpg')}}" width="70px;" />
                                                 @endif
                                             </td>
                                             <td>
