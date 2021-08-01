@@ -33,6 +33,7 @@ Route::group(['prefix' => 'super-admin/', 'namespace' => 'SuperAdmin', 'as' => '
 Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin', 'as' => 'BangladeshAdmin.', 'middleware' => ['auth', 'bangladesh-admin']], function () {
     Route::get('/dashboard', 'BangladeshAdminDashboardController@dashboard')->name('dashboard');
 
+
     //    Recruiting agency
     Route::get('company_request', 'RecruitingAgencieController@company_request')->name('company_request');
     Route::post('company_request-approve/{company_id}', 'RecruitingAgencieController@approveNow')->name('company_requestApprove');
@@ -61,6 +62,24 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     Route::get('bangladesh-embassy-approved-request', 'BangladeshEmbassyController@approved')->name('bangladeshEmbassy.approved');
     Route::get('bangladesh-embassy-rejected-request', 'BangladeshEmbassyController@rejected')->name('bangladeshEmbassy.rejected');
 
+    Route::get('company_request', 'RecruitingAgencieController@company_request')->name('company_request');
+
+    //    one stop services
+    Route::get('oss_company_request', 'OneStopServiceController@oss_company_request')->name('oss_company_request');
+    Route::get('oss_approved_request', 'OneStopServiceController@oss_approved_request')->name('oss_approved_request');
+    Route::get('oss_rejected_request', 'OneStopServiceController@oss_rejected_request')->name('oss_rejected_request');
+
+    //    Welfare service centers
+    Route::get('welfare_company_request', 'WelfareServiceCenterController@welfare_company_request')->name('welfare_company_request');
+    Route::get('welfare_approved_request', 'WelfareServiceCenterController@welfare_approved_request')->name('welfare_approved_request');
+    Route::get('welfare_rejected_request', 'WelfareServiceCenterController@welfare_rejected_request')->name('welfare_rejected_request');
+
+    //    Bangladesh Embassy
+    Route::get('bangladesh_embassy_request', 'BangladeshEmbassyController@bangladesh_embassy_request')->name('bangladesh_embassy_request');
+    Route::get('bangladesh_embassy_approved_request', 'BangladeshEmbassyController@bangladesh_embassy_approved_request')->name('bangladesh_embassy_approved_request');
+    Route::get('bangladesh_embassy_rejected_request', 'BangladeshEmbassyController@bangladesh_embassy_rejected_request')->name('bangladesh_embassy_rejected_request');
+
+
     //job posts
     Route::get('total-job-post', 'JobPostController@index')->name('total_job_post.index');
     Route::get('job-posts-show/{id}', 'JobPostController@JobPostShow')->name('JobPostShow');
@@ -85,6 +104,7 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     Route::get('visa-process-requests', 'VisaProcessController@requests')->name('visa_process.requests');
     Route::get('visa-process-approved', 'VisaProcessController@approved')->name('visa_process.approved');
     Route::get('visa-process-rejected', 'VisaProcessController@rejected')->name('visa_process.rejected');
+
 });
 
 
@@ -111,6 +131,7 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
     Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
     Route::get('selected-candidates', 'CandidateController@selected')->name('candidate.selected');
     Route::get('view-selected-candidates', 'CandidateController@viewSelected')->name('candidate.viewSelected');
+
 });
 
 // Welfare Company route
