@@ -71,7 +71,7 @@
                                                         <i class="fa fa-eye"></i></a>
                                                 @elseif ($selectedCandidate->status == "Approved")
                                                     <a class="btn btn-info btn-sm"
-                                                        href="{{ route('RecruitingAgency.candidate.viewSelected') }}"><i
+                                                        href="{{ route('RecruitingAgency.candidate.viewSelected', $selectedCandidate->job_post_id) }}"><i
                                                             class="fa fa-users"></i></a>
                                                 @endif
                                             </td>

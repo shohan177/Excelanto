@@ -35,13 +35,14 @@
                         <div class="panel-body">
                             <form role="form" action="{{ route('RecruitingAgency.candidate.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                @include('includes.errors')
                                 <div class="row">
                                     <!-- Basic example -->
                                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                             <div class="panel-body">
                                                 <div class="form-group">
                                                     <label for="candidateName">Candidate Name</label>
-                                                    <input type="text" class="form-control" id="candidateName" name="candidateName">
+                                                    <input type="text" class="form-control" id="candidateName" name="candidateName" value="{{ old('candidateName') }}">
                                                 </div>
 
                                                 <div class="form-group">
@@ -58,31 +59,31 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="dateOfBirth">Date of Birth</label>
-                                                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
+                                                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" value="{{ old('dateOfBirth') }}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="gender">Gender</label>
                                                     <select class="form-control"  name="gender" id="gender">
                                                         <option value="">Select Gender</option>
-                                                        <option value="male">Male</option>
-                                                        <option value="female">Female</option>
+                                                        <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
+                                                        <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="passportNo">Passport Number</label>
-                                                    <input type="text" class="form-control" name="passportNo" id="passportNo">
+                                                    <input type="text" class="form-control" name="passportNo" id="passportNo" value="{{ old('passportNo') }}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="phoneNo">Phone Number</label>
-                                                    <input type="text" class="form-control" name="phoneNo" id="phoneNo">
+                                                    <input type="text" class="form-control" name="phoneNo" id="phoneNo" value="{{ old('phoneNo') }}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email">Email</label>
-                                                    <input type="email" class="form-control" name="email" id="email">
+                                                    <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nationality">Nationality</label>
-                                                    <input type="text" class="form-control" id="nationality" name="nationality">
+                                                    <input type="text" class="form-control" id="nationality" name="nationality" value="{{ old('nationality') }}">
                                                 </div>
                                             </div><!-- panel-body -->
                                     </div> <!-- col-->
@@ -91,18 +92,18 @@
                                             <div class="panel-body">
                                                 <div class="form-group">
                                                     <label for="presentAddress">Present address</label>
-                                                    <textarea class="form-control"  name="presentAddress" id="presentAddress" type="text" cols="30" rows="2"></textarea>
+                                                    <textarea class="form-control"  name="presentAddress" id="presentAddress" type="text" cols="30" rows="2">{{ old('presentAddress') }}</textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="permanentAddress">Permanent address</label>
-                                                    <textarea class="form-control"  name="permanentAddress" id="permanentAddress" type="text" cols="30" rows="2"></textarea>
+                                                    <textarea class="form-control"  name="permanentAddress" id="permanentAddress" type="text" cols="30" rows="2" >{{ old('permanentAddress') }}</textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="status">Status</label>
                                                     <select class="form-control"  name="status" id="status">
                                                         <option value="">Select Status</option>
-                                                        <option @if(old('status') == "Active") selected @endif value="Active">Active</option>
-                                                        <option @if(old('status') == "Inactive") selected @endif value="Inactive">Inactive</option>
+                                                        <option value="Active" {{ old('status') == 'Active' ? 'selected' : '' }}>Active</option>
+                                                        <option value="Inactive" {{ old('status') == 'Inactive' ? 'selected' : '' }}>Inactive</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">

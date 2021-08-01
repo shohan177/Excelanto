@@ -60,4 +60,21 @@ class Candidate extends Model
     {
         return $this->belongsTo(JobCategory::class, 'job_category_id');
     }
+
+    public function offered_candidate()
+    {
+        return $this->hasOne(OfferedCandidate::class, 'candidate_id');
+    }
+    public function lost_passport_service()
+    {
+        return $this->hasOne(LostPassportService::class, 'candidate_id');
+    }
+    public function change_visa_service()
+    {
+        return $this->hasOne(ChangeVisaService::class, 'candidate_id');
+    }
+    public function charity_service()
+    {
+        return $this->hasOne(CharityService::class, 'candidate_id');
+    }
 }
