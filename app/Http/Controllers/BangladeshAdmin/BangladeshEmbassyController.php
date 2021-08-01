@@ -9,17 +9,17 @@ use App\User;
 class BangladeshEmbassyController extends Controller
 {
     public function request(){
-        $users = User::where('user_type','bangladeshi-embassy')->where('active_status', 'Pending')->get();
+        $users = User::where('user_type','bangladeshi-embassy')->where('active_status', 'Pending')->orderBy('id','DESC')->get();
         return view('BangladeshAdmin.bangladeshEmbassy.request', compact('users'));
     }
 
     public function approved(){
-        $users = User::where('user_type','bangladeshi-embassy')->where('active_status', 'Approved')->get();
+        $users = User::where('user_type','bangladeshi-embassy')->where('active_status', 'Approved')->orderBy('id','DESC')->get();
         return view('BangladeshAdmin.bangladeshEmbassy.approved', compact('users'));
     }
 
     public function rejected(){
-        $users = User::where('user_type','bangladeshi-embassy')->where('active_status', 'Rejected')->get();
+        $users = User::where('user_type','bangladeshi-embassy')->where('active_status', 'Rejected')->orderBy('id','DESC')->get();
         return view('BangladeshAdmin.bangladeshEmbassy.rejected', compact('users'));
     }
 

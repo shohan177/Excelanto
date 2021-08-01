@@ -12,17 +12,17 @@ use Intervention\Image\ImageManagerStatic as Image;
 class EmployerDemandController extends Controller
 {
     public function received(){
-        $job_posts = JobPost::orderBy('id','desc')->get();
+        $job_posts = JobPost::orderBy('id','DESC')->get();
         return view('BangladeshEmbassy.employerDemand.received',compact('job_posts'));
     }
 
     public function approved(){
-        $job_posts = JobPost::where('status','Approved')->get();
+        $job_posts = JobPost::where('status','Approved')->orderBy('id','DESC')->get();
         return view('BangladeshEmbassy.employerDemand.approved',compact('job_posts'));
     }
 
     public function rejected(){
-        $job_posts = JobPost::where('status','Rejected')->get();
+        $job_posts = JobPost::where('status','Rejected')->orderBy('id','DESC')->get();
         return view('BangladeshEmbassy.employerDemand.rejected',compact('job_posts'));
     }
 

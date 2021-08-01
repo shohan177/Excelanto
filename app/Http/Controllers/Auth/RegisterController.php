@@ -157,8 +157,8 @@ class RegisterController extends Controller
         ]);
     }
     public function showRegistrationForm(){
-        $countries=Country::where('status','active')->get();
-        $roles=Role::where('status','active')->get();
+        $countries=Country::where('status','active')->orderBy('id','DESC')->get();
+        $roles=Role::where('status','active')->orderBy('id','DESC')->get();
         return view('auth.register', compact('countries','roles'));
     }
 }

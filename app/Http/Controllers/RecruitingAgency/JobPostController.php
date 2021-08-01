@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class JobPostController extends Controller
 {
     public function all(){
-        $jobPosts = JobPost::where('status','Approved')->get();
+        $jobPosts = JobPost::where('status','Approved')->orderBy('id','DESC')->get();
         return view('RecruitingAgency.jobPost.all', compact('jobPosts'));
     }
 
@@ -61,7 +61,7 @@ class JobPostController extends Controller
     {
         $appliedJob = AppliedJob::findOrFail($applied_job_id);
         $candidates = Candidate::where('job_category_id',$appliedJob->jobPost->job_category->id)
-                               ->where('created_id',Auth::user()->id)->get();
+                               ->where('created_id',Auth::user()->id)->orderBy('id','DESC')->get();
         return view('RecruitingAgency.jobPost.select-candidates', compact('candidates'));
     }
 

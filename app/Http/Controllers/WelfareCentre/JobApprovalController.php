@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class  JobApprovalController extends Controller
 {
     public function NewJobPost(){
-        $new_jobs = JobPost::orderby('id', 'DESC')->get();
+        $new_jobs = JobPost::orderBy('id','DESC')->get();
         return view('WelfareCentre.JobApproval.newJobs.newJobPosts', compact('new_jobs'));
     }
 
@@ -38,7 +38,7 @@ class  JobApprovalController extends Controller
         }
     }
     public function jobApproved(){
-        $new_jobs = JobPost::orderby('id', 'DESC')->where('status', 'Approved')->get();
+        $new_jobs = JobPost::where('status', 'Approved')->orderBy('id','DESC')->get();
         return view('WelfareCentre.JobApproval.JobsApproved.jobApproved', compact('new_jobs'));
     }
 }

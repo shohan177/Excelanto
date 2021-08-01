@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CandidateController extends Controller
 {
     public function new_candidates(){
-        $appliedJobs = AppliedJob::where('status','Approved')->get();
+        $appliedJobs = AppliedJob::where('status','Approved')->orderBy('id','DESC')->get();
         return view('EmployerCompany.candidate.new_candidates', compact('appliedJobs'));
     }
     public function newCandidateList($applied_job_id){
@@ -18,7 +18,7 @@ class CandidateController extends Controller
         $candidates = Candidate::where('job_category_id',$appliedJob->jobPost->job_category->id)
                                ->where('created_id',$appliedJob->applier_id)
                                ->where('status','Forwarded')
-                               ->get();
+                               ->orderBy('id','DESC')->get();
         return view('EmployerCompany.candidate.new-candidate-list', compact('candidates'));
     }
     public function candidates_result(){
