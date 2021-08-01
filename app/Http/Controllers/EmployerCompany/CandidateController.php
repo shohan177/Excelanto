@@ -5,6 +5,7 @@ namespace App\Http\Controllers\EmployerCompany;
 use App\AppliedJob;
 use App\Candidate;
 use App\Http\Controllers\Controller;
+use App\JobCategory;
 use Illuminate\Http\Request;
 
 class CandidateController extends Controller
@@ -33,5 +34,10 @@ class CandidateController extends Controller
     public function show($id){
         $candidate = Candidate::findOrFail($id);
         return view('EmployerCompany.candidate.show', compact('candidate'));
+    }
+    public function editCandidateResult($id){
+        $jobCategories = JobCategory::orderBy('id','DESC')->get();
+        $candidate = Candidate::findOrFail($id);
+        return view('EmployerCompany.candidate.edit-candidate-result', compact('candidate','jobCategories'));
     }
 }
