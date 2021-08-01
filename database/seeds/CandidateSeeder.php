@@ -31,7 +31,7 @@ class CandidateSeeder extends Seeder
                 'nationality' => 'bangladesh',
                 'present_address' => 'dhaka bangladesh',
                 'permanent_address' => 'bahrain',
-                'created_id' => rand(1, 10),
+                'created_id' => 3,
                 'created_at' => Carbon::now(),
             ]);
        }

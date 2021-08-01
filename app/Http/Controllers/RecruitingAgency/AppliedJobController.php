@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class AppliedJobController extends Controller
 {
     public function applied(){
-        $appliedJobs = AppliedJob::where('applier_id', Auth::user()->id)->orderby('id', 'DESC')->get();;
+        $appliedJobs = AppliedJob::where('applier_id', Auth::user()->id)->orderBy('id','DESC')->get();;
         return view('RecruitingAgency.appliedJob.applied', compact('appliedJobs'));
     }
 

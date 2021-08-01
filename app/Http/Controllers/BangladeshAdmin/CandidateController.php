@@ -12,7 +12,7 @@ class CandidateController extends Controller
 
     public function requests()
     {
-        $appliedJobs = AppliedJob::where('status', 'Approved')->get();
+        $appliedJobs = AppliedJob::where('status', 'Approved')->orderBy('id','DESC')->get();
         return view('BangladeshAdmin.Candidate.requests', compact('appliedJobs'));
     }
     public function viewRequested($applied_job_id)
@@ -20,13 +20,13 @@ class CandidateController extends Controller
         $appliedJob = AppliedJob::findOrFail($applied_job_id);
         $selectedCandidates = Candidate::where('job_category_id',$appliedJob->jobPost->job_category->id)
                                        ->where('created_id',$appliedJob->applier_id)
-                                       ->where('status',"Selected")->get();
+                                       ->where('status',"Selected")->orderBy('id','DESC')->get();
 
         return view('BangladeshAdmin.Candidate.view-requests', compact('selectedCandidates'));
     }
     public function forwarded()
     {
-        $forwardedCandidates = Candidate::where('status',"Forwarded")->get();
+        $forwardedCandidates = Candidate::where('status',"Forwarded")->orderBy('id','DESC')->get();
         return view('BangladeshAdmin.Candidate.forwarded', compact('forwardedCandidates'));
     }
     public function reviewed()

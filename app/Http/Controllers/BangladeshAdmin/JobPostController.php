@@ -18,7 +18,7 @@ class JobPostController extends Controller
      */
     public function index()
     {
-        $job_posts = JobPost::orderby('id', 'DESC')->where('status', 'Approved')->get();
+        $job_posts = JobPost::orderBy('id', 'DESC')->where('status', 'Approved')->get();
         return view('BangladeshAdmin.Jobposts.totalJobPost', compact('job_posts'));
 
     }
