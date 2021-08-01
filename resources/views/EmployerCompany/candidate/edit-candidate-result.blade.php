@@ -34,7 +34,7 @@
                             <h3 class="panel-title">Update result for the candidate</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" action="{{ route('RecruitingAgency.candidate.store') }}" method="POST"
+                            <form role="form" action="{{ route('EmployerCompany.candidate.updateCandidateResult', $candidate->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @include('includes.errors')
@@ -63,7 +63,7 @@
                                                 <select disabled class="form-control" name="jobCategory">
                                                     <option value="">Select job category</option>
                                                     @foreach ($jobCategories as $cat)
-                                                        <option @if ($candidate->job_category->id == $cat->id) selected @endif
+                                                        <option @if ($candidate->job_category_id == $cat->id) selected @endif
                                                             value="{{ $cat->id }}">{{ $cat->category_name }}
                                                         </option>
                                                     @endforeach
