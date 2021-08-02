@@ -89,7 +89,7 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
 
 
 // recruiting agency route
-Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency', 'as' => 'RecruitingAgency.','middleware' => ['auth', 'recruiting-agency']], function () {
+Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency', 'as' => 'RecruitingAgency.', 'middleware' => ['auth', 'recruiting-agency']], function () {
     Route::get('/dashboard', 'RecruitingAgencyDashboardController@dashboard')->name('dashboard');
     Route::post('/company-prfile-submit', 'RecruitingAgencyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
@@ -114,7 +114,7 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
 });
 
 // Welfare Company route
-Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as' => 'WelfareCentre.','middleware' => ['auth', 'welfare-centre']], function () {
+Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as' => 'WelfareCentre.', 'middleware' => ['auth', 'welfare-centre']], function () {
 
     Route::get('/dashboard', 'WelfareDashboardController@dashboard')->name('dashboard');
     Route::post('/company-prfile-submit', 'WelfareDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
@@ -267,6 +267,10 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('rejected-biometric-agency', 'BiometricAgencyController@rejected')->name('biometricAgency.rejected');
 
     // candidate
+    Route::get('show-reviewed-candidate/{Offered_candidate_id}', 'CandidateController@showReviewedCandidate')->name('candidate.showReviewedCandidate');
+    Route::get('assign-selected-candidate/{Offered_candidate_id}', 'CandidateController@assignSelectedCandidate')->name('candidate.assignSelectedCandidate');
+    Route::post('assign-selected-candidate-store/{Offered_candidate_id}', 'CandidateController@assignSelectedCandidateStore')->name('candidate.assignSelectedCandidateStore');
+    Route::get('selected-candidate', 'CandidateController@selected')->name('candidate.request');
     Route::get('selected-candidate', 'CandidateController@selected')->name('candidate.request');
     Route::get('interview-candidate', 'CandidateController@interview')->name('candidate.approved');
     Route::get('finalized-candidate', 'CandidateController@finalized')->name('candidate.rejected');
@@ -289,7 +293,7 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
 
 
 // employer_company Route
-Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany', 'as' => 'EmployerCompany.','middleware' => ['auth', 'employer-company']], function () {
+Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany', 'as' => 'EmployerCompany.', 'middleware' => ['auth', 'employer-company']], function () {
     Route::get('/dashboard', 'EmployerCompanyDashboardController@dashboard')->name('dashboard');
     Route::post('/company-prfile-submit', 'EmployerCompanyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
@@ -307,10 +311,10 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
     Route::get('new_candidates', 'CandidateController@new_candidates')->name('new_candidates');
     Route::get('new-candidate-list/{applied_job_id}', 'CandidateController@newCandidateList')->name('candidate.newCandidateList');
     Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
-    Route::get('candidate-edit/{id}', 'CandidateController@edit')->name('candidate.edit');
-    Route::post('candidate-update/{id}', 'CandidateController@update')->name('candidate.update');
-    // Route::get('edit-candidate-result/{id}', 'CandidateController@editCandidateResult')->name('candidate.editCandidateResult');
-    // Route::post('update-candidate-result/{id}', 'CandidateController@updateCandidateResult')->name('candidate.updateCandidateResult');
+    // Route::get('candidate-edit/{id}', 'CandidateController@edit')->name('candidate.edit');
+    // Route::post('candidate-update/{id}', 'CandidateController@update')->name('candidate.update');
+    Route::get('edit-candidate-result/{id}', 'CandidateController@editCandidateResult')->name('candidate.editCandidateResult');
+    Route::post('update-candidate-result/{id}', 'CandidateController@updateCandidateResult')->name('candidate.updateCandidateResult');
     Route::get('candidates_result', 'CandidateController@candidates_result')->name('candidates_result');
     Route::get('finalized_candidates', 'CandidateController@finalized_candidates')->name('finalized_candidates');
     Route::get('tickets_booked_list', 'CandidateController@tickets_booked_list')->name('tickets_booked_list');
@@ -328,14 +332,13 @@ Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbas
 
     Route::post('/company-prfile-submit', 'BangladeshEmbassyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
-      // Visa Process
-      Route::get('received-employer-demand', 'EmployerDemandController@received')->name('employerDemand.received');
-      Route::get('edit-employer-demand/{id}', 'EmployerDemandController@edit')->name('employerDemand.edit');
-      Route::post('update-employer-demand/{id}', 'EmployerDemandController@update')->name('employerDemand.update');
-      Route::get('approved-employer-demand', 'EmployerDemandController@approved')->name('employerDemand.approved');
-      Route::get('rejected-employer-demand', 'EmployerDemandController@rejected')->name('employerDemand.rejected');
-      Route::get('show-employer-demand/{id}', 'EmployerDemandController@show')->name('employerDemand.show');
-
+    // Visa Process
+    Route::get('received-employer-demand', 'EmployerDemandController@received')->name('employerDemand.received');
+    Route::get('edit-employer-demand/{id}', 'EmployerDemandController@edit')->name('employerDemand.edit');
+    Route::post('update-employer-demand/{id}', 'EmployerDemandController@update')->name('employerDemand.update');
+    Route::get('approved-employer-demand', 'EmployerDemandController@approved')->name('employerDemand.approved');
+    Route::get('rejected-employer-demand', 'EmployerDemandController@rejected')->name('employerDemand.rejected');
+    Route::get('show-employer-demand/{id}', 'EmployerDemandController@show')->name('employerDemand.show');
 });
 
 Auth::routes([
