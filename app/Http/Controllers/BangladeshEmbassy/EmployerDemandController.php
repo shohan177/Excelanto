@@ -12,7 +12,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 class EmployerDemandController extends Controller
 {
     public function received(){
-        $job_posts = JobPost::orderBy('id','DESC')->where('status', ['Verified'])->get();
+        $job_posts = JobPost::where('status', ['Verified'])->orderBy('id','DESC')->get();
         return view('BangladeshEmbassy.employerDemand.received',compact('job_posts'));
     }
 

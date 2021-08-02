@@ -18,8 +18,8 @@ class JobPostSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             DB::table('job_posts')->insert([
                 'job_category_id' => rand(5, 12),
-                'user_id' => rand(1, 10),
-                'company_id' => rand(1, 10),
+                'user_id' => 6,
+                'company_id' => 6,
                 'employment_type' => 'Full Time',
                 'gender'  => 'Male only',
                 'age_limit'  => rand(20, 50),
@@ -41,8 +41,8 @@ class JobPostSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $job_post_id = JobPost::insertGetId([
                 'job_category_id' => rand(5, 12),
-                'user_id' => rand(1, 10),
-                'company_id' => rand(1, 10),
+                'user_id' => 6,
+                'company_id' => 6,
                 'employment_type' => Str::random(10),
                 'gender'  => 'Male only',
                 'age_limit'  => rand(20, 50),
@@ -86,8 +86,8 @@ class JobPostSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $job_post_id = JobPost::insertGetId([
                 'job_category_id' => rand(5, 12),
-                'user_id' => rand(1, 10),
-                'company_id' => rand(1, 10),
+                'user_id' => 6,
+                'company_id' => 6,
                 'employment_type' => Str::random(10),
                 'gender'  => 'Male only',
                 'age_limit'  => rand(20, 50),

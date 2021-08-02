@@ -32,7 +32,7 @@ class CandidateController extends Controller
     }
     public function reviewed()
     {
-        $ReviewedCandidates = Candidate::where('status',"Reviewed")->get();
+        $ReviewedCandidates = Candidate::where('status',"Reviewed")->orderBy('id','DESC')->get();
         return view('BangladeshAdmin.Candidate.reviewed', compact('ReviewedCandidates'));
     }
     public function finalized()
