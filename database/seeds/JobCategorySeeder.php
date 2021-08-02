@@ -15,7 +15,7 @@ class JobCategorySeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++) {
             DB::table('job_categories')->insert([
-                'category_name' => Str::random(10),
+                'category_name' => 'Demo Category '. $i,
                 'status' => 'active',
             ]);
         }

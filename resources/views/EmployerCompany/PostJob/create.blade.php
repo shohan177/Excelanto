@@ -51,7 +51,7 @@
                                             <div class="form-group">
                                                 <label for="Company Name">Company Name</label>
                                                 <input type="text" class="form-control" id="CompanyName"
-                                                    value="{{ Auth::user()->company_name }}" readonly="">
+                                                    value="{{ Auth::user()->company->company_name }}" readonly="">
                                             </div>
                                             <div class="form-group">
                                                 <label for="jobCategory">Job Category</label>

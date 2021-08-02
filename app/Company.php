@@ -26,7 +26,7 @@ class Company extends Model
         return $this->hasMany(Candidate::class, 'company_id');
     }
     public function user(){
-        return $this->hasOne(User::class, 'id');
+        return $this->belongsTo(User::class);
     }
 
     public function charity_service()

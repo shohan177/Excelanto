@@ -1,10 +1,12 @@
 <?php
 
+use App\AppliedJob;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Candidate;
+use App\OfferedCandidate;
 
 class CandidateSeeder extends Seeder
 {
@@ -15,18 +17,18 @@ class CandidateSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             DB::table('candidates')->insert([
-                'candidate_name' =>   Str::random(10),
+                'candidate_name' =>   'Demo Nmae ' . $i,
                 'role_id' => 15,
                 'job_id' => rand(1, 10),
                 'company_id' => rand(1, 10),
                 'job_category_id' => rand(1, 10),
                 'candidate_dob' => '2021-30-07',
                 'candidate_gender' => 'male',
-                'passport_number' => Str::random(10),
+                'passport_number' => Str::random(18),
                 'phone_number' => '01856230550',
-                'candidate_email' => Str::random(10). '@gmail.com',
+                'candidate_email' => 'demon' . $i . '@gmail.com',
                 'status' => 'Active',
                 'nationality' => 'bangladesh',
                 'present_address' => 'dhaka bangladesh',
@@ -34,6 +36,42 @@ class CandidateSeeder extends Seeder
                 'created_id' => 3,
                 'created_at' => Carbon::now(),
             ]);
-       }
+        }
+
+        for ($i = 11; $i < 14; $i++) {
+            $appliedJob = AppliedJob::findOrFail(11);
+
+            $candidate_id =  DB::table('candidates')->insertGetId([
+                'candidate_name' =>   'Demo Nmae ' . $i,
+                'role_id' => 15,
+                'job_id' => $appliedJob->job_post_id,
+                'company_id' => $appliedJob->company_id,
+                'job_category_id' => $appliedJob->jobPost->job_category_id,
+                'candidate_dob' => '2021-30-07',
+                'candidate_gender' => 'male',
+                'passport_number' => Str::random(18),
+                'phone_number' => '01856230550',
+                'candidate_email' => 'demon' . $i . '@gmail.com',
+                'status' => 'Selected',
+                'nationality' => 'bangladesh',
+                'present_address' => 'dhaka bangladesh',
+                'permanent_address' => 'bahrain',
+                'created_id' => 3,
+                'created_at' => Carbon::now(),
+            ]);
+            $candidate = Candidate::findOrFail($candidate_id);
+
+            $offeredCandidate = new OfferedCandidate();
+            $offeredCandidate->candidate_id = $candidate->id;
+            $offeredCandidate->candidate_name = $candidate->candidate_name;
+            $offeredCandidate->phone_number = $candidate->phone_number;
+            $offeredCandidate->candidate_email = $candidate->candidate_email;
+            $offeredCandidate->job_category_id = $candidate->job_category_id;
+            $offeredCandidate->result_status = 'Selected';
+            $offeredCandidate->employer_comments = Str::random(10);
+            $offeredCandidate->created_at = Carbon::now();
+            $offeredCandidate->created_id = 6;
+            $offeredCandidate->save();
+        }
     }
 }

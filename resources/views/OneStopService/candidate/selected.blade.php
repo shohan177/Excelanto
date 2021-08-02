@@ -40,15 +40,14 @@
                             <h3 class="panel-title">Candidates selected by employer</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
+                                        <th>Phone No</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -56,46 +55,56 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>shavo</td>
-                                        <td>Developer</td>
-                                        <td>sharifshuvo00@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" name="Forwarded"
-                                                class="btn btn-info btn-xs update">Assigned</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($offeredCandidates as $candidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $candidate->candidate_name }}</td>
+                                            <td>{{ $candidate->job_category->category_name }}</td>
+                                            <td>{{ $candidate->phone_number }}</td>
+                                            <td>{{ $candidate->candidate_email }}</td>
+                                            <td>
+                                                @if ($candidate->result_status == 'Selected')
+                                                    <span class=" badge badge-success">Selected</span>
+                                                @elseif ($candidate->result_status == "Assigned")
+                                                    <span class="badge badge-info">Assigned</span>
+                                                @else
+                                                    <span class="badge badge-info">{{ $candidate->result_status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($candidate->result_status == 'Selected')
+                                                    <a class="btn btn-info btn-sm"
+                                                        href="{{ route('OneStopService.candidate.assignSelectedCandidate', $candidate->id) }}">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                @else
+
+                                                @endif
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('OneStopService.candidate.showReviewedCandidate', $candidate->id) }}">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
+                                        <th>Phone No</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div> <!-- End Row -->
-
-
         </div> <!-- container -->
-
     </div>
     <!--End content -->
 @endsection

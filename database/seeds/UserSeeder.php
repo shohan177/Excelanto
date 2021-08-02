@@ -92,5 +92,14 @@ class UserSeeder extends Seeder
             'user_type' => 'uae-admin',
             'active_status' => 'Approved',
         ]);
+        User::create([
+            'role_id' => 15,
+            'country_id' => 2,
+            'name' => 'Child OSC',
+            'email' => 'oss@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'one-stop-service-agency',
+            'active_status' => 'Approved',
+        ]);
     }
 }
