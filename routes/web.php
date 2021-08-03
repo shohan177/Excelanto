@@ -342,6 +342,40 @@ Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbas
     Route::get('show-employer-demand/{id}', 'EmployerDemandController@show')->name('employerDemand.show');
 });
 
+// Child One Stop Service
+Route::group(['prefix' => 'child-one-stop-service/', 'namespace' => 'OneStopService_Child', 'as' => 'OneStopService_Child.', 'middleware' => ['auth', 'child-one-stop-service']], function () {
+    Route::get('/dashboard', 'OneStopService_ChildDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'OneStopService_ChildDashboardController@companyPrfileView')->name('companyPrfileView');
+    Route::post('/company-profile-submit', 'OneStopService_ChildDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+});
+
+ // Medical Agency
+Route::group(['prefix' => 'medical-agency/', 'namespace' => 'MedicalAgency', 'as' => 'MedicalAgency.', 'middleware' => ['auth', 'medical-agency']], function () {
+    Route::get('/dashboard', 'MedicalAgencyDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'MedicalAgencyDashboardController@companyPrfileView')->name('companyPrfileView');
+    Route::post('/company-profile-submit', 'MedicalAgencyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+});
+
+ // Training Agency
+Route::group(['prefix' => 'training-agency/', 'namespace' => 'TrainingAgency', 'as' => 'TrainingAgency.', 'middleware' => ['auth', 'training-agency']], function () {
+    Route::get('/dashboard', 'TrainingAgencyDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'TrainingAgencyDashboardController@companyPrfileView')->name('companyPrfileView');
+    Route::post('/company-profile-submit', 'TrainingAgencyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+});
+
+ // UaeEmbassy
+Route::group(['prefix' => 'uae-embassy/', 'namespace' => 'UaeEmbassy', 'as' => 'UaeEmbassy.', 'middleware' => ['auth', 'uae-embassy']], function () {
+    Route::get('/dashboard', 'UaeEmbassyDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'UaeEmbassyDashboardController@companyPrfileView')->name('companyPrfileView');
+    Route::post('/company-profile-submit', 'UaeEmbassyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+});
+ // Candidate
+Route::group(['prefix' => 'candidate/', 'namespace' => 'Candidate', 'as' => 'Candidate.', 'middleware' => ['auth', 'candidate']], function () {
+    Route::get('/dashboard', 'CandidateDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'CandidateDashboardController@companyPrfileView')->name('companyPrfileView');
+    Route::post('/company-profile-submit', 'CandidateDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+});
+
 Auth::routes([
     'reset' => false, // Password Reset Routes...
     'verify' => false, // Email Verification Routes...
