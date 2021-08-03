@@ -68,60 +68,6 @@
                     </div>
                     <!-- /.panel -->
                 </div>
-                {{-- <div class="col-md-8">
-                    <!-- About Me Box -->
-                    <div class="panel panel-secondary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">About</h3>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-
-                            <strong><i class="fa fa-pencil mr-1"></i> Passport Number</strong>
-                            <p class="text-muted">{{ $candidate->passport_number }}</p>
-
-                            <hr>
-
-                            <strong><i class="fa fa-user mr-1"></i> Nationality</strong>
-                            <p class="text-muted">{{ $candidate->nationality }}</p>
-
-                            <hr>
-
-                            <strong><i class="fa fa-map-marker mr-1"></i> Present Address</strong>
-                            <p class="text-muted">{{ $candidate->present_address }}</p>
-
-                            <hr>
-
-                            <strong><i class="fa fa-map-marker mr-1"></i> Permanent Address</strong>
-                            <p class="text-muted">{{ $candidate->permanent_address }}</p>
-                            <hr>
-                            <strong><i class="fa fa-camera mr-1"></i>Pre-Medical Certificate</strong>
-                            <div class="mailbox-attachment-info">
-                                <a href="../pre_medical_certificate/{{ $candidate->pre_medical_certificate }}"
-                                    class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                    {{ $candidate->pre_medical_certificate }}</a>
-
-                                <a href="../pre_medical_certificate/{{ $candidate->pre_medical_certificate }}" download
-                                    class="btn btn-default btn-sm float-right"> <i class="fa fa-cloud-download-alt"></i></a>
-
-                            </div>
-
-                            <hr>
-                            <strong><i class="fa fa-camera mr-1"></i>Pre-Training Certificate</strong>
-                            <div class="mailbox-attachment-info">
-                                <a href="../pre_training_certificate/{{ $candidate->pre_training_certificate }}"
-                                    class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                    {{ $candidate->pre_training_certificate }}</a>
-
-                                <a href="../pre_training_certificate/{{ $candidate->pre_training_certificate }}" download
-                                    class="btn btn-default btn-sm float-right"> <i class="fa fa-cloud-download-alt"></i></a>
-
-                            </div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div> --}}
                 <div class="col-md-8">
                     <div class="panel panel-primary">
                         <div class="panel-heading p-2">

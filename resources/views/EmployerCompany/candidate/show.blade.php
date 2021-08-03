@@ -59,8 +59,6 @@
                                 </li>
                             </ul>
 
-                            {{-- <a href="{{ route('EmployerCompany.candidate.edit', $candidate->id ) }}" class="btn btn-primary btn-block"><b><i class="fa fa-pencil mr-1"></i> Result</b></a> --}}
-
                             @if ($candidate->status == 'Reviewed')
                                 <button type="button" disabled class="btn btn-primary btn-block "> <i
                                         class="fa fa-pencil mr-1"></i> Result</b></button>

@@ -47,37 +47,6 @@ class CandidateController extends Controller
         return view('EmployerCompany.candidate.show', compact('candidate'));
     }
 
-    public function edit($id){
-        $candidate = Candidate::findOrFail($id);
-        return view('EmployerCompany.candidate.update', compact('candidate'));
-    }
-    public function update(Request $request, $id){
-        // return $request;
-        $candidate = Candidate::findOrFail($id);
-        $candidate->result_status = $request->result_status;
-        $candidate->employer_comments = $request->employer_comments;
-        $candidate->status = (
-                                $request->result_status == 'Selected') ? 'Reviewed' : ((
-                                $request->result_status == 'Physical Interview') ? 'Reviewed' : ((
-                                $request->result_status == 'Online Interview') ? 'Reviewed' :'Active'
-                            ));
-        if ($request->hasFile('offer_letter')) {
-            $image             = $request->file('offer_letter');
-            $folder_path       = 'uploads/offer_letter/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $candidate->offer_letter   = $folder_path . $image_new_name;
-        }
-        try {
-            $candidate->save();
-            return back()->withToastSuccess('Successfully saved.');
-        } catch (\Exception $exception) {
-            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
-        }
-    }
-
-
     public function editCandidateResult($id)
     {
         $jobCategories = JobCategory::orderBy('id', 'DESC')->get();
