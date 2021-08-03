@@ -31,7 +31,8 @@ class CandidateController extends Controller
     }
     public function candidates_result()
     {
-        return view('EmployerCompany.candidate.candidates_result');
+        $offeredCandidates = OfferedCandidate::where('result_status','!=','Finalized')->orderBy('id', 'DESC')->get();
+        return view('EmployerCompany.candidate.candidates_result', compact('offeredCandidates'));
     }
     public function finalized_candidates()
     {

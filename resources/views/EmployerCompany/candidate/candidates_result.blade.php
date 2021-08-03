@@ -41,15 +41,14 @@
                             <h3 class="panel-title">Reviewed Candidates List</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Candidate Name</th>
-                                        <th>JOb Category</th>
+                                        <th>Job Category</th>
+                                        <th>Phone No</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -57,25 +56,51 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>din</td>
-                                        <td>welding</td>
-                                        <td>sharifshuvo00@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td><button type="button" name="Under-Interview-Process"
-                                                class="btn btn-warning btn-xs update">Under-Process</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a></td>
-                                    </tr>
+                                    @foreach ($offeredCandidates as $candidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $candidate->candidate_name }}</td>
+                                            <td>{{ $candidate->job_category->category_name }}</td>
+                                            <td>{{ $candidate->phone_number }}</td>
+                                            <td>{{ $candidate->candidate_email }}</td>
+                                            <td>
+
+                                                @if ($candidate->result_status == 'Assigned')
+                                                    <span class="badge badge-success">Post-Recommended</span>
+                                                @elseif ($candidate->result_status == 'Selected')
+                                                    <span class="badge badge-success">Selected</span>
+                                                @elseif ($candidate->result_status == 'Interview')
+                                                    <span class="badge badge-primary">Interview</span>
+                                                @elseif ($candidate->result_status == 'Updated')
+                                                    <span class="badge badge-info">Interview-Updated</span>
+                                                @elseif ($candidate->result_status == 'Finalized')
+                                                    <span class="badge badge-warning">Finalized</span>
+                                                @elseif ($candidate->result_status == 'Rejected')
+                                                    <span class="badge badge-danger">Rejected</span>
+                                                @elseif ($candidate->result_status == 'Under-Interview-Process')
+                                                    <span class="badge badge-danger">Under-Interview-Process</span>
+                                                @else
+                                                    <span class="badge badge-info">Under-Process
+                                                        -({{ $candidate->result_status }})</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($candidate->result_status == 'Updated')
+                                                    <a class="btn btn-info btn-xs" href="#"><i class="fa fa-check"></i></a>
+                                                @endif
+
+                                                <a class="btn btn-info btn-xs" href="{{ route('EmployerCompany.candidate.show', $candidate->id) }}"><i class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Candidate Name</th>
-                                        <th>JOb Category</th>
+                                        <th>Job Category</th>
+                                        <th>Phone No</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
