@@ -35,7 +35,7 @@
                         <div class="panel-body">
                             <form role="form" action="{{ route('EmployerCompany.candidate.update', $candidate->id ) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                {{-- <input name="candidate_id" type="hidden" value="{{ $candidate->id }}"> --}}
+
                                 <div class="row">
                                     <!-- Basic example -->
                                     <div class="col-lg-2"></div>
@@ -102,21 +102,6 @@
             </div> <!-- End Row -->
         </div> <!-- container -->
     </div>
-    <!--End content -->
-
-    {{-- <script type='text/javascript'>
-        $(".my-select-changer").change( function() {
-            var selectedValue = $(this).val();
-            alert(selectedValue);
-            if (selectedValue == "Selected") {
-                $(".input-to-hide").show();
-            } else {
-                $(".input-to-hide").hide();
-            }
-        });
-    </script> --}}
-
-
 @endsection
 
 @section('DataTableJs')
