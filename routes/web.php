@@ -311,6 +311,7 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
     Route::get('new_candidates', 'CandidateController@new_candidates')->name('new_candidates');
     Route::get('new-candidate-list/{applied_job_id}', 'CandidateController@newCandidateList')->name('candidate.newCandidateList');
     Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
+    Route::get('show-offered-candidate/{id}', 'CandidateController@showOfferedCandidate')->name('candidate.showOfferedCandidate');
     Route::get('edit-candidate-result/{id}', 'CandidateController@editCandidateResult')->name('candidate.editCandidateResult');
     Route::post('update-candidate-result/{id}', 'CandidateController@updateCandidateResult')->name('candidate.updateCandidateResult');
     Route::get('edit-interview/{offered_candidate_id}', 'CandidateController@editInterview')->name('candidate.editInterview');

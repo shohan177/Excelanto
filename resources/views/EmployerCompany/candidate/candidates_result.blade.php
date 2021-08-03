@@ -89,7 +89,7 @@
                                                     <a class="btn btn-info btn-xs" href="{{ route('EmployerCompany.candidate.editInterview', $offeredCandidate->id) }}"><i class="fa fa-check"></i></a>
                                                 @endif
 
-                                                <a class="btn btn-info btn-xs" href="{{ route('EmployerCompany.candidate.show', $offeredCandidate->id) }}"><i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-info btn-xs" href="{{ route('EmployerCompany.candidate.showOfferedCandidate', $offeredCandidate->id) }}"><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

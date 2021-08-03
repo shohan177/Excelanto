@@ -38,7 +38,8 @@ class CandidateController extends Controller
     }
     public function finalized_candidates()
     {
-        return view('EmployerCompany.candidate.finalized_candidates');
+        $offeredCandidates = OfferedCandidate::where('result_status', 'Finalized')->orderBy('id', 'DESC')->get();
+        return view('EmployerCompany.candidate.finalized_candidates', compact('offeredCandidates'));
     }
     public function tickets_booked_list()
     {
@@ -48,6 +49,12 @@ class CandidateController extends Controller
     {
         $candidate = Candidate::findOrFail($id);
         return view('EmployerCompany.candidate.show', compact('candidate'));
+    }
+
+    public function showOfferedCandidate($offered_candidate_id)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('EmployerCompany.candidate.show-offered-candidate', compact('offeredCandidate'));
     }
 
     public function editCandidateResult($id)

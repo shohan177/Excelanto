@@ -61,4 +61,9 @@ class OfferedCandidate extends Model
     {
         return $this->belongsTo(Candidate::class, 'candidate_id');
     }
+
+    public function createdUser()
+    {
+        return $this->belongsTo(User::class, 'created_id');
+    }
 }
