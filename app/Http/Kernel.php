@@ -6,6 +6,11 @@ use App\Http\Middleware\BangladeshAdmin;
 use App\Http\Middleware\BangladeshEmbassy;
 use App\Http\Middleware\EmployerCompany;
 use App\Http\Middleware\OneStopService;
+use App\Http\Middleware\OneStopService_Child;
+use App\Http\Middleware\Candidate;
+use App\Http\Middleware\UaeEmbassy;
+use App\Http\Middleware\TrainingAgency;
+use App\Http\Middleware\MedicalAgency;
 use App\Http\Middleware\RecruitingAgency;
 use App\Http\Middleware\SuperAdmin;
 use App\Http\Middleware\UaeAdmin;
@@ -69,6 +74,11 @@ class Kernel extends HttpKernel
         'welfare-centre'=>WelfareCentre::class,
         'uae-admin'=>UaeAdmin::class,
         'one-stop-service'=>OneStopService::class,
+        'child-one-stop-service'=>OneStopService_Child::class,
+        'candidate'=>Candidate::class,
+        'uae-embassy'=>UaeEmbassy::class,
+        'training-agency'=>TrainingAgency::class,
+        'medical-agency'=>MedicalAgency::class,
         'employer-company'=>EmployerCompany::class,
         'bangladesh-embassy'=>BangladeshEmbassy::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
