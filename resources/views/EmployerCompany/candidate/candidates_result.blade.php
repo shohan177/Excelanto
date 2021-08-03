@@ -56,40 +56,40 @@
 
 
                                 <tbody>
-                                    @foreach ($offeredCandidates as $candidate)
+                                    @foreach ($offeredCandidates as $offeredCandidate)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $candidate->candidate_name }}</td>
-                                            <td>{{ $candidate->job_category->category_name }}</td>
-                                            <td>{{ $candidate->phone_number }}</td>
-                                            <td>{{ $candidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
                                             <td>
 
-                                                @if ($candidate->result_status == 'Assigned')
+                                                @if ($offeredCandidate->result_status == 'Assigned')
                                                     <span class="badge badge-success">Post-Recommended</span>
-                                                @elseif ($candidate->result_status == 'Selected')
+                                                @elseif ($offeredCandidate->result_status == 'Selected')
                                                     <span class="badge badge-success">Selected</span>
-                                                @elseif ($candidate->result_status == 'Interview')
+                                                @elseif ($offeredCandidate->result_status == 'Interview')
                                                     <span class="badge badge-primary">Interview</span>
-                                                @elseif ($candidate->result_status == 'Updated')
+                                                @elseif ($offeredCandidate->result_status == 'Updated')
                                                     <span class="badge badge-info">Interview-Updated</span>
-                                                @elseif ($candidate->result_status == 'Finalized')
+                                                @elseif ($offeredCandidate->result_status == 'Finalized')
                                                     <span class="badge badge-warning">Finalized</span>
-                                                @elseif ($candidate->result_status == 'Rejected')
+                                                @elseif ($offeredCandidate->result_status == 'Rejected')
                                                     <span class="badge badge-danger">Rejected</span>
-                                                @elseif ($candidate->result_status == 'Under-Interview-Process')
+                                                @elseif ($offeredCandidate->result_status == 'Under-Interview-Process')
                                                     <span class="badge badge-danger">Under-Interview-Process</span>
                                                 @else
                                                     <span class="badge badge-info">Under-Process
-                                                        -({{ $candidate->result_status }})</span>
+                                                        -({{ $offeredCandidate->result_status }})</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($candidate->result_status == 'Updated')
-                                                    <a class="btn btn-info btn-xs" href="#"><i class="fa fa-check"></i></a>
+                                                @if ($offeredCandidate->result_status == 'Updated')
+                                                    <a class="btn btn-info btn-xs" href="{{ route('EmployerCompany.candidate.editInterview', $offeredCandidate->id) }}"><i class="fa fa-check"></i></a>
                                                 @endif
 
-                                                <a class="btn btn-info btn-xs" href="{{ route('EmployerCompany.candidate.show', $candidate->id) }}"><i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-info btn-xs" href="{{ route('EmployerCompany.candidate.show', $offeredCandidate->id) }}"><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
