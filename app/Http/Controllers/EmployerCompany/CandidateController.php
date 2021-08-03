@@ -21,21 +21,25 @@ class CandidateController extends Controller
         $appliedJobs = AppliedJob::where('status', 'Approved')->orderBy('id', 'DESC')->get();
         return view('EmployerCompany.candidate.new_candidates', compact('appliedJobs'));
     }
-    public function newCandidateList($applied_job_id){
+    public function newCandidateList($applied_job_id)
+    {
         $appliedJob = AppliedJob::findOrFail($applied_job_id);
-        $candidates = Candidate::where('job_category_id',$appliedJob->jobPost->job_category->id)
-                               ->where('created_id',$appliedJob->applier_id)
-                               ->where('result_status', '!=' , null)
-                               ->orderBy('id', 'DESC')->get();
+        $candidates = Candidate::where('job_category_id', $appliedJob->jobPost->job_category->id)
+            ->where('created_id', $appliedJob->applier_id)
+            // ->where('result_status', '!=', null)
+            ->where('status', 'Forwarded')
+            ->orderBy('id', 'DESC')->get();
         return view('EmployerCompany.candidate.new-candidate-list', compact('candidates'));
     }
     public function candidates_result()
     {
-        return view('EmployerCompany.candidate.candidates_result');
+        $offeredCandidates = OfferedCandidate::where('result_status', '!=', 'Finalized')->orderBy('id', 'DESC')->get();
+        return view('EmployerCompany.candidate.candidates_result', compact('offeredCandidates'));
     }
     public function finalized_candidates()
     {
-        return view('EmployerCompany.candidate.finalized_candidates');
+        $offeredCandidates = OfferedCandidate::where('result_status', 'Finalized')->orderBy('id', 'DESC')->get();
+        return view('EmployerCompany.candidate.finalized_candidates', compact('offeredCandidates'));
     }
     public function tickets_booked_list()
     {
@@ -47,36 +51,11 @@ class CandidateController extends Controller
         return view('EmployerCompany.candidate.show', compact('candidate'));
     }
 
-    public function edit($id){
-        $candidate = Candidate::findOrFail($id);
-        return view('EmployerCompany.candidate.update', compact('candidate'));
+    public function showOfferedCandidate($offered_candidate_id)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('EmployerCompany.candidate.show-offered-candidate', compact('offeredCandidate'));
     }
-    public function update(Request $request, $id){
-        // return $request;
-        $candidate = Candidate::findOrFail($id);
-        $candidate->result_status = $request->result_status;
-        $candidate->employer_comments = $request->employer_comments;
-        $candidate->status = (
-                                $request->result_status == 'Selected') ? 'Reviewed' : ((
-                                $request->result_status == 'Physical Interview') ? 'Reviewed' : ((
-                                $request->result_status == 'Online Interview') ? 'Reviewed' :'Active'
-                            ));
-        if ($request->hasFile('offer_letter')) {
-            $image             = $request->file('offer_letter');
-            $folder_path       = 'uploads/offer_letter/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $candidate->offer_letter   = $folder_path . $image_new_name;
-        }
-        try {
-            $candidate->save();
-            return back()->withToastSuccess('Successfully saved.');
-        } catch (\Exception $exception) {
-            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
-        }
-    }
-
 
     public function editCandidateResult($id)
     {
@@ -101,7 +80,8 @@ class CandidateController extends Controller
         $offeredCandidate->candidate_email = $candidate->candidate_email;
         $offeredCandidate->job_category_id = $candidate->job_category_id;
         $offeredCandidate->result_status = $request->resultStatus;
-        $offeredCandidate->employer_comments = $request->comments;        $offeredCandidate->created_at = Carbon::now();
+        $offeredCandidate->employer_comments = $request->comments;
+        $offeredCandidate->created_at = Carbon::now();
         $offeredCandidate->created_id = Auth::user()->id;
 
         if ($request->hasFile('offerLetter')) {
@@ -113,6 +93,34 @@ class CandidateController extends Controller
             $offeredCandidate->offer_letter   = $folder_path . $image_new_name;
         }
 
+        try {
+            $offeredCandidate->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
+    }
+
+    public function editInterview($offered_candidate_id)
+    {
+        $jobCategories = JobCategory::orderBy('id', 'DESC')->get();
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('EmployerCompany.candidate.edit-interview', compact('offeredCandidate', 'jobCategories'));
+    }
+
+    public function updateInterview(Request $request, $offered_candidate_id)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        $offeredCandidate->result_status = $request->resultStatus;
+        $offeredCandidate->employer_comments = $request->comments;
+        if ($request->hasFile('offerLetter')) {
+            $image             = $request->file('offerLetter');
+            $folder_path       = 'uploads/offer-letter/';
+            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
+            $offeredCandidate->offer_letter   = $folder_path . $image_new_name;
+        }
         try {
             $offeredCandidate->save();
             return back()->withToastSuccess('Successfully saved.');
