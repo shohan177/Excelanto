@@ -38,12 +38,15 @@ class CandidateController extends Controller
     }
     public function finalized_candidates()
     {
-        $offeredCandidates = OfferedCandidate::where('result_status', 'Finalized')->orderBy('id', 'DESC')->get();
+        $offeredCandidates = OfferedCandidate::where('created_id',Auth::user()->id)
+                                             ->where('result_status', 'Finalized')
+                                             ->orderBy('id', 'DESC')->get();
         return view('EmployerCompany.candidate.finalized_candidates', compact('offeredCandidates'));
     }
     public function tickets_booked_list()
     {
-        return view('EmployerCompany.candidate.tickets_booked_list');
+        $offeredCandidates = OfferedCandidate::whereIn('travel_status', ['Forwarded','Activated'])->orderBy('id', 'DESC')->get();
+        return view('EmployerCompany.candidate.tickets_booked_list', compact('offeredCandidates'));
     }
     public function show($id)
     {
@@ -55,6 +58,12 @@ class CandidateController extends Controller
     {
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         return view('EmployerCompany.candidate.show-offered-candidate', compact('offeredCandidate'));
+    }
+
+    public function showBookedCandidate($offered_candidate_id)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('EmployerCompany.candidate.show-booked-candidate', compact('offeredCandidate'));
     }
 
     public function editCandidateResult($id)
