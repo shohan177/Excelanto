@@ -47,7 +47,7 @@
 
                                         <th>ID</th>
                                         <th>Candidate Name</th>
-                                        <th>JOb Category</th>
+                                        <th>Job Category</th>
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Status</th>
@@ -92,7 +92,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Candidate Name</th>
-                                        <th>JOb Category</th>
+                                        <th>Job Category</th>
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Status</th>

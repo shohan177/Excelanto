@@ -59,7 +59,7 @@
                                     @foreach ($offeredCandidates as $offeredCandidate)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>Travel Agency</td>
+                                            <td><----- Have to Made Relation ------> </td>
                                             <td>{{ $offeredCandidate->candidate_name }}</td>
                                             <td>{{ $offeredCandidate->job_category->category_name }}</td>
                                             <td>{{ $offeredCandidate->phone_number }}</td>
