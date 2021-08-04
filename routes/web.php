@@ -323,6 +323,7 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
 
     // Visa Process
     Route::get('visa_required', 'VisaProcessController@visa_required')->name('visa_required');
+    Route::get('show-visa-required-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaRequiredCandidate')->name('VisaProcess.showVisaRequiredCandidate');
     Route::get('visa_requested', 'VisaProcessController@visa_requested')->name('visa_requested');
     Route::get('visa_approved', 'VisaProcessController@visa_approved')->name('visa_approved');
     Route::get('visa_rejected', 'VisaProcessController@visa_rejected')->name('visa_rejected');
