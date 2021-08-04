@@ -72,7 +72,7 @@ class CandidateSeeder extends Seeder
             $offeredCandidate->result_status = 'Selected';
             $offeredCandidate->employer_comments = Str::random(10);
             $offeredCandidate->created_at = Carbon::now();
-            $offeredCandidate->created_id = 6;
+            $offeredCandidate->created_id = 3;
             $offeredCandidate->save();
         }
     }

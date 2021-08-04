@@ -45,41 +45,51 @@
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Travel Agency</th>
                                         <th>Candidate Name</th>
-                                        <th>JOb Category</th>
+                                        <th>Job Category</th>
+                                        <th>Phone No</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Travel Agency</td>
-                                        <td>rajib</td>
-                                        <td>police</td>
-                                        <td>racb@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td><button type="button" name="Visa-Applied"
-                                                class="btn btn-info btn-xs update">Candidate Received</button></td>
-                                        <td><a class="btn btn-info btn-xs"
-                                                href="#">
-                                                <i class="fa fa-eye"></i></a></td>
-                                    </tr>
+                                    @foreach ($offeredCandidates as $offeredCandidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>Travel Agency</td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
+                                            <td>
+                                                @if ($offeredCandidate->travel_status == 'Forwarded')
+                                                    <span class="badge badge-info">Candidate Received</span>
+                                                @elseif ($offeredCandidate->travel_status == 'Activated')
+                                                    <span class="badge badge-success">Appointed</span>
+                                                @else
+                                                    <span
+                                                        class="badge badge-info">{{ $offeredCandidate->travel_status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs"
+                                                    href="{{ route('EmployerCompany.candidate.showBookedCandidate', $offeredCandidate->id) }}"><i
+                                                        class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Travel Agency</th>
                                         <th>Candidate Name</th>
-                                        <th>JOb Category</th>
+                                        <th>Job Category</th>
+                                        <th>Phone No</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
