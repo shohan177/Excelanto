@@ -336,7 +336,8 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
     Route::get('new_candidates', 'CandidateController@new_candidates')->name('new_candidates');
     Route::get('new-candidate-list/{applied_job_id}', 'CandidateController@newCandidateList')->name('candidate.newCandidateList');
     Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
-    Route::get('show-offered-candidate/{id}', 'CandidateController@showOfferedCandidate')->name('candidate.showOfferedCandidate');
+    Route::get('show-offered-candidate/{offered_candidate_id}', 'CandidateController@showOfferedCandidate')->name('candidate.showOfferedCandidate');
+    Route::get('show-booked-candidate/{offered_candidate_id}', 'CandidateController@showBookedCandidate')->name('candidate.showBookedCandidate');
     Route::get('edit-candidate-result/{id}', 'CandidateController@editCandidateResult')->name('candidate.editCandidateResult');
     Route::post('update-candidate-result/{id}', 'CandidateController@updateCandidateResult')->name('candidate.updateCandidateResult');
     Route::get('edit-interview/{offered_candidate_id}', 'CandidateController@editInterview')->name('candidate.editInterview');
@@ -347,9 +348,13 @@ Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany',
 
     // Visa Process
     Route::get('visa_required', 'VisaProcessController@visa_required')->name('visa_required');
+    Route::get('show-visa-required-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaRequiredCandidate')->name('VisaProcess.showVisaRequiredCandidate');
     Route::get('visa_requested', 'VisaProcessController@visa_requested')->name('visa_requested');
+    Route::get('show-visa-requested-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaRequestedCandidate')->name('VisaProcess.showVisaRequestedCandidate');
     Route::get('visa_approved', 'VisaProcessController@visa_approved')->name('visa_approved');
+    Route::get('show-visa-approved-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaApprovedCandidate')->name('VisaProcess.showVisaApprovedCandidate');
     Route::get('visa_rejected', 'VisaProcessController@visa_rejected')->name('visa_rejected');
+    Route::get('show-visa-rejected-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaRejectedCandidate')->name('VisaProcess.showVisaRejectedCandidate');
 });
 
 // Bangladesh Embassy route
@@ -365,6 +370,40 @@ Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbas
     Route::get('approved-employer-demand', 'EmployerDemandController@approved')->name('employerDemand.approved');
     Route::get('rejected-employer-demand', 'EmployerDemandController@rejected')->name('employerDemand.rejected');
     Route::get('show-employer-demand/{id}', 'EmployerDemandController@show')->name('employerDemand.show');
+});
+
+// Child One Stop Service
+Route::group(['prefix' => 'child-one-stop-service/', 'namespace' => 'OneStopService_Child', 'as' => 'OneStopService_Child.', 'middleware' => ['auth', 'child-one-stop-service']], function () {
+    Route::get('/dashboard', 'OneStopService_ChildDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'OneStopService_ChildDashboardController@companyPrfileView')->name('companyPrfileView');
+    Route::post('/company-profile-submit', 'OneStopService_ChildDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+});
+
+ // Medical Agency
+Route::group(['prefix' => 'medical-agency/', 'namespace' => 'MedicalAgency', 'as' => 'MedicalAgency.', 'middleware' => ['auth', 'medical-agency']], function () {
+    Route::get('/dashboard', 'MedicalAgencyDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'MedicalAgencyDashboardController@companyPrfileView')->name('companyPrfileView');
+    Route::post('/company-profile-submit', 'MedicalAgencyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+});
+
+ // Training Agency
+Route::group(['prefix' => 'training-agency/', 'namespace' => 'TrainingAgency', 'as' => 'TrainingAgency.', 'middleware' => ['auth', 'training-agency']], function () {
+    Route::get('/dashboard', 'TrainingAgencyDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'TrainingAgencyDashboardController@companyPrfileView')->name('companyPrfileView');
+    Route::post('/company-profile-submit', 'TrainingAgencyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+});
+
+ // UaeEmbassy
+Route::group(['prefix' => 'uae-embassy/', 'namespace' => 'UaeEmbassy', 'as' => 'UaeEmbassy.', 'middleware' => ['auth', 'uae-embassy']], function () {
+    Route::get('/dashboard', 'UaeEmbassyDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'UaeEmbassyDashboardController@companyPrfileView')->name('companyPrfileView');
+    Route::post('/company-profile-submit', 'UaeEmbassyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+});
+ // Candidate
+Route::group(['prefix' => 'candidate/', 'namespace' => 'Candidate', 'as' => 'Candidate.', 'middleware' => ['auth', 'candidate']], function () {
+    Route::get('/dashboard', 'CandidateDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'CandidateDashboardController@companyPrfileView')->name('companyPrfileView');
+    Route::post('/company-profile-submit', 'CandidateDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 });
 
 Auth::routes([

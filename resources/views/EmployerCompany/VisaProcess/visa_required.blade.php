@@ -5,7 +5,8 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -40,60 +41,63 @@
                             <h3 class="panel-title">Visa required candidates List</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Candidate Name</th>
-                                        <th>JOb Category</th>
+                                        <th>Job Category</th>
+                                        <th>Phone No</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Candidate2</td>
-                                        <td>Developer</td>
-                                        <td>candiate2@gmail.com</td>
-                                        <td>2222222222</td>
-                                        <td>
-                                            <span class="badge badge-success">Visa-Approved</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Candidate3</td>
-                                        <td>Developer</td>
-                                        <td>candiate3@gmail.com</td>
-                                        <td>222225522222</td>
-                                        <td>
-                                            <span class="badge badge-success">Visa-Approved</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($offeredCandidates as $offeredCandidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
+                                            <td>
+                                                @if ($offeredCandidate->result_status == 'Assigned')
+                                                    <span class="badge badge-success">Post-Selection</span>
+                                                @elseif ($offeredCandidate->result_status == 'Selected')
+                                                    <span class="badge badge-success">Selected</span>
+                                                @elseif ($offeredCandidate->result_status == 'Interview')
+                                                    <span class="badge badge-primary">Interview</span>
+                                                @elseif ($offeredCandidate->result_status == 'Updated')
+                                                    <span class="badge badge-info">Interview-Updated</span>
+                                                @elseif ($offeredCandidate->result_status == 'Finalized')
+                                                    <span class="badge badge-warning">Finalized</span>
+                                                @elseif ($offeredCandidate->result_status == 'Rejected')
+                                                    <span class="badge badge-danger">Rejected</span>
+                                                @elseif ($offeredCandidate->result_status == 'Visa-Requested')
+                                                    <span class="badge badge-danger">New</span>
+                                                @elseif ($offeredCandidate->result_status == 'Under-Interview-Process')
+                                                    <span class="badge badge-danger">Under-Interview-Process</span>
+                                                @else
+                                                    <span class="badge badge-info">Under-Process
+                                                        -({{ $offeredCandidate->result_status }})</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                               <a class="btn btn-info btn-xs"
+                                                    href="{{ route('EmployerCompany.VisaProcess.showVisaRequiredCandidate', $offeredCandidate->id) }}"><i
+                                                        class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Candidate Name</th>
-                                        <th>JOb Category</th>
+                                        <th>Job Category</th>
+                                        <th>Phone No</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>

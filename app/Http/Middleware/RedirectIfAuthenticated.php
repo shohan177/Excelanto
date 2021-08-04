@@ -36,15 +36,21 @@ class RedirectIfAuthenticated
         }elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'master-one-stop-service')
         {
             return redirect()->route('OneStopService.dashboard');
-        }elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'one-stop-service-agency')
+        }elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'child-one-stop-service')
         {
-            //return redirect()->route('.dashboard');
-        }elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'medical-company')
+            return redirect()->route('OneStopService_Child.dashboard');
+        }elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'candidate')
         {
-            //return redirect()->route('.dashboard');
-        }elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'training-company')
+            return redirect()->route('Candidate.dashboard');
+        }elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'uae-embassy')
         {
-            //return redirect()->route('.dashboard');
+            return redirect()->route('UaeEmbassy.dashboard');
+        }elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'medical-agency')
+        {
+            return redirect()->route('MedicalAgency.dashboard');
+        }elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'training-agency')
+        {
+            return redirect()->route('TrainingAgency.dashboard');
         }elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'travel-company')
         {
             //return redirect()->route('.dashboard');

@@ -93,12 +93,49 @@ class UserSeeder extends Seeder
             'active_status' => 'Approved',
         ]);
         User::create([
+            'role_id' => 6,
+            'country_id' => 2,
+            'name' => 'Child One Stop Service',
+            'email' => 'coss@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'child-one-stop-service',
+            'active_status' => 'Approved',
+        ]);
+        User::create([
+            'role_id' => 7,
+            'country_id' => 2,
+            'name' => 'Medical Agency',
+            'email' => 'ma@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'medical-agency',
+            'active_status' => 'Approved',
+        ]);
+
+        User::create([
+            'role_id' => 7,
+            'country_id' => 2,
+            'name' => 'Training Agency',
+            'email' => 'ta@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'training-agency',
+            'active_status' => 'Approved',
+        ]);
+        User::create([
             'role_id' => 15,
             'country_id' => 2,
-            'name' => 'Child OSC',
-            'email' => 'oss@gmail.com',
+            'name' => 'Uae Embassy',
+            'email' => 'ue@gmail.com',
             'password' => Hash::make('12345'),
-            'user_type' => 'one-stop-service-agency',
+            'user_type' => 'uae-embassy',
+            'active_status' => 'Approved',
+        ]);
+        User::create([
+            'role_id' => 16,
+            'country_id' => 2,
+            'name' => 'Candidate',
+            'email' => 'candidate@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'candidate',
             'active_status' => 'Approved',
         ]);
     }
