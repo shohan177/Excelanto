@@ -49,12 +49,16 @@ class RegisterController extends Controller
             return RouteServiceProvider::UAEAdmin;
         } elseif (Auth::user()->user_type == 'master-one-stop-service') {
             return RouteServiceProvider::OneStopService;
-        } elseif (Auth::user()->user_type == 'one-stop-service-agency') {
-            //return route('.dashboard');
-        } elseif (Auth::user()->user_type == 'medical-company') {
-            //return route('.dashboard');
-        } elseif (Auth::user()->user_type == 'training-company') {
-            //return route('.dashboard');
+        } elseif (Auth::user()->user_type == 'child-one-stop-service') {
+            return RouteServiceProvider::OneStopService_Child;
+        } elseif (Auth::user()->user_type == 'candidate') {
+            return RouteServiceProvider::Candidate;
+        } elseif (Auth::user()->user_type == 'uae-embassy') {
+            return RouteServiceProvider::UaeEmbassy;
+        } elseif (Auth::user()->user_type == 'medical-agency') {
+            return RouteServiceProvider::MedicalAgency;
+        } elseif (Auth::user()->user_type == 'training-agency') {
+            return RouteServiceProvider::TrainingAgency;
         } elseif (Auth::user()->user_type == 'travel-company') {
             //return route('.dashboard');
         } elseif (Auth::user()->user_type == 'biometric-company') {

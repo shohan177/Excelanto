@@ -49,22 +49,22 @@ class RoleSeeder extends Seeder
 
         Role::create([
             'id' => 6,
-            'name' => 'One stop service agency',
-            'slug' => 'one-stop-service-agency',
+            'name' => 'Child One stop service',
+            'slug' => 'child-one-stop-service',
             'status' => 'active'
         ]);
 
         Role::create([
             'id' => 7,
-            'name' => 'Medical company',
-            'slug' => 'medical-company',
+            'name' => 'Medical Agency',
+            'slug' => 'medical-agency',
             'status' => 'active'
         ]);
 
         Role::create([
             'id' => 8,
-            'name' => 'Training company',
-            'slug' => 'training-company',
+            'name' => 'Training Agency',
+            'slug' => 'training-agency',
             'status' => 'active'
         ]);
 
@@ -112,6 +112,13 @@ class RoleSeeder extends Seeder
 
         Role::create([
             'id' => 15,
+            'name' => 'Uae Embassy',
+            'slug' => 'uae-embassy',
+            'status' => 'active'
+        ]);
+
+        Role::create([
+            'id' => 16,
             'name' => 'Candidate',
             'slug' => 'candidate',
             'status' => 'active'
