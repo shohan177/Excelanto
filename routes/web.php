@@ -271,7 +271,6 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('assign-selected-candidate/{Offered_candidate_id}', 'CandidateController@assignSelectedCandidate')->name('candidate.assignSelectedCandidate');
     Route::post('assign-selected-candidate-store/{Offered_candidate_id}', 'CandidateController@assignSelectedCandidateStore')->name('candidate.assignSelectedCandidateStore');
     Route::get('selected-candidate', 'CandidateController@selected')->name('candidate.request');
-    Route::get('selected-candidate', 'CandidateController@selected')->name('candidate.request');
     Route::get('interview-candidate', 'CandidateController@interview')->name('candidate.approved');
     Route::get('finalized-candidate', 'CandidateController@finalized')->name('candidate.rejected');
     Route::get('ticket-booked-candidate', 'CandidateController@ticketBooked')->name('candidate.ticketBooked');
@@ -347,6 +346,27 @@ Route::group(['prefix' => 'child-one-stop-service/', 'namespace' => 'OneStopServ
     Route::get('/dashboard', 'OneStopService_ChildDashboardController@dashboard')->name('dashboard');
     Route::get('/company-profile-view', 'OneStopService_ChildDashboardController@companyPrfileView')->name('companyPrfileView');
     Route::post('/company-profile-submit', 'OneStopService_ChildDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+
+    // medical-agency
+    Route::get('medical-agencies', 'MedicalAgencyController@all')->name('medicalAgency.all');
+
+    // training-agency
+    Route::get('training-agencies', 'TrainingAgencyController@all')->name('trainingAgency.all');
+
+    //Candidate
+    Route::get('selected-candidate', 'CandidateController@selected')->name('candidate.request');
+    Route::get('interview-candidate', 'CandidateController@interview')->name('candidate.approved');
+    Route::get('finalized-candidate', 'CandidateController@finalized')->name('candidate.finalized');
+
+    //Biometric Candidate
+    Route::get('required-biometric', 'BiometricController@required')->name('biometric.required');
+    Route::get('completed-biometric', 'BiometricController@completed')->name('biometric.completed');
+
+    // Visa Process
+    Route::get('requested-visa', 'VisaProcessController@requested')->name('visa.requested');
+    Route::get('approved-visa', 'VisaProcessController@approved')->name('visa.approved');
+    Route::get('rejected-visa', 'VisaProcessController@rejected')->name('visa.rejected');
+
 });
 
  // Medical Agency
@@ -354,6 +374,10 @@ Route::group(['prefix' => 'medical-agency/', 'namespace' => 'MedicalAgency', 'as
     Route::get('/dashboard', 'MedicalAgencyDashboardController@dashboard')->name('dashboard');
     Route::get('/company-profile-view', 'MedicalAgencyDashboardController@companyPrfileView')->name('companyPrfileView');
     Route::post('/company-profile-submit', 'MedicalAgencyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+
+    //Candidate
+    Route::get('new-candidate', 'CandidateController@new')->name('candidate.new');
+    Route::get('reported-candidate', 'CandidateController@reported')->name('candidate.reported');
 });
 
  // Training Agency
@@ -361,6 +385,10 @@ Route::group(['prefix' => 'training-agency/', 'namespace' => 'TrainingAgency', '
     Route::get('/dashboard', 'TrainingAgencyDashboardController@dashboard')->name('dashboard');
     Route::get('/company-profile-view', 'TrainingAgencyDashboardController@companyPrfileView')->name('companyPrfileView');
     Route::post('/company-profile-submit', 'TrainingAgencyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+
+    //Candidate
+    Route::get('new-candidate', 'CandidateController@new')->name('candidate.new');
+    Route::get('reported-candidate', 'CandidateController@reported')->name('candidate.reported');
 });
 
  // UaeEmbassy
