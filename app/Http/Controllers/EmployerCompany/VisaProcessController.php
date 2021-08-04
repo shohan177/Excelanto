@@ -18,7 +18,8 @@ class VisaProcessController extends Controller
     }
 
     public function visa_approved(){
-        return view('EmployerCompany.VisaProcess.visa_approved');
+        $offeredCandidates = OfferedCandidate::where('result_status','Visa-Approved')->orderBy('id', 'DESC')->get();
+        return view('EmployerCompany.VisaProcess.visa_approved', compact('offeredCandidates'));
     }
 
     public function visa_rejected(){
@@ -33,5 +34,10 @@ class VisaProcessController extends Controller
     public function showVisaRequestedCandidate($offered_candidate_id){
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         return view('EmployerCompany.VisaProcess.show-visa-requested-candidate', compact('offeredCandidate'));
+    }
+
+    public function showVisaApprovedCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('EmployerCompany.VisaProcess.show-visa-approved-candidate', compact('offeredCandidate'));
     }
 }
