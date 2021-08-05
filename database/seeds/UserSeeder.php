@@ -34,6 +34,25 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
+            'role_id' => 9,
+            'country_id' => 2,
+            'name' => 'Travel Agency',
+            'email' => 'travel@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'travel-agency',
+            'active_status' => 'Approved',
+        ]);
+        User::create([
+            'role_id' => 10,
+            'country_id' => 2,
+            'name' => 'Biometric Agency',
+            'email' => 'biometric@gmail.com',
+            'password' => Hash::make('12345'),
+            'user_type' => 'biometric-agencies',
+            'active_status' => 'Approved',
+        ]);
+
+        User::create([
             'role_id' => 11,
             'country_id' => 2,
             'name' => 'Recruiting agency',
@@ -112,7 +131,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'role_id' => 7,
+            'role_id' => 8,
             'country_id' => 2,
             'name' => 'Training Agency',
             'email' => 'ta@gmail.com',
