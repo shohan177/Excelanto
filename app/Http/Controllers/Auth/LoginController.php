@@ -53,17 +53,17 @@ class LoginController extends Controller
         {
             return 'one-stop-service/dashboard';
 
-        }elseif(Auth::user()->user_type == 'one-stop-service-agency')
+        }elseif(Auth::user()->user_type == 'child-one-stop-service')
         {
-            return '/dashboard';
+            return 'child-one-stop-service/dashboard';
 
         }elseif(Auth::user()->user_type == 'medical-company')
         {
-            return '/dashboard';
+            return 'medical-agency/dashboard';
 
         }elseif(Auth::user()->user_type == 'training-company')
         {
-            return '/dashboard';
+            return 'training-agency/dashboard';
 
         }elseif(Auth::user()->user_type == 'travel-company')
         {

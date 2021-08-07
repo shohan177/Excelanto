@@ -72,17 +72,13 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($candidate->result_status == 'Selected')
-                                                    <a class="btn btn-info btn-sm"
-                                                        href="{{ route('OneStopService.candidate.assignSelectedCandidate', $candidate->id) }}">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                @else
-
-                                                @endif
                                                 <a class="btn btn-info btn-sm"
-                                                    href="{{ route('OneStopService.candidate.showReviewedCandidate', $candidate->id) }}">
-                                                    <i class="mdi mdi-eye"></i>
+                                                    href="{{ route('OneStopService.candidate.assignSelectedCandidate', $candidate->id) }}">
+                                                    <i class="fa fa-edit"></i> View
+                                                </a>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('OneStopService_Child.candidate.showCandidateProfile', $candidate->id) }}">
+                                                    <i class="mdi mdi-eye"></i> Pay
                                                 </a>
                                             </td>
                                         </tr>

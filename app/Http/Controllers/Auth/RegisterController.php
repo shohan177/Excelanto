@@ -128,7 +128,7 @@ class RegisterController extends Controller
         } elseif ($data['role'] == 5) {
             $userType = "master-one-stop-service";
         } elseif ($data['role'] == 6) {
-            $userType = "one-stop-service-agency";
+            $userType = "child-one-stop-service";
         } elseif ($data['role'] == 7) {
             $userType = "medical-company";
         } elseif ($data['role'] == 8) {
