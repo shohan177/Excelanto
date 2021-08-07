@@ -134,6 +134,7 @@ class UserSeeder extends Seeder
         User::create([
             'role_id' => 8,
             'country_id' => 2,
+            'childosc_id'=>11,
             'name' => 'Training Agency',
             'email' => 'ta@gmail.com',
             'password' => Hash::make('12345'),

@@ -53,7 +53,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
                                     @foreach ($medicalAgencies as $user)
                                         <tr>
@@ -73,7 +72,6 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-
                                 <tfoot>
                                     <tr>
                                         <th>SL No</th>
