@@ -29,4 +29,9 @@ class CandidateController extends Controller
     {
         return view('OneStopService_Child.candidate.finalized');
     }
+
+    public function showCandidateProfile($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('OneStopService_Child.candidate.show-candidate-profile', compact('offeredCandidate'));
+    }
 }
