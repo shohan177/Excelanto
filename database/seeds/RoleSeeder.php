@@ -70,15 +70,15 @@ class RoleSeeder extends Seeder
 
         Role::create([
             'id' => 9,
-            'name' => 'Travel company',
-            'slug' => 'travel-company',
+            'name' => 'travel agency',
+            'slug' => 'travel-agency',
             'status' => 'active'
         ]);
 
         Role::create([
             'id' => 10,
-            'name' => 'Biometric company',
-            'slug' => 'biometric-company',
+            'name' => 'Biometric Agency',
+            'slug' => 'biometric-agencies',
             'status' => 'active'
         ]);
 

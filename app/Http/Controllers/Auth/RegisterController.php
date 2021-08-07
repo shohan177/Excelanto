@@ -51,6 +51,10 @@ class RegisterController extends Controller
             return RouteServiceProvider::OneStopService;
         } elseif (Auth::user()->user_type == 'child-one-stop-service') {
             return RouteServiceProvider::OneStopService_Child;
+        } elseif (Auth::user()->user_type == 'travel-agency') {
+            return RouteServiceProvider::TravelAgency;
+        } elseif (Auth::user()->user_type == 'biometric-agencies') {
+            return RouteServiceProvider::BiometricAgencies;
         } elseif (Auth::user()->user_type == 'candidate') {
             return RouteServiceProvider::Candidate;
         } elseif (Auth::user()->user_type == 'uae-embassy') {
