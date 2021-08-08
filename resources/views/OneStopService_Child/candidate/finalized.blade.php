@@ -100,38 +100,24 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a class="btn btn-info btn-sm"
-                                                href="{{ route('OneStopService_Child.candidate.initialPayment', $candidate->id) }}">
-                                                <i class="fa fa-edit"></i> Pay
-                                            </a>
-                                            <a class="btn btn-info btn-sm"
-                                                href="{{ route('OneStopService_Child.candidate.showCandidateProfile', $candidate->id) }}">
-                                                <i class="mdi mdi-eye"></i> View
-                                            </a>
 
 
-                                            $action = '';
-
-                                            if ($row['result_status'] == 'Post-Processing' && $row['bio_status'] !== ''
-                                            && $row['post_training_status'] !== '' && $row['post_medical_status'] !==
-                                            '') {
-                                            $action = '<a class="btn btn-primary btn-xs"
-                                                href="view_biometric_completed.php?candidate_id=1">
-                                                <i class="fas fa-eye"></i></a>
-                                            <button type="button" name="delete" class="btn btn-success btn-xs delete">
-                                                <i class="fas fa-share-square"></i></button>' ; 
-                                            }
-                                            elseif($row['bio_status']=='' || $row['post_training_status']=='' ||
-                                            $row['post_medical_status']=='' ) { 
-                                                $action='<a
-                                                class="btn btn-primary btn-xs"
-                                                href="view_biometric_completed.php?candidate_id=1">
-                                                <i class="fas fa-eye"></i></a>
-                                            ' ; } elseif ($row['result_status']=='Finalized' ) {
-                                                 $action='<a
-                                                class="btn btn-primary btn-xs"
-                                                href="view_final_candidate.php?candidate_id=1">
-                                                <i class="fas fa-eye"></i></a>' ; }
+                                            @if($candidate->result_status == 'Finalized')
+                                                <a class="btn btn-primary btn-xs" href="{{ route('OneStopService_Child.candidate.showFinalCandidateProfile', $candidate->id) }}">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            @elseif($candidate->bio_status ==null || $candidate->post_training_status ==null ||$candidate->post_medical_status ==null )
+                                                <a class="btn btn-primary btn-xs"
+                                                    href="{{ route('OneStopService_Child.candidate.showBiometricCandidateProfile', $candidate->id) }}">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            @elseif($candidate->result_status == 'Post-Processing' && $candidate->bio_status !== null && $candidate->post_training_status !== null && $candidate->post_medical_status !== null )
+                                            <a class="btn btn-primary btn-xs"
+                                            href="{{ route('OneStopService_Child.candidate.showBiometricCandidateProfile', $candidate->id) }}">
+                                            <i class="fa fa-eye"></i></a>
+                                        <button type="button" name="delete" class="btn btn-success btn-xs delete">
+                                            <i class="fa fa-share-square"></i></button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

@@ -42,6 +42,18 @@ class CandidateController extends Controller
         return view('OneStopService_Child.candidate.show-candidate-profile', compact('offeredCandidate'));
     }
 
+    public function showFinalCandidateProfile($offered_candidate_id)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('OneStopService_Child.candidate.show-final-candidate-profile', compact('offeredCandidate'));
+    }
+
+    public function showBiometricCandidateProfile($offered_candidate_id)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('OneStopService_Child.candidate.show-biometric-candidate-profile', compact('offeredCandidate'));
+    }
+
     public function initialPayment($offered_candidate_id)
     {
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
