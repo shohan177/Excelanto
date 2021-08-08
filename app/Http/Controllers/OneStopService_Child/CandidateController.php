@@ -30,7 +30,10 @@ class CandidateController extends Controller
 
     public function finalized()
     {
-        return view('OneStopService_Child.candidate.finalized');
+        $offeredCandidates = OfferedCandidate::whereIn('result_status', ['Post-Processing','Finalized'])
+                                             ->where('selected_osc_id', Auth::user()->id)
+                                             ->orderBy('id', 'DESC')->get();
+        return view('OneStopService_Child.candidate.finalized', compact('offeredCandidates'));
     }
 
     public function showCandidateProfile($offered_candidate_id)
