@@ -70,7 +70,6 @@
                                             @endif
                                         </td>
                                         <td>
-
                                             <a class="btn btn-info btn-sm"
                                                 href="{{ route('OneStopService_Child.candidate.showCandidateProfile', $candidate->id) }}">
                                                 <i class="mdi mdi-eye"></i>

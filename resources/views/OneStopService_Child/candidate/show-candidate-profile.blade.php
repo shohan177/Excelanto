@@ -159,6 +159,12 @@
                                         class="btn btn-default btn-xs float-right"> <i
                                             class="fa fa-cloud-download"></i></a>
                                 </div>
+                                <hr>
+                                <strong><i class="fa fa-user mr-1"></i> One Stop Center</strong>
+                                <p><a href="{{ route('OneStopService_Child.company.showCompanyProfile', $offeredCandidate->selected_osc_id) }}" class="mailbox-attachment-name">{{  $offeredCandidate->selectedOSC->name }}</a></p>
+                                <hr>
+                                <strong><i class="fa fa-pencil mr-1"></i> Payable Fees</strong>
+                                <p class="text-muted">{{  $offeredCandidate->payment_assigned }}</p>
                             </div> <!-- /.tab-content -->
                         </div><!-- /.card-body -->
                     </div> <!-- /.nav-tabs-custom -->
