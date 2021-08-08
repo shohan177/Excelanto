@@ -32,7 +32,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -72,16 +71,12 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($candidate->result_status == 'Selected')
-                                                    <a class="btn btn-info btn-sm"
-                                                        href="{{ route('OneStopService.candidate.assignSelectedCandidate', $candidate->id) }}">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                @else
-
-                                                @endif
                                                 <a class="btn btn-info btn-sm"
-                                                    href="{{ route('OneStopService.candidate.showReviewedCandidate', $candidate->id) }}">
+                                                    href="{{ route('MedicalAgency.candidate.post_medical_report', $candidate->id) }}">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('MedicalAgency.candidate.show', $candidate->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                             </td>
