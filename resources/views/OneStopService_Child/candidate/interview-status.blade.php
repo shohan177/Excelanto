@@ -1,6 +1,6 @@
 @extends("OneStopService_Child/master")
 
-@section('title', 'Initial Payment')
+@section('title', 'Interview Status')
 @section('DataTableCss')
 
 
@@ -15,12 +15,12 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-header-title">
-                    <h4 class="pull-left page-title">Initial Payment</h4>
+                    <h4 class="pull-left page-title">Interview Status</h4>
                     <ol class="breadcrumb pull-right">
                         <li><a href="#">Excelanto</a></li>
                         <li><a href="#">Candidates
                             </a></li>
-                        <li class="active">Initial Payment</li>
+                        <li class="active">Interview Status</li>
                     </ol>
                     <div class="clearfix"></div>
                 </div>
@@ -31,7 +31,7 @@
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Initial Payment of the selected candidate</h3>
+                        <h3 class="panel-title">Interview result of the selected candidate</h3>
                     </div>
                     <div class="panel-body">
                         <form role="form"
@@ -65,22 +65,14 @@
                                 <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            <label for="payableFees">Payable Fees</label>
-                                            <input readonly type="text" class="form-control" id="payableFees"
-                                                name="payableFees" value="{{ $offeredCandidate->payment_assigned }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="paymentMethod">Result Status</label>
-                                            <select class="form-control" id="paymentMethod" name="paymentMethod"
+                                            <label for="interviewResult">Interview Result</label>
+                                            <select class="form-control" id="interviewResult" name="interviewResult"
                                                 required="">
-                                                <option value="">Payment Method</option>
-                                                <option @if (old('paymentMethod') == 'Cash') selected @endif value="Cash">Cash</option>
-                                                <option @if (old('paymentMethod') == 'Card') selected @endif value="Card">Card</option>
-                                                <option @if (old('paymentMethod') == 'UPI') selected @endif value="UPI">UPI</option>
-                                                <option @if (old('paymentMethod') == 'NetBanking') selected @endif value="NetBanking">Net Banking</option>
+                                                <option value="">Select candidate result</option>
+                                                <option @if (old('interviewResult') == 'OK') selected @endif value="OK">OK Verified</option>
+                                                <option @if (old('interviewResult') == 'NotOK') selected @endif value="NotOK">Not OK</option>
                                             </select>
                                         </div>
-
                                     </div> <!-- panel-body -->
                                 </div> <!-- col -->
                                 <div class="col-sm-12 col-md-1 col-lg-1 col-xl-1"></div>
@@ -90,7 +82,6 @@
                                             class="btn btn-info waves-effect waves-ligh">Submit</button>
                                     </div>
                                 </div>
-
                             </div> <!-- End row -->
                         </form>
                     </div><!-- panel-body -->

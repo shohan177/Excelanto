@@ -18,7 +18,8 @@ Route::group(['prefix' => 'child-one-stop-service/', 'namespace' => 'OneStopServ
 
     //Candidate
     Route::get('show-candidate-profile/{offered_candidate_id}', 'CandidateController@showCandidateProfile')->name('candidate.showCandidateProfile');
-    Route::get('initial-payment/{offered_candidate_id}', 'CandidateController@initialPayment')->name('candidate.initialPayment');
+    Route::get('interview-status/{offered_candidate_id}', 'CandidateController@interviewStatus')->name('candidate.interviewStatus');
+    Route::get('interview-status-store/{offered_candidate_id}', 'CandidateController@interviewStatusStore')->name('candidate.interviewStatusStore');
     Route::post('initial-payment-store/{offered_candidate_id}', 'CandidateController@initialPaymentStore')->name('candidate.initialPaymentStore');
     Route::get('selected-candidate', 'CandidateController@selected')->name('candidate.request');
     Route::get('interview-candidate', 'CandidateController@interview')->name('candidate.approved');

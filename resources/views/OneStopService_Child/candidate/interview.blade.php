@@ -75,7 +75,7 @@
                                                 <i class="mdi mdi-eye"></i>
                                             </a>
                                             <a class="btn btn-info btn-sm"
-                                                href="{{ route('OneStopService_Child.candidate.initialPayment', $candidate->id) }}">
+                                                href="{{ route('OneStopService_Child.candidate.interviewStatus', $candidate->id) }}">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                         </td>

@@ -45,6 +45,24 @@ class CandidateController extends Controller
         return view('OneStopService_Child.candidate.initial-payment', compact('offeredCandidate'));
     }
 
+    public function interviewStatus($offered_candidate_id)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('OneStopService_Child.candidate.interview-status', compact('offeredCandidate'));
+    }
+
+    public function interviewStatusStore(Request $request, $offered_candidate_id)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        $offeredCandidate->select_result = $request->interviewResult;
+        $offeredCandidate->result_status = 'Updated';
+        try {
+            $offeredCandidate->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
+    }
     public function initialPaymentStore(Request $request, $offered_candidate_id)
     {
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
