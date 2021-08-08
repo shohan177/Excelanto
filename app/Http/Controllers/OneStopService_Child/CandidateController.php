@@ -30,8 +30,28 @@ class CandidateController extends Controller
         return view('OneStopService_Child.candidate.finalized');
     }
 
-    public function showCandidateProfile($offered_candidate_id){
+    public function showCandidateProfile($offered_candidate_id)
+    {
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         return view('OneStopService_Child.candidate.show-candidate-profile', compact('offeredCandidate'));
+    }
+
+    public function initialPayment($offered_candidate_id)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('OneStopService_Child.candidate.initial-payment', compact('offeredCandidate'));
+    }
+
+    public function initialPaymentStore(Request $request, $offered_candidate_id)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        $offeredCandidate->payment_method = $request->paymentMethod;
+        $offeredCandidate->result_status = 'Recommended';
+        try {
+            $offeredCandidate->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
     }
 }
