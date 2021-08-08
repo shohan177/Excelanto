@@ -22,7 +22,10 @@ class CandidateController extends Controller
 
     public function interview()
     {
-        return view('OneStopService_Child.candidate.interview');
+        $offeredCandidates = OfferedCandidate::where('result_status', 'Under-Interview-Proces')
+                                             ->where('interview_osc_id', Auth::user()->id)
+                                             ->orderBy('id', 'DESC')->get();
+        return view('OneStopService_Child.candidate.interview', compact('offeredCandidates'));
     }
 
     public function finalized()
