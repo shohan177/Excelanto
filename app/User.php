@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function company(){
         return $this->hasOne(Company::class);
     }
+
+    public function country(){
+        return $this->belongsTo(Country::class ,'country_id');
+    }
 }

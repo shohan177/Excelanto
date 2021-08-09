@@ -37,7 +37,7 @@ class CandidateController extends Controller
     public function assignSelectedCandidate($offered_candidate_id){
         $offeredCandidate = OfferedCandidate::findOrfail($offered_candidate_id);
         $candidate = Candidate::findOrFail($offeredCandidate->candidate_id);
-        $wscList = User::where('user_type','one-stop-service-agency')->where('active_status','Approved')->orderBy('id','DESC')->get();
+        $wscList = User::where('user_type','child-one-stop-service')->where('active_status','Approved')->orderBy('id','DESC')->get();
         return view('OneStopService.candidate.assign-selected-candidate', compact('candidate','offeredCandidate','wscList'));
     }
 

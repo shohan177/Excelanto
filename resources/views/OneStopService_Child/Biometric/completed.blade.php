@@ -40,68 +40,63 @@
                             <h3 class="panel-title">Candidates selected by employer</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Candidate Name</th>
-                                        <th>Job Category</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
+                            <thead>
+                                <tr>
+                                    <th>SL No</th>
+                                    <th>Candidate Name</th>
+                                    <th>Job Category</th>
+                                    <th>Phone No</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
 
-
-                                <tbody>
+                            <tbody>
+                                @foreach ($offeredCandidates as $candidate)
                                     <tr>
-                                        <td>1</td>
-                                        <td>shavo</td>
-                                        <td>Developer</td>
-                                        <td>sharifshuvo00@gmail.com</td>
-                                        <td>01756492875</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $candidate->candidate_name }}</td>
+                                        <td>{{ $candidate->job_category->category_name }}</td>
+                                        <td>{{ $candidate->phone_number }}</td>
+                                        <td>{{ $candidate->candidate_email }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-info btn-xs update">Completed</button>
+                                            @if ($candidate->result_status == 'Selected')
+                                                <span class=" badge badge-success">Selected</span>
+                                            @elseif ($candidate->result_status == "Post-Processing")
+                                                <span class="badge badge-warning">Post-Processing</span>
+                                            @elseif ($candidate->result_status == "Bio-Completed")
+                                                <span class="badge badge-warning">New</span>
+                                            @else
+                                                <span class="badge badge-info">{{ $candidate->result_status }}</span>
+                                            @endif
                                         </td>
                                         <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
+                                            @if ($candidate->result_status == "Bio-Completed")
+                                                <a class="btn btn-info btn-xs" href="{{ route('OneStopService_Child.biometric.assignMedicalTraining', $candidate->id) }}">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            @endif
+                                            <a class="btn btn-primary btn-xs" href="{{ route('OneStopService_Child.candidate.showBiometricCandidateProfile', $candidate->id) }}">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>vigneshdreams</td>
-                                        <td>Developer</td>
-                                        <td>vigneshdreams33@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" class="btn btn-info btn-xs update">Completed</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Candidate Name</th>
-                                        <th>Job Category</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>SL No</th>
+                                    <th>Candidate Name</th>
+                                    <th>Job Category</th>
+                                    <th>Phone No</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
                         </div>
                     </div>
                 </div>

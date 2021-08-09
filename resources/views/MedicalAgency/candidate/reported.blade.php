@@ -56,39 +56,28 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>shavo</td>
-                                        <td>Developer</td>
-                                        <td>sharifshuvo00@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" class="btn btn-info btn-xs update">Reported</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>vigneshdreams</td>
-                                        <td>Developer</td>
-                                        <td>vigneshdreams33@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" class="btn btn-info btn-xs update">Reported</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-
+                                    @foreach ($offeredCandidates as $candidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $candidate->candidate_name }}</td>
+                                            <td>{{ $candidate->job_category->category_name }}</td>
+                                            <td>{{ $candidate->candidate_email }}</td>
+                                            <td>{{ $candidate->phone_number }}</td>
+                                            <td>
+                                                @if ($candidate->post_medical_status == 'Pass')
+                                                    <span class=" badge badge-success">Pass</span>
+                                                @else
+                                                    <span class="badge badge-danger">{{ $candidate->post_medical_status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('MedicalAgency.candidate.show', $candidate->id) }}">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
