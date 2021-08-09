@@ -3,18 +3,26 @@
 namespace App\Http\Controllers\OneStopService_Child;
 
 use App\Http\Controllers\Controller;
+use App\OfferedCandidate;
 use Illuminate\Http\Request;
 
 class VisaProcessController extends Controller
 {
     public function requested(){
-        return view('OneStopService_Child.visa.requested');
+        $offeredCandidates = OfferedCandidate::where('result_status','Visa-Applied')->orderBy('id', 'DESC')->get();
+        return view('OneStopService_Child.visa.requested', compact('offeredCandidates'));
     }
     public function approved(){
-        return view('OneStopService_Child.visa.approved');
+        $offeredCandidates = OfferedCandidate::where('result_status','Visa-Approved')->orderBy('id', 'DESC')->get();
+        return view('OneStopService_Child.visa.approved', compact('offeredCandidates'));
     }
 
     public function rejected(){
         return view('OneStopService_Child.visa.rejected');
+    }
+
+    public function showVisaRequestedCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('OneStopService_Child.visa.show-visa-requested-candidate', compact('offeredCandidate'));
     }
 }

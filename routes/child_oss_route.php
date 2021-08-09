@@ -41,6 +41,7 @@ Route::group(['prefix' => 'child-one-stop-service/', 'namespace' => 'OneStopServ
 
     // Visa Process
     Route::get('requested-visa', 'VisaProcessController@requested')->name('visa.requested');
+    Route::get('show-visa-requested-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaRequestedCandidate')->name('visa.showVisaRequestedCandidate');
     Route::get('approved-visa', 'VisaProcessController@approved')->name('visa.approved');
     Route::get('rejected-visa', 'VisaProcessController@rejected')->name('visa.rejected');
 
