@@ -25,6 +25,7 @@ class CreateCandidatesTable extends Migration
             $table->string('passport_number')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('candidate_email')->nullable();
+            $table->string('candidate_password')->nullable();
             $table->string('country')->nullable();
             $table->string('nationality')->nullable();
             $table->text('present_address')->nullable();

@@ -10,5 +10,9 @@ Route::group(['prefix' => 'medical-agency/', 'namespace' => 'MedicalAgency', 'as
 
     //Candidate
     Route::get('new-candidate', 'CandidateController@new')->name('candidate.new');
+    Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
+    Route::get('post_medical_report/{id}', 'CandidateController@post_medical_report')->name('candidate.post_medical_report');
+    Route::post('add_medical_report/{id}', 'CandidateController@add_medical_report')->name('candidate.add_medical_report');
+
     Route::get('reported-candidate', 'CandidateController@reported')->name('candidate.reported');
 });
