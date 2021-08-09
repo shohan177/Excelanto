@@ -17,6 +17,7 @@ class CreateOfferedCandidatesTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('candidate_id')->nullable();
             $table->unsignedBigInteger('job_post_id')->nullable();
+            $table->unsignedBigInteger('job_category_id')->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
             $table->unsignedBigInteger('interview_osc_id')->nullable();
             $table->unsignedBigInteger('selected_osc_id')->nullable();
@@ -24,19 +25,12 @@ class CreateOfferedCandidatesTable extends Migration
             $table->unsignedBigInteger('post_training_id')->nullable();
             $table->unsignedBigInteger('travel_agency_id')->nullable();
             $table->unsignedBigInteger('welfare_center_id')->nullable();
+            $table->string('candidate_name')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('candidate_email')->nullable();
             $table->unsignedBigInteger('candidate_user_id')->nullable();
-            $table->enum('result_status',[
-                'Selected',
-                'Post-Processing',
-                'Finalized',
-                'Visa-Applied',
-                'Visa-Approved',
-                'Visa-Rejected',
-                'Visa-Stamping-Request',
-                'Visa-Stamping-Rejected',
-                'Visa-Stamping-Approved',
-                ])->nullable();
-            // $table->string('result_status')->nullable();
+            $table->string('candidate_password')->nullable();
+            $table->string('result_status')->nullable()->comment('Selected,Post-Processing,Finalized,Visa-Applied,Visa-Approved,Visa-Rejected,Visa-Stamping-Request,Visa-Stamping-Rejected,Visa-Stamping-Approved');
             $table->text('employer_comments')->nullable();
             $table->string('offer_letter')->nullable();
             $table->string('payment_assigned')->nullable();
@@ -45,13 +39,8 @@ class CreateOfferedCandidatesTable extends Migration
             $table->string('biometric_fee')->nullable();
             $table->string('bio_status')->nullable();
             $table->string('bio_report')->nullable();
-            // $table->string('post_medical_status')->nullable();
-            $table->enum('post_medical_status',[
-                'New',
-                'Pass',
-                'Fail'
-                ])->nullable();
-            $table->string('post_training_status')->nullable();
+            $table->string('post_medical_status')->nullable()->comment('New,Pass,Fail');
+            $table->string('post_training_status')->nullable()->comment('New,Pass,Fail');
             $table->string('post_medical_report')->nullable();
             $table->string('post_training_report')->nullable();
             $table->string('medical_fee')->nullable();

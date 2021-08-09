@@ -101,22 +101,27 @@
                                         </td>
                                         <td>
 
-
-                                            @if($candidate->result_status == 'Finalized')
-                                                <a class="btn btn-primary btn-xs" href="{{ route('OneStopService_Child.candidate.showFinalCandidateProfile', $candidate->id) }}">
+                                            @if ($candidate->result_status == 'Finalized')
+                                                <a class="btn btn-primary btn-xs"
+                                                    href="{{ route('OneStopService_Child.candidate.showFinalCandidateProfile', $candidate->id) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                            @elseif($candidate->bio_status ==null || $candidate->post_training_status ==null ||$candidate->post_medical_status ==null )
+                                            @elseif($candidate->bio_status ==null ||
+                                                $candidate->post_training_status ==null
+                                                ||$candidate->post_medical_status ==null )
                                                 <a class="btn btn-primary btn-xs"
                                                     href="{{ route('OneStopService_Child.candidate.showBiometricCandidateProfile', $candidate->id) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             @elseif($candidate->result_status == 'Post-Processing' && $candidate->bio_status !== null && $candidate->post_training_status !== null && $candidate->post_medical_status !== null )
-                                            <a class="btn btn-primary btn-xs"
-                                            href="{{ route('OneStopService_Child.candidate.showBiometricCandidateProfile', $candidate->id) }}">
-                                            <i class="fa fa-eye"></i></a>
-                                        <button type="button" name="delete" class="btn btn-success btn-xs delete">
-                                            <i class="fa fa-share-square"></i></button>
+                                                <a class="btn btn-primary btn-xs"
+                                                    href="{{ route('OneStopService_Child.candidate.showBiometricCandidateProfile', $candidate->id) }}">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                                <button type="button" name="delete"
+                                                    class="btn btn-success btn-xs delete">
+                                                    <i class="fa fa-share-square"></i>
+                                                </button>
                                             @endif
                                         </td>
                                     </tr>
