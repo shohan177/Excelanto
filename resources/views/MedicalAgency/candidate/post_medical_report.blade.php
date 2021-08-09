@@ -1,6 +1,6 @@
 @extends("MedicalAgency/master")
 
-@section('title', 'Assign One Stop Centre')
+@section('title', 'Update Candidates medical report')
 @section('DataTableCss')
 
 
@@ -15,12 +15,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Assign One Stop Centre</h4>
+                        <h4 class="pull-left page-title">Update Candidates medical report</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
                             <li><a href="#">One Stop Centre
                                 </a></li>
-                            <li class="active">Assign One Stop Centre</li>
+                            <li class="active">Update Candidates medical report</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Assign One Stop Service Centre to the selected candidate</h3>
+                            <h3 class="panel-title">Update Candidates medical report</h3>
                         </div>
                         <div class="panel-body">
                             <form role="form" action="{{ route('MedicalAgency.candidate.add_medical_report', $offeredCandidate->id) }}" method="POST"

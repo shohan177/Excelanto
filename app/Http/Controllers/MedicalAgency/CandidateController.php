@@ -21,8 +21,8 @@ class CandidateController extends Controller
     }
 
     public function show($id){
-         $candidate = OfferedCandidate::findOrFail($id);
-        return view('MedicalAgency.candidate.show-profile', compact('candidate'));
+         $offeredCandidate = OfferedCandidate::findOrFail($id);
+        return view('MedicalAgency.candidate.show-profile', compact('offeredCandidate'));
     }
 
 

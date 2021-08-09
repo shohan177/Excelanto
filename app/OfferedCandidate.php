@@ -9,9 +9,8 @@ class OfferedCandidate extends Model
     protected $fillable = [
 
         'id',
-        'company_id',
         'candidate_id',
-        'job_category_id',
+        'job_post_id',
         'candidate_user_id',
         'created_id',
         'interview_osc_id',
@@ -52,11 +51,6 @@ class OfferedCandidate extends Model
         'activated_at'
     ];
 
-    public function job_category()
-    {
-        return $this->belongsTo(JobCategory::class, 'job_category_id');
-    }
-
     public function selectedOSC()
     {
         return $this->belongsTo(User::class, 'selected_osc_id');
@@ -71,4 +65,10 @@ class OfferedCandidate extends Model
     {
         return $this->belongsTo(User::class, 'created_id');
     }
+
+    public function jobPost()
+    {
+        return $this->belongsTo(JobPost::class);
+    }
+
 }
