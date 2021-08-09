@@ -56,23 +56,23 @@
 
 
                                 <tbody>
-                                    @foreach ($offeredCandidates as $candidate)
+                                    @foreach ($offeredCandidates as $offeredCandidate)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $candidate->candidate_name }}</td>
-                                            <td>{{ $candidate->job_category->category_name }}</td>
-                                            <td>{{ $candidate->candidate_email }}</td>
-                                            <td>{{ $candidate->phone_number }}</td>
+                                            <td>{{ $offeredCandidate->candidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->jobPost->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->candidate->phone_number }}</td>
                                             <td>
-                                                @if ($candidate->post_medical_status == 'Pass')
+                                                @if ($offeredCandidate->post_medical_status == 'Pass')
                                                     <span class=" badge badge-success">Pass</span>
                                                 @else
-                                                    <span class="badge badge-danger">{{ $candidate->post_medical_status }}</span>
+                                                    <span class="badge badge-danger">{{ $offeredCandidate->post_medical_status }}</span>
                                                 @endif
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-sm"
-                                                    href="{{ route('MedicalAgency.candidate.show', $candidate->id) }}">
+                                                    href="{{ route('MedicalAgency.candidate.show', $offeredCandidate->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                             </td>
