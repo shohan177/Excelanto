@@ -40,8 +40,14 @@ class BiometricController extends Controller
     }
 
     public function assignMedicalTraining($offered_candidate_id){
+        $medicalAgencies = User::where('user_type','medical-agency')
+                                ->where('active_status', 'Approved')
+                                ->orderBy('id','DESC')->get();
+        $trainingAgencies = User::where('user_type','training-agency')
+                                ->where('active_status', 'Approved')
+                                ->orderBy('id','DESC')->get();
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
-        return view('OneStopService_Child.biometric.assign-medical-training', compact('offeredCandidate'));
+        return view('OneStopService_Child.biometric.assign-medical-training', compact('offeredCandidate','trainingAgencies','medicalAgencies'));
     }
 
     public function uploadBiometricStore(Request $request, $offered_candidate_id)
@@ -59,6 +65,26 @@ class BiometricController extends Controller
             Image::make($image->getRealPath())->save($folder_path . $image_new_name);
             $offeredCandidate->bio_report   = $folder_path . $image_new_name;
         }
+        try {
+            $offeredCandidate->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
+    }
+    public function assignMedicalTrainingStore(Request $request, $offered_candidate_id)
+    {
+        $request->validate([
+            'medicalCenter' => 'required',
+            'trainingCenter' => 'required',
+        ]);
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        $offeredCandidate->result_status = 'Post-Processing';
+        $offeredCandidate->training_fee = $request->trainingFees;
+        $offeredCandidate->medical_fee = $request->medicalFees;
+        $offeredCandidate->post_medical_id = $request->medicalCenter;
+        $offeredCandidate->post_training_id = $request->trainingCenter;
+
         try {
             $offeredCandidate->save();
             return back()->withToastSuccess('Successfully saved.');

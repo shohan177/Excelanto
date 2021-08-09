@@ -34,6 +34,7 @@ Route::group(['prefix' => 'child-one-stop-service/', 'namespace' => 'OneStopServ
     Route::get('completed-biometric', 'BiometricController@completed')->name('biometric.completed');
 
     Route::get('assign-medical-training/{offered_candidate_id}', 'BiometricController@assignMedicalTraining')->name('biometric.assignMedicalTraining');
+    Route::post('assign-medical-training-store/{offered_candidate_id}', 'BiometricController@assignMedicalTrainingStore')->name('biometric.assignMedicalTrainingStore');
     Route::get('show-paid-candidate-profile/{offered_candidate_id}', 'BiometricController@showPaidCandidateProfile')->name('biometric.showPaidCandidateProfile');
     Route::get('upload-biometric/{offered_candidate_id}', 'BiometricController@uploadBiometric')->name('biometric.uploadBiometric');
     Route::post('upload-biometric-store/{offered_candidate_id}', 'BiometricController@uploadBiometricStore')->name('biometric.uploadBiometricStore');

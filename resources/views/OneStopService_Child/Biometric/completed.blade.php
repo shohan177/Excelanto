@@ -74,7 +74,7 @@
                                         </td>
                                         <td>
                                             @if ($candidate->result_status == "Bio-Completed")
-                                                <a class="btn btn-info btn-xs" href="assign_medical_training.php?candidate_id=">
+                                                <a class="btn btn-info btn-xs" href="{{ route('OneStopService_Child.biometric.assignMedicalTraining', $candidate->id) }}">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                             @endif
