@@ -62,7 +62,7 @@
                             <li class="list-group-item">
                                 <b>Status</b>
                                 @if ($offeredCandidate->result_status == 'Assigned')
-                                <span class="float-right badge badge-info">Post-Recommended</span>
+                                    <span class="float-right badge badge-info">Post-Recommended</span>
                                 @else
                                     <span
                                         class="float-right badge badge-info">{{ $offeredCandidate->result_status }}</span>
@@ -84,6 +84,8 @@
                             <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Documents</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#results" data-toggle="tab">Results</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#Payments" data-toggle="tab">Payments</a>
+                            </li>
                         </ul>
                     </div><!-- /.card-header -->
                     <div class="panel-body">
@@ -141,6 +143,36 @@
                                         download class="btn btn-default btn-xs float-right"><i
                                             class="fa fa-cloud-download"></i></a>
                                 </div>
+                                <hr>
+                                <strong><i class="fa fa-camera mr-1"></i>Post-Training Certificate</strong>
+                                <div class="mailbox-attachment-info"> <a
+                                        href="../post_training_reports/{{ $offeredCandidate->post_training_report }}"
+                                        class="mailbox-attachment-name"><i class="fa fa-file"></i>
+                                        {{ $offeredCandidate->post_training_report }}</a>
+                                    <a href="../post_training_reports/{{ $offeredCandidate->post_training_report }}"
+                                        download class="btn btn-default btn-xs float-right"><i
+                                            class="fa fa-cloud-download"></i></a>
+                                </div></strong>
+                                <hr>
+                                <strong><i class="fa fa-camera mr-1"></i>Post-Medical Certificate</strong>
+                                <div class="mailbox-attachment-info"> <a
+                                        href="../post_medical_reports/{{ $offeredCandidate->post_medical_report }}"
+                                        class="mailbox-attachment-name"><i class="fa fa-file"></i>
+                                        {{ $offeredCandidate->post_medical_report }}</a>
+                                    <a href="../post_medical_reports/{{ $offeredCandidate->post_medical_report }}"
+                                        download class="btn btn-default btn-xs float-right"><i
+                                            class="fa fa-cloud-download"></i></a>
+                                </div></strong>
+                                <hr>
+                                <strong><i class="fa fa-camera mr-1"></i>Biometric</strong>
+                                <div class="mailbox-attachment-info"> <a
+                                        href="../biometric_reports/{{ $offeredCandidate->bio_report }}"
+                                        class="mailbox-attachment-name"><i class="fa fa-file"></i>
+                                        {{ $offeredCandidate->bio_report }}</a>
+                                    <a href="../biometric_reports/{{ $offeredCandidate->bio_report }}" download
+                                        class="btn btn-default btn-xs float-right"><i
+                                            class="fa fa-cloud-download"></i></a>
+                                </div>
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="results">
@@ -161,10 +193,41 @@
                                 </div>
                                 <hr>
                                 <strong><i class="fa fa-user mr-1"></i> One Stop Center</strong>
-                                <p><a href="{{ route('OneStopService_Child.company.showCompanyProfile', $offeredCandidate->selected_osc_id) }}" class="mailbox-attachment-name">{{  $offeredCandidate->selectedOSC->name }}</a></p>
+                                <p><a href="{{ route('OneStopService_Child.company.showCompanyProfile', $offeredCandidate->selected_osc_id) }}"
+                                        class="mailbox-attachment-name">{{ $offeredCandidate->selectedOSC->name }}</a>
+                                </p>
                                 <hr>
                                 <strong><i class="fa fa-pencil mr-1"></i> Payable Fees</strong>
-                                <p class="text-muted">{{  $offeredCandidate->payment_assigned }}</p>
+                                <p class="text-muted">{{ $offeredCandidate->payment_assigned }}</p>
+                            </div> <!-- /.tab-content -->
+                            <div class="tab-pane" id="Payments">
+                                <p class="lead">Total Amount Paid {{ $offeredCandidate->payment_assigned }}</p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tr>
+                                            <th style="width:50%">Biometric Fee</th>
+                                            <td>{{ $offeredCandidate->biometric_fee }}</td>
+                                            <td class="project-state">
+                                                <span class="badge badge-success">Paid</span>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Medical Fee</th>
+                                            <td>{{ $offeredCandidate->medical_fee }}</td>
+                                            <td class="project-state">
+                                                <span class="badge badge-success">Paid</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Training Fee</th>
+                                            <td>{{ $offeredCandidate->training_fee }}</td>
+                                            <td class="project-state">
+                                                <span class="badge badge-success">Paid</span>
+                                            </td>
+                                        </tr>Paid
+                                    </table>
+                                </div>
                             </div> <!-- /.tab-content -->
                         </div><!-- /.card-body -->
                     </div> <!-- /.nav-tabs-custom -->
