@@ -73,10 +73,10 @@
                                         </td>
                                         <td>
                                             <a class="btn btn-primary btn-xs"
-                                                href="{{ route('OneStopService_Child.candidate.showPaidCandidateProfile', $candidate->id) }}">
+                                                href="{{ route('OneStopService_Child.biometric.showPaidCandidateProfile', $candidate->id) }}">
                                                 <i class="fa fa-eye"></i>
                                             </a>
-                                            <a class="btn btn-info btn-xs" href="upload_biometric.php?candidate_id=2">
+                                            <a class="btn btn-info btn-xs" href="{{ route('OneStopService_Child.biometric.uploadBiometric', $candidate->id) }}">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                         </td>

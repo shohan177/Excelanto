@@ -33,7 +33,9 @@ Route::group(['prefix' => 'child-one-stop-service/', 'namespace' => 'OneStopServ
     Route::get('required-biometric', 'BiometricController@required')->name('biometric.required');
     Route::get('completed-biometric', 'BiometricController@completed')->name('biometric.completed');
 
-    Route::get('show-paid-candidate-profile/{offered_candidate_id}', 'BiometricController@showPaidCandidateProfile')->name('candidate.showPaidCandidateProfile');
+    Route::get('show-paid-candidate-profile/{offered_candidate_id}', 'BiometricController@showPaidCandidateProfile')->name('biometric.showPaidCandidateProfile');
+    Route::get('upload-biometric/{offered_candidate_id}', 'BiometricController@uploadBiometric')->name('biometric.uploadBiometric');
+    Route::post('upload-biometric-store/{offered_candidate_id}', 'BiometricController@uploadBiometricStore')->name('biometric.uploadBiometricStore');
 
     // Visa Process
     Route::get('requested-visa', 'VisaProcessController@requested')->name('visa.requested');
