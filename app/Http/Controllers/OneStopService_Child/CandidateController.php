@@ -90,4 +90,28 @@ class CandidateController extends Controller
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
     }
+
+    public function candidateStatusChange($offered_candidate_id , $result_status)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        $status = 'Post-Processing';
+        if ($result_status == 'Post-Processing') {
+            $status = 'Finalized';
+        }
+
+        $offeredCandidate->result_status = $status;
+        $offeredCandidate->active_status = $status;
+        try {
+            $offeredCandidate->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Updated'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
 }
