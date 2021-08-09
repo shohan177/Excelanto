@@ -31,4 +31,9 @@ class VisaProcessController extends Controller
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         return view('OneStopService_Child.visa.show-visa-approved-candidate', compact('offeredCandidate'));
     }
+
+    public function showVisaRejectedCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('OneStopService_Child.visa.show-visa-rejected-candidate', compact('offeredCandidate'));
+    }
 }
