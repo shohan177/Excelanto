@@ -23,7 +23,10 @@ class BiometricController extends Controller
     }
 
     public function completed(){
-        return view('OneStopService_Child.biometric.completed');
+        $offeredCandidates = OfferedCandidate::whereIn('result_status', ['Bio-Completed','Post-Processing'])
+                                             ->where('selected_osc_id', Auth::user()->id)
+                                             ->orderBy('id','DESC')->get();
+        return view('OneStopService_Child.biometric.completed', compact('offeredCandidates'));
     }
 
     public function showPaidCandidateProfile($offered_candidate_id){
@@ -34,6 +37,11 @@ class BiometricController extends Controller
     public function uploadBiometric($offered_candidate_id){
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         return view('OneStopService_Child.biometric.upload-biometric', compact('offeredCandidate'));
+    }
+
+    public function assignMedicalTraining($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('OneStopService_Child.biometric.assign-medical-training', compact('offeredCandidate'));
     }
 
     public function uploadBiometricStore(Request $request, $offered_candidate_id)
