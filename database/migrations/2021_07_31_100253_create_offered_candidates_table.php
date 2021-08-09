@@ -31,6 +31,7 @@ class CreateOfferedCandidatesTable extends Migration
             $table->unsignedBigInteger('candidate_user_id')->nullable();
             $table->string('candidate_password')->nullable();
             $table->string('result_status')->nullable()->comment('Selected,Post-Processing,Finalized,Visa-Applied,Visa-Approved,Visa-Rejected,Visa-Stamping-Request,Visa-Stamping-Rejected,Visa-Stamping-Approved');
+            $table->string('active_status')->nullable();
             $table->text('employer_comments')->nullable();
             $table->string('offer_letter')->nullable();
             $table->string('payment_assigned')->nullable();

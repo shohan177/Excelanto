@@ -113,13 +113,15 @@
                                                     href="{{ route('OneStopService_Child.candidate.showBiometricCandidateProfile', $candidate->id) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                            @elseif($candidate->result_status == 'Post-Processing' && $candidate->bio_status !== null && $candidate->post_training_status !== null && $candidate->post_medical_status !== null )
+                                            @elseif($candidate->result_status == 'Post-Processing' &&
+                                                $candidate->bio_status !== null && $candidate->post_training_status !==
+                                                null && $candidate->post_medical_status !== null )
                                                 <a class="btn btn-primary btn-xs"
                                                     href="{{ route('OneStopService_Child.candidate.showBiometricCandidateProfile', $candidate->id) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                                <button type="button" name="delete"
-                                                    class="btn btn-success btn-xs delete">
+                                                <button type="button" onclick="changeStatus(this)" value="{{ route('OneStopService_Child.candidate.candidateStatusChange',['offered_candidate_id' => $candidate->id, 'result_status' => $candidate->result_status] ) }}"
+                                                    class="btn btn-success btn-xs">
                                                     <i class="fa fa-share-square"></i>
                                                 </button>
                                             @endif
@@ -149,6 +151,49 @@
     </div> <!-- container -->
 </div>
 <!--End content -->
+<script>
+    function changeStatus(objButton) {
+        var url = objButton.value;
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to change status to Finalized !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Finalized !'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    method: 'POST',
+                    url: url,
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}",
+                    },
+                    success: function(data) {
+                        if (data.type == 'success') {
+                            Swal.fire(
+                                'Finalized !',
+                                'This candidate has been Finalized. ' + data.message,
+                                'success'
+                            )
+                            setTimeout(function() {
+                                location.reload();
+                            }, 800); //
+                        } else {
+                            Swal.fire(
+                                'Wrong !',
+                                'Something going wrong. ' + data.message,
+                                'warning'
+                            )
+                        }
+                    },
+                })
+            }
+        })
+    }
+</script>
 @endsection
 
 

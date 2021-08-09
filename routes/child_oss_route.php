@@ -27,6 +27,7 @@ Route::group(['prefix' => 'child-one-stop-service/', 'namespace' => 'OneStopServ
     Route::get('selected-candidate', 'CandidateController@selected')->name('candidate.request');
     Route::get('interview-candidate', 'CandidateController@interview')->name('candidate.approved');
     Route::get('finalized-candidate', 'CandidateController@finalized')->name('candidate.finalized');
+    Route::post('candidate-status-change/{offered_candidate_id}/{result_status}', 'CandidateController@candidateStatusChange')->name('candidate.candidateStatusChange');
 
     //Biometric Candidate
     Route::get('required-biometric', 'BiometricController@required')->name('biometric.required');
