@@ -24,6 +24,9 @@ class OSCAgencyController extends Controller
     }
 
     public function rejected(){
-        return view('OneStopService.childOsc.rejected');
+        $users = User::where('user_type','child-one-stop-service')
+                     ->where('active_status', 'Rejected')
+                     ->orderBy('id','DESC')->get();
+        return view('OneStopService.childOsc.rejected', compact('users'));
     }
 }
