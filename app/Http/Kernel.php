@@ -78,7 +78,7 @@ class Kernel extends HttpKernel
         'one-stop-service'=>OneStopService::class,
         'child-one-stop-service'=>OneStopService_Child::class,
         'travel-agency'=>TravelAgency::class,
-        'biometric-agencies'=>BiometricAgencies::class,
+        'biometric-agency'=>BiometricAgencies::class,
         'candidate'=>Candidate::class,
         'uae-embassy'=>UaeEmbassy::class,
         'training-agency'=>TrainingAgency::class,

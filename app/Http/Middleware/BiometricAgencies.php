@@ -16,7 +16,7 @@ class BiometricAgencies
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && (Auth::user()->user_type == 'biometric-agencies')) {
+        if (Auth::check() && (Auth::user()->user_type == 'biometric-agency')) {
             return $next($request);
         }
         else{

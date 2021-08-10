@@ -45,7 +45,7 @@ class RedirectIfAuthenticated
         {
             return redirect()->route('TravelAgency.dashboard');
         }
-        elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'biometric-agencies')
+        elseif(Auth::guard($guard)->check() && Auth::user()->user_type == 'biometric-agency')
         {
             return redirect()->route('BiometricAgencies.dashboard');
         }

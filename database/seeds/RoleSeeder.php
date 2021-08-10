@@ -78,7 +78,7 @@ class RoleSeeder extends Seeder
         Role::create([
             'id' => 10,
             'name' => 'Biometric Agency',
-            'slug' => 'biometric-agencies',
+            'slug' => 'biometric-agency',
             'status' => 'active'
         ]);
 
