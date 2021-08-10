@@ -10,6 +10,7 @@ class OfferedCandidate extends Model
 
         'id',
         'candidate_id',
+        'job_category_id',
         'job_post_id',
         'candidate_user_id',
         'created_id',
@@ -71,4 +72,8 @@ class OfferedCandidate extends Model
         return $this->belongsTo(JobPost::class);
     }
 
+    public function job_category()
+    {
+        return $this->belongsTo(JobCategory::class, 'job_category_id');
+    }
 }
