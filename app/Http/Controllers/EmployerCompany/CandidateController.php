@@ -87,6 +87,7 @@ class CandidateController extends Controller
         $offeredCandidate->candidate_name = $candidate->candidate_name;
         $offeredCandidate->phone_number = $candidate->phone_number;
         $offeredCandidate->candidate_email = $candidate->candidate_email;
+        $offeredCandidate->job_post_id = $candidate->job_id;
         $offeredCandidate->job_category_id = $candidate->job_category_id;
         $offeredCandidate->result_status = $request->resultStatus;
         $offeredCandidate->employer_comments = $request->comments;
