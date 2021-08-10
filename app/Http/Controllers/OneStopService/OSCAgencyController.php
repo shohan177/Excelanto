@@ -17,7 +17,10 @@ class OSCAgencyController extends Controller
     }
 
     public function approved(){
-        return view('OneStopService.childOsc.approved');
+        $users = User::where('user_type','child-one-stop-service')
+                     ->where('active_status', 'Approved')
+                     ->orderBy('id','DESC')->get();
+        return view('OneStopService.childOsc.approved', compact('users'));
     }
 
     public function rejected(){

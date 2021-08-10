@@ -266,6 +266,9 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::post('/company-prfile-submit', 'OneStopServiceDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
     Route::get('show-company-profile/{user_id}', 'CompanyController@showCompanyProfile')->name('company.showCompanyProfile');
+    Route::post('company-request-approve/{company_id}', 'CompanyController@approveNow')->name('company.approveNow');
+    Route::post('company-request-reject/{company_id}', 'CompanyController@rejectNow')->name('company.rejectNow');
+
     // child oss agency
     Route::get('child-osc-request', 'OSCAgencyController@request')->name('childOsc.request');
     Route::get('approved-child-osc', 'OSCAgencyController@approved')->name('childOsc.approved');

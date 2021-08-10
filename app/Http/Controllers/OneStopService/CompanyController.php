@@ -13,4 +13,38 @@ class CompanyController extends Controller
         $user = User::findOrFail($user_id);
         return view('OneStopService.company.profile', compact('user'));
     }
+
+    public function approveNow($id){
+        $user = User::findOrFail($id);
+        $user->active_status = "Approved";
+        try {
+            $user->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Stored'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    public function rejectNow($id){
+        $user = User::findOrFail($id);
+        $user->active_status = "Rejected";
+        try {
+            $user->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Updated'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
 }
