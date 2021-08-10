@@ -33,5 +33,8 @@ class JobPost extends Model
     public function job_category(){
         return $this->belongsTo(JobCategory::class);
     }
+    public function offeredCandidate(){
+        return $this->hasMany(OfferedCandidate::class, 'job_post_id');
+    }
 
 }
