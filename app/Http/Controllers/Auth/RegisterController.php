@@ -38,41 +38,33 @@ class RegisterController extends Controller
     public function redirectTo()
     {
         if (Auth::user()->user_type == 'super-admin') {
-            return RouteServiceProvider::SuperAdmin;
+
+            return 'super-admin/dashboard';
         } elseif (Auth::user()->user_type == 'employer-company') {
-            return RouteServiceProvider::EmployerCompany;
+            return 'employer-company/dashboard';
         } elseif (Auth::user()->user_type == 'welfare-service-center-company') {
-            return RouteServiceProvider::WelfareCentre;
+            return 'welfare-centre/dashboard';
         } elseif (Auth::user()->user_type == 'bangladeshi-embassy') {
-            return RouteServiceProvider::BangladeshEmbassy;
+            return 'bangladesh-embassy/dashboard';
         } elseif (Auth::user()->user_type == 'uae-admin') {
-            return RouteServiceProvider::UAEAdmin;
+            return 'uae-admin/dashboard';
         } elseif (Auth::user()->user_type == 'master-one-stop-service') {
-            return RouteServiceProvider::OneStopService;
+            return 'one-stop-service/dashboard';
         } elseif (Auth::user()->user_type == 'child-one-stop-service') {
-            return RouteServiceProvider::OneStopService_Child;
-        } elseif (Auth::user()->user_type == 'travel-agency') {
-            return RouteServiceProvider::TravelAgency;
-        } elseif (Auth::user()->user_type == 'biometric-agencies') {
-            return RouteServiceProvider::BiometricAgencies;
-        } elseif (Auth::user()->user_type == 'candidate') {
-            return RouteServiceProvider::Candidate;
-        } elseif (Auth::user()->user_type == 'uae-embassy') {
-            return RouteServiceProvider::UaeEmbassy;
-        } elseif (Auth::user()->user_type == 'medical-agency') {
-            return RouteServiceProvider::MedicalAgency;
-        } elseif (Auth::user()->user_type == 'training-agency') {
-            return RouteServiceProvider::TrainingAgency;
+            return 'child-one-stop-service/dashboard';
+        } elseif (Auth::user()->user_type == 'medical-company') {
+            return 'medical-agency/dashboard';
+        } elseif (Auth::user()->user_type == 'training-company') {
+            return 'training-agency/dashboard';
         } elseif (Auth::user()->user_type == 'travel-company') {
-            //return route('.dashboard');
+            return '/dashboard';
         } elseif (Auth::user()->user_type == 'biometric-company') {
-            //return route('.dashboard');
+            return '/dashboard';
         } elseif (Auth::user()->user_type == 'recruiting-agency') {
-            return RouteServiceProvider::RecruitingAgency;
+            return 'recruiting-agency/dashboard';
         } elseif (Auth::user()->user_type == 'bangladeshi-admin') {
-            //return route('BangladeshAdmin.dashboard');
+            return 'bangladesh-admin/dashboard';
         } elseif (Auth::user()->user_type == 'employer') {
-            //return route('.dashboard');
         } else {
             return route('register');
         }
@@ -118,9 +110,9 @@ class RegisterController extends Controller
         $userType = "";
         if ($data['role'] == 1) {
             $userType = "super-admin";
-        }elseif ($data['role'] == 2){
+        } elseif ($data['role'] == 2) {
             $userType = "employer-company";
-        }elseif ($data['role'] == 3){
+        } elseif ($data['role'] == 3) {
 
             $userType = "welfare-service-center-company";
         } elseif ($data['role'] == 4) {
@@ -164,9 +156,10 @@ class RegisterController extends Controller
             'country_id' => $data['country'],
         ]);
     }
-    public function showRegistrationForm(){
-        $countries=Country::where('status','active')->orderBy('id','DESC')->get();
-        $roles=Role::where('status','active')->orderBy('id','DESC')->get();
-        return view('auth.register', compact('countries','roles'));
+    public function showRegistrationForm()
+    {
+        $countries = Country::where('status', 'active')->orderBy('id', 'DESC')->get();
+        $roles = Role::where('status', 'active')->orderBy('id', 'DESC')->get();
+        return view('auth.register', compact('countries', 'roles'));
     }
 }

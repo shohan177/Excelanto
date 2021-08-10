@@ -13,9 +13,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 class OneStopService_ChildDashboardController extends Controller
 {
     public function dashboard(){
-        // return Auth::user()->id;
         $user = User::find(Auth::user()->id);
-        if ($user->active_status != 'Approved') {
+        if ($user->active_status == "New" || $user->active_status == 'Pending' || $user->active_status == 'Rejected') {
             return view('OneStopService_Child.pending-profile', compact('user'));
         }
 

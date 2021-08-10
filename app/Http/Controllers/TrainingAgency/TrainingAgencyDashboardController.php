@@ -13,14 +13,13 @@ use Intervention\Image\ImageManagerStatic as Image;
 class TrainingAgencyDashboardController extends Controller
 {
     public function dashboard(){
-        // return Auth::user()->id;
         $user = User::find(Auth::user()->id);
-        if ($user->active_status != 'Approved') {
+        if ($user->active_status == "New" || $user->active_status == 'Pending' || $user->active_status == 'Rejected') {
             return view('TrainingAgency.pending-profile', compact('user'));
         }
-
         return view('TrainingAgency.welcome');
     }
+
     public function companyPrfileView(){
 
         $user = User::find(Auth::user()->id);
