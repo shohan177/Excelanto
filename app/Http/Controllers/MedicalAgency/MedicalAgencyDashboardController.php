@@ -13,12 +13,10 @@ use Intervention\Image\ImageManagerStatic as Image;
 class MedicalAgencyDashboardController extends Controller
 {
     public function dashboard(){
-        // return Auth::user()->id;
         $user = User::find(Auth::user()->id);
-        if ($user->active_status != 'Approved') {
+        if ($user->active_status == "New" || $user->active_status == 'Pending' || $user->active_status == 'Rejected') {
             return view('MedicalAgency.pending-profile', compact('user'));
         }
-
         return view('MedicalAgency.welcome');
     }
     public function companyPrfileView(){
