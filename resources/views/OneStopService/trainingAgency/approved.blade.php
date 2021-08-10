@@ -32,7 +32,6 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -40,7 +39,6 @@
                             <h3 class="panel-title">Approved Training Agency Requests</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -53,24 +51,27 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
+    
                                 <tbody>
+                                    @foreach ($users as $user)
                                     <tr>
-                                        <td>1</td>
-                                        <td>4365768787</td>
-                                        <td>savar training</td>
-                                        <td>rc.com</td>
-                                        <td>rc@gmail.com</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $user->company_register_number }}</td>
+                                        <td>{{ $user->company_name }}</td>
+                                        <td>{{ $user->domain }}</td>
+                                        <td>{{ $user->email }}</td>
                                         <td>
-                                            <span class="badge badge-success">Assigned_COSC</span>
+                                            <span class="badge badge-success">{{ $user->active_status }}</span>
                                         </td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="#">
+                                            <a class="btn btn-info btn-sm" href="{{ route('OneStopService.company.showCompanyProfile', $user->id) }}">
                                                 <i class="mdi mdi-eye"></i>
                                             </a>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
+    
                                 <tfoot>
                                     <tr>
                                         <th>SL No</th>

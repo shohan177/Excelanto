@@ -16,10 +16,16 @@ class TrainingAgencyController extends Controller
     }
 
     public function approved(){
-        return view('OneStopService.trainingAgency.approved');
+        $users = User::where('user_type','training-agency')
+                     ->where('active_status', 'Approved')
+                     ->orderBy('id','DESC')->get();
+        return view('OneStopService.trainingAgency.approved', compact('users'));
     }
 
     public function rejected(){
-        return view('OneStopService.trainingAgency.rejected');
+        $users = User::where('user_type','training-agency')
+                     ->where('active_status', 'Rejected')
+                     ->orderBy('id','DESC')->get();
+        return view('OneStopService.trainingAgency.rejected', compact('users'));
     }
 }
