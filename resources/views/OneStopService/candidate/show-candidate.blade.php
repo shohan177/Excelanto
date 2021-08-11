@@ -60,7 +60,7 @@
                                 </li>
                                 <li class="list-group-item">
                                     <b>Status</b> <span
-                                        class="float-right badge badge-info">{{ $candidate->status }}</span>
+                                        class="float-right badge badge-info">{{ $offeredCandidate->result_status }}</span>
                                 </li>
                             </ul>
                         </div>

@@ -60,4 +60,28 @@ class CandidateController extends Controller
         }
 
     }
+
+    public function assignInterviewOsc($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrfail($offered_candidate_id);
+        $candidate = Candidate::findOrFail($offeredCandidate->candidate_id);
+        $wscList = User::where('user_type','child-one-stop-service')->where('active_status','Approved')->orderBy('id','DESC')->get();
+        return view('OneStopService.candidate.assign-interview-osc', compact('candidate','offeredCandidate','wscList'));
+    }
+
+    public function assignInterviewOscStore(Request $request , $offered_candidate_id){
+        $request->validate([
+            'wsc' =>  'required',
+        ]);
+        $offeredCandidate = OfferedCandidate::findOrfail($offered_candidate_id);
+        $offeredCandidate->result_status = 'Under-Interview-Process';
+        $offeredCandidate->interview_osc_id = $request->wsc;
+
+        try {
+            $offeredCandidate->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
+
+    }
 }

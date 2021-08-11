@@ -54,7 +54,6 @@
                                 </tr>
                             </thead>
 
-
                             <tbody>
                                 @foreach ($offeredCandidates as $candidate)
                                     <tr>
@@ -81,14 +80,14 @@
                                         <td>
                                             @if ($candidate->result_status == 'Interview')
                                                 <a class="btn btn-success btn-xs"
-                                                    href="assign_interview_osc.php?candidate_id=2">
+                                                    href="{{ route('OneStopService.candidate.assignInterviewOsc', $candidate->id) }}">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                             @else
 
                                             @endif
                                             <a class="btn btn-info btn-xs"
-                                                href="view_reviewed_candidate.php?candidate_id=2">
+                                                href="{{ route('OneStopService.candidate.showReviewedCandidate', $candidate->id) }}">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         </td>
