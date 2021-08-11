@@ -17,7 +17,8 @@ class CandidateController extends Controller
     }
 
     public function interview(){
-        return view('OneStopService.candidate.interview');
+        $offeredCandidates = OfferedCandidate::whereIn('result_status', ['Interview','Updated','Under-Interview-Process'])->orderBy('id','DESC')->get();
+        return view('OneStopService.candidate.interview', compact('offeredCandidates'));
     }
 
     public function finalized(){

@@ -19,7 +19,7 @@ class CandidateSeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++) {
             DB::table('candidates')->insert([
-                'candidate_name' =>   'Demo Nmae ' . $i,
+                'candidate_name' =>   'Demo Name ' . $i,
                 'role_id' => 15,
                 'job_id' => rand(1, 10),
                 'company_id' => rand(1, 10),
@@ -43,7 +43,7 @@ class CandidateSeeder extends Seeder
             $appliedJob = AppliedJob::findOrFail(11);
 
             $candidate_id =  DB::table('candidates')->insertGetId([
-                'candidate_name' =>   'Demo Nmae ' . $i,
+                'candidate_name' =>   'Demo Name ' . $i,
                 'role_id' => 15,
                 'job_id' => $appliedJob->job_post_id,
                 'company_id' => $appliedJob->company_id,
