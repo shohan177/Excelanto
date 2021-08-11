@@ -40,75 +40,60 @@
                             <h3 class="panel-title">Ticket Booked Candidated List</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Travel Agency</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
+                                        <th>Phone No</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
+    
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>AB Travel</td>
-                                        <td>shavo</td>
-                                        <td>Developer</td>
-                                        <td>sharifshuvo00@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" name="Forwarded"
-                                                class="btn btn-success btn-xs update">Appointed</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>AB Travel</td>
-                                        <td>vigneshdreams</td>
-                                        <td>Developer</td>
-                                        <td>vigneshdreams33@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" name="Forwarded"
-                                                class="btn btn-success btn-xs update">Appointed</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-
+                                    @foreach ($offeredCandidates as $candidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td><----- Have to Made Relation ------> </td>
+                                            <td>{{ $candidate->candidate_name }}</td>
+                                            <td>{{ $candidate->job_category->category_name }}</td>
+                                            <td>{{ $candidate->phone_number }}</td>
+                                            <td>{{ $candidate->candidate_email }}</td>
+                                            <td>
+                                                @if ($candidate->travel_status == 'Forwarded')
+                                                    <span class="badge badge-info">Sent To UAE</span>
+                                                @elseif ($candidate->travel_status == 'Activated')
+                                                    <span class="badge badge-success">Appointed</span>
+                                                @else
+                                                    <span
+                                                        class="badge badge-info">{{ $candidate->travel_status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs"
+                                                    href="{{ route('OneStopService.candidate.showBookedCandidate', $candidate->id) }}"><i
+                                                        class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Travel Agency</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
+                                        <th>Phone No</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>

@@ -28,7 +28,8 @@ class CandidateController extends Controller
     }
 
     public function ticketBooked(){
-        return view('OneStopService.candidate.ticketBooked');
+        $offeredCandidates = OfferedCandidate::whereIn('travel_status', ['Activated','Forwarded','Ticket-Issued'])->orderBy('id','DESC')->get();
+        return view('OneStopService.candidate.ticketBooked', compact('offeredCandidates'));
     }
 
     public function showReviewedCandidate($offered_candidate_id){
@@ -41,6 +42,12 @@ class CandidateController extends Controller
         $offeredCandidate = OfferedCandidate::findOrfail($offered_candidate_id);
         $candidate = Candidate::findOrFail($offeredCandidate->candidate_id);
         return view('OneStopService.candidate.show-final-candidate', compact('offeredCandidate','candidate'));
+    }
+
+    public function showBookedCandidate($offered_candidate_id)
+    {
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('OneStopService.candidate.show-booked-candidate', compact('offeredCandidate'));
     }
 
     public function assignSelectedCandidate($offered_candidate_id){
