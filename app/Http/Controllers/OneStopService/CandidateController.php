@@ -22,7 +22,9 @@ class CandidateController extends Controller
     }
 
     public function finalized(){
-        return view('OneStopService.candidate.finalized');
+        $offeredCandidates = OfferedCandidate::where('result_status', 
+        'Finalized')->orderBy('id','DESC')->get();
+        return view('OneStopService.candidate.finalized', compact('offeredCandidates'));
     }
 
     public function ticketBooked(){
@@ -33,6 +35,12 @@ class CandidateController extends Controller
         $offeredCandidate = OfferedCandidate::findOrfail($offered_candidate_id);
         $candidate = Candidate::findOrFail($offeredCandidate->candidate_id);
         return view('OneStopService.candidate.show-candidate', compact('offeredCandidate','candidate'));
+    }
+
+    public function showFinalCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrfail($offered_candidate_id);
+        $candidate = Candidate::findOrFail($offeredCandidate->candidate_id);
+        return view('OneStopService.candidate.show-final-candidate', compact('offeredCandidate','candidate'));
     }
 
     public function assignSelectedCandidate($offered_candidate_id){

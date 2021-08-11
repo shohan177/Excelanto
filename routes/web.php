@@ -296,6 +296,7 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
 
     // candidate
     Route::get('show-reviewed-candidate/{Offered_candidate_id}', 'CandidateController@showReviewedCandidate')->name('candidate.showReviewedCandidate');
+    Route::get('show-final-candidate/{Offered_candidate_id}', 'CandidateController@showFinalCandidate')->name('candidate.showFinalCandidate');
     Route::get('assign-selected-candidate/{Offered_candidate_id}', 'CandidateController@assignSelectedCandidate')->name('candidate.assignSelectedCandidate');
     Route::get('assign-interview-osc/{Offered_candidate_id}', 'CandidateController@assignInterviewOsc')->name('candidate.assignInterviewOsc');
     Route::post('assign-interview-osc-store/{Offered_candidate_id}', 'CandidateController@assignInterviewOscStore')->name('candidate.assignInterviewOscStore');
