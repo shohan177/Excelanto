@@ -31,7 +31,7 @@ class TravelEnquiryController extends Controller
         ]);
 
         $travelEnquiry = new TravelEnquiry();
-        
+
         $travelEnquiry->start_point  = $request->startingPoint;
         $travelEnquiry->end_point  = $request->endPoint;
         $travelEnquiry->tickets_required  = $request->totalTickets;
@@ -50,7 +50,12 @@ class TravelEnquiryController extends Controller
     }
 
     public function postedTravel(){
-        return view('OneStopService.travelEnquiry.postedTravel');
+        $travelEnquiries = TravelEnquiry::orderBy('id','DESC')->get();
+        return view('OneStopService.travelEnquiry.postedTravel', compact('travelEnquiries'));
+    }
+
+    public function ShowPostedTravel(){
+        
     }
 
     public function showVisaStampingApprovedCandidate($offered_candidate_id){
