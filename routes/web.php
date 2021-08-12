@@ -104,7 +104,6 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     Route::get('visa-process-requests', 'VisaProcessController@requests')->name('visa_process.requests');
     Route::get('visa-process-approved', 'VisaProcessController@approved')->name('visa_process.approved');
     Route::get('visa-process-rejected', 'VisaProcessController@rejected')->name('visa_process.rejected');
-
 });
 
 
@@ -135,7 +134,6 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
 
 
     Route::get('view-selected-candidates/{id}', 'CandidateController@viewSelected')->name('candidate.viewSelected');
-
 });
 
 // Welfare Company route
@@ -308,9 +306,10 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('ticket-booked-candidate', 'CandidateController@ticketBooked')->name('candidate.ticketBooked');
 
     // Visa Process
+
     Route::get('approved-visa', 'VisaProcessController@approved')->name('visa.approved');
     Route::get('rejected-visa', 'VisaProcessController@rejected')->name('visa.rejected');
-
+    Route::get('show-visa-approved-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaApprovedCandidate')->name('visa.showVisaApprovedCandidate');
     // Travel  enquiry
     Route::get('ready-to-travel', 'TravelEnquiryController@readyToTravel')->name('travelEnquiry.readyToTravel');
     Route::get('new-travel-enquiry', 'TravelEnquiryController@newTravel')->name('travelEnquiry.newTravel');
