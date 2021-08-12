@@ -52,36 +52,30 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
-                                    @foreach ($offeredCandidates as $candidate)
+                                    @foreach ($offeredCandidates as $offeredCandidate)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $candidate->candidate_name }}</td>
-                                            <td>{{ $candidate->job_category->category_name }}</td>
-                                            <td>{{ $candidate->phone_number }}</td>
-                                            <td>{{ $candidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->candidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->jobPost->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate->phone_number }}</td>
+                                            <td>{{ $offeredCandidate->candidate->candidate_email }}</td>
                                             <td>
-                                                @if ($candidate->result_status == 'Selected')
+                                                @if ($offeredCandidate->result_status == 'Selected')
                                                     <span class=" badge badge-success">Selected</span>
-                                                @elseif ($candidate->result_status == "Assigned")
+                                                @elseif ($offeredCandidate->result_status == "Assigned")
                                                     <span class="badge badge-info">Assigned</span>
                                                 @else
-                                                    <span class="badge badge-info">{{ $candidate->result_status }}</span>
+                                                    <span class="badge badge-info">{{ $offeredCandidate->result_status }}</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($candidate->result_status == 'Selected')
-                                                    <a class="btn btn-info btn-sm"
-                                                        href="{{ route('OneStopService.candidate.assignSelectedCandidate', $candidate->id) }}">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                @else
-
-                                                @endif
                                                 <a class="btn btn-info btn-sm"
-                                                    href="{{ route('OneStopService.candidate.showReviewedCandidate', $candidate->id) }}">
+                                                    href="{{ route('TrainingAgency.candidate.post_training_report', $offeredCandidate->id) }}">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('TrainingAgency.candidate.show', $offeredCandidate->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                             </td>

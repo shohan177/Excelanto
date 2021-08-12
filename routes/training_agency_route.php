@@ -10,5 +10,11 @@ use Illuminate\Support\Facades\Route;
 
     //Candidate
     Route::get('new-candidate', 'CandidateController@new')->name('candidate.new');
+    Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
+    Route::get('post_training_report/{id}', 'CandidateController@post_training_report')->name('candidate.post_training_report');
+    Route::post('add_training_report/{id}', 'CandidateController@add_training_report')->name('candidate.add_training_report');
+
+
+
     Route::get('reported-candidate', 'CandidateController@reported')->name('candidate.reported');
 });
