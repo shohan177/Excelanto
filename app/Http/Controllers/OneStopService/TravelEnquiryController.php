@@ -4,7 +4,10 @@ namespace App\Http\Controllers\OneStopService;
 
 use App\Http\Controllers\Controller;
 use App\OfferedCandidate;
+use App\TravelEnquiry;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TravelEnquiryController extends Controller
 {
@@ -16,6 +19,34 @@ class TravelEnquiryController extends Controller
 
     public function newTravel(){
         return view('OneStopService.travelEnquiry.newTravel');
+    }
+
+    public function newTravelStore(Request $request){
+        $request->validate([
+            'startingPoint' =>  'required',
+            'endPoint' =>  'required',
+            'totalTickets' =>  'required',
+            'dateOfJounrey' =>  'required',
+            'enquiryEndDate' =>  'required',
+        ]);
+
+        $travelEnquiry = new TravelEnquiry();
+        
+        $travelEnquiry->start_point  = $request->startingPoint;
+        $travelEnquiry->end_point  = $request->endPoint;
+        $travelEnquiry->tickets_required  = $request->totalTickets;
+        $travelEnquiry->date_of_journey   = $request->dateOfJounrey;
+        $travelEnquiry->end_date   = $request->enquiryEndDate;
+        $travelEnquiry->oss_comments  = $request->comments;
+        $travelEnquiry->oss_id   = Auth::user()->id;
+        $travelEnquiry->enquiry_status      = 'New';
+        $travelEnquiry->created_date       = Carbon::now();
+        try {
+            $travelEnquiry->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
     }
 
     public function postedTravel(){
