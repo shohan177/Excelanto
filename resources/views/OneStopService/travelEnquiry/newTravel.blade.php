@@ -9,7 +9,6 @@
     <!-- Start content -->
     <div class="content">
         <div class="container">
-
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
@@ -25,7 +24,6 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -33,22 +31,23 @@
                             <h3 class="panel-title">Create New Travel Enquiry</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" enctype="multipart/form-data">
+                            <form role="form" method="POST" action="{{ route('OneStopService.travelEnquiry.newTravelStore') }}" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <!-- Basic example -->
                                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                             <div class="panel-body">
                                                 <div class="form-group">
                                                     <label for="startingPoint">Starting Point(From)</label>
-                                                    <input placeholder="Enter Place name" type="text" class="form-control" id="startingPoint">
+                                                    <input placeholder="Enter Place name" name="startingPoint" type="text" class="form-control" id="startingPoint">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="endPoint">End Point(To)</label>
-                                                    <input placeholder="Enter Place name" type="text" class="form-control" id="endPoint">
+                                                    <input placeholder="Enter Place name" name="endPoint" type="text" class="form-control" id="endPoint">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="totalTickets">Total Tickets Required</label>
-                                                    <input placeholder="Enter tickets required" type="text" class="form-control" id="totalTickets">
+                                                    <input placeholder="Enter tickets required"  name="totalTickets" type="text" class="form-control" id="totalTickets">
                                                 </div>
                                             </div><!-- panel-body -->
                                     </div> <!-- col-->
@@ -57,18 +56,16 @@
                                             <div class="panel-body">
                                                 <div class="form-group">
                                                     <label for="dateOfJounrey">Date of Journey</label>
-                                                    <input type="date" class="form-control" id="dateOfJounrey">
+                                                    <input name="dateOfJounrey" type="date" class="form-control" id="dateOfJounrey">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="enquiryEndDate">Enquiry End Date</label>
-                                                    <input type="date" class="form-control" id="enquiryEndDate">
+                                                    <input name="enquiryEndDate" type="date" class="form-control" id="enquiryEndDate">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="comments">Comments</label>
                                                     <textarea placeholder="Write here any comments" class="form-control"  name="comments" id="comments" type="text" cols="30" rows="2"></textarea>
                                                 </div>
-
-
                                             </div> <!-- panel-body -->
                                     </div> <!-- col -->
                                     <div class=" text-center">

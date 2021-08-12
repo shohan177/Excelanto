@@ -2,138 +2,120 @@
 
 @section('title', 'Posted Enquiries')
 @section('DataTableCss')
-    <!-- DataTables -->
-    <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+<!-- DataTables -->
+<link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+    type="text/css" />
+<link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 
 @endsection
 
 @section('main-content')
-    <!-- Start content -->
-    <div class="content">
-        <div class="container">
+<!-- Start content -->
+<div class="content">
+    <div class="container">
 
-            <!-- Page-Title -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="page-header-title">
-                        <h4 class="pull-left page-title">Posted Enquiries</h4>
-                        <ol class="breadcrumb pull-right">
-                            <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Ticket Process</a></li>
-                            <li class="active">Posted Enquiries</li>
-                        </ol>
-                        <div class="clearfix"></div>
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-header-title">
+                    <h4 class="pull-left page-title">Posted Enquiries</h4>
+                    <ol class="breadcrumb pull-right">
+                        <li><a href="#">Excelanto</a></li>
+                        <li><a href="#">Ticket Process</a></li>
+                        <li class="active">Posted Enquiries</li>
+                    </ol>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Enquiries posted for the candidates travel</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>SL. No</th>
+                                    <th>Posted on</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Tickets</th>
+                                    <th>Enquiry Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($travelEnquiries as $travelEnquiry)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $travelEnquiry->created_at }}</td>
+                                        <td>{{ $travelEnquiry->start_point }}</td>
+                                        <td>{{ $travelEnquiry->end_point }}</td>
+                                        <td>{{ $travelEnquiry->tickets_required }}</td>
+                                        <td>
+                                            @if ($travelEnquiry->enquiry_status == 'New')
+                                                <span class="project-state badge badge-info">New</span>
+                                            @else
+                                                <span class="label label-danger">Inactive</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-xs"
+                                                href="{{ route('OneStopService.travelEnquiry.ShowPostedTravel', $travelEnquiry->id) }}">
+                                                <i class="fa fa-eye"></i> View
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>SL. No</th>
+                                    <th>Posted on</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Tickets</th>
+                                    <th>Enquiry Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Enquiries posted for the candidates travel</h3>
-                        </div>
-                        <div class="panel-body">
-
-                            <table id="datatable-buttons" class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>SL. No</th>
-                                        <th>Posted on</th>
-                                        <th>From</th>
-                                        <th>To</th>
-                                        <th>Tickets</th>
-                                        <th>Enquiry Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-
-
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>06/25/2021</td>
-                                        <td>Bangladesh</td>
-                                        <td>chennai</td>
-                                        <td>2</td>
-                                        <td>
-                                            <button type="button" class="btn btn-info btn-xs update">New</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i> View
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>06/25/2021</td>
-                                        <td>Bangladesh</td>
-                                        <td>bahrain</td>
-                                        <td>1</td>
-                                        <td>
-                                            <button type="button" class="btn btn-info btn-xs update">New</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i> View
-                                            </a>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>SL. No</th>
-                                        <th>Posted on</th>
-                                        <th>From</th>
-                                        <th>To</th>
-                                        <th>Tickets</th>
-                                        <th>Enquiry Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div> <!-- End Row -->
-
-
-        </div> <!-- container -->
-
-    </div>
-    <!--End content -->
+        </div> <!-- End Row -->
+    </div> <!-- container -->
+</div>
+<!--End content -->
 @endsection
 
-
 @section('DataTableJs')
-    <!-- Datatables-->
-    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/jszip.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/dataTables.keyTable.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
+<!-- Datatables-->
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/jszip.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/dataTables.keyTable.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
 
-    <!-- Datatable init js -->
-    <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
+<!-- Datatable init js -->
+<script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
 @endsection
