@@ -5,6 +5,7 @@ namespace App\Http\Controllers\OneStopService;
 use App\Http\Controllers\Controller;
 use App\OfferedCandidate;
 use App\TravelEnquiry;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -54,8 +55,10 @@ class TravelEnquiryController extends Controller
         return view('OneStopService.travelEnquiry.postedTravel', compact('travelEnquiries'));
     }
 
-    public function ShowPostedTravel(){
-        
+    public function ShowPostedTravel($travel_enquiry_id){
+        $travelEnquiry = TravelEnquiry::findOrFail($travel_enquiry_id);
+        $user = User::find($travelEnquiry->oss_id);
+        return view('OneStopService.travelEnquiry.show-posted-travel-details', compact('travelEnquiry','user'));
     }
 
     public function showVisaStampingApprovedCandidate($offered_candidate_id){
