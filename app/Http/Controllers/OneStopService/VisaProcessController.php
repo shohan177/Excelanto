@@ -15,11 +15,18 @@ class VisaProcessController extends Controller
     }
 
     public function rejected(){
-        return view('OneStopService.visa.rejected');
+        $offeredCandidates = OfferedCandidate::where('result_status', 
+        'Visa-Rejected')->orderBy('id','DESC')->get();
+        return view('OneStopService.visa.rejected', compact('offeredCandidates'));
     }
 
     public function showVisaApprovedCandidate($offered_candidate_id){
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         return view('OneStopService.visa.show-visa-approved-candidate', compact('offeredCandidate'));
+    }
+
+    public function showVisaRejectedCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('OneStopService.visa.show-visa-rejected-candidate', compact('offeredCandidate'));
     }
 }

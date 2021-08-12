@@ -310,6 +310,7 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('approved-visa', 'VisaProcessController@approved')->name('visa.approved');
     Route::get('rejected-visa', 'VisaProcessController@rejected')->name('visa.rejected');
     Route::get('show-visa-approved-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaApprovedCandidate')->name('visa.showVisaApprovedCandidate');
+    Route::get('show-visa-rejected-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaRejectedCandidate')->name('visa.showVisaRejectedCandidate');
     // Travel  enquiry
     Route::get('ready-to-travel', 'TravelEnquiryController@readyToTravel')->name('travelEnquiry.readyToTravel');
     Route::get('new-travel-enquiry', 'TravelEnquiryController@newTravel')->name('travelEnquiry.newTravel');
