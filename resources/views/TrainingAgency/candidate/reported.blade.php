@@ -32,7 +32,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -53,8 +52,30 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
+                                <tbody>
+                                    @foreach ($offeredCandidates as $offeredCandidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $offeredCandidate->candidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->jobPost->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->candidate->phone_number }}</td>
+                                            <td>
+                                                @if ($offeredCandidate->post_training_status == 'Pass')
+                                                    <span class=" badge badge-success">Pass</span>
+                                                @else
+                                                    <span class="badge badge-danger">{{ $offeredCandidate->post_training_status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('TrainingAgency.candidate.show', $offeredCandidate->id) }}">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
