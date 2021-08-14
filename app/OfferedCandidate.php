@@ -57,6 +57,11 @@ class OfferedCandidate extends Model
         return $this->belongsTo(User::class, 'selected_osc_id');
     }
 
+    public function selectedWSC()
+    {
+        return $this->belongsTo(User::class, 'welfare_center_id');
+    }
+
     public function candidate()
     {
         return $this->belongsTo(Candidate::class, 'candidate_id');
