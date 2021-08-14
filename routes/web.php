@@ -372,6 +372,9 @@ Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbas
 
     Route::post('/company-prfile-submit', 'BangladeshEmbassyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
+    // candidate profile show
+    Route::get('show-candidate-profile/{candidate_id}', 'CandidateController@showCandidateProfile')->name('candidate.showCandidateProfile');
+
     // Visa Process
     Route::get('received-employer-demand', 'EmployerDemandController@received')->name('employerDemand.received');
     Route::get('edit-employer-demand/{id}', 'EmployerDemandController@edit')->name('employerDemand.edit');
@@ -380,10 +383,10 @@ Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbas
     Route::get('rejected-employer-demand', 'EmployerDemandController@rejected')->name('employerDemand.rejected');
     Route::get('show-employer-demand/{id}', 'EmployerDemandController@show')->name('employerDemand.show');
 
-     // New Passport Service
-     Route::get('requested-new-passport', 'NewPassportController@request')->name('newPassport.request');
-     Route::get('approved-new-passport', 'NewPassportController@approved')->name('newPassport.approved');
-     Route::get('rejected-new-passport', 'NewPassportController@rejected')->name('newPassport.rejected');
+    // New Passport Service
+    Route::get('requested-new-passport', 'NewPassportController@request')->name('newPassport.request');
+    Route::get('approved-new-passport', 'NewPassportController@approved')->name('newPassport.approved');
+    Route::get('rejected-new-passport', 'NewPassportController@rejected')->name('newPassport.rejected');
 });
 
 include('child_oss_route.php');
