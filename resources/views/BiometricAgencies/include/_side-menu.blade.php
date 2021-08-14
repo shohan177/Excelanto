@@ -4,13 +4,13 @@
         <div id="sidebar-menu">
             <ul>
                 <li>
-                    <a href="{{ route('MedicalAgency.dashboard') }}" class="waves-effect"><i class="ti-home"></i><span> Dashboard </span></a>
+                    <a href="{{ route('BiometricAgencies.dashboard') }}" class="waves-effect"><i class="ti-home"></i><span> Dashboard </span></a>
                 </li>
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="nav-icon fa fa-users"></i></i><span> Post Biometric</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('MedicalAgency.candidate.new') }}"><i class="fa fa-arrow-circle-right"></i> New Candidates</a></li>
-                        <li><a href="{{ route('MedicalAgency.candidate.reported') }}"><i class="fa fa-arrow-circle-right"></i> Reported Candidates</a></li>
+                        <li><a href="{{ route('BiometricAgencies.candidate.new') }}"><i class="fa fa-arrow-circle-right"></i> New Candidates</a></li>
+                        <li><a href="{{ route('BiometricAgencies.candidate.reported') }}"><i class="fa fa-arrow-circle-right"></i> Reported Candidates</a></li>
                     </ul>
                 </li>
             </ul>
