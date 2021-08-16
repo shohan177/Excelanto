@@ -34,9 +34,9 @@
 
                     <div class="panel-body box-profile">
                         <div class="text-center">
-                            @if ($offeredCandidate->candidate_picture)
+                            @if ($offeredCandidate->candidate->candidate_picture)
                                 <img height="100px;" width="100px;"
-                                    src="{{ asset($offeredCandidate->candidate_picture) }}"
+                                    src="{{ asset($offeredCandidate->candidate->candidate_picture) }}"
                                     class="profile-user-img img-fluid img-circle" alt="User Image" />
                             @else
                                 <img class="profile-user-img img-fluid img-circle" height="70px;"

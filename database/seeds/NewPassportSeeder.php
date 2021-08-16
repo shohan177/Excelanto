@@ -15,7 +15,7 @@ class NewPassportSeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++) {
             DB::table('new_passport_services')->insert([
-                'candidate_id' => rand(1, 19),
+                'candidate_id' => rand(11, 19),
                 'company_id' => 6,
                 'wsc_id' => 6,
                 'candidate_name' => 'Demo Candidate Name',
@@ -24,7 +24,7 @@ class NewPassportSeeder extends Seeder
                 'cpr'  => rand(5000, 50000),
                 'comments'  => 'Demo Comments',
                 'new_offer_application'  => null,
-                'service_status'  => 'Forwarded',
+                'service_status'  => 'Approved',
                 'photo'  => null,
                 'biometric'  => null,
                 'fees'  => 200,

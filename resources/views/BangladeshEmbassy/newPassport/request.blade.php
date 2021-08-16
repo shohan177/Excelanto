@@ -1,6 +1,6 @@
 @extends("BangladeshEmbassy/master")
 
-@section('title', 'New Passport')
+@section('title', 'New Passport Request')
 @section('DataTableCss')
 <!-- DataTables -->
 <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
