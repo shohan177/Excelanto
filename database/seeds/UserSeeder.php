@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
             'role_id' => 10,
             'country_id' => 2,
             'name' => 'Biometric Agency',
-            'email' => 'biometric@gmail.com',
+            'email' => 'bio@gmail.com',
             'password' => Hash::make('12345'),
             'user_type' => 'biometric-agency',
             'active_status' => 'Approved',

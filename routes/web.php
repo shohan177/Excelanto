@@ -394,8 +394,8 @@ include('medical_agency_route.php');
 include('training_agency_route.php');
 include('uae_embassy_route.php');
 include('candidate_route.php');
-include('biometric_agencies_route.php');
 include('travel_agency_route.php');
+include('biometric_agencies_route.php');
 
 Auth::routes([
     'reset' => false, // Password Reset Routes...
