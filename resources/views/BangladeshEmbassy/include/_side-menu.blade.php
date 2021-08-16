@@ -35,9 +35,9 @@
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i></i> <span>Extension - Renewal</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('BangladeshEmbassy.employerDemand.received') }}"><i class="fa fa-arrow-circle-right"></i>Passport requests</a></li>
-                        <li><a href="{{ route('BangladeshEmbassy.employerDemand.approved') }}"><i class="fa fa-arrow-circle-right"></i>Passport approved</a></li>
-                        <li><a href="{{ route('BangladeshEmbassy.employerDemand.rejected') }}"><i class="fa fa-arrow-circle-right"></i>Passport rejected</a></li>
+                        <li><a href="{{ route('BangladeshEmbassy.extensionPassport.request') }}"><i class="fa fa-arrow-circle-right"></i>Passport requests</a></li>
+                        <li><a href="{{ route('BangladeshEmbassy.extensionPassport.approved') }}"><i class="fa fa-arrow-circle-right"></i>Passport approved</a></li>
+                        <li><a href="{{ route('BangladeshEmbassy.extensionPassport.rejected') }}"><i class="fa fa-arrow-circle-right"></i>Passport rejected</a></li>
                     </ul>
                 </li>
             </ul>

@@ -396,6 +396,13 @@ Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbas
     Route::get('rejected-lost-passport', 'LostPassportController@rejected')->name('lostPassport.rejected');
     Route::get('lost-passport-status/{lost_passport_service_id}', 'LostPassportController@status')->name('lostPassport.status');
     Route::post('lost-passport-status-update/{lost_passport_service_id}', 'LostPassportController@statusUpdate')->name('lostPassport.statusUpdate');
+
+    // Extension Passport Service
+    Route::get('requested-extension-passport', 'ExtensionPassportController@request')->name('extensionPassport.request');
+    Route::get('approved-extension-passport', 'ExtensionPassportController@approved')->name('extensionPassport.approved');
+    Route::get('rejected-extension-passport', 'ExtensionPassportController@rejected')->name('extensionPassport.rejected');
+    Route::get('extension-passport-status/{extension_passport_service_id}', 'ExtensionPassportController@status')->name('extensionPassport.status');
+    Route::post('extension-passport-status-update/{extension_passport_service_id}', 'ExtensionPassportController@statusUpdate')->name('extensionPassport.statusUpdate');
 });
 
 include('child_oss_route.php');
