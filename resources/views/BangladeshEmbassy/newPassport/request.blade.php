@@ -1,6 +1,6 @@
 @extends("BangladeshEmbassy/master")
 
-@section('title', 'New Passport')
+@section('title', 'New Passport Request')
 @section('DataTableCss')
 <!-- DataTables -->
 <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -54,7 +54,7 @@
                                 @foreach ($newPassports as $newPassport)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $newPassport->candidate_name ?? '-' }}</td>
+                                        <td>{{ $newPassport->candidate->candidate_name ?? '-' }}</td>
                                         <td>{{ $newPassport->created_at ?? '-' }}</td>
                                         <td>
                                             @if ($newPassport->service_status == 'Paid')
@@ -74,7 +74,7 @@
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                             <a class="btn btn-info btn-sm"
-                                                href="{{ route('BangladeshEmbassy.employerDemand.edit', $newPassport->id) }}">
+                                                href="{{ route('BangladeshEmbassy.newPassport.status', $newPassport->id) }}">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                         </td>

@@ -4,7 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class NewPassportSeeder extends Seeder
+class LostPassportSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,24 +14,25 @@ class NewPassportSeeder extends Seeder
     public function run()
     {
         for ($i = 0; $i < 10; $i++) {
-            DB::table('new_passport_services')->insert([
+            DB::table('lost_passport_services')->insert([
                 'candidate_id' => rand(11, 19),
                 'company_id' => 6,
                 'wsc_id' => 6,
-                'candidate_name' => 'Demo Candidate Name',
-                'company_name'  => 'Demo Company Name',
-                'salary_type'  => 'Full Time',
+                'b_embassy_id' => 2,
                 'cpr'  => rand(5000, 50000),
+                'bhr_mobile_no'  => rand(5000, 50000),
+                'bangladesh_mobile'  => rand(5000, 50000),
+                'bangladesh_address'  => Str::random(50, 500),
+                'spouse_cpr'  => Str::random(50, 500),
+                'spouse_mobile'  => rand(50, 500),
+                'salary'  => rand(5000, 50000),
                 'comments'  => 'Demo Comments',
-                'new_offer_application'  => null,
-                'service_status'  => 'Rejected',
-                'photo'  => null,
-                'biometric'  => null,
+                'service_status'  => 'Forwarded',
                 'fees'  => 200,
                 'delivery_type'  => null,
                 'delivery_to'  => null,
                 'delivery_status' => null,
-                'new_passport' => null,
+                'passport' => null,
                 'reject_reason' => null,
                 'created_id' => 6,
                 'created_at' => Carbon::now(),
