@@ -4,7 +4,7 @@
         <div id="sidebar-menu">
             <ul>
                 <li>
-                    <a href="#" class="waves-effect"><i class="ti-home"></i><span> Dashboard </span></a>
+                    <a href="{{ route('BangladeshEmbassy.dashboard') }}" class="waves-effect"><i class="ti-home"></i><span> Dashboard </span></a>
                 </li>
 
                 <li class="has_sub">
