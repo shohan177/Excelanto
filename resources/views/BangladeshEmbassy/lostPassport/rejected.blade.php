@@ -1,6 +1,6 @@
 @extends("BangladeshEmbassy/master")
 
-@section('title', 'New Passport Rejected')
+@section('title', 'Lost Passport Rejected')
 @section('DataTableCss')
 <!-- DataTables -->
 <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -20,10 +20,10 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-header-title">
-                    <h4 class="pull-left page-title">New Passport Rejected</h4>
+                    <h4 class="pull-left page-title">Lost Passport Rejected</h4>
                     <ol class="breadcrumb pull-right">
                         <li><a href="#">Excelanto</a></li>
-                        <li><a href="#">New Passport</a></li>
+                        <li><a href="#">Lost Passport</a></li>
                         <li class="active">Passport Rejected</li>
                     </ol>
                     <div class="clearfix"></div>
@@ -35,7 +35,7 @@
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">New Passport Rejected</h3>
+                        <h3 class="panel-title">Lost Passport Rejected</h3>
                     </div>
                     <div class="panel-body">
                         <table id="datatable-buttons" class="table table-striped table-bordered">
@@ -51,30 +51,30 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($newPassports as $newPassport)
+                                @foreach ($lostPassports as $lostPassport)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $newPassport->candidate->candidate_name ?? '-' }}</td>
-                                    <td>{{ $newPassport->created_at ?? '-' }}</td>
+                                    <td>{{ $lostPassport->candidate->candidate_name ?? '-' }}</td>
+                                    <td>{{ $lostPassport->created_at ?? '-' }}</td>
                                     <td>
-                                        @if ($newPassport->service_status == 'Paid')
+                                        @if ($lostPassport->service_status == 'Paid')
                                         <button type="button" name="New"
                                             class="btn btn-primary btn-xs update">New</button>
-                                        @elseif ($newPassport->service_status == "Forwarded")
+                                        @elseif ($lostPassport->service_status == "Forwarded")
                                         <button type="button" name="Rejected"
                                             class="btn btn-primary btn-xs update">New</button>
-                                        @elseif ($newPassport->service_status == "Rejected")
+                                        @elseif ($lostPassport->service_status == "Rejected")
                                         <button type="button" name="Rejected"
                                             class="btn btn-danger btn-xs update">Rejected</button>
                                         @else
                                         <button type="button" name="Rejected"
-                                            class="btn btn-primary btn-xs update">{{ $newPassport->service_status }}</button>
+                                            class="btn btn-primary btn-xs update">{{ $lostPassport->service_status }}</button>
                                         @endif
                                     </td>
-                                    <td>{{ $newPassport->reject_reason ?? '-' }}</td>
+                                    <td>{{ $lostPassport->reject_reason ?? '-' }}</td>
                                     <td>
                                         <a class="btn btn-info btn-sm"
-                                            href="{{ route('BangladeshEmbassy.candidate.showCandidateProfile', $newPassport->candidate_id) }}">
+                                            href="{{ route('BangladeshEmbassy.candidate.showCandidateProfile', $lostPassport->candidate_id) }}">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </td>

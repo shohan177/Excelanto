@@ -25,7 +25,7 @@
                         <h4 class="pull-left page-title">Passport status</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">New Passport</a></li>
+                            <li><a href="#">Lost Passport</a></li>
                             <li class="active">Passport status</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -36,9 +36,9 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('BangladeshEmbassy.newPassport.statusUpdate', $newPassport->id )}}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('BangladeshEmbassy.lostPassport.statusUpdate', $lostPassport->id )}}" method="post" enctype="multipart/form-data">
                     <div class="panel panel-primary">
-                            <input type="hidden" value="{{ $newPassport->id }}" name="id">
+                            <input type="hidden" value="{{ $lostPassport->id }}" name="id">
                             @csrf
                         <div class="panel-heading">
                             <h3 class="panel-title">Edit Passport status</h3>
@@ -53,8 +53,8 @@
                                                 <select class="form-control my-select-changer" name="serviceStatus" id="serviceStatus"
                                                     required="">
                                                     <option selected="" disabled="" value="">Select passport status</option>
-                                                    <option {{ $newPassport->service_status == 'Approved' ? 'selected' : ''}}  value="Approved">Approved</option>
-                                                    <option {{ $newPassport->service_status == 'Rejected' ? 'selected' : ''}}  value="Rejected">Rejected</option>
+                                                    <option {{ $lostPassport->service_status == 'Approved' ? 'selected' : ''}}  value="Approved">Approved</option>
+                                                    <option {{ $lostPassport->service_status == 'Rejected' ? 'selected' : ''}}  value="Rejected">Rejected</option>
                                                 </select>
                                             </div>
                                             <div class="form-group input-to-hide" style="display: none">

@@ -54,7 +54,7 @@
                                 @foreach ($newPassports as $newPassport)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $newPassport->candidate_name ?? '-' }}</td>
+                                        <td>{{ $newPassport->candidate->candidate_name ?? '-' }}</td>
                                         <td>{{ $newPassport->created_at ?? '-' }}</td>
                                         <td>
                                             @if ($newPassport->service_status == 'Paid')
