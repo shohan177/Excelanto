@@ -21,7 +21,7 @@ class NewPassportController extends Controller
     }
 
     public function rejected(){
-        $newPassports = NewPassportService::where('service_status','Forwarded')
+        $newPassports = NewPassportService::where('service_status','Rejected')
                      ->orderBy('id','DESC')->get();
         return view('BangladeshEmbassy.newPassport.rejected', compact('newPassports'));
     }

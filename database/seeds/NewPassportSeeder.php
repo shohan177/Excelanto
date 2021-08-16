@@ -24,7 +24,7 @@ class NewPassportSeeder extends Seeder
                 'cpr'  => rand(5000, 50000),
                 'comments'  => 'Demo Comments',
                 'new_offer_application'  => null,
-                'service_status'  => 'Approved',
+                'service_status'  => 'Rejected',
                 'photo'  => null,
                 'biometric'  => null,
                 'fees'  => 200,

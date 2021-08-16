@@ -73,10 +73,6 @@
                                                 href="{{ route('BangladeshEmbassy.candidate.showCandidateProfile', $newPassport->candidate_id) }}">
                                                 <i class="fa fa-eye"></i>
                                             </a>
-                                            <a class="btn btn-info btn-sm"
-                                                href="{{ route('BangladeshEmbassy.newPassport.status', $newPassport->id) }}">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
