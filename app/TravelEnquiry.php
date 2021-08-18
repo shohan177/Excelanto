@@ -19,4 +19,9 @@ class TravelEnquiry extends Model
         'created_date',
         'deleted'
     ];
+
+    public function submittedTravelEnquiry()
+    {
+        return $this->hasOne(SubmittedTravelEnquiry::class, 'enquiry_id');
+    }
 }
