@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\OneStopService;
 
 use App\Http\Controllers\Controller;
+use App\OfferedCandidate;
 use App\SubmittedTravelEnquiry;
 use App\User;
 use Illuminate\Http\Request;
@@ -16,17 +17,24 @@ class TravelQuotationController extends Controller
     }
 
     public function approved(){
-        return view('OneStopService.travelQuotation.approved');
+        $submittedTravelEnquiries = SubmittedTravelEnquiry::where('submitted_status', 'Approved')->orderBy('id','DESC')->get();
+        return view('OneStopService.travelQuotation.approved', compact('submittedTravelEnquiries'));
     }
 
     public function ticketBooked(){
-        return view('OneStopService.travelQuotation.ticketBooked');
+        $offeredCandidates = OfferedCandidate::whereIn('travel_status',['Ticket-Issued','Forwarded','Activated'])->orderBy('id','DESC')->get();
+        return view('OneStopService.travelQuotation.ticketBooked', compact('offeredCandidates'));
     }
 
     public function viewSubmittedQuotation($submitted_travel_enquiry_id){
         $submittedTravelEnquiry = SubmittedTravelEnquiry::findOrfail($submitted_travel_enquiry_id);
         $user = User::find($submittedTravelEnquiry->travelEnquiry->oss_id);
         return view('OneStopService.travelQuotation.view-submitted-quotation', compact('submittedTravelEnquiry','user'));
+    }
+    public function viewApprovedQuotation($submitted_travel_enquiry_id){
+        $submittedTravelEnquiry = SubmittedTravelEnquiry::findOrfail($submitted_travel_enquiry_id);
+        $user = User::find($submittedTravelEnquiry->travelEnquiry->oss_id);
+        return view('OneStopService.travelQuotation.view-approved-quotation', compact('submittedTravelEnquiry','user'));
     }
 
     public function approveNow($id){

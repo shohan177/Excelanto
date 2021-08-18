@@ -321,6 +321,7 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
 
     // Travel  quotations
     Route::get('view-submitted-quotation/{submitted_travel_enquiry_id}', 'TravelQuotationController@viewSubmittedQuotation')->name('travelQuotation.viewSubmittedQuotation');
+    Route::get('view-approved-quotation/{submitted_travel_enquiry_id}', 'TravelQuotationController@viewApprovedQuotation')->name('travelQuotation.viewApprovedQuotation');
     Route::post('travel-quotation-approve-now/{submitted_travel_enquiry_id}', 'TravelQuotationController@approveNow')->name('travelQuotation.approveNow');
     Route::post('travel-quotation-reject-now/{submitted_travel_enquiry_id}', 'TravelQuotationController@rejectNow')->name('travelQuotation.rejectNow');
     Route::get('received-travel-quotations', 'TravelQuotationController@received')->name('travelQuotation.received');

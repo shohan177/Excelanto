@@ -40,7 +40,6 @@
                             <h3 class="panel-title">Quotations Approved for the enquiries</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -53,42 +52,33 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>22/12/2020 01:08:37pm</td>
-                                        <td>Bangladesh</td>
-                                        <td>chennai</td>
-                                        <td>2</td>
-                                        <td>
-                                            <button type="button" class="btn btn-success btn-xs update">Approved</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="#">
-                                                <i class="fa fa-eye"></i> View
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>22/12/2020 01:08:37pm</td>
-                                        <td>Bangladesh</td>
-                                        <td>bahrain</td>
-                                        <td>1</td>
-                                        <td>
-                                            <button type="button" class="btn btn-success btn-xs update">Approved</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="#">
-                                                <i class="fa fa-eye"></i> View
-                                            </a>
-                                        </td>
-                                    </tr>
-
+                                    @foreach ($submittedTravelEnquiries as $submittedTravelEnquiry)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $submittedTravelEnquiry->submitted_date }}</td>
+                                            <td>{{ $submittedTravelEnquiry->travelEnquiry->start_point }}</td>
+                                            <td>{{ $submittedTravelEnquiry->travelEnquiry->end_point }}</td>
+                                            <td>{{ $submittedTravelEnquiry->total_tickets }}</td>
+                                            <td>
+                                                @if ($submittedTravelEnquiry->submitted_status == 'Approved')
+                                                    <button type="button" class="btn btn-info btn-xs">Approved</button>
+                                                @elseif ($submittedTravelEnquiry->submitted_status == 'Rejected')
+                                                    <button type="button"
+                                                        class="btn btn-danger btn-xs">Rejected</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-danger btn-xs">Inactive</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs"
+                                                    href="{{ route('OneStopService.travelQuotation.viewApprovedQuotation', $submittedTravelEnquiry->id) }}">
+                                                    <i class="fa fa-eye"></i> View
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -102,16 +92,11 @@
                                     </tr>
                                 </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div> <!-- End Row -->
-
-
         </div> <!-- container -->
-
     </div>
     <!--End content -->
 @endsection
