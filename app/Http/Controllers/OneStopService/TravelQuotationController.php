@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\OneStopService;
 
+use App\Candidate as AppCandidate;
 use App\Http\Controllers\Controller;
 use App\OfferedCandidate;
+use App\Candidate;
 use App\SubmittedTravelEnquiry;
 use App\User;
 use Illuminate\Http\Request;
@@ -70,4 +72,16 @@ class TravelQuotationController extends Controller
             ]);
         }
     }
+
+    public function selectCandidates(){
+        $offeredCandidates = OfferedCandidate::where('result_status', 'Visa-Stamping-Approved')->orderBy('id','DESC')->get();
+        return view('OneStopService.travelQuotation.select-candidates', compact('offeredCandidates'));
+    }
+
+    public function showStampingApprovedCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrfail($offered_candidate_id);
+        $candidate = Candidate::findOrFail($offeredCandidate->candidate_id);
+        return view('OneStopService.travelQuotation.stamping-approved-candidate', compact('offeredCandidate','candidate'));
+    }
+
 }

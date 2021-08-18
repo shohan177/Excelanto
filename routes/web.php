@@ -327,6 +327,8 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('received-travel-quotations', 'TravelQuotationController@received')->name('travelQuotation.received');
     Route::get('approved-travel-quotations', 'TravelQuotationController@approved')->name('travelQuotation.approved');
     Route::get('ticket-booked-travel-enquiry', 'TravelQuotationController@ticketBooked')->name('travelQuotation.ticketBooked');
+    Route::get('select-candidates', 'TravelQuotationController@selectCandidates')->name('travelQuotation.selectCandidates');
+    Route::get('show-stamping-approved-candidate/{Offered_candidate_id}', 'TravelQuotationController@showStampingApprovedCandidate')->name('travelQuotation.showStampingApprovedCandidate');
 });
 
 

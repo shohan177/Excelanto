@@ -1,6 +1,6 @@
 @extends("OneStopService/master")
 
-@section('title', 'Ticket Booked candidates')
+@section('title', 'Visa Stamped candidates')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -22,11 +22,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Ticket Booked Candidates</h4>
+                        <h4 class="pull-left page-title">Visa Stamped candidates</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Travel Quatation</a></li>
-                            <li class="active">Ticket Booked Candidates</li>
+                            <li><a href="#">Visa Process</a></li>
+                            <li class="active">Visa Stamped candidates</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -37,7 +37,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Ticket Booked Candidated List</h3>
+                            <h3 class="panel-title">Visa Stamped candidate List</h3>
                         </div>
                         <div class="panel-body">
 
@@ -45,7 +45,6 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Travel Agency</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
                                         <th>Email</th>
@@ -55,14 +54,10 @@
                                     </tr>
                                 </thead>
 
-
                                 <tbody>
                                     @foreach ($offeredCandidates as $offeredCandidate)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>
-                                                <----- Have to Made Relation ------>
-                                            </td>
                                             <td>{{ $offeredCandidate->candidate_name }}</td>
                                             <td>{{ $offeredCandidate->job_category->category_name }}</td>
                                             <td>{{ $offeredCandidate->candidate_email }}</td>
@@ -79,7 +74,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-xs"
-                                                    href="{{ route('OneStopService.candidate.showBookedCandidate', $offeredCandidate->id) }}"><i
+                                                    href="{{ route('OneStopService.travelQuotation.showStampingApprovedCandidate', $offeredCandidate->id) }}"><i
                                                         class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
@@ -88,7 +83,6 @@
                                 <tfoot>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Travel Agency</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
                                         <th>Email</th>

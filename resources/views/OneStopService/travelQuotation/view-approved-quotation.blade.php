@@ -158,7 +158,7 @@
                                     </div>
                                     <div class="text-center mt-5 mb-3">
                                         <a class="btn btn-info"
-                                        href="{{ route('OneStopService.travelQuotation.viewApprovedQuotation', $submittedTravelEnquiry->id) }}">
+                                        href="{{ route('OneStopService.travelQuotation.selectCandidates') }}">
                                         <i class="fa fa-edit"></i> Select travel people
                                     </a>
                                     </div>
