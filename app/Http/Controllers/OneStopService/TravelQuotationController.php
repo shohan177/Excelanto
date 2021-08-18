@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\OneStopService;
 
 use App\Http\Controllers\Controller;
+use App\SubmittedTravelEnquiry;
 use Illuminate\Http\Request;
 
 class TravelQuotationController extends Controller
 {
     public function received(){
-        return view('OneStopService.travelQuotation.received');
+
+        $submittedTravelEnquiries = SubmittedTravelEnquiry::where('submitted_status', 'New')->orderBy('id','DESC')->get();
+        return view('OneStopService.travelQuotation.received', compact('submittedTravelEnquiries'));
     }
 
     public function approved(){
