@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class TravelEnquiryController extends Controller
 {
     public function readyToTravel(){
-        $offeredCandidates = OfferedCandidate::where('result_status', 
+        $offeredCandidates = OfferedCandidate::where('result_status',
         'Visa-Stamping-Approved')->orderBy('id','DESC')->get();
         return view('OneStopService.travelEnquiry.readyToTravel', compact('offeredCandidates'));
     }

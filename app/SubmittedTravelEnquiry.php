@@ -22,4 +22,8 @@ class SubmittedTravelEnquiry extends Model
     {
         return $this->belongsTo(TravelEnquiry::class, 'enquiry_id');
     }
+    public function travelAgency()
+    {
+        return $this->belongsTo(User::class, 'travel_agency_id');
+    }
 }

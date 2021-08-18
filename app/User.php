@@ -41,6 +41,11 @@ class User extends Authenticatable
         return $this->hasOne(Company::class);
     }
 
+    public function submittedTravelEnquiry()
+    {
+        return $this->hasOne(User::class, 'travel_agency_id');
+    }
+
     public function country(){
         return $this->belongsTo(Country::class ,'country_id');
     }
