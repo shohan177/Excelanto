@@ -1,4 +1,4 @@
-@extends("EmployerCompany/master")
+@extends("OneStopService/master")
 
 @section('title', 'Assign One Stop Centre')
 @section('DataTableCss')

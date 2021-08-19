@@ -76,41 +76,6 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>shavo</td>
-                                        <td>Developer</td>
-                                        <td>sharifshuvo00@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" class="btn btn-info btn-xs update">Reported</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>vigneshdreams</td>
-                                        <td>Developer</td>
-                                        <td>vigneshdreams33@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" class="btn btn-info btn-xs update">Reported</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>ID</th>
