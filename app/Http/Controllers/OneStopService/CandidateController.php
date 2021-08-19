@@ -22,7 +22,7 @@ class CandidateController extends Controller
     }
 
     public function finalized(){
-        $offeredCandidates = OfferedCandidate::where('result_status', 
+        $offeredCandidates = OfferedCandidate::where('result_status',
         'Finalized')->orderBy('id','DESC')->get();
         return view('OneStopService.candidate.finalized', compact('offeredCandidates'));
     }
@@ -97,6 +97,22 @@ class CandidateController extends Controller
         } catch (\Exception $exception) {
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
+    }
 
+    public function requestToVisa($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        $offeredCandidate->result_status = "Visa-Requested";
+        try {
+            $offeredCandidate->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Stored'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 }
