@@ -57,43 +57,33 @@
 
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>AB Travel</td>
-                                        <td>shavo</td>
-                                        <td>Developer</td>
-                                        <td>sharifshuvo00@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" name="Forwarded"
-                                                class="btn btn-success btn-xs update">Appointed</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>AB Travel</td>
-                                        <td>vigneshdreams</td>
-                                        <td>Developer</td>
-                                        <td>vigneshdreams33@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" name="Forwarded"
-                                                class="btn btn-success btn-xs update">Appointed</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-
+                                    @foreach ($offeredCandidates as $offeredCandidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>
+                                                <----- Have to Made Relation ------>
+                                            </td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
+                                            <td>
+                                                @if ($offeredCandidate->travel_status == 'Forwarded')
+                                                    <span class="badge badge-info">Candidate Received</span>
+                                                @elseif ($offeredCandidate->travel_status == 'Activated')
+                                                    <span class="badge badge-success">Appointed</span>
+                                                @else
+                                                    <span
+                                                        class="badge badge-info">{{ $offeredCandidate->travel_status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs"
+                                                    href="{{ route('OneStopService.candidate.showBookedCandidate', $offeredCandidate->id) }}"><i
+                                                        class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -108,16 +98,11 @@
                                     </tr>
                                 </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div> <!-- End Row -->
-
-
         </div> <!-- container -->
-
     </div>
     <!--End content -->
 @endsection

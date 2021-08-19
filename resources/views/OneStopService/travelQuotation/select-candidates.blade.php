@@ -1,6 +1,6 @@
 @extends("OneStopService/master")
 
-@section('title', 'Received Quotations')
+@section('title', 'Visa Stamped candidates')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -22,11 +22,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Received Quotations</h4>
+                        <h4 class="pull-left page-title">Visa Stamped candidates</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Quotations</a></li>
-                            <li class="active">Received Quotations</li>
+                            <li><a href="#">Visa Process</a></li>
+                            <li class="active">Visa Stamped candidates</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -37,53 +37,56 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Quotations Received for the enquiries</h3>
+                            <h3 class="panel-title">Visa Stamped candidate List</h3>
                         </div>
                         <div class="panel-body">
 
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>SL. No</th>
-                                        <th>Posted on</th>
-                                        <th>From</th>
-                                        <th>To</th>
-                                        <th>Tickets</th>
+                                        <th>ID</th>
+                                        <th>Candidate Name</th>
+                                        <th>Job Category</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
-                                    @foreach ($submittedTravelEnquiries as $submittedTravelEnquiry)
+                                    @foreach ($offeredCandidates as $offeredCandidate)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $submittedTravelEnquiry->submitted_date }}</td>
-                                            <td>{{ $submittedTravelEnquiry->travelEnquiry->start_point }}</td>
-                                            <td>{{ $submittedTravelEnquiry->travelEnquiry->end_point }}</td>
-                                            <td>{{ $submittedTravelEnquiry->total_tickets }}</td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
                                             <td>
-                                                @if ($submittedTravelEnquiry->submitted_status == 'New')
-                                                    <button type="button" class="btn btn-info btn-xs">New</button>
+                                                @if ($offeredCandidate->travel_status == 'Forwarded')
+                                                    <span class="badge badge-info">Candidate Received</span>
+                                                @elseif ($offeredCandidate->travel_status == 'Activated')
+                                                    <span class="badge badge-success">Appointed</span>
                                                 @else
-                                                    <button type="button" class="btn btn-danger btn-xs">Inactive</button>
+                                                    <span
+                                                        class="badge badge-info">{{ $offeredCandidate->travel_status }}</span>
                                                 @endif
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-xs"
-                                                    href="{{ route('OneStopService.travelQuotation.viewSubmittedQuotation', $submittedTravelEnquiry->id) }}">
-                                                    <i class="fa fa-eye"></i> View
-                                                </a>
+                                                    href="{{ route('OneStopService.travelQuotation.showStampingApprovedCandidate', $offeredCandidate->id) }}"><i
+                                                        class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>SL. No</th>
-                                        <th>Posted on</th>
-                                        <th>From</th>
-                                        <th>To</th>
-                                        <th>Tickets</th>
+                                        <th>ID</th>
+                                        <th>Candidate Name</th>
+                                        <th>Job Category</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
