@@ -24,7 +24,8 @@ class VisaRequestController extends Controller
     }
 
     public function rejected(){
-        return view('UAEAdmin.visa.rejected');
+        $offeredCandidates = OfferedCandidate::where('result_status','Visa-Rejected')->orderBy('id','DESC')->get();
+        return view('UAEAdmin.visa.rejected', compact('offeredCandidates'));
     }
 
     public function showVisaApprovedCandidate($offered_candidate_id){
