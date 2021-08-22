@@ -261,6 +261,7 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
 
     // candidates --- ready to travel
     Route::get('travel-received-candidates', 'CandidateController@travelReceived')->name('candidate.travelReceived');
+    Route::get('show-travel-candidate/{offered_candidate_id}', 'CandidateController@travelCandidateProfile')->name('candidate.travelCandidateProfile');
 });
 
 
