@@ -232,6 +232,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
 Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEAdmin.', 'middleware' => ['auth', 'uae-admin']], function () {
     Route::get('/dashboard', 'UAEAdminDashboardController@dashboard')->name('dashboard');
 
+    // company
+    Route::get('show-company-profile/{user_id}', 'CompanyController@showCompanyProfile')->name('company.showCompanyProfile');
     // Employer Requests
     Route::get('new-employer-request', 'EmployerRequestController@new')->name('employerRequest.new');
     Route::get('new-employer-request/edit/{id}', 'EmployerRequestController@edit')->name('employerRequest.edit');

@@ -5,7 +5,8 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -16,7 +17,6 @@
     <!-- Start content -->
     <div class="content">
         <div class="container">
-
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
@@ -31,8 +31,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -40,7 +38,6 @@
                             <h3 class="panel-title">New Employer Requests</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -53,8 +50,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
@@ -67,10 +62,12 @@
                                                 <span class="badge badge-warning">{{ $user->active_status }}</span>
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-sm" href="#">
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('UAEAdmin.company.showCompanyProfile', $user->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
-                                                <a class="btn btn-primary btn-sm" href="{{ route('UAEAdmin.employerRequest.edit', $user->id) }}">
+                                                <a class="btn btn-primary btn-sm"
+                                                    href="{{ route('UAEAdmin.employerRequest.edit', $user->id) }}">
                                                     <i class="mdi mdi-pen"></i>
                                                 </a>
                                             </td>
