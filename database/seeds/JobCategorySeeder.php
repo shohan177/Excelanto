@@ -16,18 +16,18 @@ class JobCategorySeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             DB::table('job_categories')->insert([
                 'category_name' => 'Demo Category '. $i,
-                'status' => 'active',
+                'status' => 'Active',
             ]);
         }
 
         DB::table('job_categories')->insert([
             'category_name' => "Web Developer",
-            'status' => 'active',
+            'status' => 'Active',
         ]);
 
         DB::table('job_categories')->insert([
             'category_name' => "Doctor",
-            'status' => 'active',
+            'status' => 'Active',
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\UAEAdmin;
 
 use App\Http\Controllers\Controller;
+use App\JobCategory;
 use Illuminate\Http\Request;
 
 class JobCategoryController extends Controller
@@ -14,7 +15,8 @@ class JobCategoryController extends Controller
      */
     public function index()
     {
-        return view('UAEAdmin.jobCategory.index');
+        $jobCategories = JobCategory::orderBy('id','DESC')->get();
+        return view('UAEAdmin.jobCategory.index', compact('jobCategories'));
     }
 
     /**
@@ -35,7 +37,19 @@ class JobCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'status' =>  'required',
+            'jobCategory' =>  'required|unique:job_categories,category_name',
+        ]);
+        $jobCategory = new JobCategory();
+        $jobCategory->category_name = $request->jobCategory;
+        $jobCategory->status = $request->status;
+        try {
+            $jobCategory->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
     }
 
     /**
@@ -57,7 +71,8 @@ class JobCategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('UAEAdmin.jobCategory.edit');
+        $jobCategory = JobCategory::findOrFail($id);
+        return view('UAEAdmin.jobCategory.edit', compact('jobCategory'));
     }
 
     /**
@@ -69,7 +84,19 @@ class JobCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'status' =>  'required',
+            'jobCategory' =>  'required',
+        ]);
+        $jobCategory = JobCategory::findOrFail($id);
+        $jobCategory->category_name = $request->jobCategory;
+        $jobCategory->status = $request->status;
+        try {
+            $jobCategory->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
     }
 
     /**

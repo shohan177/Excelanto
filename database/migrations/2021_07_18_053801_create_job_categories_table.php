@@ -16,7 +16,7 @@ class CreateJobCategoriesTable extends Migration
         Schema::create('job_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('category_name')->nullable();
-            $table->enum('status', ['active', 'inactive']);
+            $table->enum('status', ['Active', 'Inactive']);
             $table->timestamps();
         });
     }
