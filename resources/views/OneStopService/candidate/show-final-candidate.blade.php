@@ -62,6 +62,13 @@
                                     <b>Status</b> <span
                                         class="float-right badge badge-info">{{ $offeredCandidate->result_status }}</span>
                                 </li>
+                                <li class="list-group-item">
+                                    @if ($offeredCandidate->result_status == 'Finalized')
+                                        <button type="button" class="btn btn-primary btn-block" onclick="requestToVisa(this)"
+                                        value="{{ route('OneStopService.candidate.requestToVisa', $offeredCandidate->id) }}"> <i class="fa fa-share"></i>
+                                            Request To Visa </b></button>
+                                    @endif
+                                </li>
                             </ul>
                         </div>
                         <!-- /.panel-body -->
@@ -96,7 +103,8 @@
                                 </div> <!-- /.tab-pane -->
                                 <div class="tab-pane" id="timeline"> <strong><i
                                             class="fa fa-camera mr-1"></i>Bio-data</strong>
-                                    <div class="mailbox-attachment-info"> <a href="../candidates_resume/{{ $candidate->candidate_resume }}"
+                                    <div class="mailbox-attachment-info"> <a
+                                            href="../candidates_resume/{{ $candidate->candidate_resume }}"
                                             class="mailbox-attachment-name"><i class="fa fa-file"></i>
                                             {{ $candidate->candidate_resume }}</a>
                                         <a href="../candidates_resume/{{ $candidate->candidate_resume }}" download
@@ -119,8 +127,8 @@
                                             href="../pre_medical_certificate/{{ $candidate->pre_medical_certificate }}"
                                             class="mailbox-attachment-name"><i class="fa fa-file"></i>
                                             {{ $candidate->pre_medical_certificate }}</a>
-                                        <a href="../pre_medical_certificate/{{ $candidate->pre_medical_certificate }}" download
-                                            class="btn btn-default btn-xs float-right"><i
+                                        <a href="../pre_medical_certificate/{{ $candidate->pre_medical_certificate }}"
+                                            download class="btn btn-default btn-xs float-right"><i
                                                 class="fa fa-cloud-download"></i></a>
                                     </div>
                                     <hr>
@@ -129,8 +137,8 @@
                                             href="../pre_training_certificate/{{ $candidate->pre_training_certificate }}"
                                             class="mailbox-attachment-name"><i class="fa fa-file"></i>
                                             {{ $candidate->pre_training_certificate }}</a>
-                                        <a href="../pre_training_certificate/{{ $candidate->pre_training_certificate }}" download
-                                            class="btn btn-default btn-xs float-right"><i
+                                        <a href="../pre_training_certificate/{{ $candidate->pre_training_certificate }}"
+                                            download class="btn btn-default btn-xs float-right"><i
                                                 class="fa fa-cloud-download"></i></a>
                                     </div>
                                 </div>
@@ -143,7 +151,8 @@
                                     <p class="text-muted">{{ $offeredCandidate->employer_comments }}</p>
                                     <hr>
                                     <strong><i class="fa fa-camera mr-1"></i>Candidate-OfferLetter</strong>
-                                    <div class="mailbox-attachment-info"> <a href="../offer_letter/{{ $offeredCandidate->offer_letter }}"
+                                    <div class="mailbox-attachment-info"> <a
+                                            href="../offer_letter/{{ $offeredCandidate->offer_letter }}"
                                             class="mailbox-attachment-name"><i class="fa fa-file"></i>
                                             {{ $offeredCandidate->offer_letter }}</a>
                                         <a href="../offer_letter/{{ $offeredCandidate->offer_letter }}" download
@@ -160,6 +169,50 @@
         </div> <!-- container -->
     </div>
     <!--End content -->
+    <script>
+        function requestToVisa(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Request !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN':  "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Approved !',
+                                    'This candidate has been Requested. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+    </script>
 @endsection
 
 @section('DataTableJs')

@@ -293,13 +293,14 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('rejected-biometric-agency', 'BiometricAgencyController@rejected')->name('biometricAgency.rejected');
 
     // candidate
-    Route::get('show-reviewed-candidate/{Offered_candidate_id}', 'CandidateController@showReviewedCandidate')->name('candidate.showReviewedCandidate');
-    Route::get('show-final-candidate/{Offered_candidate_id}', 'CandidateController@showFinalCandidate')->name('candidate.showFinalCandidate');
+    Route::post('request-to-visa/{offered_candidate_id}', 'CandidateController@requestToVisa')->name('candidate.requestToVisa');
+    Route::get('show-reviewed-candidate/{offered_candidate_id}', 'CandidateController@showReviewedCandidate')->name('candidate.showReviewedCandidate');
+    Route::get('show-final-candidate/{offered_candidate_id}', 'CandidateController@showFinalCandidate')->name('candidate.showFinalCandidate');
     Route::get('show-booked-candidate/{offered_candidate_id}', 'CandidateController@showBookedCandidate')->name('candidate.showBookedCandidate');
-    Route::get('assign-selected-candidate/{Offered_candidate_id}', 'CandidateController@assignSelectedCandidate')->name('candidate.assignSelectedCandidate');
-    Route::get('assign-interview-osc/{Offered_candidate_id}', 'CandidateController@assignInterviewOsc')->name('candidate.assignInterviewOsc');
-    Route::post('assign-interview-osc-store/{Offered_candidate_id}', 'CandidateController@assignInterviewOscStore')->name('candidate.assignInterviewOscStore');
-    Route::post('assign-selected-candidate-store/{Offered_candidate_id}', 'CandidateController@assignSelectedCandidateStore')->name('candidate.assignSelectedCandidateStore');
+    Route::get('assign-selected-candidate/{offered_candidate_id}', 'CandidateController@assignSelectedCandidate')->name('candidate.assignSelectedCandidate');
+    Route::get('assign-interview-osc/{offered_candidate_id}', 'CandidateController@assignInterviewOsc')->name('candidate.assignInterviewOsc');
+    Route::post('assign-interview-osc-store/{offered_candidate_id}', 'CandidateController@assignInterviewOscStore')->name('candidate.assignInterviewOscStore');
+    Route::post('assign-selected-candidate-store/{offered_candidate_id}', 'CandidateController@assignSelectedCandidateStore')->name('candidate.assignSelectedCandidateStore');
     Route::get('selected-candidate', 'CandidateController@selected')->name('candidate.request');
     Route::get('interview-candidate', 'CandidateController@interview')->name('candidate.approved');
     Route::get('finalized-candidate', 'CandidateController@finalized')->name('candidate.rejected');
@@ -328,7 +329,7 @@ Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 
     Route::get('approved-travel-quotations', 'TravelQuotationController@approved')->name('travelQuotation.approved');
     Route::get('ticket-booked-travel-enquiry', 'TravelQuotationController@ticketBooked')->name('travelQuotation.ticketBooked');
     Route::get('select-candidates', 'TravelQuotationController@selectCandidates')->name('travelQuotation.selectCandidates');
-    Route::get('show-stamping-approved-candidate/{Offered_candidate_id}', 'TravelQuotationController@showStampingApprovedCandidate')->name('travelQuotation.showStampingApprovedCandidate');
+    Route::get('show-stamping-approved-candidate/{offered_candidate_id}', 'TravelQuotationController@showStampingApprovedCandidate')->name('travelQuotation.showStampingApprovedCandidate');
 });
 
 
