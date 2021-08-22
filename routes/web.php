@@ -216,8 +216,6 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/renew_passport_status', 'WSC_RegisteredController@renew_passport_status')->name('renew_passport_status');
     Route::get('/renew_passport_delivery', 'WSC_RegisteredController@renew_passport_delivery')->name('renew_passport_delivery');
 
-
-
     //awareness event
     Route::get('/create-awareness-event', 'AwarenessEventController@create')->name('awarenessevent.create');
     Route::post('/store-awareness-event', 'AwarenessEventController@store')->name('awarenessevent.store');
@@ -234,6 +232,8 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
 
     // company
     Route::get('show-company-profile/{user_id}', 'CompanyController@showCompanyProfile')->name('company.showCompanyProfile');
+    Route::post('company-request-approve/{company_id}', 'CompanyController@approveNow')->name('company.approveNow');
+    Route::post('company-request-reject/{company_id}', 'CompanyController@rejectNow')->name('company.rejectNow');
     // Employer Requests
     Route::get('new-employer-request', 'EmployerRequestController@new')->name('employerRequest.new');
     Route::get('new-employer-request/edit/{id}', 'EmployerRequestController@edit')->name('employerRequest.edit');
