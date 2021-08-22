@@ -253,6 +253,11 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
     Route::get('requested-visa', 'VisaRequestController@requested')->name('visa.requested');
     Route::get('approved-visa', 'VisaRequestController@approved')->name('visa.approved');
     Route::get('rejected-visa', 'VisaRequestController@rejected')->name('visa.rejected');
+    Route::get('visa-status-offered-candidate/{offered_candidate_id}', 'VisaRequestController@visaStatusOfferedCandidate')->name('visa.visaStatusOfferedCandidate');
+    Route::post('visa-status-offered-candidate-update/{offered_candidate_id}', 'VisaRequestController@visaStatusOfferedCandidateUpdate')->name('visa.visaStatusOfferedCandidateUpdate');
+    Route::get('show-visa-applied-candidate/{offered_candidate_id}', 'VisaRequestController@showVisaAppliedCandidate')->name('visa.showVisaAppliedCandidate');
+    Route::get('show-visa-approved-candidate/{offered_candidate_id}', 'VisaRequestController@showVisaApprovedCandidate')->name('visa.showVisaApprovedCandidate');
+    Route::get('show-visa-rejected-candidate/{offered_candidate_id}', 'VisaRequestController@showVisaRejectedCandidate')->name('visa.showVisaRejectedCandidate');
 
     // candidates --- ready to travel
     Route::get('travel-received-candidates', 'CandidateController@travelReceived')->name('candidate.travelReceived');
