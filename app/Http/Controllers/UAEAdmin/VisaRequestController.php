@@ -14,13 +14,13 @@ use Intervention\Image\ImageManagerStatic as Image;
 class VisaRequestController extends Controller
 {
     public function requested(){
-        $offeredCandidates = OfferedCandidate::where('result_status',
-        'Visa-Applied')->orderBy('id','DESC')->get();
+        $offeredCandidates = OfferedCandidate::where('result_status','Visa-Applied')->orderBy('id','DESC')->get();
         return view('UAEAdmin.visa.requested', compact('offeredCandidates'));
     }
 
     public function approved(){
-        return view('UAEAdmin.visa.approved');
+        $offeredCandidates = OfferedCandidate::where('result_status','Visa-Approved')->orderBy('id','DESC')->get();
+        return view('UAEAdmin.visa.approved', compact('offeredCandidates'));
     }
 
     public function rejected(){
