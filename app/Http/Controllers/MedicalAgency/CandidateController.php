@@ -16,7 +16,7 @@ class CandidateController extends Controller
 {
     public function new(){
         // return Auth::user()->id;
-        $offeredCandidates = OfferedCandidate::where('post_medical_status', 'New')->where('result_status', 'Post-Processing')->where('post_medical_id', Auth::user()->id )->orderBy('id','DESC')->get();
+        $offeredCandidates = OfferedCandidate::where('post_medical_id', Auth::user()->id)->where('result_status', 'Post-Processing')->where('post_medical_id', Auth::user()->id )->orderBy('id','DESC')->get();
         return view('MedicalAgency.candidate.new', compact('offeredCandidates'));
     }
 

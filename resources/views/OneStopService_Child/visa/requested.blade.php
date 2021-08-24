@@ -76,7 +76,7 @@
                                                 @elseif ($offeredCandidate->result_status == 'Visa-Requested')
                                                     <span class="badge badge-danger">New</span>
                                                 @elseif ($offeredCandidate->result_status == 'Visa-Applied')
-                                                    <span class="badge badge-warnng">Visa-Applied</span>
+                                                    <span class="badge badge-warning">Visa-Applied</span>
                                                 @elseif ($offeredCandidate->result_status == 'Under-Interview-Process')
                                                     <span class="badge badge-danger">Under-Interview-Process</span>
                                                 @else

@@ -216,8 +216,6 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/renew_passport_status', 'WSC_RegisteredController@renew_passport_status')->name('renew_passport_status');
     Route::get('/renew_passport_delivery', 'WSC_RegisteredController@renew_passport_delivery')->name('renew_passport_delivery');
 
-
-
     //awareness event
     Route::get('/create-awareness-event', 'AwarenessEventController@create')->name('awarenessevent.create');
     Route::post('/store-awareness-event', 'AwarenessEventController@store')->name('awarenessevent.store');
@@ -232,6 +230,10 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
 Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEAdmin.', 'middleware' => ['auth', 'uae-admin']], function () {
     Route::get('/dashboard', 'UAEAdminDashboardController@dashboard')->name('dashboard');
 
+    // company
+    Route::get('show-company-profile/{user_id}', 'CompanyController@showCompanyProfile')->name('company.showCompanyProfile');
+    Route::post('company-request-approve/{company_id}', 'CompanyController@approveNow')->name('company.approveNow');
+    Route::post('company-request-reject/{company_id}', 'CompanyController@rejectNow')->name('company.rejectNow');
     // Employer Requests
     Route::get('new-employer-request', 'EmployerRequestController@new')->name('employerRequest.new');
     Route::get('new-employer-request/edit/{id}', 'EmployerRequestController@edit')->name('employerRequest.edit');
@@ -251,9 +253,15 @@ Route::group(['prefix' => 'uae-admin/', 'namespace' => 'UAEAdmin', 'as' => 'UAEA
     Route::get('requested-visa', 'VisaRequestController@requested')->name('visa.requested');
     Route::get('approved-visa', 'VisaRequestController@approved')->name('visa.approved');
     Route::get('rejected-visa', 'VisaRequestController@rejected')->name('visa.rejected');
+    Route::get('visa-status-offered-candidate/{offered_candidate_id}', 'VisaRequestController@visaStatusOfferedCandidate')->name('visa.visaStatusOfferedCandidate');
+    Route::post('visa-status-offered-candidate-update/{offered_candidate_id}', 'VisaRequestController@visaStatusOfferedCandidateUpdate')->name('visa.visaStatusOfferedCandidateUpdate');
+    Route::get('show-visa-applied-candidate/{offered_candidate_id}', 'VisaRequestController@showVisaAppliedCandidate')->name('visa.showVisaAppliedCandidate');
+    Route::get('show-visa-approved-candidate/{offered_candidate_id}', 'VisaRequestController@showVisaApprovedCandidate')->name('visa.showVisaApprovedCandidate');
+    Route::get('show-visa-rejected-candidate/{offered_candidate_id}', 'VisaRequestController@showVisaRejectedCandidate')->name('visa.showVisaRejectedCandidate');
 
     // candidates --- ready to travel
     Route::get('travel-received-candidates', 'CandidateController@travelReceived')->name('candidate.travelReceived');
+    Route::get('show-travel-candidate/{offered_candidate_id}', 'CandidateController@travelCandidateProfile')->name('candidate.travelCandidateProfile');
 });
 
 

@@ -33,21 +33,23 @@
                             <h3 class="panel-title">Add Job Category</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" enctype="multipart/form-data">
+                            <form action="{{ route('UAEAdmin.jobCategory.store') }}" method="POST" role="form" enctype="multipart/form-data">
+                                @csrf
+                                @method('POST')
                                 <div class="row ">
                                     <!-- Basic example -->
                                     <div class="col-md-2 col-lg-2 col-xl-2"> </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                                         <div class="form-group">
                                             <label for="jobCategory">Job Category</label>
-                                            <input type="text" class="form-control" id="jobCategory">
+                                            <input type="text" class="form-control" id="jobCategory" name="jobCategory">
                                         </div>
                                         <div class="form-group">
                                             <label for="status">Status</label>
                                             <select class="form-control" name="status" id="status">
-                                                <option value="">Select Status</option>
-                                                <option value="true">Active</option>
-                                                <option value="false">Inactive</option>
+                                                <option disabled value="">Select Status</option>
+                                                <option @if (old('status') == "Active") Selected @endif value="Active">Active</option>
+                                                <option @if (old('status') == "Inactive") Selected @endif value="Inactive">Inactive</option>
                                             </select>
                                         </div>
                                     </div>

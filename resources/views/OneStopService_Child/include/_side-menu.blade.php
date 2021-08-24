@@ -28,7 +28,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{{ route('OneStopService_Child.candidate.request') }}"><i class="fa fa-arrow-circle-right"></i> Selected Candidates</a></li>
                         <li><a href="{{ route('OneStopService_Child.candidate.approved') }}"><i class="fa fa-arrow-circle-right"></i> Interview Candidates</a></li>
-                        <li><a href="{{ route('OneStopService_Child.candidate.finalized') }}"><i class="fa fa-arrow-circle-right"></i> Finalized Candidates</a></li>
+                        <li><a href="{{ route('OneStopService_Child.candidate.finalized') }}"><i class="fa fa-arrow-circle-right"></i> Final Candidates</a></li>
                     </ul>
                 </li>
                 <li class="has_sub">

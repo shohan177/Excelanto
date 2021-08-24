@@ -2,8 +2,10 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <div class="text-center">
-            <a href="index.html" class="logo"><img src="{{asset('assets/images/logo_white_2.png')}}" height="28"></a>
-            <a href="index.html" class="logo-sm"><img src="{{asset('assets/images/logo_sm.png')}}" height="36"></a>
+            <a href="{{ route('UAEAdmin.dashboard') }}" class="logo"><img
+                    src="{{ asset('assets/images/logo_white_2.png') }}" height="28"></a>
+            <a href="{{ route('UAEAdmin.dashboard') }}" class="logo-sm"><img
+                    src="{{ asset('assets/images/logo_sm.png') }}" height="36"></a>
         </div>
     </div>
     <!-- Button mobile view to collapse sidebar menu -->
@@ -25,11 +27,13 @@
 
                 <ul class="nav navbar-nav navbar-right pull-right">
                     <li class="dropdown hidden-xs">
-                        <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                        <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light"
+                            data-toggle="dropdown" aria-expanded="true">
                             <i class="fa fa-bell"></i> <span class="badge badge-xs badge-danger">3</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg">
-                            <li class="text-center notifi-title">Notification <span class="badge badge-xs badge-success">3</span></li>
+                            <li class="text-center notifi-title">Notification <span
+                                    class="badge badge-xs badge-success">3</span></li>
                             <li class="list-group">
                                 <!-- list item-->
                                 <a href="javascript:void(0);" class="list-group-item">
@@ -70,19 +74,22 @@
                         </ul>
                     </li>
                     <li class="hidden-xs">
-                        <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="fa fa-crosshairs"></i></a>
+                        <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i
+                                class="fa fa-crosshairs"></i></a>
                     </li>
                     <li class="dropdown">
-                        <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-circle"> </a>
+                        <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown"
+                            aria-expanded="true"><img src="{{ asset('assets/images/users/avatar-1.jpg') }}"
+                                alt="user-img" class="img-circle"> </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-circle img-fluid" style="width: 150px;">
+                                <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-img"
+                                    class="img-circle img-fluid" style="width: 150px;">
                             </li>
                             <li class="divider"></li>
                             <li><a href=""> Profile</a></li>
                             <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>

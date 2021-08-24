@@ -1,4 +1,4 @@
-@extends("OneStopService/master")
+@extends("UAEAdmin/master")
 
 @section('title', 'Company Profile')
 @section('DataTableCss')

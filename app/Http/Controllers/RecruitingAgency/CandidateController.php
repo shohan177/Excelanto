@@ -65,7 +65,7 @@ class CandidateController extends Controller
         $candidate->passport_number    = $request->passportNo;
         $candidate->phone_number    = $request->phoneNo;
         $candidate->candidate_email    = $request->email;
-        $candidate->status    = $request->status == 'Active' ? 1 : 0;
+        $candidate->status    = $request->status;
         $candidate->nationality    = $request->nationality;
         $candidate->present_address    = $request->presentAddress;
         $candidate->permanent_address    = $request->permanentAddress;

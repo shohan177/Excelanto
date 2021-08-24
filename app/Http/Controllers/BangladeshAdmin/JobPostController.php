@@ -64,8 +64,6 @@ class JobPostController extends Controller
         } catch (\Exception $exception) {
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
-
-
     }
 
     public function rejectVacancy($id){
