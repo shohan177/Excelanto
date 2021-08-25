@@ -53,8 +53,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     <tr>
                                         <td>1</td>
@@ -72,6 +70,18 @@
                                             </td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Travel Agency</th>
+                                        <th>Candidate Name</th>
+                                        <th>Job Category</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
 
                         </div>

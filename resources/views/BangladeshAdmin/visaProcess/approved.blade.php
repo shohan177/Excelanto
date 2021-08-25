@@ -52,8 +52,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     <tr>
                                         <td>1</td>
@@ -67,6 +65,17 @@
                                                 <i class="fa fa-eye"></i></a></td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Candidate Name</th>
+                                        <th>Job Category</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
 
                         </div>

@@ -5,7 +5,8 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -16,7 +17,6 @@
     <!-- Start content -->
     <div class="content">
         <div class="container">
-
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
@@ -31,7 +31,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -53,8 +52,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     <tr>
                                         <td>1</td>
@@ -64,25 +61,33 @@
                                         <td>vigneshdreams33@gmail.com</td>
                                         <td>8807283750</td>
                                         <td>
-                                            <button type="button" name="Ticket-Issued" class="btn btn-success btn-xs update">Ticket Issued</button>
+                                            <button type="button" name="Ticket-Issued"
+                                                class="btn btn-success btn-xs update">Ticket Issued</button>
                                         </td>
                                         <td>
                                             <a class="btn btn-info btn-xs" href="#">
                                                 <i class="fa fa-eye"></i></a>
-                                            </td>
+                                        </td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Travel Agency</th>
+                                        <th>Candidate Name</th>
+                                        <th>Job Category</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div> <!-- End Row -->
-
-
         </div> <!-- container -->
-
     </div>
     <!--End content -->
 @endsection

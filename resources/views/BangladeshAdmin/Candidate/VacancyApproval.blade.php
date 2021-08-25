@@ -56,8 +56,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     <tr>
                                         <td>1</td>
@@ -76,6 +74,20 @@
                                         </td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>SL No</th>
+                                        <th>Recruiter Name</th>
+                                        <th>Company Name</th>
+                                        <th>Job Category</th>
+                                        <th>Job Vacancies</th>
+                                        <th>Applied Vacancies</th>
+                                        <th>Approved Vacancies</th>
+                                        <th>Applied Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
 
                         </div>
