@@ -77,6 +77,7 @@ class CandidateSeeder extends Seeder
             $offeredCandidate->created_at = Carbon::now();
             $offeredCandidate->created_id = 3;
             $offeredCandidate->welfare_center_id = 6;
+            $offeredCandidate->travel_agency_id = 3;
             $offeredCandidate->post_medical_id = 12;
             $offeredCandidate->save();
         }

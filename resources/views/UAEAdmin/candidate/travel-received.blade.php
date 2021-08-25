@@ -56,7 +56,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                <----- Have to Made Relation ------>
+                                                {{ $offeredCandidate->travelAgency->company_name }}
                                             </td>
                                             <td>{{ $offeredCandidate->candidate_name }}</td>
                                             <td>{{ $offeredCandidate->job_category->category_name }}</td>
