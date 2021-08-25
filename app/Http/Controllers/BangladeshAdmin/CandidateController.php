@@ -43,7 +43,8 @@ class CandidateController extends Controller
     }
     public function tickets_booked_List()
     {
-        return view('BangladeshAdmin.Candidate.tickets_booked_List');
+        $offeredCandidates = OfferedCandidate::where('welfare_center_id', '!=' ,'')->whereIn('travel_status',['Ticket-Issued','Forwarded','Activated'])->orderBy('id','DESC')->get();
+        return view('BangladeshAdmin.Candidate.tickets_booked_List', compact('offeredCandidates'));
     }
 
     /**
@@ -91,6 +92,11 @@ class CandidateController extends Controller
     public function showFinalCandidate($offered_candidate_id){
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         return view('BangladeshAdmin.Candidate.final-candidate-profile', compact('offeredCandidate'));
+    }
+
+    public function showBookedCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('BangladeshAdmin.Candidate.booked-candidate-profile', compact('offeredCandidate'));
     }
 
     public function forwardNow($id){
