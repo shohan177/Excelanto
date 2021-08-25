@@ -74,7 +74,7 @@
                                                 <button class="btn btn-success" onclick="approve(this)"
                                                     value="{{ route('OneStopService.company.approveNow', $user->id) }}">
                                                     <i class="mdi mdi-check"></i> </button>
-    
+
                                             </td>
                                             <td>
                                                 <button class="btn btn-danger" onclick="reject(this)"
@@ -83,7 +83,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
-    
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -120,7 +120,7 @@
                 confirmButtonText: 'Yes, Approve !'
             }).then((result) => {
                 if (result.isConfirmed) {
-    
+
                     $.ajax({
                         method: 'POST',
                         url: url,
@@ -149,7 +149,7 @@
                 }
             })
         }
-    
+
         function reject(objButton) {
             var url = objButton.value;
             // alert(objButton.value)
@@ -163,7 +163,7 @@
                 confirmButtonText: 'Yes, Reject !'
             }).then((result) => {
                 if (result.isConfirmed) {
-    
+
                     $.ajax({
                         method: 'POST',
                         url: url,
@@ -196,7 +196,7 @@
 @endsection
 
 @section('DataTableJs')
-    <!-- Datatables-->
+   <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
@@ -211,7 +211,6 @@
     <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
-
     <!-- Datatable init js -->
     <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
 @endsection
