@@ -84,16 +84,11 @@
                                     </tr>
                                 </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div> <!-- End Row -->
-
-
         </div> <!-- container -->
-
     </div>
     <!--End content -->
 @endsection

@@ -26,7 +26,8 @@ class VisaProcessController extends Controller
     }
     public function approved()
     {
-        return view('BangladeshAdmin.visaProcess.approved');
+        $offeredCandidates = OfferedCandidate::where('result_status','Visa-Approved')->orderBy('id', 'DESC')->get();
+        return view('BangladeshAdmin.visaProcess.approved', compact('offeredCandidates'));
     }
     public function rejected()
     {

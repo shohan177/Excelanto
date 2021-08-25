@@ -203,50 +203,6 @@
         </div> <!-- container -->
     </div>
     <!--End content -->
-    <script>
-        function forwardToUae(objButton) {
-            var url = objButton.value;
-            // alert(objButton.value)
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Forward !'
-            }).then((result) => {
-                if (result.isConfirmed) {
-
-                    $.ajax({
-                        method: 'POST',
-                        url: url,
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}",
-                        },
-                        success: function(data) {
-                            if (data.type == 'success') {
-                                Swal.fire(
-                                    'Forwarded !',
-                                    'This candidate has been Forwarded. ' + data.message,
-                                    'success'
-                                )
-                                setTimeout(function() {
-                                    location.reload();
-                                }, 800); //
-                            } else {
-                                Swal.fire(
-                                    'Wrong !',
-                                    'Something going wrong. ' + data.message,
-                                    'warning'
-                                )
-                            }
-                        },
-                    })
-                }
-            })
-        }
-    </script>
 @endsection
 
 @section('DataTableJs')
