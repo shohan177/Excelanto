@@ -70,8 +70,8 @@
                                                     <span class="badge badge-warning">Finalized</span>
                                                 @elseif ($offeredCandidate->result_status == 'Rejected')
                                                     <span class="badge badge-danger">Rejected</span>
-                                                @elseif ($offeredCandidate->result_status == 'Visa-Requested')
-                                                    <span class="badge badge-danger">New</span>
+                                                @elseif ($offeredCandidate->result_status == 'Visa-Approved')
+                                                    <span class="badge badge-warning">Visa-Approved</span>
                                                 @elseif ($offeredCandidate->result_status == 'Visa-Applied')
                                                     <span class="badge badge-warning">Visa-Applied</span>
                                                 @elseif ($offeredCandidate->result_status == 'Under-Interview-Process')
