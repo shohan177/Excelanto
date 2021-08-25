@@ -46,8 +46,6 @@ class CandidateController extends Controller
         return view('BangladeshAdmin.Candidate.tickets_booked_List');
     }
 
-
-
     /**
      * Display a listing of the resource.
      *

@@ -53,19 +53,40 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>shavo</td>
-                                        <td>Developer</td>
-                                        <td>sharifshuvo00@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td>
-                                            <button type="button" name="Forwarded" class="btn btn-danger btn-xs update">Finalize</button>
+                                    @foreach ($offeredCandidates as $offeredCandidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
+                                            <td>
+                                                @if ($offeredCandidate->result_status == 'Selected')
+                                                    <span class="btn btn-success btn-sm">Selected</span>
+                                                @elseif ($offeredCandidate->result_status == "Interview")
+                                                    <span class="btn btn-primary btn-sm">Interview</span>
+                                                @elseif ($offeredCandidate->result_status == "Rejected")
+                                                    <span class="btn btn-danger btn-sm">Rejected</span>
+                                                @elseif ($offeredCandidate->result_status == "Under-Interview-Process")
+                                                    <span class="btn btn-danger btn-sm">Under-Interview-Process</span>
+                                                @elseif ($offeredCandidate->result_status == "Updated")
+                                                    <span class="btn btn-info btn-sm">Updated</span>
+                                                @elseif ($offeredCandidate->result_status == "Finalized")
+                                                    <span class="btn btn-warning btn-sm">Finalized</span>
+                                                @elseif ($offeredCandidate->result_status == "Assigned")
+                                                    <span class="btn btn-warning btn-sm">Post-Selection</span>
+                                                @else
+                                                    <span class="btn btn-warning btn-sm">Under-Process</span>
+                                                @endif
                                             </td>
-                                        <td><a class="btn btn-info btn-xs"
-                                                href="view_candidate_profile.php?candidate_id=60 ">
-                                                <i class="fa fa-eye"></i></a></td>
-                                    </tr>
+                                            <td>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('BangladeshAdmin.candidate.show', $offeredCandidate->candidate->id) }}">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -79,16 +100,11 @@
                                     </tr>
                                 </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div> <!-- End Row -->
-
-
         </div> <!-- container -->
-
     </div>
     <!--End content -->
 @endsection
@@ -110,7 +126,6 @@
     <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
-
     <!-- Datatable init js -->
     <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
 @endsection
