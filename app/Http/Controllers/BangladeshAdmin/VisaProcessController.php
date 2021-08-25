@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BangladeshAdmin;
 use App\VisaProcess;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\OfferedCandidate;
 
 class VisaProcessController extends Controller
 {
@@ -15,7 +16,13 @@ class VisaProcessController extends Controller
      */
     public function requests()
     {
-        return view('BangladeshAdmin.visaProcess.requests');
+        $offeredCandidates = OfferedCandidate::where('result_status','Visa-Applied')->orderBy('id', 'DESC')->get();
+        return view('BangladeshAdmin.visaProcess.requests', compact('offeredCandidates'));
+    }
+
+    public function visaRequestCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('BangladeshAdmin.visaProcess.visa-request-candidate', compact('offeredCandidate'));
     }
     public function approved()
     {

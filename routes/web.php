@@ -105,6 +105,7 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
 
     //Visa Process
     Route::get('visa-process-requests', 'VisaProcessController@requests')->name('visa_process.requests');
+    Route::get('visa-request-candidate/{offered_candidate_id}', 'VisaProcessController@visaRequestCandidate')->name('visa_process.visaRequestCandidate');
     Route::get('visa-process-approved', 'VisaProcessController@approved')->name('visa_process.approved');
     Route::get('visa-process-rejected', 'VisaProcessController@rejected')->name('visa_process.rejected');
 });
