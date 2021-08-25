@@ -117,6 +117,24 @@ class CandidateController extends Controller
         }
     }
 
+    public function forwardToUae($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        $offeredCandidate->travel_status = "Forwarded";
+        $offeredCandidate->active_status = "Forwarded";
+        try {
+            $offeredCandidate->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Stored'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

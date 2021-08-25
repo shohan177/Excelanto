@@ -198,7 +198,7 @@
                             if (data.type == 'success') {
                                 Swal.fire(
                                     'Forwarded !',
-                                    'This company has been Forwarded. ' + data.message,
+                                    'This candidate has been Forwarded. ' + data.message,
                                     'success'
                                 )
                                 setTimeout(function() {
