@@ -81,7 +81,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-sm"
-                                                    href="{{ route('BangladeshAdmin.candidate.show', $offeredCandidate->candidate->id) }}">
+                                                    href="{{ route('BangladeshAdmin.candidate.showFinalCandidate', $offeredCandidate->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                             </td>

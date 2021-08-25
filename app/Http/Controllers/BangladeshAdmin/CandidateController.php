@@ -88,6 +88,11 @@ class CandidateController extends Controller
         return view('BangladeshAdmin.Candidate.show-profile', compact('candidate'));
     }
 
+    public function showFinalCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('BangladeshAdmin.Candidate.final-candidate-profile', compact('offeredCandidate'));
+    }
+
     public function forwardNow($id){
         $candidate = Candidate::findOrFail($id);
         $candidate->status = "Forwarded";
