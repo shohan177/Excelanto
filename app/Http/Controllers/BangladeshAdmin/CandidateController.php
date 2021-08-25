@@ -6,6 +6,7 @@ use App\AppliedJob;
 use App\Candidate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\OfferedCandidate;
 
 class CandidateController extends Controller
 {
@@ -32,12 +33,13 @@ class CandidateController extends Controller
     }
     public function reviewed()
     {
-        $ReviewedCandidates = Candidate::where('status',"Reviewed")->orderBy('id','DESC')->get();
-        return view('BangladeshAdmin.Candidate.reviewed', compact('ReviewedCandidates'));
+        $offeredCandidates = OfferedCandidate::where('result_status', '!=', 'Finalized')->orderBy('id','DESC')->get();
+        return view('BangladeshAdmin.Candidate.reviewed', compact('offeredCandidates'));
     }
     public function finalized()
     {
-        return view('BangladeshAdmin.Candidate.finalized');
+        $offeredCandidates = OfferedCandidate::where('result_status', 'Finalized')->orderBy('id','DESC')->get();
+        return view('BangladeshAdmin.Candidate.finalized', compact('offeredCandidates'));
     }
     public function tickets_booked_List()
     {
