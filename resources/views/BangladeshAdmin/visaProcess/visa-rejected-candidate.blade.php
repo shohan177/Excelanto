@@ -56,10 +56,10 @@
                                 <li class="list-group-item">
                                     <b>Email</b> <a class="float-right">{{ $offeredCandidate->candidate_email }}</a>
                                 </li>
-                                @if ($offeredCandidate->result_status == 'Visa-Approved')
+                                @if ($offeredCandidate->result_status == 'Visa-Rejected')
                                     <li class="list-group-item">
                                         <b>Status</b> <a class="float-right"> <button type="button"
-                                                class="btn btn-primary btn-xs update">Visa-Approved</button>
+                                                class="btn btn-danger btn-xs update">Visa-Rejected</button>
                                     </li>
 
                                 @else
@@ -184,22 +184,15 @@
                                     <strong><i class="fa fa-pencil mr-1"></i> Visa Status</strong>
                                     <p class="text-muted">{{ $offeredCandidate->result_status }}</p>
                                     <hr>
+                                    <strong><i class="fa fa-pencil mr-1"></i> Visa Rejected Reason</strong>
+                                    <p class="text-muted">{{ $offeredCandidate->visa_reason }}</p>
+                                    <hr>
                                     <strong><i class="fa fa-camera mr-1"></i>Candidate-OfferLetter</strong>
                                     <div class="mailbox-attachment-info"> <a
                                             href="../offer_letter/{{ $offeredCandidate->offer_letter }}"
                                             class="mailbox-attachment-name"><i class="fa fa-file"></i>
                                             {{ $offeredCandidate->offer_letter }}</a>
                                         <a href="../offer_letter/{{ $offeredCandidate->offer_letter }}" download
-                                            class="btn btn-default btn-xs float-right"> <i
-                                                class="fa fa-cloud-download"></i></a>
-                                    </div>
-                                    <hr>
-                                    <strong><i class="fa fa-camera mr-1"></i>Visa Approval Document</strong>
-                                    <div class="mailbox-attachment-info"> <a
-                                            href="../visa_document/{{ $offeredCandidate->visa_document }}"
-                                            class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                            {{ $offeredCandidate->offer_letter }}</a>
-                                        <a href="../visa_document/{{ $offeredCandidate->visa_document }}" download
                                             class="btn btn-default btn-xs float-right"> <i
                                                 class="fa fa-cloud-download"></i></a>
                                     </div>
