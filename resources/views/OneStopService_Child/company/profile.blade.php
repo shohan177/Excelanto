@@ -2,7 +2,7 @@
 
 @section('title', 'Company Profile')
 @section('DataTableCss')
-    
+
 
 @endsection
 
@@ -10,7 +10,6 @@
     <!-- Start content -->
     <div class="content">
         <div class="container">
-
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
@@ -40,9 +39,9 @@
                             </div>
 
                             <h3 class="profile-username text-center">{{ $user->company_name }}</h3>
-          
+
                             <p class="text-muted text-center">{{ $user->domain }}</p>
-            
+
                             <ul class="list-group list-group-unbordered mb-3">
                               <li class="list-group-item">
                                 <b>Email</b> <a class="float-right">{{ $user->email }}</a>
@@ -74,48 +73,48 @@
                         </div><!-- /.card-header -->
                         <div class="panel-body">
                             <div class="tab-content">
-                                <div class="active tab-pane" id="activity"> 
-                                    
+                                <div class="active tab-pane" id="activity">
+
 
                                     <strong><i class="fa fa-book mr-1"></i> Abbreviation</strong>
                                     <p class="text-muted">
                                       {{ $user->abbr }}
                                     </p>
-                
+
                                     <hr>
-                
+
                                     <strong><i class="fa fa-pencil mr-1"></i> Register Number</strong>
                                     <p class="text-muted">{{ $user->company_register_number }}</p>
-                
+
                                     <hr>
-                
+
                                     <strong><i class="fa fa-phone mr-1"></i> Phone Number</strong>
                                     <p class="text-muted">{{ $user->phone }}</p>
-                
+
                                     <hr>
-                
+
                                     <strong><i class="fa fa-map-marker mr-1"></i> Address 1</strong>
                                     <p class="text-muted">{{ $user->address1 }}</p>
-                
+
                                     <hr>
-                
+
                                     <strong><i class="fa fa-map-marker mr-1"></i> Address 2</strong>
                                     <p class="text-muted">{{ $user->address2 }}</p>
                                 </div> <!-- /.tab-pane -->
                                 <div class="tab-pane" id="Documents">
                                     <strong><i class="fa fa-file mr-1"></i> Document 1</strong>
                                     <div class="mailbox-attachment-info">
-                
+
                                       <a href="documentOne/{{ $user->document1 }}" class="mailbox-attachment-name">{{ $user->document1 }}</a>
-                
+
                                       <a href="documentOne/{{ $user->document1 }}" class="btn btn-default btn-xs float-right" download><i class="fa fa-cloud-download"></i></a>
                                     </div>
                                     <hr>
                                     <strong><i class="fa fa-file mr-1"></i> Document 2</strong>
                                     <div class="mailbox-attachment-info">
-                
+
                                       <a href="documentTwo/{{ $user->document2 }}" class="mailbox-attachment-name">{{ $user->document2 }}</a>
-                
+
                                       <a href="documentTwo/{{ $user->document2 }}" class="btn btn-default btn-xs float-right" download><i class="fa fa-cloud-download"></i></a>
                                     </div>
                                 </div> <!-- /.tab-content -->
@@ -130,5 +129,5 @@
 @endsection
 
 @section('DataTableJs')
-   
+
 @endsection
