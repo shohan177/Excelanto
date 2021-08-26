@@ -98,7 +98,6 @@
     <!--End content -->
 @endsection
 
-
 @section('DataTableJs')
    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
