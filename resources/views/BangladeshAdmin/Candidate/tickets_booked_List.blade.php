@@ -9,14 +9,12 @@
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-
 @endsection
 
 @section('main-content')
     <!-- Start content -->
     <div class="content">
         <div class="container">
-
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
@@ -31,7 +29,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -39,7 +36,6 @@
                             <h3 class="panel-title">Ticket Booked Candidates List</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -53,43 +49,59 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Travel Agency</td>
-                                        <td>Vignesh</td>
-                                        <td>Developer</td>
-                                        <td>vigneshdreams33@gmail.com</td>
-                                        <td>8807283750</td>
-                                        <td>
-                                            <button type="button" name="Ticket-Issued" class="btn btn-success btn-xs update">Ticket Issued</button>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>
+                                    @foreach ($offeredCandidates as $offeredCandidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $offeredCandidate->travelAgency->company_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
+                                            <td>
+                                                @if ($offeredCandidate->travel_status == 'Pending')
+                                                    <span class="badge badge-warning">Pending</span>
+                                                @elseif ($offeredCandidate->travel_status == 'Ticket-Issued')
+                                                    <span class="badge badge-success">Ticket-Issued</span>
+                                                @elseif ($offeredCandidate->travel_status == 'Forwarded')
+                                                    <span class="badge badge-primary">Sent To UAE</span>
+                                                @elseif ($offeredCandidate->travel_status == 'Activated')
+                                                    <span class="badge badge-warning">Appointed</span>
+                                                @else
+                                                    <span class="badge badge-info">{{ $offeredCandidate->travel_status }}</span>
+                                                @endif
                                             </td>
-                                    </tr>
+                                            <td>
+                                                <a class="btn btn-info btn-xs"
+                                                    href="{{ route('BangladeshAdmin.candidate.showBookedCandidate', $offeredCandidate->id) }}"><i class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Travel Agency</th>
+                                        <th>Candidate Name</th>
+                                        <th>Job Category</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div> <!-- End Row -->
-
-
         </div> <!-- container -->
-
     </div>
     <!--End content -->
 @endsection
 
-
 @section('DataTableJs')
-    <!-- Datatables-->
+   <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
@@ -104,7 +116,6 @@
     <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
-
     <!-- Datatable init js -->
     <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
 @endsection

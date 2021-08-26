@@ -94,7 +94,10 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     Route::get('view-requested-candidates/{applied_job_id}', 'CandidateController@viewRequested')->name('candidate.viewRequested');
 
     Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
+    Route::get('show-final-candidate-profile/{offered_candidate_id}', 'CandidateController@showFinalCandidate')->name('candidate.showFinalCandidate');
+    Route::get('show-booked-candidate-profile/{offered_candidate_id}', 'CandidateController@showBookedCandidate')->name('candidate.showBookedCandidate');
     Route::post('forward-candidate/{id}', 'CandidateController@forwardNow')->name('candidate.forwardNow');
+    Route::post('forward-to-uae/{offered_candidate_id}', 'CandidateController@forwardToUae')->name('candidate.forwardToUae');
     Route::get('candidate-forwarded', 'CandidateController@forwarded')->name('candidate.forwarded');
     Route::get('candidate-reviewed', 'CandidateController@reviewed')->name('candidate.reviewed');
     Route::get('candidate-finalized', 'CandidateController@finalized')->name('candidate.finalized');
@@ -102,6 +105,7 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
 
     //Visa Process
     Route::get('visa-process-requests', 'VisaProcessController@requests')->name('visa_process.requests');
+    Route::get('visa-request-candidate/{offered_candidate_id}', 'VisaProcessController@visaRequestCandidate')->name('visa_process.visaRequestCandidate');
     Route::get('visa-process-approved', 'VisaProcessController@approved')->name('visa_process.approved');
     Route::get('visa-process-rejected', 'VisaProcessController@rejected')->name('visa_process.rejected');
 });

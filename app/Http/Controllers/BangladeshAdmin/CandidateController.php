@@ -6,6 +6,7 @@ use App\AppliedJob;
 use App\Candidate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\OfferedCandidate;
 
 class CandidateController extends Controller
 {
@@ -32,19 +33,19 @@ class CandidateController extends Controller
     }
     public function reviewed()
     {
-        $ReviewedCandidates = Candidate::where('status',"Reviewed")->orderBy('id','DESC')->get();
-        return view('BangladeshAdmin.Candidate.reviewed', compact('ReviewedCandidates'));
+        $offeredCandidates = OfferedCandidate::where('result_status', '!=', 'Finalized')->orderBy('id','DESC')->get();
+        return view('BangladeshAdmin.Candidate.reviewed', compact('offeredCandidates'));
     }
     public function finalized()
     {
-        return view('BangladeshAdmin.Candidate.finalized');
+        $offeredCandidates = OfferedCandidate::where('result_status', 'Finalized')->orderBy('id','DESC')->get();
+        return view('BangladeshAdmin.Candidate.finalized', compact('offeredCandidates'));
     }
     public function tickets_booked_List()
     {
-        return view('BangladeshAdmin.Candidate.tickets_booked_List');
+        $offeredCandidates = OfferedCandidate::where('welfare_center_id', '!=' ,'')->whereIn('travel_status',['Ticket-Issued','Forwarded','Activated'])->orderBy('id','DESC')->get();
+        return view('BangladeshAdmin.Candidate.tickets_booked_List', compact('offeredCandidates'));
     }
-
-
 
     /**
      * Display a listing of the resource.
@@ -88,12 +89,40 @@ class CandidateController extends Controller
         return view('BangladeshAdmin.Candidate.show-profile', compact('candidate'));
     }
 
+    public function showFinalCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('BangladeshAdmin.Candidate.final-candidate-profile', compact('offeredCandidate'));
+    }
+
+    public function showBookedCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('BangladeshAdmin.Candidate.booked-candidate-profile', compact('offeredCandidate'));
+    }
+
     public function forwardNow($id){
         $candidate = Candidate::findOrFail($id);
         $candidate->status = "Forwarded";
         $candidate->result_status = "New";
         try {
             $candidate->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Stored'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    public function forwardToUae($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        $offeredCandidate->travel_status = "Forwarded";
+        $offeredCandidate->active_status = "Forwarded";
+        try {
+            $offeredCandidate->save();
             return response()->json([
                 'type' => 'success',
                 'message' => 'Successfully Stored'

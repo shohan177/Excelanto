@@ -9,14 +9,12 @@
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-
 @endsection
 
 @section('main-content')
     <!-- Start content -->
     <div class="content">
         <div class="container">
-
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
@@ -31,7 +29,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -39,7 +36,6 @@
                             <h3 class="panel-title">Employer Company Reviewed Candidated List</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -52,43 +48,62 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
-                                    @foreach ($ReviewedCandidates as $candidate)
+                                    @foreach ($offeredCandidates as $offeredCandidate)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $candidate->candidate_name }}</td>
-                                            <td>{{ $candidate->job_category->category_name }}</td>
-                                            <td>{{ $candidate->candidate_email }}</td>
-                                            <td>{{ $candidate->phone_number }}</td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
                                             <td>
-                                                <span class="btn btn-success btn-sm">{{ $candidate->result_status == 'Selected' ? $candidate->result_status : 'Under Process'  }}</span>
+                                                @if ($offeredCandidate->result_status == 'Selected')
+                                                    <span class="btn btn-success btn-sm">Selected</span>
+                                                @elseif ($offeredCandidate->result_status == "Interview")
+                                                    <span class="btn btn-primary btn-sm">Interview</span>
+                                                @elseif ($offeredCandidate->result_status == "Rejected")
+                                                    <span class="btn btn-danger btn-sm">Rejected</span>
+                                                @elseif ($offeredCandidate->result_status == "Under-Interview-Process")
+                                                    <span class="btn btn-danger btn-sm">Under-Interview-Process</span>
+                                                @elseif ($offeredCandidate->result_status == "Updated")
+                                                    <span class="btn btn-info btn-sm">Updated</span>
+                                                @elseif ($offeredCandidate->result_status == "Finalized")
+                                                    <span class="btn btn-warning btn-sm">Finalized</span>
+                                                @elseif ($offeredCandidate->result_status == "Assigned")
+                                                    <span class="btn btn-warning btn-sm">Post-Selection</span>
+                                                @else
+                                                    <span class="btn btn-warning btn-sm">Under-Process</span>
+                                                @endif
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-sm"
-                                                    href="{{ route('BangladeshAdmin.candidate.show', $candidate->id) }}">
+                                                    href="{{ route('BangladeshAdmin.candidate.show', $offeredCandidate->candidate->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Candidate Name</th>
+                                        <th>Job Category</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div> <!-- End Row -->
-
-
         </div> <!-- container -->
-
     </div>
     <!--End content -->
 @endsection
-
 
 @section('DataTableJs')
     <!-- Datatables-->
@@ -106,7 +121,6 @@
     <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.scroller.min.js') }}"></script>
-
     <!-- Datatable init js -->
     <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
 @endsection
