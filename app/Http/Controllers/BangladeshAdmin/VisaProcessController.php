@@ -24,6 +24,11 @@ class VisaProcessController extends Controller
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         return view('BangladeshAdmin.visaProcess.visa-request-candidate', compact('offeredCandidate'));
     }
+
+    public function visaApprovedCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('BangladeshAdmin.visaProcess.visa-approved-candidate', compact('offeredCandidate'));
+    }
     public function approved()
     {
         $offeredCandidates = OfferedCandidate::where('result_status','Visa-Approved')->orderBy('id', 'DESC')->get();
