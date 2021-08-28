@@ -10,7 +10,10 @@ Route::group(['prefix' => 'uae-embassy/', 'namespace' => 'UaeEmbassy', 'as' => '
 
     //visa Process
     Route::get('/stamping_requested', 'VisaProcessController@stamping_requested')->name('stamping_requested');
-    Route::get('/requested-candidate-profile/{offered_candidate_id}', 'VisaProcessController@requestedCandidateProfile')->name('visaProcess.requestedCandidateProfile');
     Route::get('/stamping_approved','VisaProcessController@stamping_approved')->name('stamping_approved');
     Route::get('/stamping_rejected','VisaProcessController@stamping_rejected')->name('stamping_rejected');
+    // candidates profile routes
+    Route::get('/requested-candidate-profile/{offered_candidate_id}', 'VisaProcessController@requestedCandidateProfile')->name('visaProcess.requestedCandidateProfile');
+    Route::get('/approved-candidate-profile/{offered_candidate_id}', 'VisaProcessController@approvedCandidateProfile')->name('visaProcess.approvedCandidateProfile');
+    Route::get('/rejected-candidate-profile/{offered_candidate_id}', 'VisaProcessController@rejectedCandidateProfile')->name('visaProcess.rejectedCandidateProfile');
 });

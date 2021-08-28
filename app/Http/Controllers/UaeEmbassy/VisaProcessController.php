@@ -33,4 +33,14 @@ class VisaProcessController extends Controller
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         return view('UaeEmbassy.VisaProcess.requested-candidate-profile', compact('offeredCandidate'));
     }
+
+    public function approvedCandidateProfile($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('UaeEmbassy.VisaProcess.approved-candidate-profile', compact('offeredCandidate'));
+    }
+
+    public function rejectedCandidateProfile($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('UaeEmbassy.VisaProcess.rejected-candidate-profile', compact('offeredCandidate'));
+    }
 }
