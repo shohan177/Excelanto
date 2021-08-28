@@ -16,7 +16,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
                     <div class="panel panel-primary text-center">

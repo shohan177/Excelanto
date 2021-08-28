@@ -30,7 +30,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -40,7 +39,6 @@
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
-
                                     <tr>
                                         <th>SL No</th>
                                         <th>Candidate Name</th>
