@@ -60,7 +60,6 @@ class Candidate extends Model
     {
         return $this->belongsTo(JobCategory::class, 'job_category_id');
     }
-
     public function offered_candidate()
     {
         return $this->hasOne(OfferedCandidate::class, 'candidate_id');

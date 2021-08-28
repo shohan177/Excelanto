@@ -10,14 +10,12 @@
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-
 @endsection
 
 @section('main-content')
     <!-- Start content -->
     <div class="content">
         <div class="container">
-
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
@@ -40,7 +38,6 @@
                             <h3 class="panel-title">Visa Rejected List</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -54,17 +51,44 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Candidate2</td>
-                                        <td>Developer</td>
-                                        <td>candiate2@gmail.com</td>
-                                        <td>2222222222</td>
-                                        <td><button type="button" name="Visa-Applied"
-                                                class="btn btn-warning btn-xs update">Visa-Rejected</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a></td>
-                                    </tr>
+                                    @foreach ($offeredCandidates as $offeredCandidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
+                                            <td>
+                                                @if ($offeredCandidate->result_status == 'Assigned')
+                                                    <span class="badge badge-success">Post-Selection</span>
+                                                @elseif ($offeredCandidate->result_status == 'Selected')
+                                                    <span class="badge badge-success">Selected</span>
+                                                @elseif ($offeredCandidate->result_status == 'Interview')
+                                                    <span class="badge badge-primary">Interview</span>
+                                                @elseif ($offeredCandidate->result_status == 'Updated')
+                                                    <span class="badge badge-info">Interview-Updated</span>
+                                                @elseif ($offeredCandidate->result_status == 'Finalized')
+                                                    <span class="badge badge-warning">Finalized</span>
+                                                @elseif ($offeredCandidate->result_status == 'Rejected')
+                                                    <span class="badge badge-danger">Rejected</span>
+                                                @elseif ($offeredCandidate->result_status == 'Visa-Rejected')
+                                                    <span class="badge badge-danger">Visa-Rejected</span>
+                                                @elseif ($offeredCandidate->result_status == 'Visa-Applied')
+                                                    <span class="badge badge-warning">Visa-Applied</span>
+                                                @elseif ($offeredCandidate->result_status == 'Under-Interview-Process')
+                                                    <span class="badge badge-danger">Under-Interview-Process</span>
+                                                @else
+                                                    <span class="badge badge-info">Under-Process
+                                                        -({{ $offeredCandidate->result_status }})</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs"
+                                                    href="{{ route('BangladeshAdmin.visa_process.visaRejectedCandidate', $offeredCandidate->id) }}"><i
+                                                        class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -86,7 +110,6 @@
     </div>
     <!--End content -->
 @endsection
-
 
 @section('DataTableJs')
    <!-- Datatables-->

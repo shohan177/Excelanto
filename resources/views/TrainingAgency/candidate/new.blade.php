@@ -10,14 +10,12 @@
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-
 @endsection
 
 @section('main-content')
     <!-- Start content -->
     <div class="content">
         <div class="container">
-
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
@@ -102,7 +100,6 @@
     </div>
     <!--End content -->
 @endsection
-
 
 @section('DataTableJs')
    <!-- Datatables-->

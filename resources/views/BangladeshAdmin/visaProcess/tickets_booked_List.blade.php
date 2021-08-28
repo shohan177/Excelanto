@@ -10,7 +10,6 @@
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-
 @endsection
 
 @section('main-content')
@@ -38,7 +37,6 @@
                             <h3 class="panel-title">Ticket Booked Candidates List</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -91,7 +89,6 @@
     </div>
     <!--End content -->
 @endsection
-
 
 @section('DataTableJs')
    <!-- Datatables-->

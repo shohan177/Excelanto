@@ -18,7 +18,6 @@
     <!-- Start content -->
     <div class="content">
         <div class="container">
-
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
@@ -43,7 +42,6 @@
                             <h3 class="panel-title">Applied job posts in detail</h3>
                         </div>
                         <div class="panel-body">
-
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -59,8 +57,6 @@
                                         <th style="width: 8%">Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @foreach ($appliedJobs as $appliedJob)
                                         <tr>
