@@ -57,8 +57,6 @@
                                         <th style="width: 8%">Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @foreach ($appliedJobs as $appliedJob)
                                         <tr>

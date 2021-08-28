@@ -50,8 +50,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @if (count($job_posts) != 0)
                                         @foreach ($job_posts as $key => $job_post)

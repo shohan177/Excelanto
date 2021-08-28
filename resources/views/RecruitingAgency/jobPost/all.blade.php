@@ -51,8 +51,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @foreach ($jobPosts as $jobPost)
                                         <tr>

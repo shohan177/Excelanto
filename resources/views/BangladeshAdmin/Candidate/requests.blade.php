@@ -49,8 +49,6 @@
                                         <th>Candidates</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @foreach($appliedJobs as $appliedJob)
                                         <tr>

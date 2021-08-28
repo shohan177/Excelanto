@@ -51,8 +51,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @foreach ($selectedCandidates as $candidate)
                                         <tr>

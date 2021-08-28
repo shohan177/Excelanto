@@ -52,8 +52,6 @@
                                         <th>Document</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     <tr role="row" class="odd">
                                         <td>1</td>

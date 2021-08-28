@@ -52,8 +52,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @foreach ($totalEvents as $totalEvent)
                                         <tr>

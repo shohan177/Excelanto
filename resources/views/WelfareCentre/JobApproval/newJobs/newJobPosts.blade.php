@@ -53,8 +53,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @if (count($new_jobs) != 0)
                                         @foreach ($new_jobs as $key => $new_job)

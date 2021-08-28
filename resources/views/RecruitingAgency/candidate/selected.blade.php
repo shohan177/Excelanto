@@ -51,8 +51,6 @@
                                         <th>Candidates</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @foreach ($selectedCandidates as $selectedCandidate)
                                         <tr>

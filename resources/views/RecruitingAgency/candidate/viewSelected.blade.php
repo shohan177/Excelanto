@@ -53,8 +53,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @if ( count($CandidatesList) != 0)
                                         @foreach ($CandidatesList as $candidate)

@@ -50,8 +50,6 @@
                                         <th>Receipt</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     <tr>
                                         <td>1</td>
