@@ -20,10 +20,12 @@ class VisaProcessController extends Controller
     }
     public function stamping_approved()
     {
-        return view('UaeEmbassy.VisaProcess.stamping_approved');
+        $offeredCandidates = OfferedCandidate::where('result_status', 'Visa-Stamping-Approved')->orderBy('id', 'DESC')->get();
+        return view('UaeEmbassy.VisaProcess.stamping_approved', compact('offeredCandidates'));
     }
     public function stamping_rejected()
     {
-        return view('UaeEmbassy.VisaProcess.stamping_rejected');
+        $offeredCandidates = OfferedCandidate::where('result_status', 'Visa-Stamping-Rejected')->orderBy('id', 'DESC')->get();
+        return view('UaeEmbassy.VisaProcess.stamping_rejected', compact('offeredCandidates'));
     }
 }

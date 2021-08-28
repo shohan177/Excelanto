@@ -39,7 +39,7 @@
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
-                                     <tr>
+                                    <tr>
                                         <th>SL No</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
@@ -50,20 +50,45 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>07/13/2021</td>
-                                        <td>bangladesh</td>
-                                        <td>saudi</td>
-                                        <td>2</td>
-                                        <td><span class="project-state badge badge-info">New</span></td>
-                                        <td><a class="btn btn-info btn-sm" href="view_posted_enquiry.php?enquiry_id=48">
-                                                <i class="fa fa-eye"></i> View
-                                            </a></td>
-                                    </tr>
+                                    @foreach ($offeredCandidates as $offeredCandidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
+                                            <td>
+                                                @if ($offeredCandidate->result_status == 'Visa-Stamping-Approved')
+                                                    <span class="badge badge-warning">Visa-Stamping-Approved</span>
+                                                @elseif ($offeredCandidate->result_status == 'Selected')
+                                                    <span class="badge badge-success">Selected</span>
+                                                @elseif ($offeredCandidate->result_status == 'Interview')
+                                                    <span class="badge badge-primary">Interview</span>
+                                                @elseif ($offeredCandidate->result_status == 'Updated')
+                                                    <span class="badge badge-info">Interview-Updated</span>
+                                                @elseif ($offeredCandidate->result_status == 'Finalized')
+                                                    <span class="badge badge-warning">Finalized</span>
+                                                @elseif ($offeredCandidate->result_status == 'Rejected')
+                                                    <span class="badge badge-danger">Rejected</span>
+                                                @elseif ($offeredCandidate->result_status == 'Visa-Rejected')
+                                                    <span class="badge badge-danger">Visa-Rejected</span>
+                                                @elseif ($offeredCandidate->result_status == 'Visa-Applied')
+                                                    <span class="badge badge-warning">Visa-Applied</span>
+                                                @elseif ($offeredCandidate->result_status == 'Under-Interview-Process')
+                                                    <span class="badge badge-danger">Under-Interview-Process</span>
+                                                @else
+                                                    <span class="badge badge-info">Under-Process
+                                                        -({{ $offeredCandidate->result_status }})</span>
+                                                @endif
+                                            </td>
+                                            <td><a class="btn btn-info btn-sm" href="view_posted_enquiry.php?enquiry_id=48">
+                                                    <i class="fa fa-eye"></i> View
+                                                </a></td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
-                                     <tr>
+                                    <tr>
                                         <th>SL No</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
@@ -84,7 +109,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
