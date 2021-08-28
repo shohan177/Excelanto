@@ -81,7 +81,7 @@
                                                         -({{ $offeredCandidate->result_status }})</span>
                                                 @endif
                                             </td>
-                                            <td><a class="btn btn-info btn-sm" href="view_posted_enquiry.php?enquiry_id=48">
+                                            <td><a class="btn btn-info btn-sm" href="{{ route('UaeEmbassy.visaProcess.requestedCandidateProfile', $offeredCandidate->id) }}">
                                                     <i class="fa fa-eye"></i> View
                                                 </a></td>
                                         </tr>

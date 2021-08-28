@@ -28,4 +28,9 @@ class VisaProcessController extends Controller
         $offeredCandidates = OfferedCandidate::where('result_status', 'Visa-Stamping-Rejected')->orderBy('id', 'DESC')->get();
         return view('UaeEmbassy.VisaProcess.stamping_rejected', compact('offeredCandidates'));
     }
+
+    public function requestedCandidateProfile($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('UaeEmbassy.VisaProcess.requested-candidate-profile', compact('offeredCandidate'));
+    }
 }
