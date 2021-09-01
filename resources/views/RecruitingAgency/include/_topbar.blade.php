@@ -2,8 +2,8 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <div class="text-center">
-            <a href="{{ route('recruitingAgency.dashboard') }}" class="logo"><img src="{{asset('assets/images/logo_white_2.png')}}" height="28"></a>
-            <a href="{{ route('recruitingAgency.dashboard') }}" class="logo-sm"><img src="{{asset('assets/images/logo_sm.png')}}" height="36"></a>
+            <a href="{{ route('RecruitingAgency.dashboard') }}" class="logo"><img src="{{asset('assets/images/logo_white_2.png')}}" height="28"></a>
+            <a href="{{ route('RecruitingAgency.dashboard') }}" class="logo-sm"><img src="{{asset('assets/images/logo_sm.png')}}" height="36"></a>
         </div>
     </div>
     <!-- Button mobile view to collapse sidebar menu -->
