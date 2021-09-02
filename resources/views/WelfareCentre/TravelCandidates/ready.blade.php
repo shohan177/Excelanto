@@ -30,8 +30,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -53,19 +51,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>kamrul group travel</td>
-                                        <td>shuvo ahmed</td>
-                                        <td>ICT LEcturer</td>
-                                        <td>sharifshuvo00@gmail.com</td>
-                                        <td>01756492875</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Activated</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($offeredCandidates as $offeredCandidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $offeredCandidate->travelAgency->company_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
+                                            <td>
+                                                @if ($offeredCandidate->travel_status == 'Forwarded')
+                                                    <button type="button"
+                                                        class="btn btn-success btn-xs">Candidate-Received</button>
+                                                @elseif($offeredCandidate->travel_status == "Activated")
+                                                    <button type="button" class="btn btn-success btn-xs">Activated</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($offeredCandidate->travel_status == 'Forwarded')
+                                                    <a class="btn btn-info btn-xs" href="#">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                @endif
+                                                <a class="btn btn-info btn-xs" href="#">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -90,7 +103,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
