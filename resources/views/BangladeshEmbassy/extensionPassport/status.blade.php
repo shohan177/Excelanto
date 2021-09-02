@@ -30,8 +30,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-12">
                     <form action="{{ route('BangladeshEmbassy.extensionPassport.statusUpdate', $extensionPassport->id )}}" method="post" enctype="multipart/form-data">

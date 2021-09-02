@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\WelfareCentre;
 
 use App\Http\Controllers\Controller;
+use App\MeetAndGreet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class  WSC_RegisteredController extends Controller
 {
     public function meet_greet_request(){
-        return view('WelfareCentre.WSC_Registered.meet_greet_request');
+        $meetAndGreets = MeetAndGreet::where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('WelfareCentre.WSC_Registered.meet_greet_request', compact('meetAndGreets'));
     }
     public function jail_deportation_request(){
         return view('WelfareCentre.WSC_Registered.jail_deportation_request');
