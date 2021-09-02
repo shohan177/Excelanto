@@ -16,6 +16,6 @@ class  TravelCandidatesController extends Controller
 
     public function showReceivedCandidate($offered_candidate_id){
         $offeredCandidate = OfferedCandidate::findOrfail($offered_candidate_id);
-        return view('WelfareCentre.TravelCandidates.show-received-candidate', compact('offeredCandidate','candidate'));
+        return view('WelfareCentre.TravelCandidates.show-received-candidate', compact('offeredCandidate'));
     }
 }
