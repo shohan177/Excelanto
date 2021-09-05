@@ -23,6 +23,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/show-candidate-profile/{offered_candidate_id}', 'CandidateController@showCandidateProfile')->name('showCandidateProfile');
     //WSC registered
     Route::get('/meet-greet-request', 'WSC_RegisteredController@meet_greet_request')->name('meet_greet_request');
+    Route::get('/meet-greet-status/{id}', 'WSC_RegisteredController@meetGreetStatus')->name('meetGreetStatus');
+    Route::post('/meet-greet-status-update/{id}', 'WSC_RegisteredController@meetGreetStatusUpdete')->name('meetGreetStatusUpdete');
     Route::get('/jail-deportation-request', 'WSC_RegisteredController@jail_deportation_request')->name('jail_deportation_request');
     Route::get('/deadbody-transfer-request', 'WSC_RegisteredController@deadbody_transfer_request')->name('deadbody_transfer_request');
 
