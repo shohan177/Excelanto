@@ -51,32 +51,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr role="row" class="odd">
-                                        <td>1</td>
-                                        <td>billah</td>
-                                        <td>shuvo</td>
-                                        <td>12/27/2020</td>
-                                        <td>2020/12/27 12:09:48pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Completed</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>billah</td>
-                                        <td>Guest arrival</td>
-                                        <td>12/27/2020</td>
-                                        <td>2020/12/27 11:59:56am</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Completed</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a></td>
-                                    </tr>
+                                    @foreach ($jailDeportations as $jailDeportation)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $jailDeportation->candidate->candidate_name }}</td>
+                                            <td>{{ $jailDeportation->person_name }}</td>
+                                            <td>{{ $jailDeportation->arrest_date }}</td>
+                                            <td>{{ $jailDeportation->created_at }}</td>
+                                            <td>
+                                                @if ($jailDeportation->active_status == 'Open')
+                                                    <button type="button" class="btn btn-success btn-xs">New</button>
+                                                @elseif($jailDeportation->active_status == "On process")
+                                                    <button type="button" class="btn btn-success btn-xs">On process</button>
+                                                @elseif($jailDeportation->active_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($jailDeportation->active_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not Completed</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-info btn-xs">{{ $jailDeportation->active_status }}</button>
+                                                @endif
+
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $jailDeportation->candidate->offered_candidate->id) }}">
+                                                    <i class="fa fa-eye"></i></a>&nbsp;
+                                                    <a
+                                                    class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.jailDeportation.Status', $jailDeportation->id) }}">
+                                                    <i class="fa fa-edit"></i></a>
+                                                </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -100,7 +105,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>

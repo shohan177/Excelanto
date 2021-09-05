@@ -33,24 +33,24 @@
                             <div class="row">
 
                                         <dt class="col-sm-4">Event category</dt>
-                                        <dd class="col-sm-8">{{  $awarenessEvent->eventCategory->category_name  }}</dd>
+                                        <dd class="col-sm-8">{{  $awarenessEvent->eventCategory->category_name  }}</dd><br>
                                         <dt class="col-sm-4">Event agenda</dt>
-                                        <dd class="col-sm-8">{{  $awarenessEvent->event_agenda  }}</dd>
+                                        <dd class="col-sm-8">{{  $awarenessEvent->event_agenda  }}</dd><br>
                                         <dt class="col-sm-4">Date of event</dt>
-                                        <dd class="col-sm-8">{{  $awarenessEvent->event_date  }}</dd>
+                                        <dd class="col-sm-8">{{  $awarenessEvent->event_date  }}</dd><br>
                                         <dt class="col-sm-4">Event time</dt>
-                                        <dd class="col-sm-8">{{  $awarenessEvent->event_time  }}</dd>
+                                        <dd class="col-sm-8">{{  $awarenessEvent->event_time  }}</dd><br>
                                         <dt class="col-sm-4">Place</dt>
-                                        <dd class="col-sm-8">{{  $awarenessEvent->place  }}</dd>
+                                        <dd class="col-sm-8">{{  $awarenessEvent->place  }}</dd><br>
                                         <dt class="col-sm-4">Conducting person</dt>
-                                        <dd class="col-sm-8">{{  $awarenessEvent->conducted_by  }}</dd>
+                                        <dd class="col-sm-8">{{  $awarenessEvent->conducted_by  }}</dd><br>
                                         <dt class="col-sm-4">Event description</dt>
-                                        <dd class="col-sm-8">{{  $awarenessEvent->event_description  }}</dd>
+                                        <dd class="col-sm-8">{{  $awarenessEvent->event_description  }}</dd><br>
                                         <dt class="col-sm-4">Updated on</dt>
-                                        <dd class="col-sm-8">{{  $awarenessEvent->created_at  }}</dd>
+                                        <dd class="col-sm-8">{{  $awarenessEvent->created_at  }}</dd><br>
                                         <dt class="col-sm-4">Event status</dt>
                                         <dd class="col-sm-8"><span class="badge badge-primary">{{  $awarenessEvent->event_status }}</span>
-                                        </dd>
+                                        </dd><br>
 
                         </div><!-- panel-body -->
                     </div>

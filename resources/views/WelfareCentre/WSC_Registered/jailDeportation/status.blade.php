@@ -36,30 +36,32 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <dl class="row">
-                                        <dt class="col-sm-5">Service applied for</dt>
-                                        <dd class="col-sm-7">{{ $meetAndGreet->service_name }}</dd><br>
-                                        <dt class="col-sm-5">Date of arrival/departure</dt>
-                                        <dd class="col-sm-7">{{ $meetAndGreet->arrival_date }}</dd><br>
-                                        <dt class="col-sm-5">Name of the airlines</dt>
-                                        <dd class="col-sm-7">{{ $meetAndGreet->airline_name }}</dd><br>
-                                        <dt class="col-sm-5">Flight number</dt>
-                                        <dd class="col-sm-7">{{ $meetAndGreet->flight_number }}</dd><br>
-                                        <dt class="col-sm-5">Flight time</dt>
-                                        <dd class="col-sm-7">{{ $meetAndGreet->flight_time }}</dd><br>
-                                        <dt class="col-sm-5">Guest passport</dt>
-                                        <dd class="col-sm-7"><a href="#" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        <dt class="col-sm-6">Name of the arrested person</dt>
+                                        <dd class="col-sm-6">{{ $jailDeportation->person_name }}</dd><br>
+                                        <dt class="col-sm-6">Relation with the applicant</dt>
+                                        <dd class="col-sm-6">{{ $jailDeportation->person_ralation }}</dd><br>
+                                        <dt class="col-sm-6">Passport number</dt>
+                                        <dd class="col-sm-6">{{ $jailDeportation->passport_number }}</dd><br>
+                                        <dt class="col-sm-6">Passport expire date</dt>
+                                        <dd class="col-sm-6">{{ $jailDeportation->passport_expirydate }}</dd><br>
+                                        <dt class="col-sm-6">Visa number</dt>
+                                        <dd class="col-sm-6">{{ $jailDeportation->visa_number }} </dd><br>
+                                        <dt class="col-sm-6">Visa expire date</dt>
+                                        <dd class="col-sm-6">{{ $jailDeportation->visa_expirydate }}</dd><br>
+                                        <dt class="col-sm-6">Arrested person passport</dt>
+                                        <dd class="col-sm-6"><a href="{{ $jailDeportation->passport_copy }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
                                     </dl>
                                 </div>
                                 <div class="col-md-6">
                                     <dl class="row">
-                                        <dt class="col-sm-4">Name of the guest</dt>
-                                        <dd class="col-sm-8">{{ $meetAndGreet->guest_name }}</dd><br>
-                                        <dt class="col-sm-4">Number of guests</dt>
-                                        <dd class="col-sm-8">{{ $meetAndGreet->number_of_guests }}</dd><br>
-                                        <dt class="col-sm-4">Transport services</dt>
-                                        <dd class="col-sm-8">{{ $meetAndGreet->transport_service }}</dd><br>
-                                        <dt class="col-sm-4">Message</dt>
-                                        <dd class="col-sm-8">{{ $meetAndGreet->comments }}</dd><br>
+                                        <dt class="col-sm-6">Cause of arrest</dt>
+                                        <dd class="col-sm-6">{{ $jailDeportation->cause_of_arrest }}</dd><br>
+                                        <dt class="col-sm-6">Date of arrest</dt>
+                                        <dd class="col-sm-6">{{ $jailDeportation->arrest_date }}</dd><br>
+                                        <dt class="col-sm-6">Name of the police station</dt>
+                                        <dd class="col-sm-6">{{ $jailDeportation->police_station_name }}</dd><br>
+                                        <dt class="col-sm-6">Message</dt>
+                                        <dd class="col-sm-6">{{ $jailDeportation->comments }}</dd><br>
                                     </dl>
                                 </div>
                             </div>
@@ -70,10 +72,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="{{ route('WelfareCentre.meetGreet.StatusUpdete', $meetAndGreet->id) }}"
+                        <form action="{{ route('WelfareCentre.jailDeportation.StatusUpdete', $jailDeportation->id) }}"
                             method="post" enctype="multipart/form-data">
                             <div class="panel panel-primary">
-                                <input type="hidden" value="{{ $meetAndGreet->id }}" name="id">
+                                <input type="hidden" value="{{ $jailDeportation->id }}" name="id">
                                 @csrf
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Service status</h3>
@@ -88,11 +90,11 @@
                                                     <select class="form-control my-select-changer" name="serviceStatus"
                                                         id="serviceStatus" required="">
                                                         <option selected="" disabled="" value="">Select status</option>
-                                                        <option @if ($meetAndGreet->active_status == 'On process') selected @endif value="On process">On process
+                                                        <option @if ($jailDeportation->active_status == 'On process') selected @endif value="On process">On process
                                                         </option>
-                                                        <option @if ($meetAndGreet->active_status == 'Completed') selected @endif value="Completed">Completed
+                                                        <option @if ($jailDeportation->active_status == 'Completed') selected @endif value="Completed">Completed
                                                         </option>
-                                                        <option @if ($meetAndGreet->active_status == 'Not Completed') selected @endif value="Not Completed">Not Completed
+                                                        <option @if ($jailDeportation->active_status == 'Not Completed') selected @endif value="Not Completed">Not Completed
                                                         </option>
                                                     </select>
                                                 </div>

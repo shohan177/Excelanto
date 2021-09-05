@@ -27,4 +27,9 @@ class JailAndDeportation extends Model
         'active_status',
         'deleted'
     ];
+
+    public function candidate()
+    {
+        return $this->belongsTo(Candidate::class, 'candidate_id');
+    }
 }

@@ -62,8 +62,6 @@
                                     <b>WSC</b> <a
                                         class="float-right">{{ $offeredCandidate->selectedWSC->company_name }}</a>
                                 </li>
-                                <a href="{{ route('WelfareCentre.meetGreet.request') }}"
-                                    class="btn btn-primary btn-block"><b>Back</b></a>
                             </ul>
                         </div>
                         <!-- /.panel-body -->
