@@ -19,6 +19,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/travel_received_list', 'TravelCandidatesController@readyToTravel')->name('travelCandidate.readyToTravel');
     Route::get('/show-received-candidate/{offered_candidate_id}', 'TravelCandidatesController@showReceivedCandidate')->name('travelCandidate.showReceivedCandidate');
 
+    //candidate
+    Route::get('/show-candidate-profile/{offered_candidate_id}', 'CandidateController@showCandidateProfile')->name('showCandidateProfile');
     //WSC registered
     Route::get('/meet-greet-request', 'WSC_RegisteredController@meet_greet_request')->name('meet_greet_request');
     Route::get('/jail-deportation-request', 'WSC_RegisteredController@jail_deportation_request')->name('jail_deportation_request');

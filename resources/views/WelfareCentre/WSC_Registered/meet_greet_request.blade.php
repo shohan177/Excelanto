@@ -53,9 +53,7 @@
                                     @foreach ($meetAndGreets as $meetAndGreet)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>
-                                                <---------- Have to made Relation ------>
-                                            </td>
+                                            <td>{{ $meetAndGreet->candidate->candidate_name }}</td>
                                             <td>{{ $meetAndGreet->service_name }}</td>
                                             <td>{{ $meetAndGreet->arrival_date }}</td>
                                             <td>{{ $meetAndGreet->created_at }}</td>
@@ -72,7 +70,7 @@
                                                     <button type="button" class="btn btn-success btn-xs">Not Completed</button>
                                                 @endif
                                             </td>
-                                            <td><a class="btn btn-info btn-xs" href="view_user_profile#">
+                                            <td><a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $meetAndGreet->candidate->offered_candidate->id) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>&nbsp;
                                                 <a class="btn btn-primary btn-xs" href="meet_greet_status#">

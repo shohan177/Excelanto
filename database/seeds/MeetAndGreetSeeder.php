@@ -30,6 +30,7 @@ class MeetAndGreetSeeder extends Seeder
                 'comments'  => 'Demo Comments',
                 'active_status'  => 'Active',
                 'created_by'  => 6,
+                'created_at'  => Carbon::now(),
                 // 'deleted'  => Carbon::now(),
             ]);
         }
