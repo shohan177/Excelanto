@@ -73,7 +73,7 @@
                                             <td><a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $meetAndGreet->candidate->offered_candidate->id) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>&nbsp;
-                                                <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.meetGreetStatus', $meetAndGreet->id) }}">
+                                                <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.meetGreet.Status', $meetAndGreet->id) }}">
                                                     <i class="fa fa-edit"></i>
                                                 </a></td>
                                         </tr>

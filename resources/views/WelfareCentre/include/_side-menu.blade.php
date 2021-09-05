@@ -23,12 +23,12 @@
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> WSC registered users</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="{{ route('WelfareCentre.meet_greet_request') }}">
+                            <a href="{{ route('WelfareCentre.meetGreet.request') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Meet and Greet request
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.jail_deportation_request') }}">
+                            <a href="{{ route('WelfareCentre.jailDeportation.request') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Jail deportation request
                             </a>
                         </li>

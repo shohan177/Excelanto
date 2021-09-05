@@ -22,10 +22,11 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     //candidate
     Route::get('/show-candidate-profile/{offered_candidate_id}', 'CandidateController@showCandidateProfile')->name('showCandidateProfile');
     //WSC registered
-    Route::get('/meet-greet-request', 'WSC_RegisteredController@meet_greet_request')->name('meet_greet_request');
-    Route::get('/meet-greet-status/{id}', 'WSC_RegisteredController@meetGreetStatus')->name('meetGreetStatus');
-    Route::post('/meet-greet-status-update/{id}', 'WSC_RegisteredController@meetGreetStatusUpdete')->name('meetGreetStatusUpdete');
-    Route::get('/jail-deportation-request', 'WSC_RegisteredController@jail_deportation_request')->name('jail_deportation_request');
+    Route::get('/meet-greet-request', 'MeetAndGreetController@meet_greet_request')->name('meetGreet.request');
+    Route::get('/meet-greet-status/{id}', 'MeetAndGreetController@meetGreetStatus')->name('meetGreet.Status');
+    Route::post('/meet-greet-status-update/{id}', 'MeetAndGreetController@meetGreetStatusUpdete')->name('meetGreet.StatusUpdete');
+    // Jail deportation
+    Route::get('/jail-deportation-request', 'JailDeportationController@request')->name('jailDeportation.request');
     Route::get('/deadbody-transfer-request', 'WSC_RegisteredController@deadbody_transfer_request')->name('deadbody_transfer_request');
 
     Route::get('/medical-compensation-request', 'WSC_RegisteredController@medical_compensation_request')->name('medical_compensation_request');
