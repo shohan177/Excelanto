@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class  WSC_RegisteredController extends Controller
 {
-    public function deadbody_transfer_request()
-    {
-        return view('WelfareCentre.WSC_Registered.deadbody_transfer_request');
-    }
-
     public function medical_compensation_request()
     {
         return view('WelfareCentre.WSC_Registered.medical_compensation_request');

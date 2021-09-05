@@ -33,7 +33,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.deadbody_transfer_request') }}">
+                            <a href="{{ route('WelfareCentre.deadbodyTransfer.request') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Deadbody transfer request
                             </a>
                         </li>
