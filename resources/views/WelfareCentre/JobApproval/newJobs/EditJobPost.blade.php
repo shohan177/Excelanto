@@ -31,8 +31,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-12">
                     <form action="{{ route('WelfareCentre.postUpdate')}}" method="post" enctype="multipart/form-data">

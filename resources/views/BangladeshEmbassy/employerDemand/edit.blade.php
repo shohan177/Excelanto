@@ -30,8 +30,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-12">
                     <form action="{{ route('BangladeshEmbassy.employerDemand.update', $job_post->id) }}" method="post"

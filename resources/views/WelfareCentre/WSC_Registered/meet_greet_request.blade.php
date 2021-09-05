@@ -1,12 +1,11 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Meet and Greet Request')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -31,8 +30,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
@@ -53,19 +50,36 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>billah</td>
-                                        <td>Guest arrival</td>
-                                        <td>12/27/2020</td>
-                                        <td>2020/12/27 11:59:56am</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Completed</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a></td>
-                                    </tr>
+                                    @foreach ($meetAndGreets as $meetAndGreet)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>
+                                                <---------- Have to made Relation ------>
+                                            </td>
+                                            <td>{{ $meetAndGreet->service_name }}</td>
+                                            <td>{{ $meetAndGreet->arrival_date }}</td>
+                                            <td>{{ $meetAndGreet->created_at }}</td>
+                                            <td>
+                                                @if ($meetAndGreet->active_status == 'Open')
+                                                    <button type="button" class="btn btn-success btn-xs">Open</button>
+                                                @elseif($meetAndGreet->active_status == "On Process")
+                                                    <button type="button" class="btn btn-success btn-xs">On Process</button>
+                                                @elseif($meetAndGreet->active_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($meetAndGreet->active_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not Completed</button>
+                                                @else
+                                                    <button type="button" class="btn btn-success btn-xs">Not Completed</button>
+                                                @endif
+                                            </td>
+                                            <td><a class="btn btn-info btn-xs" href="view_user_profile#">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>&nbsp;
+                                                <a class="btn btn-primary btn-xs" href="meet_greet_status#">
+                                                    <i class="fa fa-edit"></i>
+                                                </a></td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -89,7 +103,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>

@@ -16,7 +16,7 @@
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Travel Candidates</span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('WelfareCentre.TravelCandidates') }}"><i class="fa fa-arrow-circle-right"></i>Ready To Travel</a></li>
+                        <li><a href="{{ route('WelfareCentre.travelCandidate.readyToTravel') }}"><i class="fa fa-arrow-circle-right"></i>Ready To Travel</a></li>
                     </ul>
                 </li>
                 <li class="has_sub">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\UaeEmbassy;
 
 use App\Http\Controllers\Controller;
+use App\OfferedCandidate;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Str;
@@ -12,15 +13,34 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class VisaProcessController extends Controller
 {
-    public function stamping_requested(){
+    public function stamping_requested()
+    {
+        $offeredCandidates = OfferedCandidate::where('result_status', 'Visa-Stamping-Request')->orderBy('id', 'DESC')->get();
+        return view('UaeEmbassy.VisaProcess.stamping_requested', compact('offeredCandidates'));
+    }
+    public function stamping_approved()
+    {
+        $offeredCandidates = OfferedCandidate::where('result_status', 'Visa-Stamping-Approved')->orderBy('id', 'DESC')->get();
+        return view('UaeEmbassy.VisaProcess.stamping_approved', compact('offeredCandidates'));
+    }
+    public function stamping_rejected()
+    {
+        $offeredCandidates = OfferedCandidate::where('result_status', 'Visa-Stamping-Rejected')->orderBy('id', 'DESC')->get();
+        return view('UaeEmbassy.VisaProcess.stamping_rejected', compact('offeredCandidates'));
+    }
 
-            return view('UaeEmbassy.VisaProcess.stamping_requested');
-    }
-    public function stamping_approved(){
-        return view('UaeEmbassy.VisaProcess.stamping_approved');
-    }
-    public function stamping_rejected(){
-        return view('UaeEmbassy.VisaProcess.stamping_rejected');
+    public function requestedCandidateProfile($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('UaeEmbassy.VisaProcess.requested-candidate-profile', compact('offeredCandidate'));
     }
 
+    public function approvedCandidateProfile($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('UaeEmbassy.VisaProcess.approved-candidate-profile', compact('offeredCandidate'));
+    }
+
+    public function rejectedCandidateProfile($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('UaeEmbassy.VisaProcess.rejected-candidate-profile', compact('offeredCandidate'));
+    }
 }
