@@ -41,7 +41,7 @@
                             <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Compensation </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="{{ route('WelfareCentre.medicalCompensation.request') }}"><i class="fa fa-arrow-circle-right"></i>  Medical compensation</a></li>
-                                <li><a href="{{ route('WelfareCentre.insurance_request') }}"><i class="fa fa-arrow-circle-right"></i> Insurance request</a></li>
+                                <li><a href="{{ route('WelfareCentre.insurance.request') }}"><i class="fa fa-arrow-circle-right"></i> Insurance request</a></li>
                             </ul>
                         </li>
                         <li class="has_sub">

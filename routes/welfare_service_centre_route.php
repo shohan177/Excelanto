@@ -38,7 +38,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/medical-compensation-status/{id}', 'MedicalCompensationController@medicalCompensationStatus')->name('medicalCompensation.Status');
     Route::post('/medical-compensation-status-update/{id}', 'MedicalCompensationController@medicalCompensationStatusUpdete')->name('medicalCompensation.StatusUpdete');
 
-    Route::get('/insurance_request', 'WSC_RegisteredController@insurance_request')->name('insurance_request');
+    Route::get('/insurance-request', 'InsuranceController@request')->name('insurance.request');
 
     //certificate
     Route::get('/issuance_certificate_requests', 'WSC_RegisteredController@issuance_certificate_requests')->name('issuance_certificate_requests');
