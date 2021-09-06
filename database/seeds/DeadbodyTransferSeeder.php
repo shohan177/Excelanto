@@ -31,7 +31,7 @@ class DeadbodyTransferSeeder extends Seeder
                 'contact_number'  => rand(10000000,20000000),
                 'comments'  => 'Demo Comments',
                 'active_status' => 'Open',
-                'created_id'  => rand(1,19),
+                'created_id'  => rand(11,19),
                 'created_at'  => Carbon::now(),
                 // 'deleted'  => Carbon::now(),
             ]);

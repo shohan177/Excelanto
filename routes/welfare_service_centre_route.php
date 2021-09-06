@@ -31,6 +31,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::post('/jail-deportation-status-update/{id}', 'JailDeportationController@jailDeportationStatusUpdete')->name('jailDeportation.StatusUpdete');
     // deadbody transfer
     Route::get('/deadbody-transfer-request', 'DeadbodyTransferController@request')->name('deadbodyTransfer.request');
+    Route::get('/deadbody-transfer-status/{id}', 'DeadbodyTransferController@deadbodyTransferStatus')->name('deadbodyTransfer.Status');
+    Route::post('/deadbody-transfer-status-update/{id}', 'DeadbodyTransferController@deadbodyTransferStatusUpdete')->name('deadbodyTransfer.StatusUpdete');
 
     Route::get('/medical-compensation-request', 'WSC_RegisteredController@medical_compensation_request')->name('medical_compensation_request');
     Route::get('/insurance_request', 'WSC_RegisteredController@insurance_request')->name('insurance_request');
