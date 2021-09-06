@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class  WSC_RegisteredController extends Controller
 {
-    public function medical_compensation_request()
-    {
-        return view('WelfareCentre.WSC_Registered.medical_compensation_request');
-    }
     public function insurance_request()
     {
         return view('WelfareCentre.WSC_Registered.insurance_request');

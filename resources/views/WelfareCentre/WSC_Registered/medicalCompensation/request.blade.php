@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Medical Compensation Request')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -23,8 +23,7 @@
                         <h4 class="pull-left page-title">Medical Compensation Request</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Welfare Centre</a></li>
-                            <li><a href="#"> WSC registered users
-                                </a></li>
+                            <li><a href="#"> WSC registered users </a></li>
                             <li class="active">Medical Compensation Request</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -50,18 +49,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>billah</td>
-                                        <td>fever</td>
-                                        <td>2020/12/27 12:09:48pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Completed</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a></td>
-                                    </tr>
+                                    @foreach ($medicalCompensations as $medicalCompensation)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $medicalCompensation->candidate_name }}</td>
+                                            <td>{{ $medicalCompensation->sick_type }}</td>
+                                            <td>{{ $medicalCompensation->created_at }}</td>
+
+                                            @if ($medicalCompensation->service_status == 'Open')
+                                                <button type="button" class="btn btn-success btn-xs">New</button>
+                                            @elseif($medicalCompensation->service_status == "On process")
+                                                <button type="button" class="btn btn-success btn-xs">On process</button>
+                                            @elseif($medicalCompensation->service_status == "Completed")
+                                                <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                            @elseif($medicalCompensation->service_status == "Not Completed")
+                                                <button type="button" class="btn btn-success btn-xs">Not Completed</button>
+                                            @else
+                                                <button type="button"
+                                                    class="btn btn-info btn-xs">{{ $medicalCompensation->service_status }}</button>
+                                            @endif
+                                            <td><a class="btn btn-info btn-xs" href="#">
+                                                    <i class="fa fa-eye"></i></a>&nbsp;<a
+                                                    class="btn btn-primary btn-xs" href="#">
+                                                    <i class="fa fa-edit"></i></a></td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -84,7 +96,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
