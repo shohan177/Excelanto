@@ -5,8 +5,7 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -55,23 +54,25 @@
                                             <td>{{ $medicalCompensation->candidate_name }}</td>
                                             <td>{{ $medicalCompensation->sick_type }}</td>
                                             <td>{{ $medicalCompensation->created_at }}</td>
-
-                                            @if ($medicalCompensation->service_status == 'Open')
-                                                <button type="button" class="btn btn-success btn-xs">New</button>
-                                            @elseif($medicalCompensation->service_status == "On process")
-                                                <button type="button" class="btn btn-success btn-xs">On process</button>
-                                            @elseif($medicalCompensation->service_status == "Completed")
-                                                <button type="button" class="btn btn-success btn-xs">Completed</button>
-                                            @elseif($medicalCompensation->service_status == "Not Completed")
-                                                <button type="button" class="btn btn-success btn-xs">Not Completed</button>
-                                            @else
-                                                <button type="button"
-                                                    class="btn btn-info btn-xs">{{ $medicalCompensation->service_status }}</button>
-                                            @endif
-                                            <td><a class="btn btn-info btn-xs" href="#">
-                                                    <i class="fa fa-eye"></i></a>&nbsp;<a
-                                                    class="btn btn-primary btn-xs" href="#">
-                                                    <i class="fa fa-edit"></i></a></td>
+                                            <td>
+                                                @if ($medicalCompensation->service_status == 'Open')
+                                                    <button type="button" class="btn btn-success btn-xs">New</button>
+                                                @elseif($medicalCompensation->service_status == "On process")
+                                                    <button type="button" class="btn btn-success btn-xs">On process</button>
+                                                @elseif($medicalCompensation->service_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($medicalCompensation->service_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not
+                                                        Completed</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-info btn-xs">{{ $medicalCompensation->service_status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $medicalCompensation->candidate->offered_candidate->id) }}"><i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.medicalCompensation.Status', $medicalCompensation->id) }}"><i class="fa fa-edit"></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

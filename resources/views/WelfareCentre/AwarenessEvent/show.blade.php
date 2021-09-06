@@ -50,7 +50,7 @@
                                         <dd class="col-sm-8">{{  $awarenessEvent->created_at  }}</dd><br>
                                         <dt class="col-sm-4">Event status</dt>
                                         <dd class="col-sm-8"><span class="badge badge-primary">{{  $awarenessEvent->event_status }}</span>
-                                        </dd><br>
+                                        </dd><br><br>
 
                         </div><!-- panel-body -->
                     </div>

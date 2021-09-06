@@ -35,6 +35,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::post('/deadbody-transfer-status-update/{id}', 'DeadbodyTransferController@deadbodyTransferStatusUpdete')->name('deadbodyTransfer.StatusUpdete');
     // medical compensation
     Route::get('/medical-compensation-request', 'MedicalCompensationController@request')->name('medicalCompensation.request');
+    Route::get('/medical-compensation-status/{id}', 'MedicalCompensationController@medicalCompensationStatus')->name('medicalCompensation.Status');
+    Route::post('/medical-compensation-status-update/{id}', 'MedicalCompensationController@medicalCompensationStatusUpdete')->name('medicalCompensation.StatusUpdete');
 
     Route::get('/insurance_request', 'WSC_RegisteredController@insurance_request')->name('insurance_request');
 
