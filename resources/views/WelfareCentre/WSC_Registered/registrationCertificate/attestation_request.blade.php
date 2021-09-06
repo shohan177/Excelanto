@@ -42,7 +42,7 @@
                                 <thead>
                                     <tr>
 
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Type of sickness</th>
                                         <th>Applied on</th>
@@ -66,7 +66,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Type of sickness</th>
                                         <th>Applied on</th>

@@ -41,7 +41,7 @@
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Delivered to</th>
                                         <th>Applied on</th>
@@ -66,7 +66,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Delivered to</th>
                                         <th>Applied on</th>

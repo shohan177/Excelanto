@@ -40,7 +40,7 @@
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Service type</th>
                                         <th>Service date</th>
@@ -81,7 +81,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Service type</th>
                                         <th>Service date</th>

@@ -41,7 +41,7 @@
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Person name</th>
                                         <th>Applied on</th>
@@ -50,22 +50,41 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr role="row" class="odd">
-                                        <td>1</td>
-                                        <td>billah</td>
-                                        <td>shuvo</td>
-                                        <td>2020/12/27 12:09:48pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Completed</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a></td>
+                                    @foreach ($deadbodyTransfers as $deadbodyTransfer)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $deadbodyTransfer->candidate_name }}</td>
+                                        <td>{{ $deadbodyTransfer->deadbody_name }}</td>
+                                        <td>{{ $deadbodyTransfer->created_at }}</td>
+                                        <td>
+                                            @if ($deadbodyTransfer->active_status == 'Open')
+                                                <button type="button" class="btn btn-success btn-xs">New</button>
+                                            @elseif($deadbodyTransfer->active_status == "On process")
+                                                <button type="button" class="btn btn-success btn-xs">On process</button>
+                                            @elseif($deadbodyTransfer->active_status == "Completed")
+                                                <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                            @elseif($deadbodyTransfer->active_status == "Not Completed")
+                                                <button type="button" class="btn btn-success btn-xs">Not Completed</button>
+                                            @else
+                                                <button type="button"
+                                                    class="btn btn-info btn-xs">{{ $deadbodyTransfer->active_status }}</button>
+                                            @endif
+
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-xs" href="#">
+                                                <i class="fa fa-eye"></i>
+                                            </a>&nbsp;
+                                            <a class="btn btn-primary btn-xs"
+                                                href="#"><i class="fa fa-edit"></i>
+                                            </a>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Person name</th>
                                         <th>Applied on</th>

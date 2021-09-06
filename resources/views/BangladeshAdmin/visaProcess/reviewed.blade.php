@@ -40,7 +40,7 @@
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
                                         <th>Email</th>
@@ -69,7 +69,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>Candidate Name</th>
                                         <th>Job Category</th>
                                         <th>Email</th>

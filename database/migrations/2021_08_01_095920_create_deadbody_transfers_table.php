@@ -19,7 +19,7 @@ class CreateDeadbodyTransfersTable extends Migration
             $table->string('candidate_name')->nullable();
             $table->string('company_name')->nullable();
             $table->string('deadbody_name')->nullable();
-            $table->string('lelation')->nullable();
+            $table->string('relation')->nullable();
             $table->string('passport_copy')->nullable();
             $table->string('passport_number')->nullable();
             $table->string('passport_expirydate')->nullable();

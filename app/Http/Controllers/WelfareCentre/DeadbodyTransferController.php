@@ -12,6 +12,6 @@ class DeadbodyTransferController extends Controller
     public function request()
     {
         $deadbodyTransfers =  DeadbodyTransfer::where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
-        return view('WelfareCentre.WSC_Registered.deadbody_transfer_request', compact('deadbodyTransfers'));
+        return view('WelfareCentre.WSC_Registered.deadbodyTransfer.request', compact('deadbodyTransfers'));
     }
 }

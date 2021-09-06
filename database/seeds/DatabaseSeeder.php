@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TravelEnquirySeeder::class);
         $this->call(MeetAndGreetSeeder::class);
         $this->call(JailDeportationSeeder::class);
+        $this->call(DeadbodyTransferSeeder::class);
     }
 }
