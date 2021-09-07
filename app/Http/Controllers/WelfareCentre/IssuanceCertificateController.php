@@ -59,4 +59,15 @@ class IssuanceCertificateController extends Controller
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
     }
+
+    public function payment()
+    {
+        $issuanceCertificates = IssuanceCertificate::where('service_status', 'On Process')->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('WelfareCentre.WSC_Registered.IssuanceCertificate.payment', compact('issuanceCertificates'));
+    }
+
+    public function viewIssuanceReceipt($id){
+        $issuanceCertificate = IssuanceCertificate::findOrFail($id);
+        return view('WelfareCentre.WSC_Registered.issuanceCertificate.receipt', compact('issuanceCertificate'));
+    }
 }

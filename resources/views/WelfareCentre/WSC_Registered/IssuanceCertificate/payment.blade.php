@@ -23,9 +23,8 @@
                         <h4 class="pull-left page-title">Issuance certificate payment</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Welfare Centre</a></li>
-                            <li><a href="#"> WSC registered users
-                                </a></li>
-                            <li class="active">Issuance certificate payment</li>
+                            <li><a href="#"> Issuance certificate</a></li>
+                            <li class="active">Payment receipt</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -35,7 +34,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Issuance certificate payments</h3>
+                            <h3 class="panel-title">Issuance certificate payment receipt</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
@@ -49,17 +48,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($issuanceCertificates as $issuanceCertificate)
                                     <tr>
-                                        <td>1</td>
-                                        <td>billah</td>
-                                        <td>2020/12/27 12:09:48pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Completed</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a></td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $issuanceCertificate->candidate->candidate_name }}</td>
+                                        <td>{{ $issuanceCertificate->created_at }}</td>
+                                        <td>
+                                            @if ($issuanceCertificate->service_status == 'Open')
+                                                <button type="button" class="btn btn-success btn-xs">New</button>
+                                            @elseif($issuanceCertificate->service_status == "On process")
+                                                <button type="button" class="btn btn-success btn-xs">On process</button>
+                                            @elseif($issuanceCertificate->service_status == "Completed")
+                                                <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                            @elseif($issuanceCertificate->service_status == "Not Completed")
+                                                <button type="button" class="btn btn-success btn-xs">Not Completed</button>
+                                            @elseif($issuanceCertificate->service_status == "Approved")
+                                                <button type="button" class="btn btn-success btn-xs">Approved</button>
+                                            @elseif($issuanceCertificate->service_status == "Rejected")
+                                                <button type="button" class="btn btn-danger btn-xs">Rejected</button>
+                                            @else
+                                                <button type="button" class="btn btn-info btn-xs">{{ $issuanceCertificate->service_status }}</button>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.issuanceCertificate.receipt', $issuanceCertificate->id) }}"> <i class="fa fa-eye"></i></a>
+                                            </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
