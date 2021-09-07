@@ -50,7 +50,7 @@
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Issuance Certificate </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.issuance_certificate_requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.issuanceCertificate.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
                                         <li><a href="{{ route('WelfareCentre.certificate_issue_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
                                         <li><a href="{{ route('WelfareCentre.issuance_certificate') }}"><i class="fa fa-arrow-circle-right"></i> Certificate status</a></li>
                                         <li><a href="{{ route('WelfareCentre.issuance_delivery_status') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>

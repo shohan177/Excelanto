@@ -41,7 +41,6 @@
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-
                                         <th>SL No</th>
                                         <th>User name</th>
                                         <th>Type of sickness</th>

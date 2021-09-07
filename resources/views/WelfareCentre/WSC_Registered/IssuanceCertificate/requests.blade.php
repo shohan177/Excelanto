@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Issuance certificate requests')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -35,16 +35,15 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Issuance certificate requestss</h3>
+                            <h3 class="panel-title">Issuance certificate requests</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-
                                         <th>SL No</th>
                                         <th>User name</th>
-                                        <th>Type of sickness</th>
+                                        <th>Type of service</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -68,7 +67,7 @@
                                     <tr>
                                         <th>SL No</th>
                                         <th>User name</th>
-                                        <th>Type of sickness</th>
+                                        <th>Type of service</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
                                         <th>Action</th>
