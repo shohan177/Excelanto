@@ -41,4 +41,22 @@ class IssuanceCertificateController extends Controller
         $issuanceCertificate = IssuanceCertificate::findOrFail($id);
         return view('WelfareCentre.WSC_Registered.issuanceCertificate.upload', compact('issuanceCertificate'));
     }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'fees' => 'required|numeric'
+        ]);
+
+        $issuanceCertificate = IssuanceCertificate::findOrFail($id);
+        $issuanceCertificate->service_status = 'On Process';
+        $issuanceCertificate->delivery_type = $request->deliveryType;
+        $issuanceCertificate->delivery_charge = $request->deliveryCharge;
+        $issuanceCertificate->fees = $request->fees;
+        try {
+            $issuanceCertificate->save();
+            return back()->withToastSuccess('Successfully Updated.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
+    }
 }

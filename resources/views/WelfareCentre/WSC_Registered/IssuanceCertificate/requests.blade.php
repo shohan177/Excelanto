@@ -65,13 +65,17 @@
                                                     <button type="button" class="btn btn-success btn-xs">Completed</button>
                                                 @elseif($issuanceCertificate->service_status == "Not Completed")
                                                     <button type="button" class="btn btn-success btn-xs">Not Completed</button>
+                                                @elseif($issuanceCertificate->service_status == "Approved")
+                                                    <button type="button" class="btn btn-success btn-xs">Approved</button>
+                                                @elseif($issuanceCertificate->service_status == "Rejected")
+                                                    <button type="button" class="btn btn-danger btn-xs">Rejected</button>
                                                 @else
                                                     <button type="button" class="btn btn-info btn-xs">{{ $issuanceCertificate->service_status }}</button>
                                                 @endif
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $issuanceCertificate->candidate->offered_candidate->id) }}"> <i class="fa fa-eye"></i></a>
-                                                <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.insurance.Upload', $issuanceCertificate->id) }}"> <i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.issuanceCertificate.upload', $issuanceCertificate->id) }}"> <i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

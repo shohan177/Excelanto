@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'Medical Compensation request')
+@section('title', 'Issuance Certificate')
 @section('DataTableCss')
 
 
@@ -14,10 +14,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Medical Compensation</h4>
+                        <h4 class="pull-left page-title">Issuance Certificate</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Medical Compensation request</a></li>
+                            <li><a href="#">Issuance Certificate</a></li>
                             <li class="active">Service details</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -34,32 +34,21 @@
                         <!-- /.panel-header -->
                         <div class="panel-body p-5">
                             <div class="row">
+                                <div class="col-md-3"></div>
                                 <div class="col-md-6">
                                     <dl class="row">
                                         <dt class="col-sm-6">Name</dt>
-                                        <dd class="col-sm-6">{{ $medicalCompensation->candidate_name }}</dd><br>
-                                        <dt class="col-sm-6">Type of sickness</dt>
-                                        <dd class="col-sm-6">{{ $medicalCompensation->sick_type }}</dd><br>
-                                        <dt class="col-sm-6">Insurance number (if any)</dt>
-                                        <dd class="col-sm-6">{{ $medicalCompensation->insurance_number }}</dd><br>
-                                        <dt class="col-sm-6">Insurance card</dt>
-                                        <dd class="col-sm-6"><a href="../insurance_cards/" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
-                                        <dt class="col-sm-6">Prescription</dt>
-                                        <dd class="col-sm-6"><a href="../prescriptions/" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
-                                        <dt class="col-sm-6">Name and detail of visited doctor</dt>
-                                        <dd class="col-sm-6">{{ $medicalCompensation->doctor_name }}</dd><br>
-                                    </dl>
-                                </div>
-                                <div class="col-md-6">
-                                    <dl class="row">
-                                        <dt class="col-sm-6">Name and address of visited hospitals</dt>
-                                        <dd class="col-sm-6">{{ $medicalCompensation->hospital_name }}</dd><br>
+                                        <dd class="col-sm-6">{{ $issuanceCertificate->candidate_name }}</dd><br>
+                                        <dt class="col-sm-6">Type of service</dt>
+                                        <dd class="col-sm-6">{{ $issuanceCertificate->service_type }}</dd><br>
                                         <dt class="col-sm-6">Message</dt>
-                                        <dd class="col-sm-6">{{ $medicalCompensation->comments }}</dd><br>
+                                        <dd class="col-sm-6">{{ $issuanceCertificate->comments }}</dd><br>
                                         <dt class="col-sm-6">Applied on</dt>
-                                        <dd class="col-sm-6">{{ $medicalCompensation->created_at }}</dd><br>
+                                        <dd class="col-sm-6">{{ $issuanceCertificate->created_at }}</dd><br>
                                     </dl>
                                 </div>
+                                <div class="col-md-3"></div>
+
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -68,10 +57,11 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="{{ route('WelfareCentre.medicalCompensation.StatusUpdete', $medicalCompensation->id) }}"
+                        <form
+                            action="{{ route('WelfareCentre.issuanceCertificate.update', $issuanceCertificate->id) }}"
                             method="post" enctype="multipart/form-data">
                             <div class="panel panel-primary">
-                                <input type="hidden" value="{{ $medicalCompensation->id }}" name="id">
+                                <input type="hidden" value="{{ $issuanceCertificate->id }}" name="id">
                                 @csrf
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Service status</h3>
@@ -82,17 +72,22 @@
                                         <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                             <div class="panel-body">
                                                 <div class="form-group">
-                                                    <label for="serviceStatus">Service status</label>
-                                                    <select class="form-control my-select-changer" name="serviceStatus"
-                                                        id="serviceStatus" required="">
-                                                        <option selected="" disabled="" value="">Select status</option>
-                                                        <option @if ($medicalCompensation->service_status == 'On process') selected @endif value="On process">On process
-                                                        </option>
-                                                        <option @if ($medicalCompensation->service_status == 'Completed') selected @endif value="Completed">Completed
-                                                        </option>
-                                                        <option @if ($medicalCompensation->service_status == 'Not Completed') selected @endif value="Not Completed">Not Completed
-                                                        </option>
+                                                    <label for="fees">Fee amount</label>
+                                                    <input type="text" class="form-control" id="fees" name="fees"
+                                                        placeholder="Enter fee amount">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="deliveryType">Delivery</label>
+                                                    <select class="form-control" name="deliveryType" id="deliveryType"
+                                                        required="">
+                                                        <option selected disabled value="">Select delivery type</option>
+                                                        <option  @if ($issuanceCertificate->delivery_type == 'Door delivery') selected @endif  value="Door delivery">Door delivery</option>
+                                                        <option  @if ($issuanceCertificate->delivery_type == 'Collect from WSC') selected @endif value="Collect from WSC">Collect from WSC</option>
                                                     </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="deliveryCharge">Delivery charge</label>
+                                                    <input type="text" class="form-control" id="deliveryCharge" name="deliveryCharge" placeholder="Enter delivery charge">
                                                 </div>
                                             </div><!-- panel-body -->
                                         </div> <!-- col-->
@@ -100,8 +95,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer text-right">
-                                    <button type="submit" name="btnupdate"
-                                        class="btn btn-primary float-right">Submit</button>
+                                    <button type="submit" name="btnupdate" class="btn btn-primary float-right">Submit</button>
                                 </div>
                             </div>
                         </form>
