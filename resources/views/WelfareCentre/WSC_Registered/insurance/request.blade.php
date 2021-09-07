@@ -70,7 +70,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $insuranceService->candidate->offered_candidate->id) }}"> <i class="fa fa-eye"></i></a>
-                                                <a class="btn btn-primary btn-xs" href="#"> <i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.insurance.Status', $insuranceService->id) }}"> <i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
