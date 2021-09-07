@@ -23,4 +23,9 @@ class IssuanceCertificate extends Model
         'created_id',
         'deleted'
     ];
+
+    public function candidate()
+    {
+        return $this->belongsTo(Candidate::class, 'candidate_id');
+    }
 }

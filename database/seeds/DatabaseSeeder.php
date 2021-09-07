@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DeadbodyTransferSeeder::class);
         $this->call(MedicalCompensationSeeder::class);
         $this->call(InsuranceServiceSeeder::class);
+        $this->call(IssuanceCertificateSeeder::class);
     }
 }
