@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'Issuance Certificate')
+@section('title', 'Certificate Attestation')
 @section('DataTableCss')
 
 
@@ -14,10 +14,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Issuance Certificate</h4>
+                        <h4 class="pull-left page-title">Certificate Attestation</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Issuance Certificate</a></li>
+                            <li><a href="#">Certificate Attestation</a></li>
                             <li class="active">Service details</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -38,17 +38,16 @@
                                 <div class="col-md-6">
                                     <dl class="row">
                                         <dt class="col-sm-6">Name</dt>
-                                        <dd class="col-sm-6">{{ $issuanceCertificate->candidate->candidate_name }}</dd><br>
+                                        <dd class="col-sm-6">{{ $attestationCertificate->candidate->candidate_name }}</dd><br>
                                         <dt class="col-sm-6">Type of service</dt>
-                                        <dd class="col-sm-6">{{ $issuanceCertificate->service_type }}</dd><br>
+                                        <dd class="col-sm-6">{{ $attestationCertificate->service_type }}</dd><br>
                                         <dt class="col-sm-6">Message</dt>
-                                        <dd class="col-sm-6">{{ $issuanceCertificate->comments }}</dd><br>
+                                        <dd class="col-sm-6">{{ $attestationCertificate->comments }}</dd><br>
                                         <dt class="col-sm-6">Applied on</dt>
-                                        <dd class="col-sm-6">{{ $issuanceCertificate->created_at }}</dd><br>
+                                        <dd class="col-sm-6">{{ $attestationCertificate->created_at }}</dd><br>
                                     </dl>
                                 </div>
                                 <div class="col-md-3"></div>
-
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -58,10 +57,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <form
-                            action="{{ route('WelfareCentre.issuanceCertificate.update', $issuanceCertificate->id) }}"
+                            action="{{ route('WelfareCentre.attestationCertificate.update', $attestationCertificate->id) }}"
                             method="post" enctype="multipart/form-data">
                             <div class="panel panel-primary">
-                                <input type="hidden" value="{{ $issuanceCertificate->id }}" name="id">
+                                <input type="hidden" value="{{ $attestationCertificate->id }}" name="id">
                                 @csrf
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Service status</h3>
@@ -81,8 +80,8 @@
                                                     <select class="form-control" name="deliveryType" id="deliveryType"
                                                         required="">
                                                         <option selected disabled value="">Select delivery type</option>
-                                                        <option  @if ($issuanceCertificate->delivery_type == 'Door delivery') selected @endif  value="Door delivery">Door delivery</option>
-                                                        <option  @if ($issuanceCertificate->delivery_type == 'Collect from WSC') selected @endif value="Collect from WSC">Collect from WSC</option>
+                                                        <option  @if ($attestationCertificate->delivery_type == 'Door delivery') selected @endif  value="Door delivery">Door delivery</option>
+                                                        <option  @if ($attestationCertificate->delivery_type == 'Collect from WSC') selected @endif value="Collect from WSC">Collect from WSC</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">

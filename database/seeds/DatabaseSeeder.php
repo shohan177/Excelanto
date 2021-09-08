@@ -31,5 +31,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MedicalCompensationSeeder::class);
         $this->call(InsuranceServiceSeeder::class);
         $this->call(IssuanceCertificateSeeder::class);
+        $this->call(AttestationCertificateSeeder::class);
     }
 }

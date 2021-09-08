@@ -4,7 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class IssuanceCertificateSeeder extends Seeder
+class AttestationCertificateSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,20 +14,21 @@ class IssuanceCertificateSeeder extends Seeder
     public function run()
     {
         for ($i = 11; $i < 20; $i++) {
-            DB::table('issuance_certificates')->insert([
+            DB::table('attestation_certificates')->insert([
                 'candidate_id' => rand(11, 19),
                 'company_id' => 8,
                 'wsc_id' => 6,
                 'service_type' => 'Demo service ' . $i,
                 'comments' => 'Demo Comments',
                 'service_status' => 'Approved',
-                'delivery_status' => 'Approved',
-                'delivery_charge' => rand(100, 200),
-                'fees' => rand(1000, 2000),
-                'delivery_to' => 'Dhaka bonani',
+                'created_id' => rand(11, 19),
+                'fees' => rand(100, 200),
+                'delivery_charge' => rand(1000, 2000),
+                'delivery_type' => 'Door delivery',
+                'delivery_to'  => 'Bonani Dhaka',
                 'document'  => 'assets/images/users/avatar-1.jpg',
-                'delivery_type'  => 'Door delivery',
-                'created_id'  => rand(11, 19),
+                'legal_status'  => 'Approved',
+                'delivery_status'  => rand(11, 19),
                 'created_at'  => Carbon::now(),
                 // 'deleted'  => Carbon::now(),
             ]);

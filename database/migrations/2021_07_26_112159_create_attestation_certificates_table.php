@@ -21,15 +21,15 @@ class CreateAttestationCertificatesTable extends Migration
             $table->string('service_type')->nullable();
             $table->text('comments')->nullable();
             $table->text('service_status')->nullable();
-            $table->integer('created_id')->nullable();
-            $table->integer('deleted')->nullable();
             $table->integer('fees')->nullable();
             $table->float('delivery_charge')->nullable();
             $table->string('delivery_type')->nullable();
             $table->string('delivery_to')->nullable();
             $table->string('document')->nullable();
             $table->string('legal_status')->nullable();
+            $table->integer('created_id')->nullable();
             $table->string('delivery_status')->nullable();
+            $table->integer('deleted')->nullable();
             $table->timestamps();
         });
     }

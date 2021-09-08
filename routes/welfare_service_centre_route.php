@@ -53,8 +53,11 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/view-issuance-receipt/{id}', 'IssuanceCertificateController@viewIssuanceReceipt')->name('issuanceCertificate.receipt');
     Route::get('/issuance-certificate-paids', 'IssuanceCertificateController@paids')->name('issuance_certificate');
     Route::get('/issuance-certificate-delivered', 'IssuanceCertificateController@delivered')->name('issuance_delivery_status');
-
+    // attestation-certificate
     Route::get('/attestation-certificate-requests', 'AttestationCertificateController@requests')->name('attestationCertificate.requests');
+    Route::get('/attestation-certificate-upload/{id}', 'AttestationCertificateController@upload')->name('attestationCertificate.upload');
+    Route::post('/attestation-certificate-update/{id}', 'AttestationCertificateController@update')->name('attestationCertificate.update');
+
     Route::get('/certificate_attestation_payment', 'WSC_RegisteredController@certificate_attestation_payment')->name('certificate_attestation_payment');
     Route::get('/attestation_certificate', 'WSC_RegisteredController@attestation_certificate')->name('attestation_certificate');
     Route::get('/attestation_delivery_status', 'WSC_RegisteredController@attestation_delivery_status')->name('attestation_delivery_status');

@@ -67,6 +67,7 @@ class IssuanceCertificateController extends Controller
     {
         $request->validate([
             'fees' => 'required|numeric',
+            'deliveryCharge' => 'required|numeric',
         ]);
 
         $issuanceCertificate = IssuanceCertificate::findOrFail($id);
