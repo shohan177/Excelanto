@@ -15,6 +15,11 @@ class AttestationCertificateController extends Controller
         return view('WelfareCentre.WSC_Registered.attestationCertificate.requests', compact('attestationCertificates'));
     }
 
+    public function payment()
+    {
+        return view('WelfareCentre.WSC_Registered.attestationCertificate.payment');
+    }
+
     public function upload($id)
     {
         $attestationCertificate = AttestationCertificate::findOrFail($id);
