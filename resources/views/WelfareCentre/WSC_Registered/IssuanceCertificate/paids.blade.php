@@ -48,18 +48,38 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>billah</td>
-                                        <td>2020/12/27 12:09:48pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Completed</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a></td>
-                                    </tr>
+                                    @foreach ($issuanceCertificates as $issuanceCertificate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $issuanceCertificate->candidate->candidate_name }}</td>
+                                            <td>{{ $issuanceCertificate->created_at }}</td>
+                                            <td>
+                                                @if ($issuanceCertificate->service_status == 'Paid')
+                                                    <button type="button" class="btn btn-success btn-xs">Paid</button>
+                                                @elseif($issuanceCertificate->service_status == "On process")
+                                                    <button type="button" class="btn btn-success btn-xs">On process</button>
+                                                @elseif($issuanceCertificate->service_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($issuanceCertificate->service_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not
+                                                        Completed</button>
+                                                @elseif($issuanceCertificate->service_status == "Approved")
+                                                    <button type="button" class="btn btn-success btn-xs">Approved</button>
+                                                @elseif($issuanceCertificate->service_status == "Rejected")
+                                                    <button type="button" class="btn btn-danger btn-xs">Rejected</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-info btn-xs">{{ $issuanceCertificate->service_status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.issuanceCertificate.receipt', $issuanceCertificate->id) }}"> <i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.issuanceCertificate.status', $issuanceCertificate->id) }}"> <i class="fa fa-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
+                                <tfoot>
                                 <tfoot>
                                     <tr>
                                         <th>SL No</th>
@@ -80,7 +100,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
