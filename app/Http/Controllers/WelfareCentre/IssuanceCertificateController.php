@@ -24,6 +24,12 @@ class IssuanceCertificateController extends Controller
         return view('WelfareCentre.WSC_Registered.IssuanceCertificate.paids', compact('issuanceCertificates'));
     }
 
+    public function delivered()
+    {
+        return view('WelfareCentre.WSC_Registered.IssuanceCertificate.delivered');
+    }
+
+
     public function status($id)
     {
         $issuanceCertificate = IssuanceCertificate::findOrFail($id);

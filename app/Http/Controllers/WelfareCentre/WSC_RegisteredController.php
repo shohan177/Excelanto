@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class  WSC_RegisteredController extends Controller
 {
-    public function issuance_delivery_status()
-    {
-        return view('WelfareCentre.WSC_Registered.IssuanceCertificate.issuance_delivery_status');
-    }
-
     public function attestation_certificate_requests()
     {
         return view('WelfareCentre.WSC_Registered.attestationCertificate.attestation_certificate_requests');
