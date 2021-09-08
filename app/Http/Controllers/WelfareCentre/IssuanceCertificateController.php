@@ -15,25 +15,34 @@ class IssuanceCertificateController extends Controller
         return view('WelfareCentre.WSC_Registered.IssuanceCertificate.requests', compact('issuanceCertificates'));
     }
 
-    public function status($id)
+    public function paids()
     {
-        $issuanceCertificate = IssuanceCertificate::findOrFail($id);
-        return view('WelfareCentre.WSC_Registered.issuanceCertificate.status', compact('issuanceCertificate'));
+        return view('WelfareCentre.WSC_Registered.IssuanceCertificate.paids');
     }
 
-    public function statusUpdete(Request $request, $id)
-    {
-        $request->validate([
-            'serviceStatus' => 'required'
-        ]);
+    // public function status($id)
+    // {
+    //     $issuanceCertificate = IssuanceCertificate::findOrFail($id);
+    //     return view('WelfareCentre.WSC_Registered.issuanceCertificate.status', compact('issuanceCertificate'));
+    // }
 
+    public function statusUpdete($id)
+    {
         $issuanceCertificate = IssuanceCertificate::findOrFail($id);
-        $issuanceCertificate->service_status = $request->serviceStatus;
+        if($issuanceCertificate->service_status == "On Process"){
+            $issuanceCertificate->service_status = 'Paid';
+        }
         try {
             $issuanceCertificate->save();
-            return back()->withToastSuccess('Successfully Updated.');
-        } catch (\Exception $exception) {
-            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Updated'
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
         }
     }
 

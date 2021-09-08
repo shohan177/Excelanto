@@ -19,7 +19,7 @@
                                 to test.</p>
                         </div>
                     </div>
-                    <div class="panel panel-primary ">
+                    <div class="panel panel-primary" id="DivIdToPrint">
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-12">
@@ -94,33 +94,22 @@
                             </div>
                             <div class="row no-print">
                                 <div class="col-12">
-                                    <a href="print_issuance_receipt.html" target="_blank" class="btn btn-default"><i
-                                            class="fas fa-print"></i> Print</a>
-                                    <?php
+                                    <button type='button' onclick='printDiv();' class="btn btn-default" id="printNow"><i
+                                            class="fa fa-print"></i>Print</button>
 
-                                    if ($issuanceCertificate->service_status == 'On Process') {
-                                        echo '<button type="button" name="delete" id="' . $issuanceCertificate->id . '" style="margin-right: 5px;" class="btn btn-success delete float-right " data-status="' . $issuanceCertificate->service_status . '"><i class="far fa-credit-card"></i> Submit Payment</button>';
-                                    } elseif ($issuanceCertificate->service_status == 'Paid') {
-                                        echo '
-                                                                              <button type="button" name="delete" id="' .
-                                            $issuanceCertificate->id .
-                                            '" style="margin-right: 5px;" class="btn btn-success delete float-right" disabled data-status="' .
-                                            $issuanceCertificate->service_status .
-                                            '"><i class="far fa-credit-card"></i> Already Submitted!</button>
-
-                                                                              ';
-                                    } else {
-                                        echo '
-                                                                              <button type="button" name="delete" id="' .
-                                            $issuanceCertificate->id .
-                                            '" style="margin-right: 5px;" class="btn btn-success delete float-right " disabled data-status="' .
-                                            $issuanceCertificate->service_status .
-                                            '"><i class="far fa-credit-card"></i> Already Submitted!</button>
-
-                                                                              ';
-                                    }
-
-                                    ?>
+                                    @if ($issuanceCertificate->service_status == 'On Process')
+                                        <button style="margin-right: 5px;" class="btn btn-success float-right"
+                                            onclick="approve(this)"
+                                            value="{{ route('WelfareCentre.issuanceCertificate.statusUpdete', $issuanceCertificate->id) }}">
+                                            <i class="fa fa-credit-card-alt"></i> Submit Payment</button>
+                                    @elseif ($issuanceCertificate->service_status == 'Paid')
+                                        <button type="button" style="margin-right: 5px;" class="btn btn-success float-right"
+                                            disabled><i class="fa fa-credit-card-alt"></i> Already Submitted!</button>
+                                    @else
+                                        <button type="button" style="margin-right: 5px;"
+                                            class="btn btn-success float-right " disabled><i
+                                                class="fa fa-credit-card-alt"></i> Already Submitted!</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -130,7 +119,54 @@
         </div> <!-- container -->
     </div>
     <!--End content -->
+    <script>
+        function approve(objButton) {
+            var url = objButton.value;
+            // alert(objButton.value)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Make Paid !'
+            }).then((result) => {
+                if (result.isConfirmed) {
 
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            if (data.type == 'success') {
+                                Swal.fire(
+                                    'Approved !',
+                                    'This company has been Approved. ' + data.message,
+                                    'success'
+                                )
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 800); //
+                            } else {
+                                Swal.fire(
+                                    'Wrong !',
+                                    'Something going wrong. ' + data.message,
+                                    'warning'
+                                )
+                            }
+                        },
+                    })
+                }
+            })
+        }
+    </script>
+
+@endsection
+
+@section('js')
     <script>
         $(document).on('click', '.delete', function() {
             var id = $(this).attr("id");

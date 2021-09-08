@@ -44,7 +44,7 @@
                                         <th>User name</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
-                                        <th>Receipt</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -82,7 +82,7 @@
                                         <th>User name</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
-                                        <th>Receipt</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
