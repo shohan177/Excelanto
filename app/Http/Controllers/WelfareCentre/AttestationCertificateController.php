@@ -6,6 +6,9 @@ use App\AttestationCertificate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AttestationCertificateController extends Controller
 {
@@ -24,8 +27,14 @@ class AttestationCertificateController extends Controller
     public function paids()
     {
         $attestationCertificates = AttestationCertificate::where('service_status', 'On Process')->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
-        return view('WelfareCentre.WSC_Registered.attestationCertificate.paids');
+        return view('WelfareCentre.WSC_Registered.attestationCertificate.paids', compact('attestationCertificates'));
     }
+
+    public function delivered()
+    {
+        return view('WelfareCentre.WSC_Registered.attestationCertificate.delivered');
+    }
+
 
     public function viewIssuanceReceipt($id)
     {
@@ -73,6 +82,38 @@ class AttestationCertificateController extends Controller
         $attestationCertificate->delivery_type = $request->deliveryType;
         $attestationCertificate->delivery_charge = $request->deliveryCharge;
         $attestationCertificate->fees = $request->fees;
+        try {
+            $attestationCertificate->save();
+            return back()->withToastSuccess('Successfully Updated.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
+    }
+
+    public function status($id)
+    {
+        $attestationCertificate = AttestationCertificate::findOrFail($id);
+        return view('WelfareCentre.WSC_Registered.attestationCertificate.status', compact('attestationCertificate'));
+    }
+
+    public function detailsUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'deliveryType' => 'required',
+        ]);
+        $attestationCertificate = AttestationCertificate::findOrFail($id);
+
+        $attestationCertificate->delivery_type = $request->deliveryStatus;
+        $attestationCertificate->delivery_to = $request->deliveryTo;
+        $attestationCertificate->service_status = $request->legalStatus;
+        if ($request->hasFile('document')) {
+            $image = $request->file('document');
+            $folder_path = 'uploads/document/';
+            $image_new_name = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
+            $attestationCertificate->document = $folder_path . $image_new_name;
+        }
         try {
             $attestationCertificate->save();
             return back()->withToastSuccess('Successfully Updated.');
