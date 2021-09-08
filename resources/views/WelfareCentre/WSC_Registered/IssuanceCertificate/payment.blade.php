@@ -72,7 +72,7 @@
                                         </td>
                                         <td>
                                             <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.issuanceCertificate.receipt', $issuanceCertificate->id) }}"> <i class="fa fa-eye"></i></a>
-                                            </td>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

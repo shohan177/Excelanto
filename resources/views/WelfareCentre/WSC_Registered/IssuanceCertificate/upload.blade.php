@@ -77,7 +77,7 @@
                                                         placeholder="Enter fee amount">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="deliveryType">Delivery</label>
+                                                    <label for="deliveryType">Delivery Type</label>
                                                     <select class="form-control" name="deliveryType" id="deliveryType"
                                                         required="">
                                                         <option selected disabled value="">Select delivery type</option>

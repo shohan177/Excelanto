@@ -44,9 +44,10 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
 
     // issuance certificate
     Route::get('/issuance-certificate-requests', 'IssuanceCertificateController@requests')->name('issuanceCertificate.requests');
-    // Route::get('/issuance-certificate-status/{id}', 'IssuanceCertificateController@status')->name('issuanceCertificate.status');
+    Route::get('/issuance-certificate-status/{id}', 'IssuanceCertificateController@status')->name('issuanceCertificate.status');
     Route::get('/issuance-certificate-upload/{id}', 'IssuanceCertificateController@upload')->name('issuanceCertificate.upload');
     Route::post('/issuance-certificate-update/{id}', 'IssuanceCertificateController@update')->name('issuanceCertificate.update');
+    Route::post('/issuance-certificate-details-update/{id}', 'IssuanceCertificateController@detailsUpdate')->name('issuanceCertificate.detailsUpdate');
     Route::post('/issuance-certificate-status-update/{id}', 'IssuanceCertificateController@statusUpdete')->name('issuanceCertificate.statusUpdete');
     Route::get('/certificate-issue-payment', 'IssuanceCertificateController@payment')->name('issuanceCertificate.payment');
     Route::get('/view-issuance-receipt/{id}', 'IssuanceCertificateController@viewIssuanceReceipt')->name('issuanceCertificate.receipt');

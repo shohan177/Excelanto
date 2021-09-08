@@ -21,6 +21,7 @@ class CreateIssuanceCertificatesTable extends Migration
             $table->string('service_type')->nullable();
             $table->text('comments')->nullable();
             $table->string('service_status')->nullable();
+            $table->string('legal_status')->nullable();
             $table->string('delivery_status')->nullable();
             $table->string('delivery_charge')->nullable();
             $table->float('fees')->nullable();
