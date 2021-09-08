@@ -26,7 +26,8 @@ class IssuanceCertificateController extends Controller
 
     public function delivered()
     {
-        return view('WelfareCentre.WSC_Registered.IssuanceCertificate.delivered');
+        $issuanceCertificates = IssuanceCertificate::whereIn('service_status', ['Rejected','Approved'])->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('WelfareCentre.WSC_Registered.IssuanceCertificate.delivered', compact('issuanceCertificates'));
     }
 
 
@@ -90,7 +91,7 @@ class IssuanceCertificateController extends Controller
 
         $issuanceCertificate->delivery_type = $request->deliveryStatus;
         $issuanceCertificate->delivery_to = $request->deliveryTo;
-        $issuanceCertificate->legal_status = $request->legalStatus;
+        $issuanceCertificate->service_status = $request->legalStatus;
         if ($request->hasFile('document')) {
             $image = $request->file('document');
             $folder_path = 'uploads/document/';

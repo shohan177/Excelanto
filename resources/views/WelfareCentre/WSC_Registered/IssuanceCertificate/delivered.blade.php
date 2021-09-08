@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Issuance certificate report delivery')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Issuance certificate report delivery</h3>
+                            <h3 class="panel-title">Issuance certificate report delivery status</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
@@ -46,23 +46,44 @@
                                         <th>Delivered to</th>
                                         <th>Applied on</th>
                                         <th>Delivery</th>
-                                        <th>Certificate</th>
+                                        <th>Status</th>
                                         <th>Document</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr role="row" class="odd">
-                                        <td>1</td>
-                                        <td>shuvo</td>
-                                        <td>shundorban</td>
-                                        <td>2020/12/28 03:47:21pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-primary btn-xs update">Sent via post</button></td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Approved</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#" target="_blank">
-                                                <i class="fa fa-eye"></i></a></td>
-                                    </tr>
+                                    @foreach ($issuanceCertificates as $issuanceCertificate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $issuanceCertificate->candidate->candidate_name }}</td>
+                                            <td>{{ $issuanceCertificate->delivery_to }}</td>
+                                            <td>{{ $issuanceCertificate->created_at }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-info btn-xs">{{ $issuanceCertificate->delivery_status }}</button>
+                                            </td>
+                                            <td>
+                                                @if ($issuanceCertificate->service_status == 'Paid')
+                                                    <button type="button" class="btn btn-success btn-xs">Paid</button>
+                                                @elseif($issuanceCertificate->service_status == "On process")
+                                                    <button type="button" class="btn btn-success btn-xs">On process</button>
+                                                @elseif($issuanceCertificate->service_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($issuanceCertificate->service_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not
+                                                        Completed</button>
+                                                @elseif($issuanceCertificate->service_status == "Approved")
+                                                    <button type="button" class="btn btn-success btn-xs">Approved</button>
+                                                @elseif($issuanceCertificate->service_status == "Rejected")
+                                                    <button type="button" class="btn btn-danger btn-xs">Rejected</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-info btn-xs">{{ $issuanceCertificate->service_status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="{{ asset($issuanceCertificate->document) }}" target="_blank"><i class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -71,7 +92,7 @@
                                         <th>Delivered to</th>
                                         <th>Applied on</th>
                                         <th>Delivery</th>
-                                        <th>Certificate</th>
+                                        <th>Status</th>
                                         <th>Document</th>
                                     </tr>
                                 </tfoot>
@@ -86,7 +107,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>

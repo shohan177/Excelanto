@@ -46,7 +46,7 @@
                                         <th>Delivered to</th>
                                         <th>Applied on</th>
                                         <th>Delivery</th>
-                                        <th>Certificate</th>
+                                        <th>Status</th>
                                         <th>Document</th>
                                     </tr>
                                 </thead>
@@ -71,7 +71,7 @@
                                         <th>Delivered to</th>
                                         <th>Applied on</th>
                                         <th>Delivery</th>
-                                        <th>Certificate</th>
+                                        <th>Status</th>
                                         <th>Document</th>
                                     </tr>
                                 </tfoot>

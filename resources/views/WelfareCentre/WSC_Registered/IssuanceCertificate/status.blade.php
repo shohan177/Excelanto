@@ -102,8 +102,8 @@
                                         <div class="col-sm-8">
                                             <select class="form-control" name="legalStatus" id="legalStatus" required>
                                                 <option selected disabled value="">Select legalisation status</option>
-                                                <option value="Approved" @if ($issuanceCertificate->delivery_type == 'Approved') selected @endif>Approved</option>
-                                                <option value="Rejected" @if ($issuanceCertificate->delivery_type == 'Rejected') selected @endif>Rejected</option>
+                                                <option value="Approved" @if ($issuanceCertificate->service_status == 'Approved') selected @endif>Approved</option>
+                                                <option value="Rejected" @if ($issuanceCertificate->service_status == 'Rejected') selected @endif>Rejected</option>
                                             </select>
                                         </div>
                                     </div>
