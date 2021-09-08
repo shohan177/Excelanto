@@ -21,6 +21,12 @@ class AttestationCertificateController extends Controller
         return view('WelfareCentre.WSC_Registered.attestationCertificate.payment', compact('attestationCertificates'));
     }
 
+    public function paids()
+    {
+        $attestationCertificates = AttestationCertificate::where('service_status', 'On Process')->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('WelfareCentre.WSC_Registered.attestationCertificate.paids');
+    }
+
     public function viewIssuanceReceipt($id)
     {
         $attestationCertificate = AttestationCertificate::findOrFail($id);

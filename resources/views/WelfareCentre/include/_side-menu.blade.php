@@ -61,7 +61,7 @@
                                     <ul class="list-unstyled">
                                         <li><a href="{{ route('WelfareCentre.attestationCertificate.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
                                         <li><a href="{{ route('WelfareCentre.attestationCertificate.payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.attestation_certificate') }}"><i class="fa fa-arrow-circle-right"></i> Certificate status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.attestationCertificate.paids') }}"><i class="fa fa-arrow-circle-right"></i> Certificate status</a></li>
                                         <li><a href="{{ route('WelfareCentre.attestation_delivery_status') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
