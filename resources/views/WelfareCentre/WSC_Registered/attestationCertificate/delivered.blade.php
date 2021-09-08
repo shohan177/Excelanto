@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Certificate attestation report')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -20,12 +20,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">attestation certificate report delivery</h4>
+                        <h4 class="pull-left page-title">Certificate attestation report delivery</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Welfare Centre</a></li>
                             <li><a href="#"> WSC registered users
                                 </a></li>
-                            <li class="active">attestation certificate report delivery</li>
+                            <li class="active">Certificate attestation report delivery</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">attestation certificate report delivery</h3>
+                            <h3 class="panel-title">Certificate attestation report delivery status</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
@@ -51,18 +51,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr role="row" class="odd">
-                                        <td>1</td>
-                                        <td>shuvo</td>
-                                        <td>shundorban</td>
-                                        <td>2020/12/28 03:47:21pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-primary btn-xs update">Sent via post</button></td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Approved</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#" target="_blank">
-                                                <i class="fa fa-eye"></i></a></td>
-                                    </tr>
+                                    @foreach ($attestationCertificates as $attestationCertificate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $attestationCertificate->candidate->candidate_name }}</td>
+                                            <td>{{ $attestationCertificate->delivery_to }}</td>
+                                            <td>{{ $attestationCertificate->created_at }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-info btn-xs">{{ $attestationCertificate->delivery_status }}</button>
+                                            </td>
+                                            <td>
+                                                @if ($attestationCertificate->service_status == 'Paid')
+                                                    <button type="button" class="btn btn-success btn-xs">Paid</button>
+                                                @elseif($attestationCertificate->service_status == "On process")
+                                                    <button type="button" class="btn btn-success btn-xs">On process</button>
+                                                @elseif($attestationCertificate->service_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($attestationCertificate->service_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not
+                                                        Completed</button>
+                                                @elseif($attestationCertificate->service_status == "Approved")
+                                                    <button type="button" class="btn btn-success btn-xs">Approved</button>
+                                                @elseif($attestationCertificate->service_status == "Rejected")
+                                                    <button type="button" class="btn btn-danger btn-xs">Rejected</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-info btn-xs">{{ $attestationCertificate->service_status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $attestationCertificate->candidate->offered_candidate->id) }}"><i class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

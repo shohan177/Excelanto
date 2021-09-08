@@ -32,7 +32,8 @@ class AttestationCertificateController extends Controller
 
     public function delivered()
     {
-        return view('WelfareCentre.WSC_Registered.attestationCertificate.delivered');
+        $attestationCertificates = AttestationCertificate::where('delivery_status','!=',null)->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('WelfareCentre.WSC_Registered.attestationCertificate.delivered', compact('attestationCertificates'));
     }
 
 
