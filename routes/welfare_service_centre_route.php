@@ -65,7 +65,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::post('/attestation-certificate-details-update/{id}', 'AttestationCertificateController@detailsUpdate')->name('attestationCertificate.detailsUpdate');
     Route::get('/attestation-certificate-delivered', 'AttestationCertificateController@delivered')->name('attestationCertificate.delivered');
 
-    Route::get('/registration_certificate_requests', 'WSC_RegisteredController@registration_certificate_requests')->name('registration_certificate_requests');
+    // registration certificates
+    Route::get('/registration-certificate-request', 'RegistrationCertificateController@requests')->name('registrationCertificate.requests');
     Route::get('/certificate_registration_payment', 'WSC_RegisteredController@certificate_registration_payment')->name('certificate_registration_payment');
     Route::get('/registration_certificate', 'WSC_RegisteredController@registration_certificate')->name('registration_certificate');
     Route::get('/registration_delivery_status', 'WSC_RegisteredController@registration_delivery_status')->name('registration_delivery_status');
