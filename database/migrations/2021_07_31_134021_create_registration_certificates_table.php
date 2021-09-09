@@ -16,6 +16,7 @@ class CreateRegistrationCertificatesTable extends Migration
         Schema::create('registration_certificates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id')->nullable();
+            $table->unsignedBigInteger('candidate_id')->nullable();
             $table->unsignedBigInteger('wsc_id')->nullable();
             $table->string('service_type')->nullable();
             $table->text('comments')->nullable();
