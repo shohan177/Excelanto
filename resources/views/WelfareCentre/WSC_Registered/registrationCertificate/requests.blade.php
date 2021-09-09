@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Certificate Registration requests')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -20,12 +20,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">registration certificate requests</h4>
+                        <h4 class="pull-left page-title">Certificate Registration requests</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Welfare Centre</a></li>
                             <li><a href="#"> WSC registered users
                                 </a></li>
-                            <li class="active">registration certificate requests</li>
+                            <li class="active">Certificate Registration requests</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">registration certificate requestss</h3>
+                            <h3 class="panel-title">Certificate Registration requestss</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
