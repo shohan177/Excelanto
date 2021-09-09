@@ -40,7 +40,7 @@
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Service type</th>
                                         <th>Service date</th>
@@ -53,9 +53,7 @@
                                     @foreach ($meetAndGreets as $meetAndGreet)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>
-                                                <---------- Have to made Relation ------>
-                                            </td>
+                                            <td>{{ $meetAndGreet->candidate->candidate_name }}</td>
                                             <td>{{ $meetAndGreet->service_name }}</td>
                                             <td>{{ $meetAndGreet->arrival_date }}</td>
                                             <td>{{ $meetAndGreet->created_at }}</td>
@@ -72,10 +70,10 @@
                                                     <button type="button" class="btn btn-success btn-xs">Not Completed</button>
                                                 @endif
                                             </td>
-                                            <td><a class="btn btn-info btn-xs" href="view_user_profile#">
+                                            <td><a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $meetAndGreet->candidate->offered_candidate->id) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>&nbsp;
-                                                <a class="btn btn-primary btn-xs" href="meet_greet_status#">
+                                                <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.meetGreet.Status', $meetAndGreet->id) }}">
                                                     <i class="fa fa-edit"></i>
                                                 </a></td>
                                         </tr>
@@ -83,7 +81,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Service type</th>
                                         <th>Service date</th>

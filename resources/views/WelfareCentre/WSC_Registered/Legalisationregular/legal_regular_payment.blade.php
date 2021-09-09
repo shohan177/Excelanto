@@ -41,11 +41,11 @@
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
-                                        <th>Receipt</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,11 +63,11 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
-                                        <th>Receipt</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>

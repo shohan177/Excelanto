@@ -20,12 +20,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Medical Compensation Request</h4>
+                        <h4 class="pull-left page-title">Deadbody Transfer Request</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Welfare Centre</a></li>
                             <li><a href="#"> WSC registered users
                                 </a></li>
-                            <li class="active">Medical Compensation Request</li>
+                            <li class="active">Deadbody Transfer Request</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -35,39 +35,54 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Medical Compensation Requests</h3>
+                            <h3 class="panel-title">Deadbody transfer requests</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
-                                        <th>Type of sickness</th>
+                                        <th>Person name</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($deadbodyTransfers as $deadbodyTransfer)
                                     <tr>
-                                        <td>1</td>
-                                        <td>billah</td>
-                                        <td>fever</td>
-                                        <td>2020/12/27 12:09:48pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Completed</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a></td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $deadbodyTransfer->candidate_name }}</td>
+                                        <td>{{ $deadbodyTransfer->deadbody_name }}</td>
+                                        <td>{{ $deadbodyTransfer->created_at }}</td>
+                                        <td>
+                                            @if ($deadbodyTransfer->active_status == 'Open')
+                                                <button type="button" class="btn btn-success btn-xs">New</button>
+                                            @elseif($deadbodyTransfer->active_status == "On process")
+                                                <button type="button" class="btn btn-success btn-xs">On process</button>
+                                            @elseif($deadbodyTransfer->active_status == "Completed")
+                                                <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                            @elseif($deadbodyTransfer->active_status == "Not Completed")
+                                                <button type="button" class="btn btn-success btn-xs">Not Completed</button>
+                                            @else
+                                                <button type="button"
+                                                    class="btn btn-info btn-xs">{{ $deadbodyTransfer->active_status }}</button>
+                                            @endif
+
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $deadbodyTransfer->candidate->offered_candidate->id) }}"><i class="fa fa-eye"></i></a>&nbsp;
+                                            <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.deadbodyTransfer.Status', $deadbodyTransfer) }}"><i class="fa fa-edit"></i></a>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
-                                        <th>Type of sickness</th>
+                                        <th>Person name</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
                                         <th>Action</th>

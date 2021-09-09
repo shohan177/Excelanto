@@ -1,12 +1,11 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Medical Compensation Request')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -20,12 +19,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Issuance certificate report delivery</h4>
+                        <h4 class="pull-left page-title">Medical Compensation Request</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Welfare Centre</a></li>
-                            <li><a href="#"> WSC registered users
-                                </a></li>
-                            <li class="active">Issuance certificate report delivery</li>
+                            <li><a href="#"> WSC registered users </a></li>
+                            <li class="active">Medical Compensation Request</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -35,44 +33,57 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Issuance certificate report delivery</h3>
+                            <h3 class="panel-title">Medical Compensation Requests</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
-                                        <th>Delivered to</th>
+                                        <th>Type of sickness</th>
                                         <th>Applied on</th>
-                                        <th>Delivery</th>
-                                        <th>Certificate</th>
-                                        <th>Document</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr role="row" class="odd">
-                                        <td>1</td>
-                                        <td>shuvo</td>
-                                        <td>shundorban</td>
-                                        <td>2020/12/28 03:47:21pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-primary btn-xs update">Sent via post</button></td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Approved</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#" target="_blank">
-                                                <i class="fa fa-eye"></i></a></td>
-                                    </tr>
+                                    @foreach ($medicalCompensations as $medicalCompensation)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $medicalCompensation->candidate_name }}</td>
+                                            <td>{{ $medicalCompensation->sick_type }}</td>
+                                            <td>{{ $medicalCompensation->created_at }}</td>
+                                            <td>
+                                                @if ($medicalCompensation->service_status == 'Open')
+                                                    <button type="button" class="btn btn-success btn-xs">New</button>
+                                                @elseif($medicalCompensation->service_status == "On process")
+                                                    <button type="button" class="btn btn-success btn-xs">On process</button>
+                                                @elseif($medicalCompensation->service_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($medicalCompensation->service_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not
+                                                        Completed</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-info btn-xs">{{ $medicalCompensation->service_status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $medicalCompensation->candidate->offered_candidate->id) }}"><i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.medicalCompensation.Status', $medicalCompensation->id) }}"><i class="fa fa-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
-                                        <th>Delivered to</th>
+                                        <th>Type of sickness</th>
                                         <th>Applied on</th>
-                                        <th>Delivery</th>
-                                        <th>Certificate</th>
-                                        <th>Document</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -86,7 +97,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>

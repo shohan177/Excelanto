@@ -25,4 +25,9 @@ class MeetAndGreet extends Model
         'created_by',
         'deleted'
     ];
+
+    public function candidate()
+    {
+        return $this->belongsTo(Candidate::class, 'candidate_id');
+    }
 }

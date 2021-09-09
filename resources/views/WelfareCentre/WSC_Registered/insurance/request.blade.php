@@ -1,12 +1,11 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'All Job Posts')
+@section('title', 'Insurance Request')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -20,12 +19,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">attestation certificate payment</h4>
+                        <h4 class="pull-left page-title">Insurance Request</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Welfare Centre</a></li>
                             <li><a href="#"> WSC registered users
                                 </a></li>
-                            <li class="active">attestation certificate payment</li>
+                            <li class="active">Insurance Request</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -35,39 +34,55 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">attestation certificate payments</h3>
+                            <h3 class="panel-title">Insurance Requests</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
+                                        <th>Type of insurance</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
-                                        <th>Receipt</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>billah</td>
-                                        <td>2020/12/27 12:09:48pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Completed</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a></td>
-                                    </tr>
+                                    @foreach ($insuranceServices as $insuranceService)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $insuranceService->candidate->candidate_name }}</td>
+                                            <td>{{ $insuranceService->service_type }}</td>
+                                            <td>{{ $insuranceService->created_at }}</td>
+                                            <td>
+                                                @if ($insuranceService->service_status == 'Open')
+                                                    <button type="button" class="btn btn-success btn-xs">New</button>
+                                                @elseif($insuranceService->service_status == "On process")
+                                                    <button type="button" class="btn btn-success btn-xs">On process</button>
+                                                @elseif($insuranceService->service_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($insuranceService->service_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not Completed</button>
+                                                @else
+                                                    <button type="button" class="btn btn-info btn-xs">{{ $insuranceService->service_status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $insuranceService->candidate->offered_candidate->id) }}"> <i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.insurance.Status', $insuranceService->id) }}"> <i class="fa fa-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SL No</th>
                                         <th>User name</th>
+                                        <th>Type of insurance</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
-                                        <th>Receipt</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>

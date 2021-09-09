@@ -26,5 +26,11 @@ class DatabaseSeeder extends Seeder
         $this->call(SubmittedTravelEnquirySeeder::class);
         $this->call(TravelEnquirySeeder::class);
         $this->call(MeetAndGreetSeeder::class);
+        $this->call(JailDeportationSeeder::class);
+        $this->call(DeadbodyTransferSeeder::class);
+        $this->call(MedicalCompensationSeeder::class);
+        $this->call(InsuranceServiceSeeder::class);
+        $this->call(IssuanceCertificateSeeder::class);
+        $this->call(AttestationCertificateSeeder::class);
     }
 }

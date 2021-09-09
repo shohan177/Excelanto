@@ -19,24 +19,51 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/travel_received_list', 'TravelCandidatesController@readyToTravel')->name('travelCandidate.readyToTravel');
     Route::get('/show-received-candidate/{offered_candidate_id}', 'TravelCandidatesController@showReceivedCandidate')->name('travelCandidate.showReceivedCandidate');
 
+    //candidate
+    Route::get('/show-candidate-profile/{offered_candidate_id}', 'CandidateController@showCandidateProfile')->name('showCandidateProfile');
     //WSC registered
-    Route::get('/meet-greet-request', 'WSC_RegisteredController@meet_greet_request')->name('meet_greet_request');
-    Route::get('/jail-deportation-request', 'WSC_RegisteredController@jail_deportation_request')->name('jail_deportation_request');
-    Route::get('/deadbody-transfer-request', 'WSC_RegisteredController@deadbody_transfer_request')->name('deadbody_transfer_request');
+    Route::get('/meet-greet-request', 'MeetAndGreetController@meet_greet_request')->name('meetGreet.request');
+    Route::get('/meet-greet-status/{id}', 'MeetAndGreetController@meetGreetStatus')->name('meetGreet.Status');
+    Route::post('/meet-greet-status-update/{id}', 'MeetAndGreetController@meetGreetStatusUpdete')->name('meetGreet.StatusUpdete');
+    // Jail deportation
+    Route::get('/jail-deportation-request', 'JailDeportationController@request')->name('jailDeportation.request');
+    Route::get('/jail-deportation-status/{id}', 'JailDeportationController@jailDeportationStatus')->name('jailDeportation.Status');
+    Route::post('/jail-deportation-status-update/{id}', 'JailDeportationController@jailDeportationStatusUpdete')->name('jailDeportation.StatusUpdete');
+    // deadbody transfer
+    Route::get('/deadbody-transfer-request', 'DeadbodyTransferController@request')->name('deadbodyTransfer.request');
+    Route::get('/deadbody-transfer-status/{id}', 'DeadbodyTransferController@deadbodyTransferStatus')->name('deadbodyTransfer.Status');
+    Route::post('/deadbody-transfer-status-update/{id}', 'DeadbodyTransferController@deadbodyTransferStatusUpdete')->name('deadbodyTransfer.StatusUpdete');
+    // medical compensation
+    Route::get('/medical-compensation-request', 'MedicalCompensationController@request')->name('medicalCompensation.request');
+    Route::get('/medical-compensation-status/{id}', 'MedicalCompensationController@medicalCompensationStatus')->name('medicalCompensation.Status');
+    Route::post('/medical-compensation-status-update/{id}', 'MedicalCompensationController@medicalCompensationStatusUpdete')->name('medicalCompensation.StatusUpdete');
+    // insurance compensation
+    Route::get('/insurance-request', 'InsuranceController@request')->name('insurance.request');
+    Route::get('/insurance-status/{id}', 'InsuranceController@insuranceStatus')->name('insurance.Status');
+    Route::post('/insurance-status-update/{id}', 'InsuranceController@insuranceStatusUpdete')->name('insurance.StatusUpdete');
 
-    Route::get('/medical-compensation-request', 'WSC_RegisteredController@medical_compensation_request')->name('medical_compensation_request');
-    Route::get('/insurance_request', 'WSC_RegisteredController@insurance_request')->name('insurance_request');
-
-    //certificate
-    Route::get('/issuance_certificate_requests', 'WSC_RegisteredController@issuance_certificate_requests')->name('issuance_certificate_requests');
-    Route::get('/certificate_issue_payment', 'WSC_RegisteredController@certificate_issue_payment')->name('certificate_issue_payment');
-    Route::get('/issuance_certificate', 'WSC_RegisteredController@issuance_certificate')->name('issuance_certificate');
-    Route::get('/issuance_delivery_status', 'WSC_RegisteredController@issuance_delivery_status')->name('issuance_delivery_status');
-
-    Route::get('/attestation_certificate_requests', 'WSC_RegisteredController@attestation_certificate_requests')->name('attestation_certificate_requests');
-    Route::get('/certificate_attestation_payment', 'WSC_RegisteredController@certificate_attestation_payment')->name('certificate_attestation_payment');
-    Route::get('/attestation_certificate', 'WSC_RegisteredController@attestation_certificate')->name('attestation_certificate');
-    Route::get('/attestation_delivery_status', 'WSC_RegisteredController@attestation_delivery_status')->name('attestation_delivery_status');
+    // issuance certificate
+    Route::get('/issuance-certificate-requests', 'IssuanceCertificateController@requests')->name('issuanceCertificate.requests');
+    Route::get('/issuance-certificate-status/{id}', 'IssuanceCertificateController@status')->name('issuanceCertificate.status');
+    Route::get('/issuance-certificate-upload/{id}', 'IssuanceCertificateController@upload')->name('issuanceCertificate.upload');
+    Route::post('/issuance-certificate-update/{id}', 'IssuanceCertificateController@update')->name('issuanceCertificate.update');
+    Route::post('/issuance-certificate-details-update/{id}', 'IssuanceCertificateController@detailsUpdate')->name('issuanceCertificate.detailsUpdate');
+    Route::post('/issuance-certificate-status-update/{id}', 'IssuanceCertificateController@statusUpdete')->name('issuanceCertificate.statusUpdete');
+    Route::get('/certificate-issue-payment', 'IssuanceCertificateController@payment')->name('issuanceCertificate.payment');
+    Route::get('/view-issuance-receipt/{id}', 'IssuanceCertificateController@viewIssuanceReceipt')->name('issuanceCertificate.receipt');
+    Route::get('/issuance-certificate-paids', 'IssuanceCertificateController@paids')->name('attestationCertificate.paids');
+    Route::get('/issuance-certificate-delivered', 'IssuanceCertificateController@delivered')->name('attestationCertificate.delivered');
+    // attestation-certificate
+    Route::get('/attestation-certificate-requests', 'AttestationCertificateController@requests')->name('attestationCertificate.requests');
+    Route::get('/attestation-certificate-upload/{id}', 'AttestationCertificateController@upload')->name('attestationCertificate.upload');
+    Route::post('/attestation-certificate-update/{id}', 'AttestationCertificateController@update')->name('attestationCertificate.update');
+    Route::get('/attestation-certificate-payment', 'AttestationCertificateController@payment')->name('attestationCertificate.payment');
+    Route::get('/attestation-certificate-receipt/{id}', 'AttestationCertificateController@viewIssuanceReceipt')->name('attestationCertificate.receipt');
+    Route::post('/attestation-certificate-status-update/{id}', 'AttestationCertificateController@statusUpdete')->name('attestationCertificate.statusUpdete');
+    Route::get('/attestation-certificate-paids', 'AttestationCertificateController@paids')->name('attestationCertificate.paids');
+    Route::get('/attestation-certificate-status/{id}', 'AttestationCertificateController@status')->name('attestationCertificate.status');
+    Route::post('/attestation-certificate-details-update/{id}', 'AttestationCertificateController@detailsUpdate')->name('attestationCertificate.detailsUpdate');
+    Route::get('/attestation-certificate-delivered', 'AttestationCertificateController@delivered')->name('attestationCertificate.delivered');
 
     Route::get('/registration_certificate_requests', 'WSC_RegisteredController@registration_certificate_requests')->name('registration_certificate_requests');
     Route::get('/certificate_registration_payment', 'WSC_RegisteredController@certificate_registration_payment')->name('certificate_registration_payment');
