@@ -25,6 +25,7 @@ class RegistrationCertificateSeeder extends Seeder
                 'delivery_charge'  => rand(100, 200),
                 'document'  => null,
                 'delivery_to'  => 'Bonani Dhaka',
+                'delivery_status'  => rand(11, 19),
                 'fees'  => rand(1000, 2000),
                 'created_id'  => rand(11, 19),
                 'created_at'  => Carbon::now(),

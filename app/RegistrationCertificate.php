@@ -18,6 +18,7 @@ class RegistrationCertificate extends Model
         'delivery_charge',
         'document',
         'delivery_to',
+        'delivery_status',
         'fees',
         'created_id',
         'deleted'

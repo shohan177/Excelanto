@@ -25,6 +25,7 @@ class CreateRegistrationCertificatesTable extends Migration
             $table->string('delivery_charge')->nullable();
             $table->string('document')->nullable();
             $table->string('delivery_to')->nullable();
+            $table->string('delivery_status')->nullable();
             $table->float('fees')->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
             $table->string('deleted')->nullable();
