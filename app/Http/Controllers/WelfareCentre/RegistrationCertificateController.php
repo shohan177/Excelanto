@@ -21,6 +21,12 @@ class RegistrationCertificateController extends Controller
         return view('WelfareCentre.WSC_Registered.registrationCertificate.payment', compact('registrationCertificates'));
     }
 
+    public function paids()
+    {
+        $registrationCertificates = RegistrationCertificate::where('service_status', 'Paid')->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('WelfareCentre.WSC_Registered.registrationCertificate.paids', compact('registrationCertificates'));
+    }
+
     public function upload($id)
     {
         $registrationCertificate = RegistrationCertificate::findOrFail($id);
