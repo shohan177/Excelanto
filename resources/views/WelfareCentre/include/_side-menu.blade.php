@@ -71,7 +71,7 @@
                                         <li><a href="{{ route('WelfareCentre.registrationCertificate.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
                                         <li><a href="{{ route('WelfareCentre.registrationCertificate.payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
                                         <li><a href="{{ route('WelfareCentre.registrationCertificate.paids') }}"><i class="fa fa-arrow-circle-right"></i> Certificate status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.registration_delivery_status') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.registrationCertificate.delivered') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                             </ul>

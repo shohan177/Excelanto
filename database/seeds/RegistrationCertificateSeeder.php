@@ -20,7 +20,7 @@ class RegistrationCertificateSeeder extends Seeder
                 'wsc_id' => 6,
                 'service_type' => 'Demo service ' . $i,
                 'comments' => 'Demo Comments',
-                'service_status' => 'On Process',
+                'service_status' => 'Paid',
                 'delivery_type' => 'Door delivery',
                 'delivery_charge'  => rand(100, 200),
                 'document'  => null,

@@ -75,9 +75,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/registration-certificate-paids', 'RegistrationCertificateController@paids')->name('registrationCertificate.paids');
     Route::get('/registration-certificate-status/{id}', 'RegistrationCertificateController@status')->name('registrationCertificate.status');
     Route::post('/registration-certificate-details-update/{id}', 'RegistrationCertificateController@detailsUpdate')->name('registrationCertificate.detailsUpdate');
-
-
-    Route::get('/registration_delivery_status', 'WSC_RegisteredController@registration_delivery_status')->name('registration_delivery_status');
+    Route::get('/registration-certificate-delivered', 'RegistrationCertificateController@delivered')->name('registrationCertificate.delivered');
 
 
 

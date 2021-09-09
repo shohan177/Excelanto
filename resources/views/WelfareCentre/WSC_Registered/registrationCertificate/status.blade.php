@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'Issuance Certificate request')
+@section('title', 'Certificate registration request')
 @section('DataTableCss')
 
 
@@ -14,10 +14,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Issuance Certificate</h4>
+                        <h4 class="pull-left page-title">Certificate registration</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Issuance Certificate request</a></li>
+                            <li><a href="#">Certificate registration request</a></li>
                             <li class="active">Service details</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -35,7 +35,7 @@
                             <div class="row">
                                 <dl class="row">
                                     <dt class="col-sm-4">Name</dt>
-                                    <dd class="col-sm-8">{{ $registrationCertificate->candidate->candidate_name }}</dd>                                    <br>
+                                    <dd class="col-sm-8">{{ $registrationCertificate->candidate->candidate_name }}</dd><br>
                                     <dt class="col-sm-4">Type of service</dt>
                                     <dd class="col-sm-8">{{ $registrationCertificate->service_type }}</dd><br>
                                     <dt class="col-sm-4">Message</dt>
