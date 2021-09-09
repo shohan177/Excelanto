@@ -51,8 +51,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::post('/issuance-certificate-status-update/{id}', 'IssuanceCertificateController@statusUpdete')->name('issuanceCertificate.statusUpdete');
     Route::get('/certificate-issue-payment', 'IssuanceCertificateController@payment')->name('issuanceCertificate.payment');
     Route::get('/view-issuance-receipt/{id}', 'IssuanceCertificateController@viewReceipt')->name('issuanceCertificate.receipt');
-    Route::get('/issuance-certificate-paids', 'IssuanceCertificateController@paids')->name('attestationCertificate.paids');
-    Route::get('/issuance-certificate-delivered', 'IssuanceCertificateController@delivered')->name('attestationCertificate.delivered');
+    Route::get('/issuance-certificate-paids', 'IssuanceCertificateController@paids')->name('issuanceCertificate.paids');
+    Route::get('/issuance-certificate-delivered', 'IssuanceCertificateController@delivered')->name('issuanceCertificate.delivered');
     // attestation-certificate
     Route::get('/attestation-certificate-requests', 'AttestationCertificateController@requests')->name('attestationCertificate.requests');
     Route::get('/attestation-certificate-upload/{id}', 'AttestationCertificateController@upload')->name('attestationCertificate.upload');
@@ -73,11 +73,10 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/registration-certificate-receipt/{id}', 'RegistrationCertificateController@viewReceipt')->name('registrationCertificate.receipt');
     Route::post('/registration-certificate-status-update/{id}', 'RegistrationCertificateController@statusUpdete')->name('registrationCertificate.statusUpdete');
     Route::get('/registration-certificate-paids', 'RegistrationCertificateController@paids')->name('registrationCertificate.paids');
+    Route::get('/registration-certificate-status/{id}', 'RegistrationCertificateController@status')->name('registrationCertificate.status');
+    Route::post('/registration-certificate-details-update/{id}', 'RegistrationCertificateController@detailsUpdate')->name('registrationCertificate.detailsUpdate');
 
 
-
-
-    Route::get('/registration_certificate', 'WSC_RegisteredController@registration_certificate')->name('registration_certificate');
     Route::get('/registration_delivery_status', 'WSC_RegisteredController@registration_delivery_status')->name('registration_delivery_status');
 
 
