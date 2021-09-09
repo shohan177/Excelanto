@@ -72,7 +72,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="{{ route('WelfareCentre.jailDeportation.StatusUpdete', $jailDeportation->id) }}"
+                        <form action="{{ route('WelfareCentre.jailDeportation.statusUpdete', $jailDeportation->id) }}"
                             method="post" enctype="multipart/form-data">
                             <div class="panel panel-primary">
                                 <input type="hidden" value="{{ $jailDeportation->id }}" name="id">

@@ -77,7 +77,7 @@
                                                 <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $jailDeportation->candidate->offered_candidate->id) }}">
                                                     <i class="fa fa-eye"></i></a>&nbsp;
                                                     <a
-                                                    class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.jailDeportation.Status', $jailDeportation->id) }}">
+                                                    class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.jailDeportation.status', $jailDeportation->id) }}">
                                                     <i class="fa fa-edit"></i></a>
                                                 </td>
                                         </tr>

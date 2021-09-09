@@ -70,7 +70,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="{{ route('WelfareCentre.meetGreet.StatusUpdete', $meetAndGreet->id) }}"
+                        <form action="{{ route('WelfareCentre.meetGreet.statusUpdete', $meetAndGreet->id) }}"
                             method="post" enctype="multipart/form-data">
                             <div class="panel panel-primary">
                                 <input type="hidden" value="{{ $meetAndGreet->id }}" name="id">
