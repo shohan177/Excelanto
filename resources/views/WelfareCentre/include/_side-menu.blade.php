@@ -77,7 +77,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.charity_request') }}">
+                            <a href="{{ route('WelfareCentre.charity.request') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Charity request
                             </a>
                         </li>

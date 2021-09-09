@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class  WSC_RegisteredController extends Controller
 {
-    public function charity_request()
-    {
-        return view('WelfareCentre.WSC_Registered.charity_request');
-    }
     public function adr_request()
     {
         return view('WelfareCentre.WSC_Registered.adr_request');

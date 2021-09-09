@@ -43,43 +43,47 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::post('/insurance-status-update/{id}', 'InsuranceController@insuranceStatusUpdete')->name('insurance.StatusUpdete');
 
     // issuance certificate
-    Route::get('/issuance-certificate-requests', 'IssuanceCertificateController@requests')->name('issuanceCertificate.requests');
-    Route::get('/issuance-certificate-status/{id}', 'IssuanceCertificateController@status')->name('issuanceCertificate.status');
-    Route::get('/issuance-certificate-upload/{id}', 'IssuanceCertificateController@upload')->name('issuanceCertificate.upload');
-    Route::post('/issuance-certificate-update/{id}', 'IssuanceCertificateController@update')->name('issuanceCertificate.update');
-    Route::post('/issuance-certificate-details-update/{id}', 'IssuanceCertificateController@detailsUpdate')->name('issuanceCertificate.detailsUpdate');
-    Route::post('/issuance-certificate-status-update/{id}', 'IssuanceCertificateController@statusUpdete')->name('issuanceCertificate.statusUpdete');
-    Route::get('/certificate-issue-payment', 'IssuanceCertificateController@payment')->name('issuanceCertificate.payment');
-    Route::get('/view-issuance-receipt/{id}', 'IssuanceCertificateController@viewReceipt')->name('issuanceCertificate.receipt');
-    Route::get('/issuance-certificate-paids', 'IssuanceCertificateController@paids')->name('issuanceCertificate.paids');
-    Route::get('/issuance-certificate-delivered', 'IssuanceCertificateController@delivered')->name('issuanceCertificate.delivered');
+    Route::group(['prefix' => '/issuance-certificate-', 'as' => 'issuanceCertificate.'], function () {
+        Route::get('requests', 'IssuanceCertificateController@requests')->name('requests');
+        Route::get('status/{id}', 'IssuanceCertificateController@status')->name('status');
+        Route::get('upload/{id}', 'IssuanceCertificateController@upload')->name('upload');
+        Route::post('update/{id}', 'IssuanceCertificateController@update')->name('update');
+        Route::post('details-update/{id}', 'IssuanceCertificateController@detailsUpdate')->name('detailsUpdate');
+        Route::post('status-update/{id}', 'IssuanceCertificateController@statusUpdete')->name('statusUpdete');
+        Route::get('payment', 'IssuanceCertificateController@payment')->name('payment');
+        Route::get('receipt/{id}', 'IssuanceCertificateController@viewReceipt')->name('receipt');
+        Route::get('paids', 'IssuanceCertificateController@paids')->name('paids');
+        Route::get('delivered', 'IssuanceCertificateController@delivered')->name('delivered');
+    });
     // attestation-certificate
-    Route::get('/attestation-certificate-requests', 'AttestationCertificateController@requests')->name('attestationCertificate.requests');
-    Route::get('/attestation-certificate-upload/{id}', 'AttestationCertificateController@upload')->name('attestationCertificate.upload');
-    Route::post('/attestation-certificate-update/{id}', 'AttestationCertificateController@update')->name('attestationCertificate.update');
-    Route::get('/attestation-certificate-payment', 'AttestationCertificateController@payment')->name('attestationCertificate.payment');
-    Route::get('/attestation-certificate-receipt/{id}', 'AttestationCertificateController@viewReceipt')->name('attestationCertificate.receipt');
-    Route::post('/attestation-certificate-status-update/{id}', 'AttestationCertificateController@statusUpdete')->name('attestationCertificate.statusUpdete');
-    Route::get('/attestation-certificate-paids', 'AttestationCertificateController@paids')->name('attestationCertificate.paids');
-    Route::get('/attestation-certificate-status/{id}', 'AttestationCertificateController@status')->name('attestationCertificate.status');
-    Route::post('/attestation-certificate-details-update/{id}', 'AttestationCertificateController@detailsUpdate')->name('attestationCertificate.detailsUpdate');
-    Route::get('/attestation-certificate-delivered', 'AttestationCertificateController@delivered')->name('attestationCertificate.delivered');
+    Route::group(['prefix' => '/attestation-certificate-', 'as' => 'attestationCertificate.'], function () {
+        Route::get('requests', 'AttestationCertificateController@requests')->name('requests');
+        Route::get('upload/{id}', 'AttestationCertificateController@upload')->name('upload');
+        Route::post('update/{id}', 'AttestationCertificateController@update')->name('update');
+        Route::get('payment', 'AttestationCertificateController@payment')->name('payment');
+        Route::get('receipt/{id}', 'AttestationCertificateController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'AttestationCertificateController@statusUpdete')->name('statusUpdete');
+        Route::get('paids', 'AttestationCertificateController@paids')->name('paids');
+        Route::get('status/{id}', 'AttestationCertificateController@status')->name('status');
+        Route::post('details-update/{id}', 'AttestationCertificateController@detailsUpdate')->name('detailsUpdate');
+        Route::get('delivered', 'AttestationCertificateController@delivered')->name('delivered');
+    });
 
     // registration certificates
-    Route::get('/registration-certificate-request', 'RegistrationCertificateController@requests')->name('registrationCertificate.requests');
-    Route::get('/registration-certificate-upload/{id}', 'RegistrationCertificateController@upload')->name('registrationCertificate.upload');
-    Route::post('/registration-certificate-update/{id}', 'RegistrationCertificateController@update')->name('registrationCertificate.update');
-    Route::get('/registration-certificate-payment', 'RegistrationCertificateController@payment')->name('registrationCertificate.payment');
-    Route::get('/registration-certificate-receipt/{id}', 'RegistrationCertificateController@viewReceipt')->name('registrationCertificate.receipt');
-    Route::post('/registration-certificate-status-update/{id}', 'RegistrationCertificateController@statusUpdete')->name('registrationCertificate.statusUpdete');
-    Route::get('/registration-certificate-paids', 'RegistrationCertificateController@paids')->name('registrationCertificate.paids');
-    Route::get('/registration-certificate-status/{id}', 'RegistrationCertificateController@status')->name('registrationCertificate.status');
-    Route::post('/registration-certificate-details-update/{id}', 'RegistrationCertificateController@detailsUpdate')->name('registrationCertificate.detailsUpdate');
-    Route::get('/registration-certificate-delivered', 'RegistrationCertificateController@delivered')->name('registrationCertificate.delivered');
+    Route::group(['prefix' => '/registration-certificate-', 'as' => 'registrationCertificate.'], function () {
+        Route::get('request', 'RegistrationCertificateController@requests')->name('requests');
+        Route::get('upload/{id}', 'RegistrationCertificateController@upload')->name('upload');
+        Route::post('update/{id}', 'RegistrationCertificateController@update')->name('update');
+        Route::get('payment', 'RegistrationCertificateController@payment')->name('payment');
+        Route::get('receipt/{id}', 'RegistrationCertificateController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'RegistrationCertificateController@statusUpdete')->name('statusUpdete');
+        Route::get('paids', 'RegistrationCertificateController@paids')->name('paids');
+        Route::get('status/{id}', 'RegistrationCertificateController@status')->name('status');
+        Route::post('details-update/{id}', 'RegistrationCertificateController@detailsUpdate')->name('detailsUpdate');
+        Route::get('delivered', 'RegistrationCertificateController@delivered')->name('delivered');
+    });
 
-
-
-    Route::get('/charity_request', 'WSC_RegisteredController@charity_request')->name('charity_request');
+    Route::get('/charity_request', 'CharityServiceController@request')->name('charity.request');
     Route::get('/adr_request', 'WSC_RegisteredController@adr_request')->name('adr_request');
 
     Route::get('/legal_by_govt_request', 'WSC_RegisteredController@legal_by_govt_request')->name('legal_by_govt_request');
