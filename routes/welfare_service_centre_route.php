@@ -50,7 +50,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::post('/issuance-certificate-details-update/{id}', 'IssuanceCertificateController@detailsUpdate')->name('issuanceCertificate.detailsUpdate');
     Route::post('/issuance-certificate-status-update/{id}', 'IssuanceCertificateController@statusUpdete')->name('issuanceCertificate.statusUpdete');
     Route::get('/certificate-issue-payment', 'IssuanceCertificateController@payment')->name('issuanceCertificate.payment');
-    Route::get('/view-issuance-receipt/{id}', 'IssuanceCertificateController@viewIssuanceReceipt')->name('issuanceCertificate.receipt');
+    Route::get('/view-issuance-receipt/{id}', 'IssuanceCertificateController@viewReceipt')->name('issuanceCertificate.receipt');
     Route::get('/issuance-certificate-paids', 'IssuanceCertificateController@paids')->name('attestationCertificate.paids');
     Route::get('/issuance-certificate-delivered', 'IssuanceCertificateController@delivered')->name('attestationCertificate.delivered');
     // attestation-certificate
@@ -58,7 +58,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/attestation-certificate-upload/{id}', 'AttestationCertificateController@upload')->name('attestationCertificate.upload');
     Route::post('/attestation-certificate-update/{id}', 'AttestationCertificateController@update')->name('attestationCertificate.update');
     Route::get('/attestation-certificate-payment', 'AttestationCertificateController@payment')->name('attestationCertificate.payment');
-    Route::get('/attestation-certificate-receipt/{id}', 'AttestationCertificateController@viewIssuanceReceipt')->name('attestationCertificate.receipt');
+    Route::get('/attestation-certificate-receipt/{id}', 'AttestationCertificateController@viewReceipt')->name('attestationCertificate.receipt');
     Route::post('/attestation-certificate-status-update/{id}', 'AttestationCertificateController@statusUpdete')->name('attestationCertificate.statusUpdete');
     Route::get('/attestation-certificate-paids', 'AttestationCertificateController@paids')->name('attestationCertificate.paids');
     Route::get('/attestation-certificate-status/{id}', 'AttestationCertificateController@status')->name('attestationCertificate.status');
@@ -70,6 +70,10 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/registration-certificate-upload/{id}', 'RegistrationCertificateController@upload')->name('registrationCertificate.upload');
     Route::post('/registration-certificate-update/{id}', 'RegistrationCertificateController@update')->name('registrationCertificate.update');
     Route::get('/registration-certificate-payment', 'RegistrationCertificateController@payment')->name('registrationCertificate.payment');
+    Route::get('/registration-certificate-receipt/{id}', 'RegistrationCertificateController@viewReceipt')->name('registrationCertificate.receipt');
+    Route::post('/registration-certificate-status-update/{id}', 'RegistrationCertificateController@statusUpdete')->name('registrationCertificate.statusUpdete');
+
+
 
     Route::get('/registration_certificate', 'WSC_RegisteredController@registration_certificate')->name('registration_certificate');
     Route::get('/registration_delivery_status', 'WSC_RegisteredController@registration_delivery_status')->name('registration_delivery_status');

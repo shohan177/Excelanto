@@ -46,4 +46,30 @@ class RegistrationCertificateController extends Controller
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
     }
+
+    public function statusUpdete($id)
+    {
+        $registrationCertificate = RegistrationCertificate::findOrFail($id);
+        if ($registrationCertificate->service_status == "On Process") {
+            $registrationCertificate->service_status = 'Paid';
+        }
+        try {
+            $registrationCertificate->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Updated',
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage(),
+            ]);
+        }
+    }
+
+    public function viewReceipt($id)
+    {
+        $registrationCertificate = RegistrationCertificate::findOrFail($id);
+        return view('WelfareCentre.WSC_Registered.registrationCertificate.receipt', compact('registrationCertificate'));
+    }
 }
