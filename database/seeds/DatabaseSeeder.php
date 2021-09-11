@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ExtensionPassportSeeder::class);
         $this->call(SubmittedTravelEnquirySeeder::class);
         $this->call(TravelEnquirySeeder::class);
+        $this->call(ADRServiceSeeder::class);
         $this->call(CharityServiceSeeder::class);
         $this->call(MeetAndGreetSeeder::class);
         $this->call(JailDeportationSeeder::class);
@@ -34,6 +35,5 @@ class DatabaseSeeder extends Seeder
         $this->call(IssuanceCertificateSeeder::class);
         $this->call(AttestationCertificateSeeder::class);
         $this->call(RegistrationCertificateSeeder::class);
-        $this->call(CharityServiceSeeder::class);
     }
 }

@@ -64,14 +64,20 @@
                                                 @elseif($charityService->service_status == "Completed")
                                                     <button type="button" class="btn btn-success btn-xs">Completed</button>
                                                 @elseif($charityService->service_status == "Not Completed")
-                                                    <button type="button" class="btn btn-success btn-xs">Not Completed</button>
+                                                    <button type="button" class="btn btn-success btn-xs">Not
+                                                        Completed</button>
                                                 @else
-                                                    <button type="button" class="btn btn-success btn-xs">{{ $charityService->service_status }}</button>
+                                                    <button type="button"
+                                                        class="btn btn-success btn-xs">{{ $charityService->service_status }}</button>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $charityService->candidate->offered_candidate->id) }}"><i class="fa fa-eye"></i></a>
-                                                <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.charity.status', $charityService->id) }}"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-info btn-xs"
+                                                    href="{{ route('WelfareCentre.showCandidateProfile', $charityService->candidate->offered_candidate->id) }}"><i
+                                                        class="fa fa-eye"></i></a>
+                                                <a class="btn btn-primary btn-xs"
+                                                    href="{{ route('WelfareCentre.charity.status', $charityService->id) }}"><i
+                                                        class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

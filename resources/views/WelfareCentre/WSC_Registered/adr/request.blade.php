@@ -50,18 +50,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr role="row" class="odd">
-                                        <td>1</td>
-                                        <td>billah</td>
-                                        <td>shuvo</td>
-                                        <td>2020/12/27 12:09:48pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Completed</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a></td>
-                                    </tr>
+                                    @foreach ($adrServices as $adrService)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $adrService->candidate->candidate_name }}</td>
+                                            <td>{{ $adrService->service_type }}</td>
+                                            <td>{{ $adrService->created_at }}</td>
+                                            <td>
+                                                @if ($adrService->service_status == 'Open')
+                                                    <button type="button" class="btn btn-success btn-xs">Open</button>
+                                                @elseif($adrService->service_status == "On Process")
+                                                    <button type="button" class="btn btn-success btn-xs">On Process</button>
+                                                @elseif($adrService->service_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($adrService->service_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not
+                                                        Completed</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-success btn-xs">{{ $adrService->service_status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs"
+                                                    href="{{ route('WelfareCentre.showCandidateProfile', $adrService->candidate->offered_candidate->id) }}"><i
+                                                        class="fa fa-eye"></i></a>
+                                                <a class="btn btn-primary btn-xs"
+                                                    href="{{ route('WelfareCentre.adr.status', $adrService->id) }}"><i
+                                                        class="fa fa-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -84,7 +103,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>

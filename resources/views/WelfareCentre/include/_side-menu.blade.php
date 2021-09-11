@@ -82,7 +82,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.adr_request') }}">
+                            <a href="{{ route('WelfareCentre.adr.request') }}">
                                 <i class="fa fa-arrow-circle-right"></i>ADR request
                             </a>
                         </li>
