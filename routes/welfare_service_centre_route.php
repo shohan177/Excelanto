@@ -88,7 +88,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::post('/charity-request-status-update/{id}', 'CharityServiceController@charityStatusUpdete')->name('charity.statusUpdete');
 
 
-    Route::get('/adr_request', 'WSC_RegisteredController@adr_request')->name('adr_request');
+    Route::get('/adr-request', 'ADRServiceController@request')->name('adr.request');
 
     Route::get('/legal_by_govt_request', 'WSC_RegisteredController@legal_by_govt_request')->name('legal_by_govt_request');
     Route::get('/legal_by_govt_payment', 'WSC_RegisteredController@legal_by_govt_payment')->name('legal_by_govt_payment');
