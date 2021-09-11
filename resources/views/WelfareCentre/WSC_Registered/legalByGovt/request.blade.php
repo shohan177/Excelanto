@@ -50,18 +50,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>billah</td>
-                                        <td>fever</td>
-                                        <td>2020/12/27 12:09:48pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Completed</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#">
-                                                <i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-primary btn-xs"
-                                                href="#">
-                                                <i class="fa fa-edit"></i></a></td>
-                                    </tr>
+                                    @foreach ($amnestyServices as $amnestyService)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $amnestyService->candidate->candidate_name }}</td>
+                                            <td>{{ $amnestyService->service_type }}</td>
+                                            <td>{{ $amnestyService->created_at }}</td>
+                                            <td>
+                                                @if ($amnestyService->service_status == 'Open')
+                                                    <button type="button" class="btn btn-success btn-xs">Open</button>
+                                                @elseif($amnestyService->service_status == "On Process")
+                                                    <button type="button" class="btn btn-success btn-xs">On Process</button>
+                                                @elseif($amnestyService->service_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($amnestyService->service_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not
+                                                        Completed</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-success btn-xs">{{ $amnestyService->service_status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs"
+                                                    href="{{ route('WelfareCentre.showCandidateProfile', $amnestyService->candidate->offered_candidate->id) }}"><i
+                                                        class="fa fa-eye"></i></a>
+                                                <a class="btn btn-primary btn-xs"
+                                                    href="{{ route('WelfareCentre.legalByGovt.status', $amnestyService->id) }}"><i
+                                                        class="fa fa-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
