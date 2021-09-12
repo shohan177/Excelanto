@@ -21,6 +21,12 @@ class AmnestyServiceController extends Controller
         return view('WelfareCentre.WSC_Registered.legalByGovt.payments', compact('amnestyServices'));
     }
 
+    public function paids()
+    {
+        $amnestyServices = AmnestyService::where('service_status', 'Paid')->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('WelfareCentre.WSC_Registered.legalByGovt.paids', compact('amnestyServices'));
+    }
+
     public function viewReceipt($id)
     {
         $amnestyService = AmnestyService::findOrFail($id);
@@ -51,6 +57,12 @@ class AmnestyServiceController extends Controller
     {
         $amnestyService = AmnestyService::findOrFail($id);
         return view('WelfareCentre.WSC_Registered.legalByGovt.upload', compact('amnestyService'));
+    }
+
+    public function status($id)
+    {
+        $amnestyService = AmnestyService::findOrFail($id);
+        return view('WelfareCentre.WSC_Registered.legalByGovt.status', compact('amnestyService'));
     }
 
     public function update(Request $request, $id)

@@ -22,7 +22,7 @@ class AmnestyServiceSeeder extends Seeder
                 'cpr' => null,
                 'amnesty_application' => null,
                 'comments' => 'Demo Comments',
-                'service_status' => 'Open',
+                'service_status' => 'Paid',
                 'delivery_status' => 'Open',
                 'delivery_charge' =>  rand(11, 19),
                 'fees'  => rand(11, 19),
