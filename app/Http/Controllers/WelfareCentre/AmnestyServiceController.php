@@ -17,7 +17,34 @@ class AmnestyServiceController extends Controller
 
     public function payments()
     {
-        return view('WelfareCentre.WSC_Registered.legalByGovt.payments');
+        $amnestyServices = AmnestyService::where('service_status', 'On Process')->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('WelfareCentre.WSC_Registered.legalByGovt.payments', compact('amnestyServices'));
+    }
+
+    public function viewReceipt($id)
+    {
+        $amnestyService = AmnestyService::findOrFail($id);
+        return view('WelfareCentre.WSC_Registered.legalByGovt.receipt', compact('amnestyService'));
+    }
+
+    public function statusUpdete($id)
+    {
+        $amnestyService = AmnestyService::findOrFail($id);
+        if ($amnestyService->service_status == "On Process") {
+            $amnestyService->service_status = 'Paid';
+        }
+        try {
+            $amnestyService->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Updated',
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage(),
+            ]);
+        }
     }
 
     public function upload($id)
