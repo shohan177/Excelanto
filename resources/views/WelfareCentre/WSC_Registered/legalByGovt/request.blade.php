@@ -5,8 +5,7 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -76,7 +75,7 @@
                                                     href="{{ route('WelfareCentre.showCandidateProfile', $amnestyService->candidate->offered_candidate->id) }}"><i
                                                         class="fa fa-eye"></i></a>
                                                 <a class="btn btn-primary btn-xs"
-                                                    href="{{ route('WelfareCentre.legalByGovt.status', $amnestyService->id) }}"><i
+                                                    href="{{ route('WelfareCentre.legalByGovt.upload', $amnestyService->id) }}"><i
                                                         class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>

@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'Certificate Registration')
+@section('title', 'By Government Amnesty')
 @section('DataTableCss')
 
 
@@ -14,10 +14,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Certificate Registration</h4>
+                        <h4 class="pull-left page-title">By Government Amnesty</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Certificate Registration</a></li>
+                            <li><a href="#">Legalisation By Government Amnesty</a></li>
                             <li class="active">Service details</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -38,16 +38,21 @@
                                 <div class="col-md-6">
                                     <dl class="row">
                                         <dt class="col-sm-6">Name</dt>
-                                        <dd class="col-sm-6">{{ $registrationCertificate->candidate->candidate_name }}</dd><br>
-                                        <dt class="col-sm-6">Type of service</dt>
-                                        <dd class="col-sm-6">{{ $registrationCertificate->service_type }}</dd><br>
+                                        <dd class="col-sm-6">{{ $amnestyService->candidate->candidate_name }}</dd><br>
+                                        <dt class="col-sm-6">CPR</dt>
+                                        <dd class="col-sm-6">{{ $amnestyService->cpr }}</dd><br>
+                                        <dt class="col-sm-6">Service applied</dt>
+                                        <dd class="col-sm-6">{{ $amnestyService->service_type }}</dd><br>
                                         <dt class="col-sm-6">Message</dt>
-                                        <dd class="col-sm-6">{{ $registrationCertificate->comments }}</dd><br>
+                                        <dd class="col-sm-6">{{ $amnestyService->comments }}</dd><br>
                                         <dt class="col-sm-6">Applied on</dt>
-                                        <dd class="col-sm-6">{{ $registrationCertificate->created_at }}</dd><br>
+                                        <dd class="col-sm-6">{{ $amnestyService->created_at }}</dd><br>
+                                        <dt class="col-sm-6">Application</dt>
+                                        <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
                                     </dl>
                                 </div>
                                 <div class="col-md-3"></div>
+
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -57,10 +62,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <form
-                            action="{{ route('WelfareCentre.registrationCertificate.update', $registrationCertificate->id) }}"
+                            action="{{ route('WelfareCentre.legalByGovt.update', $amnestyService->id) }}"
                             method="post" enctype="multipart/form-data">
                             <div class="panel panel-primary">
-                                <input type="hidden" value="{{ $registrationCertificate->id }}" name="id">
+                                <input type="hidden" value="{{ $amnestyService->id }}" name="id">
                                 @csrf
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Service status</h3>
@@ -80,8 +85,8 @@
                                                     <select class="form-control" name="deliveryType" id="deliveryType"
                                                         required="">
                                                         <option selected disabled value="">Select delivery type</option>
-                                                        <option  @if ($registrationCertificate->delivery_type == 'Door delivery') selected @endif  value="Door delivery">Door delivery</option>
-                                                        <option  @if ($registrationCertificate->delivery_type == 'Collect from WSC') selected @endif value="Collect from WSC">Collect from WSC</option>
+                                                        <option  @if ($amnestyService->delivery_type == 'Door delivery') selected @endif  value="Door delivery">Door delivery</option>
+                                                        <option  @if ($amnestyService->delivery_type == 'Collect from WSC') selected @endif value="Collect from WSC">Collect from WSC</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
@@ -94,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer text-right">
-                                    <button type="submit" name="btnupdate" class="btn btn-primary float-right">Submit</button>
+                                    <button type="submit" class="btn btn-primary float-right">Submit</button>
                                 </div>
                             </div>
                         </form>

@@ -73,7 +73,7 @@
                                             <div class="panel-body">
                                                 <div class="form-group">
                                                     <label for="fees">Fee amount</label>
-                                                    <input type="text" class="form-control" id="fees" name="fees"
+                                                    <input type="number" class="form-control" id="fees" name="fees"
                                                         placeholder="Enter fee amount">
                                                 </div>
                                                 <div class="form-group">
@@ -87,7 +87,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="deliveryCharge">Delivery charge</label>
-                                                    <input type="text" class="form-control" id="deliveryCharge" name="deliveryCharge" placeholder="Enter delivery charge">
+                                                    <input type="number" class="form-control" id="deliveryCharge" name="deliveryCharge" placeholder="Enter delivery charge">
                                                 </div>
                                             </div><!-- panel-body -->
                                         </div> <!-- col-->
