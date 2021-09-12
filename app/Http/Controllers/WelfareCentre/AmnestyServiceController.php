@@ -9,10 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class AmnestyServiceController extends Controller
 {
-    public function request()
+    public function requests()
     {
         $amnestyServices = AmnestyService::where('service_status', 'Open')->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
-        return view('WelfareCentre.WSC_Registered.legalByGovt.request', compact('amnestyServices'));
+        return view('WelfareCentre.WSC_Registered.legalByGovt.requests', compact('amnestyServices'));
+    }
+
+    public function payments()
+    {
+        return view('WelfareCentre.WSC_Registered.legalByGovt.payments');
     }
 
     public function upload($id)

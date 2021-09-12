@@ -92,8 +92,8 @@
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> By Government Amnesty </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.legalByGovt.request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.legal_by_govt_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.legalByGovt.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.legalByGovt.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
                                         <li><a href="{{ route('WelfareCentre.legal_by_govt_paid') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
                                         <li><a href="{{ route('WelfareCentre.legal_by_govt_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>

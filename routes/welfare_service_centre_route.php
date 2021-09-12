@@ -92,14 +92,14 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/adr-request-status/{id}', 'ADRServiceController@adrStatus')->name('adr.status');
     Route::post('/adr-request-status-update/{id}', 'ADRServiceController@adrStatusUpdete')->name('adr.statusUpdete');
     // legal-by-govt
-    Route::get('/legal-by-govt-request', 'AmnestyServiceController@request')->name('legalByGovt.request');
+    Route::get('/legal-by-govt-requests', 'AmnestyServiceController@requests')->name('legalByGovt.requests');
     Route::get('/legal-by-govt-upload/{id}', 'AmnestyServiceController@upload')->name('legalByGovt.upload');
     Route::post('/legal-by-govt-update/{id}', 'AmnestyServiceController@update')->name('legalByGovt.update');
+    Route::get('/legal-by-govt-payments', 'AmnestyServiceController@payments')->name('legalByGovt.payments');
 
 
 
 
-    Route::get('/legal_by_govt_payment', 'WSC_RegisteredController@legal_by_govt_payment')->name('legal_by_govt_payment');
     Route::get('/legal_by_govt_paid', 'WSC_RegisteredController@legal_by_govt_paid')->name('legal_by_govt_paid');
     Route::get('/legal_by_govt_delivery', 'WSC_RegisteredController@legal_by_govt_delivery')->name('legal_by_govt_delivery');
 
