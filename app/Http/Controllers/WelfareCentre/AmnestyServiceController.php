@@ -6,6 +6,9 @@ use App\AmnestyService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AmnestyServiceController extends Controller
 {
@@ -25,6 +28,12 @@ class AmnestyServiceController extends Controller
     {
         $amnestyServices = AmnestyService::where('service_status', 'Paid')->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
         return view('WelfareCentre.WSC_Registered.legalByGovt.paids', compact('amnestyServices'));
+    }
+
+    public function delivery()
+    {
+        $amnestyServices = AmnestyService::whereIn('service_status', ['Approved','Rejected'])->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('WelfareCentre.WSC_Registered.legalByGovt.delivery', compact('amnestyServices'));
     }
 
     public function viewReceipt($id)
@@ -84,4 +93,31 @@ class AmnestyServiceController extends Controller
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
     }
+
+    public function detailsUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'deliveryType' => 'required',
+        ]);
+        $amnestyService = AmnestyService::findOrFail($id);
+
+        $amnestyService->delivery_type = $request->deliveryStatus;
+        $amnestyService->delivery_to = $request->deliveryTo;
+        $amnestyService->service_status = $request->legalStatus;
+        if ($request->hasFile('document')) {
+            $image = $request->file('document');
+            $folder_path = 'uploads/document/';
+            $image_new_name = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
+            $amnestyService->document = $folder_path . $image_new_name;
+        }
+        try {
+            $amnestyService->save();
+            return back()->withToastSuccess('Successfully Updated.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
+    }
+
 }
