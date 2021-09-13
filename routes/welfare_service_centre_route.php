@@ -92,17 +92,17 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/adr-request-status/{id}', 'ADRServiceController@adrStatus')->name('adr.status');
     Route::post('/adr-request-status-update/{id}', 'ADRServiceController@adrStatusUpdete')->name('adr.statusUpdete');
     // legal-by-govt
-    Route::get('/legal-by-govt-requests', 'AmnestyServiceController@requests')->name('legalByGovt.requests');
-    Route::get('/legal-by-govt-upload/{id}', 'AmnestyServiceController@upload')->name('legalByGovt.upload');
-    Route::post('/legal-by-govt-update/{id}', 'AmnestyServiceController@update')->name('legalByGovt.update');
-    Route::get('/legal-by-govt-payments', 'AmnestyServiceController@payments')->name('legalByGovt.payments');
-    Route::get('/legal-by-govt-receipt/{id}', 'AmnestyServiceController@viewReceipt')->name('legalByGovt.receipt');
-    Route::post('/legal-by-govt-status-update/{id}', 'AmnestyServiceController@statusUpdete')->name('legalByGovt.statusUpdete');
-    Route::get('/legal-by-govt-paids', 'AmnestyServiceController@paids')->name('legalByGovt.paids');
-    Route::get('/legal-by-govt-status/{id}', 'AmnestyServiceController@status')->name('legalByGovt.status');
-    Route::post('/legal-by-govt-details-update/{id}', 'AmnestyServiceController@detailsUpdate')->name('legalByGovt.detailsUpdate');
-
-
+    Route::group(['prefix' => '/legal-by-govt-', 'as' => 'legalByGovt.'], function () {
+        Route::get('requests', 'AmnestyServiceController@requests')->name('requests');
+        Route::get('upload/{id}', 'AmnestyServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'AmnestyServiceController@update')->name('update');
+        Route::get('payments', 'AmnestyServiceController@payments')->name('payments');
+        Route::get('receipt/{id}', 'AmnestyServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'AmnestyServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('paids', 'AmnestyServiceController@paids')->name('paids');
+        Route::get('status/{id}', 'AmnestyServiceController@status')->name('status');
+        Route::post('details-update/{id}', 'AmnestyServiceController@detailsUpdate')->name('detailsUpdate');
+    });
 
 
 
