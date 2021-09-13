@@ -43,7 +43,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::post('/insurance-status-update/{id}', 'InsuranceController@insuranceStatusUpdete')->name('insurance.StatusUpdete');
 
     // issuance certificate
-    Route::group(['prefix' => '/issuance-certificate-', 'as' => 'issuanceCertificate.'], function () {
+    Route::group(['prefix' => '/issuance-certificate', 'as' => 'issuanceCertificate.'], function () {
         Route::get('requests', 'IssuanceCertificateController@requests')->name('requests');
         Route::get('status/{id}', 'IssuanceCertificateController@status')->name('status');
         Route::get('upload/{id}', 'IssuanceCertificateController@upload')->name('upload');
@@ -56,7 +56,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::get('delivered', 'IssuanceCertificateController@delivered')->name('delivered');
     });
     // attestation-certificate
-    Route::group(['prefix' => '/attestation-certificate-', 'as' => 'attestationCertificate.'], function () {
+    Route::group(['prefix' => '/attestation-certificate', 'as' => 'attestationCertificate.'], function () {
         Route::get('requests', 'AttestationCertificateController@requests')->name('requests');
         Route::get('upload/{id}', 'AttestationCertificateController@upload')->name('upload');
         Route::post('update/{id}', 'AttestationCertificateController@update')->name('update');
@@ -70,7 +70,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     });
 
     // registration certificates
-    Route::group(['prefix' => '/registration-certificate-', 'as' => 'registrationCertificate.'], function () {
+    Route::group(['prefix' => '/registration-certificate', 'as' => 'registrationCertificate.'], function () {
         Route::get('request', 'RegistrationCertificateController@requests')->name('requests');
         Route::get('upload/{id}', 'RegistrationCertificateController@upload')->name('upload');
         Route::post('update/{id}', 'RegistrationCertificateController@update')->name('update');
@@ -92,7 +92,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/adr-request-status/{id}', 'ADRServiceController@adrStatus')->name('adr.status');
     Route::post('/adr-request-status-update/{id}', 'ADRServiceController@adrStatusUpdete')->name('adr.statusUpdete');
     // legal-by-govt
-    Route::group(['prefix' => '/legal-by-govt-', 'as' => 'legalByGovt.'], function () {
+    Route::group(['prefix' => '/legal-by-govt', 'as' => 'legalByGovt.'], function () {
         Route::get('requests', 'AmnestyServiceController@requests')->name('requests');
         Route::get('upload/{id}', 'AmnestyServiceController@upload')->name('upload');
         Route::post('update/{id}', 'AmnestyServiceController@update')->name('update');
