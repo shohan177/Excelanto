@@ -100,6 +100,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::post('/legal-by-govt-status-update/{id}', 'AmnestyServiceController@statusUpdete')->name('legalByGovt.statusUpdete');
     Route::get('/legal-by-govt-paids', 'AmnestyServiceController@paids')->name('legalByGovt.paids');
     Route::get('/legal-by-govt-status/{id}', 'AmnestyServiceController@status')->name('legalByGovt.status');
+    Route::post('/legal-by-govt-details-update/{id}', 'AmnestyServiceController@detailsUpdate')->name('legalByGovt.detailsUpdate');
+
 
 
 

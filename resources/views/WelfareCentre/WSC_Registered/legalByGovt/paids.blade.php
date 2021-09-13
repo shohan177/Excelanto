@@ -76,7 +76,9 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.legalByGovt.receipt', $amnestyService->id) }}"> <i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-info btn-xs"
+                                                href="{{ route('WelfareCentre.showCandidateProfile', $amnestyService->candidate->offered_candidate->id) }}"><i
+                                                    class="fa fa-eye"></i></a>
                                                 <a class="btn btn-primary btn-xs" href="{{ route('WelfareCentre.legalByGovt.status', $amnestyService->id) }}"> <i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
