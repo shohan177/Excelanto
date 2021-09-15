@@ -104,7 +104,7 @@
                                     <ul class="list-unstyled">
                                         <li><a href="{{ route('WelfareCentre.legalByRegular.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
                                         <li><a href="{{ route('WelfareCentre.legalByRegular.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.legal_regular_paid') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.legalByRegular.paids') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
                                         <li><a href="{{ route('WelfareCentre.legal_regular_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>

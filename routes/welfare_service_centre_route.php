@@ -112,10 +112,11 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::get('payments', 'PaymentServiceController@payments')->name('payments');
         Route::get('receipt/{id}', 'PaymentServiceController@viewReceipt')->name('receipt');
         Route::post('status-update/{id}', 'PaymentServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('paids', 'PaymentServiceController@paids')->name('paids');
+
     });
 
 
-    Route::get('/legal_regular_paid', 'WSC_RegisteredController@legal_regular_paid')->name('legal_regular_paid');
     Route::get('/legal_regular_delivery', 'WSC_RegisteredController@legal_regular_delivery')->name('legal_regular_delivery');
 
     Route::get('/change_emp_request', 'WSC_RegisteredController@change_emp_request')->name('change_emp_request');
