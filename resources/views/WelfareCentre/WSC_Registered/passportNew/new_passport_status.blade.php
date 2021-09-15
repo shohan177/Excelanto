@@ -43,7 +43,7 @@
                                     <tr>
                                         <th>SL No</th>
                                         <th>User name</th>
-                                        <th>service apply for</th>
+                                        <th>Service apply for</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -67,7 +67,7 @@
                                     <tr>
                                         <th>SL No</th>
                                         <th>User name</th>
-                                        <th>service apply for</th>
+                                        <th>Service apply for</th>
                                         <th>Applied on</th>
                                         <th>Status</th>
                                         <th>Action</th>

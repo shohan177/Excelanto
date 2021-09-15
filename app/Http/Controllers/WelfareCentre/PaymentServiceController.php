@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\PaymentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PaymentServiceController extends Controller
 {
@@ -76,6 +79,38 @@ class PaymentServiceController extends Controller
                 'type' => 'error',
                 'message' => $exception->getMessage(),
             ]);
+        }
+    }
+
+    public function status($id)
+    {
+        $paymentService = PaymentService::findOrFail($id);
+        return view('WelfareCentre.WSC_Registered.legalByRegular.status', compact('paymentService'));
+    }
+
+    public function detailsUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'deliveryType' => 'required',
+        ]);
+        $paymentService = PaymentService::findOrFail($id);
+
+        $paymentService->delivery_type = $request->deliveryStatus;
+        $paymentService->delivery_to = $request->deliveryTo;
+        $paymentService->service_status = $request->legalStatus;
+        if ($request->hasFile('document')) {
+            $image = $request->file('document');
+            $folder_path = 'uploads/document/';
+            $image_new_name = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
+            $paymentService->document = $folder_path . $image_new_name;
+        }
+        try {
+            $paymentService->save();
+            return back()->withToastSuccess('Successfully Updated.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
     }
 }
