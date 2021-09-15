@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'Legalisation regular Amnesty requests')
+@section('title', 'Legalisation Regular by penalty Requests')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -25,7 +25,7 @@
                             <li><a href="#">Welfare Centre</a></li>
                             <li><a href="#"> WSC registered users
                                 </a></li>
-                            <li class="active">Legalisation regular Amnesty Request</li>
+                            <li class="active">Legalisation Regular by penalty Requests</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Legalisation regular Amnesty Requests</h3>
+                            <h3 class="panel-title">Legalisation Regular by penalty Requests</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">

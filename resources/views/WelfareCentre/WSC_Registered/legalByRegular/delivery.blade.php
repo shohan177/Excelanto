@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'regular Amnesty report delivery')
+@section('title', 'Regular by penalty report delivery')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -20,12 +20,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">regular Amnesty report delivery</h4>
+                        <h4 class="pull-left page-title">Regular by penalty report delivery</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Welfare Centre</a></li>
                             <li><a href="#"> WSC registered users
                                 </a></li>
-                            <li class="active">regular Amnesty report delivery</li>
+                            <li class="active">Regular by penalty report delivery</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">regular Amnesty report delivery</h3>
+                            <h3 class="panel-title">Regular by penalty report delivery</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
@@ -51,36 +51,36 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($amnestyServices as $amnestyService)
+                                    @foreach ($paymentServices as $paymentService)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $amnestyService->candidate->candidate_name }}</td>
-                                            <td>{{ $amnestyService->delivery_to }}</td>
-                                            <td>{{ $amnestyService->created_at }}</td>
+                                            <td>{{ $paymentService->candidate->candidate_name }}</td>
+                                            <td>{{ $paymentService->delivery_to }}</td>
+                                            <td>{{ $paymentService->created_at }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-info btn-xs">{{ $amnestyService->delivery_status }}</button>
+                                                <button type="button" class="btn btn-info btn-xs">{{ $paymentService->delivery_status }}</button>
                                             </td>
                                             <td>
-                                                @if ($amnestyService->service_status == 'Paid')
+                                                @if ($paymentService->service_status == 'Paid')
                                                     <button type="button" class="btn btn-success btn-xs">Paid</button>
-                                                @elseif($amnestyService->service_status == "On process")
+                                                @elseif($paymentService->service_status == "On process")
                                                     <button type="button" class="btn btn-success btn-xs">On process</button>
-                                                @elseif($amnestyService->service_status == "Completed")
+                                                @elseif($paymentService->service_status == "Completed")
                                                     <button type="button" class="btn btn-success btn-xs">Completed</button>
-                                                @elseif($amnestyService->service_status == "Not Completed")
+                                                @elseif($paymentService->service_status == "Not Completed")
                                                     <button type="button" class="btn btn-success btn-xs">Not
                                                         Completed</button>
-                                                @elseif($amnestyService->service_status == "Approved")
+                                                @elseif($paymentService->service_status == "Approved")
                                                     <button type="button" class="btn btn-success btn-xs">Approved</button>
-                                                @elseif($amnestyService->service_status == "Rejected")
+                                                @elseif($paymentService->service_status == "Rejected")
                                                     <button type="button" class="btn btn-danger btn-xs">Rejected</button>
                                                 @else
                                                     <button type="button"
-                                                        class="btn btn-info btn-xs">{{ $amnestyService->service_status }}</button>
+                                                        class="btn btn-info btn-xs">{{ $paymentService->service_status }}</button>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-xs" href="{{ asset($amnestyService->document) }}" target="_blank"><i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-info btn-xs" href="{{ asset($paymentService->document) }}" target="_blank"><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
