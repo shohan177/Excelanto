@@ -108,6 +108,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::group(['prefix' => '/legal-by-regular', 'as' => 'legalByRegular.'], function () {
         Route::get('requests', 'PaymentServiceController@requests')->name('requests');
         Route::get('upload/{id}', 'PaymentServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'PaymentServiceController@update')->name('update');
     });
 
 
