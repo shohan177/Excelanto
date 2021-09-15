@@ -110,7 +110,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::get('upload/{id}', 'PaymentServiceController@upload')->name('upload');
         Route::post('update/{id}', 'PaymentServiceController@update')->name('update');
         Route::get('payments', 'PaymentServiceController@payments')->name('payments');
-
+        Route::get('receipt/{id}', 'PaymentServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'PaymentServiceController@statusUpdete')->name('statusUpdete');
     });
 
 

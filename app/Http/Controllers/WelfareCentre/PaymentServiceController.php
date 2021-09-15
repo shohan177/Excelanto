@@ -46,4 +46,30 @@ class PaymentServiceController extends Controller
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
     }
+
+    public function viewReceipt($id)
+    {
+        $paymentService = PaymentService::findOrFail($id);
+        return view('WelfareCentre.WSC_Registered.legalByRegular.receipt', compact('paymentService'));
+    }
+
+    public function statusUpdete($id)
+    {
+        $paymentService = PaymentService::findOrFail($id);
+        if ($paymentService->service_status == "On Process") {
+            $paymentService->service_status = 'Paid';
+        }
+        try {
+            $paymentService->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Updated',
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage(),
+            ]);
+        }
+    }
 }
