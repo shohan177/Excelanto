@@ -30,6 +30,12 @@ class PaymentServiceController extends Controller
         return view('WelfareCentre.WSC_Registered.legalByRegular.paids', compact('paymentServices'));
     }
 
+    public function delivery()
+    {
+        $paymentServices = PaymentService::whereIn('service_status', ['Approved','Rejected'])->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('WelfareCentre.WSC_Registered.legalByRegular.delivery', compact('paymentServices'));
+    }
+
     public function upload($id)
     {
         $paymentService = PaymentService::findOrFail($id);
