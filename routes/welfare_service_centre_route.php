@@ -102,11 +102,14 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::get('paids', 'AmnestyServiceController@paids')->name('paids');
         Route::get('status/{id}', 'AmnestyServiceController@status')->name('status');
         Route::post('details-update/{id}', 'AmnestyServiceController@detailsUpdate')->name('detailsUpdate');
-        Route::post('delivery', 'AmnestyServiceController@delivery')->name('delivery');
+        Route::get('delivery', 'AmnestyServiceController@delivery')->name('delivery');
+    });
+
+    Route::group(['prefix' => '/legal-by-regular', 'as' => 'legalByRegular.'], function () {
+        Route::get('requests', 'PaymentServiceController@requests')->name('requests');
     });
 
 
-    Route::get('/legal_regular_request', 'WSC_RegisteredController@legal_regular_request')->name('legal_regular_request');
     Route::get('/legal_regular_payment', 'WSC_RegisteredController@legal_regular_payment')->name('legal_regular_payment');
     Route::get('/legal_regular_paid', 'WSC_RegisteredController@legal_regular_paid')->name('legal_regular_paid');
     Route::get('/legal_regular_delivery', 'WSC_RegisteredController@legal_regular_delivery')->name('legal_regular_delivery');

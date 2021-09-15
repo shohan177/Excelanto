@@ -5,8 +5,7 @@
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -51,18 +50,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr role="row" class="odd">
-                                        <td>1</td>
-                                        <td>shuvo</td>
-                                        <td>shundorban</td>
-                                        <td>2020/12/28 03:47:21pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-primary btn-xs update">Sent via post</button></td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Approved</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#" target="_blank">
-                                                <i class="fa fa-eye"></i></a></td>
-                                    </tr>
+                                    @foreach ($amnestyServices as $amnestyService)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $amnestyService->candidate->candidate_name }}</td>
+                                            <td>{{ $amnestyService->delivery_to }}</td>
+                                            <td>{{ $amnestyService->created_at }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-info btn-xs">{{ $amnestyService->delivery_status }}</button>
+                                            </td>
+                                            <td>
+                                                @if ($amnestyService->service_status == 'Paid')
+                                                    <button type="button" class="btn btn-success btn-xs">Paid</button>
+                                                @elseif($amnestyService->service_status == "On process")
+                                                    <button type="button" class="btn btn-success btn-xs">On process</button>
+                                                @elseif($amnestyService->service_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($amnestyService->service_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not
+                                                        Completed</button>
+                                                @elseif($amnestyService->service_status == "Approved")
+                                                    <button type="button" class="btn btn-success btn-xs">Approved</button>
+                                                @elseif($amnestyService->service_status == "Rejected")
+                                                    <button type="button" class="btn btn-danger btn-xs">Rejected</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-info btn-xs">{{ $amnestyService->service_status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="{{ asset($amnestyService->document) }}" target="_blank"><i class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

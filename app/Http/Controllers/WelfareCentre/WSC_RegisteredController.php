@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class  WSC_RegisteredController extends Controller
 {
-    public function legal_regular_request()
-    {
-        return view('WelfareCentre.WSC_Registered.Legalisationregular.legal_regular_request');
-    }
     public function legal_regular_payment()
     {
         return view('WelfareCentre.WSC_Registered.Legalisationregular.legal_regular_payment');
