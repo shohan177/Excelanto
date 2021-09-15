@@ -18,7 +18,7 @@ class CreatePaymentServicesTable extends Migration
             $table->unsignedBigInteger('candidate_id')->nullable();
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('wsc_id')->nullable();
-            $table->string('salary_type')->nullable();
+            $table->string('service_type')->nullable();
             $table->string('cpr')->nullable();
             $table->text('comments')->nullable();
             $table->text('payment_application')->nullable();
