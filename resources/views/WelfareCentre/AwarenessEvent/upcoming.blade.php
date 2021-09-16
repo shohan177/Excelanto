@@ -59,10 +59,10 @@
                                             <td>{{ $upcomingEvent->updated_at }}</td>
                                             <td><button type="button" name="Visa-Applied" class="btn btn-success btn-xs update">{{ $upcomingEvent->event_status }}</button></td>
                                             <td>
-                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.awarenessevent.show', $upcomingEvent->id) }}">
+                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.awarenessEvent.show', $upcomingEvent->id) }}">
                                                     <i class="fa fa-eye"></i></a>&nbsp;
                                                 <a class="btn btn-primary btn-xs"
-                                                    href="{{ route('WelfareCentre.awarenessevent.edit', $upcomingEvent->id) }}"><i class="fa fa-edit"></i></a>
+                                                    href="{{ route('WelfareCentre.awarenessEvent.edit', $upcomingEvent->id) }}"><i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

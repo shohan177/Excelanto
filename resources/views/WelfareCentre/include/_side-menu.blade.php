@@ -129,7 +129,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.legal_aid_request') }}">
+                            <a href="{{ route('WelfareCentre.legalAid.request') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Legal aid request
                             </a>
                         </li>
@@ -174,17 +174,17 @@
                         </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="{{ route('WelfareCentre.awarenessevent.create') }}">
+                            <a href="{{ route('WelfareCentre.awarenessEvent.create') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Create new event
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.awarenessevent.upcoming_events') }}">
+                            <a href="{{ route('WelfareCentre.awarenessEvent.upcoming_events') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Upcoming events
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.awarenessevent.total_events') }}">
+                            <a href="{{ route('WelfareCentre.awarenessEvent.total_events') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Total events
                             </a>
                         </li>

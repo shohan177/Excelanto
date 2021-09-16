@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class  WSC_RegisteredController extends Controller
 {
-    public function legal_aid_request()
-    {
-        return view('WelfareCentre.WSC_Registered.legal_aid_request');
-    }
-
     public function new_passport_request()
     {
         return view('WelfareCentre.WSC_Registered.passportNew.new_passport_request');

@@ -145,7 +145,12 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::get('delivery', 'ChangeVisaServiceController@delivery')->name('delivery');
     });
 
-    Route::get('/legal_aid_request', 'WSC_RegisteredController@legal_aid_request')->name('legal_aid_request');
+    // legal-aid-service
+    Route::get('/legal-aid-request', 'LegalAidServiceController@request')->name('legalAid.request');
+    Route::get('/legal-aid-status/{id}', 'LegalAidServiceController@legalAidStatus')->name('legalAid.Status');
+    Route::post('/legal-aid-status-update/{id}', 'LegalAidServiceController@legalAidStatusUpdete')->name('legalAid.StatusUpdete');
+
+
 
     Route::get('/new_passport_request', 'WSC_RegisteredController@new_passport_request')->name('new_passport_request');
     Route::get('/new_passport_payment', 'WSC_RegisteredController@new_passport_payment')->name('new_passport_payment');
@@ -163,11 +168,13 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/renew_passport_delivery', 'WSC_RegisteredController@renew_passport_delivery')->name('renew_passport_delivery');
 
     //awareness event
-    Route::get('/create-awareness-event', 'AwarenessEventController@create')->name('awarenessevent.create');
-    Route::post('/store-awareness-event', 'AwarenessEventController@store')->name('awarenessevent.store');
-    Route::get('/show-awareness-event/{id}', 'AwarenessEventController@show')->name('awarenessevent.show');
-    Route::get('/edit-awareness-event/{id}', 'AwarenessEventController@edit')->name('awarenessevent.edit');
-    Route::post('/update-awareness-event/{id}', 'AwarenessEventController@update')->name('awarenessevent.update');
-    Route::get('/upcoming-events', 'AwarenessEventController@upcoming_events')->name('awarenessevent.upcoming_events');
-    Route::get('/total-events', 'AwarenessEventController@total_events')->name('awarenessevent.total_events');
+    Route::group(['prefix' => '/awareness-event', 'as' => 'awarenessEvent.'], function () {
+        Route::get('/create', 'AwarenessEventController@create')->name('create');
+        Route::post('/store', 'AwarenessEventController@store')->name('store');
+        Route::get('/show/{id}', 'AwarenessEventController@show')->name('show');
+        Route::get('/edit/{id}', 'AwarenessEventController@edit')->name('edit');
+        Route::post('/update/{id}', 'AwarenessEventController@update')->name('update');
+        Route::get('/upcoming-events', 'AwarenessEventController@upcoming_events')->name('upcoming_events');
+        Route::get('/total-events', 'AwarenessEventController@total_events')->name('total_events');
+    });
 });
