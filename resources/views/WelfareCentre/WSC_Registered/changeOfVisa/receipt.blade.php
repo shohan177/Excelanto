@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'Legalisation by Government Amnesty')
+@section('title', 'Change of visa status')
 @section('DataTableCss')
 
 
@@ -72,7 +72,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Legalisation by Government Amnesty</td>
+                                                <td>Change of visa status</td>
                                                 <td>1</td>
                                                 <td>$64.50</td>
                                             </tr>
@@ -96,12 +96,12 @@
                                     <button type='button' onclick='printDiv();' class="btn btn-default" id="printNow"><i
                                             class="fa fa-print"></i>Print</button>
 
-                                    @if ($amnestyService->service_status == 'On Process')
+                                    @if ($changeVisaService->service_status == 'On Process')
                                         <button style="margin-right: 5px;" class="btn btn-success float-right"
                                             onclick="approve(this)"
-                                            value="{{ route('WelfareCentre.legalByGovt.statusUpdete', $amnestyService->id) }}">
+                                            value="{{ route('WelfareCentre.changeOfVisa.statusUpdete', $changeVisaService->id) }}">
                                             <i class="fa fa-credit-card-alt"></i> Submit Payment</button>
-                                    @elseif ($amnestyService->service_status == 'Paid')
+                                    @elseif ($changeVisaService->service_status == 'Paid')
                                         <button type="button" style="margin-right: 5px;" class="btn btn-success float-right"
                                             disabled><i class="fa fa-credit-card-alt"></i> Already Submitted!</button>
                                     @else
