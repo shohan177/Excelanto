@@ -114,7 +114,7 @@
                                         <li><a href="{{ route('WelfareCentre.changeOfEmployer.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
                                         <li><a href="{{ route('WelfareCentre.changeOfEmployer.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
                                         <li><a href="{{ route('WelfareCentre.changeOfEmployer.paids') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.change_emp_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfEmployer.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                                 <li class="has_sub">

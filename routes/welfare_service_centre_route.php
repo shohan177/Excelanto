@@ -128,13 +128,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::get('paids', 'ChangeEmployerServiceController@paids')->name('paids');
         Route::get('status/{id}', 'ChangeEmployerServiceController@status')->name('status');
         Route::post('details-update/{id}', 'ChangeEmployerServiceController@detailsUpdate')->name('detailsUpdate');
-
-
-
-
+        Route::get('delivery', 'ChangeEmployerServiceController@delivery')->name('delivery');
     });
-
-    Route::get('/change_emp_delivery', 'WSC_RegisteredController@change_emp_delivery')->name('change_emp_delivery');
 
     Route::get('/change_visa_request', 'WSC_RegisteredController@change_visa_request')->name('change_visa_request');
     Route::get('/change_visa_payment', 'WSC_RegisteredController@change_visa_payment')->name('change_visa_payment');
