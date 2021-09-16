@@ -121,10 +121,14 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::group(['prefix' => '/change-of-employer', 'as' => 'changeOfEmployer.'], function () {
         Route::get('requests', 'ChangeEmployerServiceController@requests')->name('requests');
         Route::get('upload/{id}', 'ChangeEmployerServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'ChangeEmployerServiceController@update')->name('update');
+        Route::get('payments', 'ChangeEmployerServiceController@payments')->name('payments');
+        Route::get('receipt/{id}', 'ChangeEmployerServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'ChangeEmployerServiceController@statusUpdete')->name('statusUpdete');
+
 
     });
 
-    Route::get('/change_emp_payment', 'WSC_RegisteredController@change_emp_payment')->name('change_emp_payment');
     Route::get('/change_emp_paid', 'WSC_RegisteredController@change_emp_paid')->name('change_emp_paid');
     Route::get('/change_emp_delivery', 'WSC_RegisteredController@change_emp_delivery')->name('change_emp_delivery');
 
