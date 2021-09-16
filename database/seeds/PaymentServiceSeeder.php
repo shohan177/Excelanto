@@ -19,7 +19,7 @@ class PaymentServiceSeeder extends Seeder
                 'company_id' => 8,
                 'wsc_id' => 6,
                 'service_type' => 'Demo service ' . $i,
-                'cpr' => null,
+                'cpr' =>  rand(100000, 500000),
                 'comments' =>  'Demo Comments',
                 'payment_application' => null,
                 'service_status' => 'Open',

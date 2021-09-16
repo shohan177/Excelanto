@@ -18,7 +18,7 @@ class ChangeEmployerServiceSeeder extends Seeder
                 'candidate_id' => rand(11, 19),
                 'company_id' =>8,
                 'wsc_id' =>  6,
-                'cpr' => null,
+                'cpr' =>  rand(100000, 500000),
                 'new_offer_letter' => null,
                 'comments' => 'Demo Comments',
                 'service_status' => 'Open',

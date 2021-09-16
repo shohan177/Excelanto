@@ -9,23 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class  WSC_RegisteredController extends Controller
 {
-    public function change_visa_request()
-    {
-        return view('WelfareCentre.WSC_Registered.LegalisationVisaChange.change_visa_request');
-    }
-    public function change_visa_payment()
-    {
-        return view('WelfareCentre.WSC_Registered.LegalisationVisaChange.change_visa_payment');
-    }
-    public function change_visa_paid()
-    {
-        return view('WelfareCentre.WSC_Registered.LegalisationVisaChange.change_visa_paid');
-    }
-    public function change_visa_delivery()
-    {
-        return view('WelfareCentre.WSC_Registered.LegalisationVisaChange.change_visa_delivery');
-    }
-
     public function legal_aid_request()
     {
         return view('WelfareCentre.WSC_Registered.legal_aid_request');
