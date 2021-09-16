@@ -38,19 +38,15 @@
                                 <div class="col-md-6">
                                     <dl class="row">
                                         <dt class="col-sm-6">Name</dt>
-                                        <dd class="col-sm-6">{{ $changeEmployerService->candidate->candidate_name }}</dd>
-                                        <br>
+                                        <dd class="col-sm-6">{{ $changeEmployerService->candidate->candidate_name }}</dd><br>
                                         <dt class="col-sm-6">CPR</dt>
                                         <dd class="col-sm-6">{{ $changeEmployerService->cpr }}</dd><br>
-                                        <dt class="col-sm-6">Service applied</dt>
-                                        <dd class="col-sm-6">{{ $changeEmployerService->service_type }}</dd><br>
                                         <dt class="col-sm-6">Message</dt>
                                         <dd class="col-sm-6">{{ $changeEmployerService->comments }}</dd><br>
                                         <dt class="col-sm-6">Applied on</dt>
                                         <dd class="col-sm-6">{{ $changeEmployerService->created_at }}</dd><br>
-                                        <dt class="col-sm-6">Application</dt>
-                                        <dd class="col-sm-6"><a href="#"
-                                                class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        <dt class="col-sm-6">New offer letter</dt>
+                                        <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
                                     </dl>
                                 </div>
                                 <div class="col-md-3"></div>
