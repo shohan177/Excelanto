@@ -131,10 +131,19 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::get('delivery', 'ChangeEmployerServiceController@delivery')->name('delivery');
     });
 
-    Route::get('/change_visa_request', 'WSC_RegisteredController@change_visa_request')->name('change_visa_request');
-    Route::get('/change_visa_payment', 'WSC_RegisteredController@change_visa_payment')->name('change_visa_payment');
-    Route::get('/change_visa_paid', 'WSC_RegisteredController@change_visa_paid')->name('change_visa_paid');
-    Route::get('/change_visa_delivery', 'WSC_RegisteredController@change_visa_delivery')->name('change_visa_delivery');
+    // change-of-visa
+    Route::group(['prefix' => '/change-of-visa', 'as' => 'changeOfVisa.'], function () {
+        Route::get('requests', 'ChangeVisaServiceController@requests')->name('requests');
+        Route::get('upload/{id}', 'ChangeVisaServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'ChangeVisaServiceController@update')->name('update');
+        Route::get('payments', 'ChangeVisaServiceController@payments')->name('payments');
+        Route::get('receipt/{id}', 'ChangeVisaServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'ChangeVisaServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('paids', 'ChangeVisaServiceController@paids')->name('paids');
+        Route::get('status/{id}', 'ChangeVisaServiceController@status')->name('status');
+        Route::post('details-update/{id}', 'ChangeVisaServiceController@detailsUpdate')->name('detailsUpdate');
+        Route::get('delivery', 'ChangeVisaServiceController@delivery')->name('delivery');
+    });
 
     Route::get('/legal_aid_request', 'WSC_RegisteredController@legal_aid_request')->name('legal_aid_request');
 

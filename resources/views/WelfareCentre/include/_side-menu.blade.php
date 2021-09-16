@@ -120,10 +120,10 @@
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Change of visa status </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.change_visa_request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.change_visa_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.change_visa_paid') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.change_visa_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfVisa.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfVisa.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfVisa.paids') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfVisa.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                             </ul>
