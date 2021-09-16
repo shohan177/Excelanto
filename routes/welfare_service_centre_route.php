@@ -104,7 +104,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::post('details-update/{id}', 'AmnestyServiceController@detailsUpdate')->name('detailsUpdate');
         Route::get('delivery', 'AmnestyServiceController@delivery')->name('delivery');
     });
-
+    // legal-by-regular
     Route::group(['prefix' => '/legal-by-regular', 'as' => 'legalByRegular.'], function () {
         Route::get('requests', 'PaymentServiceController@requests')->name('requests');
         Route::get('upload/{id}', 'PaymentServiceController@upload')->name('upload');
@@ -117,8 +117,11 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::post('details-update/{id}', 'PaymentServiceController@detailsUpdate')->name('detailsUpdate');
         Route::get('delivery', 'PaymentServiceController@delivery')->name('delivery');
     });
+    // change-of-employer
+    Route::group(['prefix' => '/change-of-employer', 'as' => 'changeOfEmployer.'], function () {
+        Route::get('requests', 'PaymentServiceController@requests')->name('requests');
+    });
 
-    Route::get('/change_emp_request', 'WSC_RegisteredController@change_emp_request')->name('change_emp_request');
     Route::get('/change_emp_payment', 'WSC_RegisteredController@change_emp_payment')->name('change_emp_payment');
     Route::get('/change_emp_paid', 'WSC_RegisteredController@change_emp_paid')->name('change_emp_paid');
     Route::get('/change_emp_delivery', 'WSC_RegisteredController@change_emp_delivery')->name('change_emp_delivery');

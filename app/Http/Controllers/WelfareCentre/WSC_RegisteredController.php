@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class  WSC_RegisteredController extends Controller
 {
-    public function change_emp_request()
-    {
-        return view('WelfareCentre.WSC_Registered.LegalisationChange.change_emp_request');
-    }
     public function change_emp_payment()
     {
         return view('WelfareCentre.WSC_Registered.LegalisationChange.change_emp_payment');
