@@ -119,7 +119,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     });
     // change-of-employer
     Route::group(['prefix' => '/change-of-employer', 'as' => 'changeOfEmployer.'], function () {
-        Route::get('requests', 'PaymentServiceController@requests')->name('requests');
+        Route::get('requests', 'ChangeEmployerServiceController@requests')->name('requests');
     });
 
     Route::get('/change_emp_payment', 'WSC_RegisteredController@change_emp_payment')->name('change_emp_payment');

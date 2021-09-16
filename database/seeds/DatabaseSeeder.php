@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ExtensionPassportSeeder::class);
         $this->call(SubmittedTravelEnquirySeeder::class);
         $this->call(TravelEnquirySeeder::class);
+        $this->call(ChangeEmployerServiceSeeder::class);
         $this->call(PaymentServiceSeeder::class);
         $this->call(AmnestyServiceSeeder::class);
         $this->call(ADRServiceSeeder::class);

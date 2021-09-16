@@ -111,7 +111,7 @@
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Change of employer </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.change_emp_request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfEmployer.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
                                         <li><a href="{{ route('WelfareCentre.change_emp_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
                                         <li><a href="{{ route('WelfareCentre.change_emp_paid') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
                                         <li><a href="{{ route('WelfareCentre.change_emp_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
