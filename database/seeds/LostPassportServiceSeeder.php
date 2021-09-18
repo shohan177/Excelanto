@@ -27,7 +27,7 @@ class LostPassportServiceSeeder extends Seeder
                 'spouse_mobile'  => rand(50, 500),
                 'salary'  => rand(5000, 50000),
                 'comments'  => 'Demo Comments',
-                'service_status'  => 'Forwarded',
+                'service_status'  => 'Open',
                 'fees'  => 200,
                 'delivery_type'  => null,
                 'delivery_to'  => null,
