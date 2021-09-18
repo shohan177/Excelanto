@@ -50,18 +50,36 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr role="row" class="odd">
-                                        <td>1</td>
-                                        <td>shuvo</td>
-                                        <td>shundorban</td>
-                                        <td>2020/12/28 03:47:21pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-primary btn-xs update">Sent via post</button></td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Approved</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#" target="_blank">
-                                                <i class="fa fa-eye"></i></a></td>
-                                    </tr>
+                                    @foreach ($newPassportServices as $newPassportService)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $newPassportService->candidate->candidate_name }}</td>
+                                            <td>{{ $newPassportService->delivery_to }}</td>
+                                            <td>{{ $newPassportService->created_at }}</td>
+                                            <td>
+                                                @if ($newPassportService->service_status == 'Open')
+                                                    <button type="button" class="btn btn-success btn-xs">New</button>
+                                                @elseif($newPassportService->service_status == "On process")
+                                                    <button type="button" class="btn btn-success btn-xs">On process</button>
+                                                @elseif($newPassportService->service_status == "Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
+                                                @elseif($newPassportService->service_status == "Not Completed")
+                                                    <button type="button" class="btn btn-success btn-xs">Not Completed</button>
+                                                @elseif($newPassportService->service_status == "Approved")
+                                                    <button type="button" class="btn btn-success btn-xs">Approved</button>
+                                                @elseif($newPassportService->service_status == "Rejected")
+                                                    <button type="button" class="btn btn-danger btn-xs">Rejected</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-info btn-xs">{{ $newPassportService->service_status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" target="_blank" href="{{ asset($newPassportService->new_passport) }}">
+                                                    <i class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -69,9 +87,8 @@
                                         <th>User name</th>
                                         <th>Delivered to</th>
                                         <th>Applied on</th>
-                                        <th>Delivery</th>
-                                        <th>Legalisation</th>
-                                        <th>Document</th>
+                                        <th>Delivery Status</th>
+                                        <th>Passport</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -85,7 +102,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>

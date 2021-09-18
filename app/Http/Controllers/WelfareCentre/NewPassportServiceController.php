@@ -32,7 +32,7 @@ class NewPassportServiceController extends Controller
 
     public function delivery()
     {
-        $newPassportServices = NewPassportService::where('service_status','!=', null)->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        $newPassportServices = NewPassportService::where('delivery_status','!=', null)->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
         return view('WelfareCentre.WSC_Registered.newPassport.delivery', compact('newPassportServices'));
     }
 
@@ -119,7 +119,7 @@ class NewPassportServiceController extends Controller
 
         $newPassportService = NewPassportService::findOrFail($id);
 
-        $newPassportService->delivery_type = $request->deliveryStatus;
+        $newPassportService->delivery_status = $request->deliveryStatus;
         $newPassportService->delivery_to = $request->deliveryTo;
         if ($request->hasFile('passport')) {
             $image = $request->file('passport');
