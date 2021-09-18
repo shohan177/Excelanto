@@ -165,6 +165,10 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::get('payments', 'NewPassportServiceController@payments')->name('payments');
         Route::get('paids', 'NewPassportServiceController@paids')->name('paids');
         Route::get('delivery', 'NewPassportServiceController@delivery')->name('delivery');
+        Route::get('upload/{id}', 'NewPassportServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'NewPassportServiceController@update')->name('update');
+
+
     });
 
     Route::get('/lost_passport_request', 'WSC_RegisteredController@lost_passport_request')->name('lost_passport_request');

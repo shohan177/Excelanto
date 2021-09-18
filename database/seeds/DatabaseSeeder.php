@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(JobPostSeeder::class);
         $this->call(AppliedJobSeeder::class);
         $this->call(CandidateSeeder::class);
-        $this->call(NewPassportSeeder::class);
+        $this->call(NewPassportServiceSeeder::class);
         $this->call(LostPassportSeeder::class);
         $this->call(ExtensionPassportSeeder::class);
         $this->call(SubmittedTravelEnquirySeeder::class);
