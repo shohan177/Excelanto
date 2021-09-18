@@ -42,6 +42,32 @@ class NewPassportServiceController extends Controller
         return view('WelfareCentre.WSC_Registered.newPassport.upload', compact('newPassportService'));
     }
 
+    public function viewReceipt($id)
+    {
+        $newPassportService = NewPassportService::findOrFail($id);
+        return view('WelfareCentre.WSC_Registered.newPassport.receipt', compact('newPassportService'));
+    }
+
+    public function statusUpdete($id)
+    {
+        $newPassportService = NewPassportService::findOrFail($id);
+        if ($newPassportService->service_status == "On Process") {
+            $newPassportService->service_status = 'Paid';
+        }
+        try {
+            $newPassportService->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully Updated',
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'type' => 'error',
+                'message' => $exception->getMessage(),
+            ]);
+        }
+    }
+
     public function update(Request $request, $id)
     {
         $request->validate([

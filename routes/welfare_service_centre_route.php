@@ -167,6 +167,10 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::get('delivery', 'NewPassportServiceController@delivery')->name('delivery');
         Route::get('upload/{id}', 'NewPassportServiceController@upload')->name('upload');
         Route::post('update/{id}', 'NewPassportServiceController@update')->name('update');
+        Route::get('receipt/{id}', 'NewPassportServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'NewPassportServiceController@statusUpdete')->name('statusUpdete');
+
+
 
 
     });
