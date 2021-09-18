@@ -147,8 +147,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
 
     // legal-aid-service
     Route::get('/legal-aid-request', 'LegalAidServiceController@request')->name('legalAid.request');
-    Route::get('/legal-aid-status/{id}', 'LegalAidServiceController@legalAidStatus')->name('legalAid.Status');
-    Route::post('/legal-aid-status-update/{id}', 'LegalAidServiceController@legalAidStatusUpdete')->name('legalAid.StatusUpdete');
+    Route::get('/legal-aid-status/{id}', 'LegalAidServiceController@status')->name('legalAid.status');
+    Route::post('/legal-aid-status-update/{id}', 'LegalAidServiceController@statusUpdete')->name('legalAid.statusUpdete');
 
 
 

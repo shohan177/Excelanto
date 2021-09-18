@@ -15,13 +15,13 @@ class LegalAidServiceController extends Controller
         return view('WelfareCentre.WSC_Registered.legalAid.request', compact('legalAids'));
     }
 
-    public function legalAidStatus($id)
+    public function status($id)
     {
         $legalAid = LegalAidService::findOrFail($id);
         return view('WelfareCentre.WSC_Registered.legalAid.status', compact('legalAid'));
     }
 
-    public function legalAidStatusUpdete(Request $request, $id)
+    public function statusUpdete(Request $request, $id)
     {
         $request->validate([
             'serviceStatus' => 'required'
