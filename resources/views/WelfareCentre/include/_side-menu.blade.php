@@ -148,10 +148,10 @@
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Lost passport </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.lost_passport_request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.lost_passport_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.lost_passport_status') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.lost_passport_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.lostPassport.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.lostPassport.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.lostPassport.status') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.lostPassport.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                                 <li class="has_sub">

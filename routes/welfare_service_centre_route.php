@@ -171,15 +171,21 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::post('status-update/{id}', 'NewPassportServiceController@statusUpdete')->name('statusUpdete');
         Route::get('delivery-status/{id}', 'NewPassportServiceController@deliveryStatus')->name('deliveryStatus');
         Route::post('details-update/{id}', 'NewPassportServiceController@detailsUpdate')->name('detailsUpdate');
-
-
-
     });
 
-    Route::get('/lost_passport_request', 'WSC_RegisteredController@lost_passport_request')->name('lost_passport_request');
-    Route::get('/lost_passport_payment', 'WSC_RegisteredController@lost_passport_payment')->name('lost_passport_payment');
-    Route::get('/lost_passport_status', 'WSC_RegisteredController@lost_passport_status')->name('lost_passport_status');
-    Route::get('/lost_passport_delivery', 'WSC_RegisteredController@lost_passport_delivery')->name('lost_passport_delivery');
+    // lost-passport-service
+    Route::group(['prefix' => '/lost-passport', 'as' => 'lostPassport.'], function () {
+        Route::get('requests', 'LostPassportServiceController@requests')->name('requests');
+        Route::get('payments', 'LostPassportServiceController@payments')->name('payments');
+        Route::get('status', 'LostPassportServiceController@status')->name('status');
+        Route::get('delivery', 'LostPassportServiceController@delivery')->name('delivery');
+        Route::get('upload/{id}', 'LostPassportServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'LostPassportServiceController@update')->name('update');
+        Route::get('receipt/{id}', 'LostPassportServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'LostPassportServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('delivery-status/{id}', 'LostPassportServiceController@deliveryStatus')->name('deliveryStatus');
+        Route::post('details-update/{id}', 'LostPassportServiceController@detailsUpdate')->name('detailsUpdate');
+    });
 
     Route::get('/renew_passport_request', 'WSC_RegisteredController@renew_passport_request')->name('renew_passport_request');
     Route::get('/renew_passport_payment', 'WSC_RegisteredController@renew_passport_payment')->name('renew_passport_payment');
