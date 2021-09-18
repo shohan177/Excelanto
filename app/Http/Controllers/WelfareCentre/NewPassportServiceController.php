@@ -24,15 +24,15 @@ class NewPassportServiceController extends Controller
         return view('WelfareCentre.WSC_Registered.newPassport.payments', compact('newPassportServices'));
     }
 
-    public function paids()
+    public function status()
     {
-        $newPassportServices =  NewPassportService::where('service_status', 'Paid')->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
-        return view('WelfareCentre.WSC_Registered.newPassport.paids', compact('newPassportServices'));
+        $newPassportServices =  NewPassportService::where('service_status','!=',['On Process','Open'])->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('WelfareCentre.WSC_Registered.newPassport.status', compact('newPassportServices'));
     }
 
     public function delivery()
     {
-        $newPassportServices = NewPassportService::whereIn('service_status', ['Approved','Rejected'])->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        $newPassportServices = NewPassportService::where('service_status','!=', null)->where('wsc_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
         return view('WelfareCentre.WSC_Registered.newPassport.delivery', compact('newPassportServices'));
     }
 
@@ -40,6 +40,12 @@ class NewPassportServiceController extends Controller
     {
         $newPassportService = NewPassportService::findOrFail($id);
         return view('WelfareCentre.WSC_Registered.newPassport.upload', compact('newPassportService'));
+    }
+
+    public function deliveryStatus($id)
+    {
+        $newPassportService = NewPassportService::findOrFail($id);
+        return view('WelfareCentre.WSC_Registered.newPassport.delivery-status', compact('newPassportService'));
     }
 
     public function viewReceipt($id)
@@ -108,19 +114,20 @@ class NewPassportServiceController extends Controller
     {
         $request->validate([
             'deliveryType' => 'required',
+            'deliveryStatus' => 'required',
         ]);
+
         $newPassportService = NewPassportService::findOrFail($id);
 
         $newPassportService->delivery_type = $request->deliveryStatus;
         $newPassportService->delivery_to = $request->deliveryTo;
-        $newPassportService->service_status = $request->legalStatus;
-        if ($request->hasFile('document')) {
-            $image = $request->file('document');
-            $folder_path = 'uploads/document/';
+        if ($request->hasFile('passport')) {
+            $image = $request->file('passport');
+            $folder_path = 'uploads/passport/';
             $image_new_name = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $newPassportService->document = $folder_path . $image_new_name;
+            $newPassportService->new_passport = $folder_path . $image_new_name;
         }
         try {
             $newPassportService->save();

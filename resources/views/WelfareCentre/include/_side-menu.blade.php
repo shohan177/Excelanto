@@ -141,7 +141,7 @@
                                     <ul class="list-unstyled">
                                         <li><a href="{{ route('WelfareCentre.newPassport.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
                                         <li><a href="{{ route('WelfareCentre.newPassport.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.newPassport.paids') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.newPassport.status') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
                                         <li><a href="{{ route('WelfareCentre.newPassport.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
