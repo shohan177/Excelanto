@@ -6,6 +6,9 @@ use App\ExtensionPassportService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ExtensionPassportServiceController extends Controller
 {
@@ -45,16 +48,11 @@ class ExtensionPassportServiceController extends Controller
         return view('WelfareCentre.WSC_Registered.extensionPassport.receipt', compact('extensionPassportService'));
     }
 
-
-
     public function deliveryStatus($id)
     {
         $extensionPassportService = ExtensionPassportService::findOrFail($id);
         return view('WelfareCentre.WSC_Registered.extensionPassport.delivery-status', compact('extensionPassportService'));
     }
-
-
-
 
     public function statusUpdete($id)
     {
@@ -95,14 +93,9 @@ class ExtensionPassportServiceController extends Controller
         }
     }
 
-
-
-
-
     public function detailsUpdate(Request $request, $id)
     {
         $request->validate([
-            'deliveryType' => 'required',
             'deliveryStatus' => 'required',
         ]);
 
