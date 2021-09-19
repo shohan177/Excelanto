@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'Renew Passport  delivery')
+@section('title', 'Renewal Passport Delivery Status')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -20,12 +20,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Renew Passport  delivery</h4>
+                        <h4 class="pull-left page-title">Renewal Passport Delivery Status</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Welfare Centre</a></li>
                             <li><a href="#"> WSC registered users
                                 </a></li>
-                            <li class="active">Renew Passport  delivery</li>
+                            <li class="active">Renewal Passport Delivery Status</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Renew Passport  delivery</h3>
+                            <h3 class="panel-title">Renewal Passport Delivery Status</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
@@ -50,18 +50,30 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr role="row" class="odd">
-                                        <td>1</td>
-                                        <td>shuvo</td>
-                                        <td>shundorban</td>
-                                        <td>2020/12/28 03:47:21pm</td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-primary btn-xs update">Sent via post</button></td>
-                                        <td><button type="button" name="Ticket-Issued"
-                                                class="btn btn-success btn-xs update">Approved</button></td>
-                                        <td><a class="btn btn-info btn-xs" href="#" target="_blank">
-                                                <i class="fa fa-eye"></i></a></td>
-                                    </tr>
+                                    @foreach ($extensionPassportServices as $extensionPassportService)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $extensionPassportService->candidate->candidate_name }}</td>
+                                            <td>{{ $extensionPassportService->delivery_to }}</td>
+                                            <td>{{ $extensionPassportService->created_at }}</td>
+                                            <td>
+                                                @if ($extensionPassportService->delivery_status == 'Sent via courier')
+                                                    <button type="button" class="btn btn-primary btn-xs">Sent via courier</button>
+                                                @elseif($extensionPassportService->delivery_status == "Sent via post")
+                                                    <button type="button" class="btn btn-success btn-xs">Sent via post</button>
+                                                @elseif($extensionPassportService->delivery_status == "Hand delivered")
+                                                    <button type="button" class="btn btn-success btn-xs">Hand delivered</button>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn btn-info btn-xs">{{ $extensionPassportService->delivery_status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" target="_blank" href="{{ asset($extensionPassportService->passport) }}">
+                                                    <i class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -69,9 +81,8 @@
                                         <th>User name</th>
                                         <th>Delivered to</th>
                                         <th>Applied on</th>
-                                        <th>Delivery</th>
-                                        <th>Legalisation</th>
-                                        <th>Document</th>
+                                        <th>Delivery Status</th>
+                                        <th>Passport</th>
                                     </tr>
                                 </tfoot>
                             </table>

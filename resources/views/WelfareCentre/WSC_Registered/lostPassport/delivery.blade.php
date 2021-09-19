@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'Lost Passport  delivery')
+@section('title', 'Lost Passport delivery')
 @section('DataTableCss')
     <!-- DataTables -->
     <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -20,12 +20,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Lost Passport  delivery</h4>
+                        <h4 class="pull-left page-title">Lost Passport delivery</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Welfare Centre</a></li>
                             <li><a href="#"> WSC registered users
                                 </a></li>
-                            <li class="active">Lost Passport  delivery</li>
+                            <li class="active">Lost Passport delivery</li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Lost Passport  delivery</h3>
+                            <h3 class="panel-title">Lost Passport delivery</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
@@ -45,7 +45,7 @@
                                         <th>User name</th>
                                         <th>Delivered to</th>
                                         <th>Applied on</th>
-                                        <th>Status</th>
+                                        <th>Delivery Status</th>
                                         <th>Passport</th>
                                     </tr>
                                 </thead>
@@ -57,25 +57,23 @@
                                             <td>{{ $lostPassportService->delivery_to }}</td>
                                             <td>{{ $lostPassportService->created_at }}</td>
                                             <td>
-                                                @if ($lostPassportService->service_status == 'Open')
-                                                    <button type="button" class="btn btn-success btn-xs">New</button>
-                                                @elseif($lostPassportService->service_status == "On process")
-                                                    <button type="button" class="btn btn-success btn-xs">On process</button>
-                                                @elseif($lostPassportService->service_status == "Completed")
-                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
-                                                @elseif($lostPassportService->service_status == "Not Completed")
-                                                    <button type="button" class="btn btn-success btn-xs">Not Completed</button>
-                                                @elseif($lostPassportService->service_status == "Approved")
-                                                    <button type="button" class="btn btn-success btn-xs">Approved</button>
-                                                @elseif($lostPassportService->service_status == "Rejected")
-                                                    <button type="button" class="btn btn-danger btn-xs">Rejected</button>
+                                                @if ($lostPassportService->delivery_status == 'Sent via courier')
+                                                    <button type="button" class="btn btn-primary btn-xs">Sent via
+                                                        courier</button>
+                                                @elseif($lostPassportService->delivery_status == "Sent via post")
+                                                    <button type="button" class="btn btn-success btn-xs">Sent via
+                                                        post</button>
+                                                @elseif($lostPassportService->delivery_status == "Hand delivered")
+                                                    <button type="button" class="btn btn-success btn-xs">Hand
+                                                        delivered</button>
                                                 @else
                                                     <button type="button"
-                                                        class="btn btn-info btn-xs">{{ $lostPassportService->service_status }}</button>
+                                                        class="btn btn-info btn-xs">{{ $lostPassportService->delivery_status }}</button>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-xs" target="_blank" href="{{ asset($lostPassportService->passport) }}">
+                                                <a class="btn btn-info btn-xs" target="_blank"
+                                                    href="{{ asset($lostPassportService->passport) }}">
                                                     <i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
@@ -87,7 +85,7 @@
                                         <th>User name</th>
                                         <th>Delivered to</th>
                                         <th>Applied on</th>
-                                        <th>Status</th>
+                                        <th>Delivery Status</th>
                                         <th>Passport</th>
                                     </tr>
                                 </tfoot>
@@ -102,7 +100,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>

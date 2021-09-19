@@ -57,25 +57,23 @@
                                             <td>{{ $newPassportService->delivery_to }}</td>
                                             <td>{{ $newPassportService->created_at }}</td>
                                             <td>
-                                                @if ($newPassportService->service_status == 'Open')
-                                                    <button type="button" class="btn btn-success btn-xs">New</button>
-                                                @elseif($newPassportService->service_status == "On process")
-                                                    <button type="button" class="btn btn-success btn-xs">On process</button>
-                                                @elseif($newPassportService->service_status == "Completed")
-                                                    <button type="button" class="btn btn-success btn-xs">Completed</button>
-                                                @elseif($newPassportService->service_status == "Not Completed")
-                                                    <button type="button" class="btn btn-success btn-xs">Not Completed</button>
-                                                @elseif($newPassportService->service_status == "Approved")
-                                                    <button type="button" class="btn btn-success btn-xs">Approved</button>
-                                                @elseif($newPassportService->service_status == "Rejected")
-                                                    <button type="button" class="btn btn-danger btn-xs">Rejected</button>
+                                                @if ($newPassportService->delivery_status == 'Sent via courier')
+                                                    <button type="button" class="btn btn-primary btn-xs">Sent via
+                                                        courier</button>
+                                                @elseif($newPassportService->delivery_status == "Sent via post")
+                                                    <button type="button" class="btn btn-success btn-xs">Sent via
+                                                        post</button>
+                                                @elseif($newPassportService->delivery_status == "Hand delivered")
+                                                    <button type="button" class="btn btn-success btn-xs">Hand
+                                                        delivered</button>
                                                 @else
                                                     <button type="button"
-                                                        class="btn btn-info btn-xs">{{ $newPassportService->service_status }}</button>
+                                                        class="btn btn-info btn-xs">{{ $newPassportService->delivery_status }}</button>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-xs" target="_blank" href="{{ asset($newPassportService->new_passport) }}">
+                                                <a class="btn btn-info btn-xs" target="_blank"
+                                                    href="{{ asset($newPassportService->new_passport) }}">
                                                     <i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
