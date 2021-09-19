@@ -1,6 +1,6 @@
 @extends("WelfareCentre/master")
 
-@section('title', 'Lost Passport Service')
+@section('title', 'Passport Renewal / Extension')
 @section('DataTableCss')
 
 
@@ -73,7 +73,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Lost Passport Service</td>
+                                                <td>Passport Renewal / Extension</td>
                                                 <td>1</td>
                                                 <td>$64.50</td>
                                             </tr>
@@ -97,12 +97,12 @@
                                     <button type='button' onclick='printDiv();' class="btn btn-default" id="printNow"><i
                                             class="fa fa-print"></i>Print</button>
 
-                                    @if ($lostPassportService->service_status == 'On Process')
+                                    @if ($extensionPassportService->service_status == 'On Process')
                                         <button style="margin-right: 5px;" class="btn btn-success float-right"
                                             onclick="approve(this)"
-                                            value="{{ route('WelfareCentre.lostPassport.statusUpdete', $lostPassportService->id) }}">
+                                            value="{{ route('WelfareCentre.extensionPassport.statusUpdete', $extensionPassportService->id) }}">
                                             <i class="fa fa-credit-card-alt"></i> Submit Payment</button>
-                                    @elseif ($lostPassportService->service_status == 'Paid')
+                                    @elseif ($extensionPassportService->service_status == 'Paid')
                                         <button type="button" style="margin-right: 5px;" class="btn btn-success float-right"
                                             disabled><i class="fa fa-credit-card-alt"></i> Already Submitted!</button>
                                     @else

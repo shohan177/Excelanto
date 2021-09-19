@@ -33,22 +33,10 @@ class ExtensionPassportServiceController extends Controller
         return view('WelfareCentre.WSC_Registered.extensionPassport.delivery', compact('extensionPassportServices'));
     }
 
-
-
-
     public function upload($id)
     {
         $extensionPassportService = ExtensionPassportService::findOrFail($id);
         return view('WelfareCentre.WSC_Registered.extensionPassport.upload', compact('extensionPassportService'));
-    }
-
-
-    
-
-    public function deliveryStatus($id)
-    {
-        $extensionPassportService = ExtensionPassportService::findOrFail($id);
-        return view('WelfareCentre.WSC_Registered.extensionPassport.delivery-status', compact('extensionPassportService'));
     }
 
     public function viewReceipt($id)
@@ -56,6 +44,17 @@ class ExtensionPassportServiceController extends Controller
         $extensionPassportService = ExtensionPassportService::findOrFail($id);
         return view('WelfareCentre.WSC_Registered.extensionPassport.receipt', compact('extensionPassportService'));
     }
+
+
+
+    public function deliveryStatus($id)
+    {
+        $extensionPassportService = ExtensionPassportService::findOrFail($id);
+        return view('WelfareCentre.WSC_Registered.extensionPassport.delivery-status', compact('extensionPassportService'));
+    }
+
+
+
 
     public function statusUpdete($id)
     {
@@ -95,6 +94,10 @@ class ExtensionPassportServiceController extends Controller
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
     }
+
+
+
+
 
     public function detailsUpdate(Request $request, $id)
     {
