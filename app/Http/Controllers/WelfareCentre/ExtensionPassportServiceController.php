@@ -33,11 +33,17 @@ class ExtensionPassportServiceController extends Controller
         return view('WelfareCentre.WSC_Registered.extensionPassport.delivery', compact('extensionPassportServices'));
     }
 
+
+
+
     public function upload($id)
     {
         $extensionPassportService = ExtensionPassportService::findOrFail($id);
         return view('WelfareCentre.WSC_Registered.extensionPassport.upload', compact('extensionPassportService'));
     }
+
+
+    
 
     public function deliveryStatus($id)
     {

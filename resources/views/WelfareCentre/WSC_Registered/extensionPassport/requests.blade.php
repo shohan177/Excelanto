@@ -78,7 +78,7 @@
                                                     href="{{ route('WelfareCentre.showCandidateProfile', $extensionPassportService->candidate->offered_candidate->id) }}">
                                                     <i class="fa fa-eye"></i></a>
                                                 <a class="btn btn-primary btn-xs"
-                                                    href="{{ route('WelfareCentre.lostPassport.upload', $extensionPassportService->id) }}">
+                                                    href="{{ route('WelfareCentre.extensionPassport.upload', $extensionPassportService->id) }}">
                                                     <i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
