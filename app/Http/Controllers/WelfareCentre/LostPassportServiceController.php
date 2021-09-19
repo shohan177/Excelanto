@@ -85,23 +85,6 @@ class LostPassportServiceController extends Controller
         $lostPassportService->delivery_type = $request->deliveryType;
         $lostPassportService->fees = $request->fees;
 
-        if ($request->hasFile('photo')) {
-            $image             = $request->file('photo');
-            $folder_path       = 'uploads/profile/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $lostPassportService->photo   = $folder_path . $image_new_name;
-        }
-
-        if ($request->hasFile('biometric')) {
-            $image             = $request->file('biometric');
-            $folder_path       = 'uploads/biometric/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $lostPassportService->biometric   = $folder_path . $image_new_name;
-        }
         try {
             $lostPassportService->save();
             return back()->withToastSuccess('Successfully Updated.');
