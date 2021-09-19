@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Str;
 
-class ExtensionPassportSeeder extends Seeder
+class ExtensionPassportServiceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,7 +25,7 @@ class ExtensionPassportSeeder extends Seeder
                 'cpr'  => rand(5000, 50000),
                 'salary_type'  => rand(5000, 50000),
                 'comments'  => 'Demo Comments',
-                'service_status'  => 'Forwarded',
+                'service_status'  => 'Open',
                 'fees'  => 200,
                 'delivery_type'  => null,
                 'delivery_to'  => null,
@@ -37,6 +37,6 @@ class ExtensionPassportSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 // 'deleted' => Carbon::now()
             ]);
-        } //
+        }
     }
 }

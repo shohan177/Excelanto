@@ -157,10 +157,10 @@
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Extension - Renewal </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.renew_passport_request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.renew_passport_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.renew_passport_status') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.renew_passport_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.extensionPassport.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.extensionPassport.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.extensionPassport.status') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.extensionPassport.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                             </ul>

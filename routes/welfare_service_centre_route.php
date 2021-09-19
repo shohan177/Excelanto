@@ -187,10 +187,19 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
         Route::post('details-update/{id}', 'LostPassportServiceController@detailsUpdate')->name('detailsUpdate');
     });
 
-    Route::get('/renew_passport_request', 'WSC_RegisteredController@renew_passport_request')->name('renew_passport_request');
-    Route::get('/renew_passport_payment', 'WSC_RegisteredController@renew_passport_payment')->name('renew_passport_payment');
-    Route::get('/renew_passport_status', 'WSC_RegisteredController@renew_passport_status')->name('renew_passport_status');
-    Route::get('/renew_passport_delivery', 'WSC_RegisteredController@renew_passport_delivery')->name('renew_passport_delivery');
+    // extension-passport-service
+    Route::group(['prefix' => '/extension-passport', 'as' => 'extensionPassport.'], function () {
+        Route::get('requests', 'ExtensionPassportServiceController@requests')->name('requests');
+        Route::get('payments', 'ExtensionPassportServiceController@payments')->name('payments');
+        Route::get('status', 'ExtensionPassportServiceController@status')->name('status');
+        Route::get('delivery', 'ExtensionPassportServiceController@delivery')->name('delivery');
+        Route::get('upload/{id}', 'ExtensionPassportServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'ExtensionPassportServiceController@update')->name('update');
+        Route::get('receipt/{id}', 'ExtensionPassportServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'ExtensionPassportServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('delivery-status/{id}', 'ExtensionPassportServiceController@deliveryStatus')->name('deliveryStatus');
+        Route::post('details-update/{id}', 'ExtensionPassportServiceController@detailsUpdate')->name('detailsUpdate');
+    });
 
     //awareness event
     Route::group(['prefix' => '/awareness-event', 'as' => 'awarenessEvent.'], function () {
