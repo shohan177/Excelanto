@@ -64,7 +64,7 @@
                                                 <span class="badge badge-warning">{{ $user->active_status }}</span>
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-sm" href="#">
+                                                <a class="btn btn-info btn-sm" href="{{ route('BangladeshAdmin.company.showCompanyProfile', $user->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                             </td>

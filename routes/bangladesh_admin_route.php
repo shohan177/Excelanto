@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin', 'as' => 'BangladeshAdmin.', 'middleware' => ['auth', 'bangladesh-admin']], function () {
     Route::get('/dashboard', 'BangladeshAdminDashboardController@dashboard')->name('dashboard');
 
+    // company
+    Route::get('show-company-profile/{user_id}', 'CompanyController@showCompanyProfile')->name('company.showCompanyProfile');
+    Route::post('company-request-approve/{company_id}', 'CompanyController@approveNow')->name('company.approveNow');
+    Route::post('company-request-reject/{company_id}', 'CompanyController@rejectNow')->name('company.rejectNow');
+
+
     //    Recruiting agency
     Route::get('company_request', 'RecruitingAgencieController@company_request')->name('company_request');
     Route::post('company_request-approve/{company_id}', 'RecruitingAgencieController@approveNow')->name('company_requestApprove');
