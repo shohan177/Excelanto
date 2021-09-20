@@ -13,17 +13,17 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class VisaProcessController extends Controller
 {
-    public function stamping_requested()
+    public function stampingRequested()
     {
         $offeredCandidates = OfferedCandidate::where('result_status', 'Visa-Stamping-Request')->orderBy('id', 'DESC')->get();
         return view('UaeEmbassy.VisaProcess.stamping_requested', compact('offeredCandidates'));
     }
-    public function stamping_approved()
+    public function stampingApproved()
     {
         $offeredCandidates = OfferedCandidate::where('result_status', 'Visa-Stamping-Approved')->orderBy('id', 'DESC')->get();
         return view('UaeEmbassy.VisaProcess.stamping_approved', compact('offeredCandidates'));
     }
-    public function stamping_rejected()
+    public function stampingRejected()
     {
         $offeredCandidates = OfferedCandidate::where('result_status', 'Visa-Stamping-Rejected')->orderBy('id', 'DESC')->get();
         return view('UaeEmbassy.VisaProcess.stamping_rejected', compact('offeredCandidates'));
