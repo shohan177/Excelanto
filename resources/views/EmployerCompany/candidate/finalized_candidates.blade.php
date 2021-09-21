@@ -79,7 +79,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                               <a class="btn btn-info btn-xs" href="{{ route('EmployerCompany.candidate.showOfferedCandidate', $offeredCandidate->id) }}"><i class="fa fa-eye"></i></a>
+                                               <a class="btn btn-info btn-xs" href="{{ route('EmployerCompany.candidates.showOfferedCandidate', $offeredCandidate->id) }}"><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

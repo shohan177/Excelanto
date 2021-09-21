@@ -71,7 +71,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-xs"
-                                                    href="{{ route('EmployerCompany.candidate.showBookedCandidate', $offeredCandidate->id) }}"><i
+                                                    href="{{ route('EmployerCompany.candidates.showBookedCandidate', $offeredCandidate->id) }}"><i
                                                         class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>

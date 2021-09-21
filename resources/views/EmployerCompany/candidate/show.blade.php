@@ -63,7 +63,7 @@
                                     <button type="button" disabled class="btn btn-primary btn-block "> <i
                                             class="fa fa-pencil mr-1"></i> Result</b></button>
                                 @else
-                                    <a href="{{ route('EmployerCompany.candidate.editCandidateResult', $candidate->id) }}"
+                                    <a href="{{ route('EmployerCompany.candidates.editCandidateResult', $candidate->id) }}"
                                         class="btn btn-primary btn-block"><b><i class="fa fa-pencil mr-1"></i>Result</b></a>
                                 @endif
                             </ul>
