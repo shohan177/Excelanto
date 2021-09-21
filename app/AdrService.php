@@ -19,4 +19,13 @@ class AdrService extends Model
         'created_id',
         'deleted'
     ];
+
+    public function candidate()
+    {
+        return $this->belongsTo(Candidate::class, 'candidate_id');
+    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
 }

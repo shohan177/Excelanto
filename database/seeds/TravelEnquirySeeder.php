@@ -25,6 +25,7 @@ class TravelEnquirySeeder extends Seeder
                 'oss_comments'  => 'Demo Comment',
                 'enquiry_status'  => 'New',
                 'created_date'  => Carbon::now(),
+                'created_at'  => Carbon::now(),
                 // 'deleted'  => Carbon::now(),
             ]);
         }

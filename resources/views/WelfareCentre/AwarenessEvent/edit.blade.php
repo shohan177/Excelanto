@@ -30,7 +30,7 @@
                             <h3 class="panel-title">Edit awarenss event/programme</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" method="POST" action="{{ route('WelfareCentre.awarenessevent.update', $awarenessEvent->id) }}" enctype="multipart/form-data">
+                            <form role="form" method="POST" action="{{ route('WelfareCentre.awarenessEvent.update', $awarenessEvent->id) }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <!-- Basic example -->

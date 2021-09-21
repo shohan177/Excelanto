@@ -9,9 +9,9 @@
                  <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-building"></i></i> <span> Visa Process </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('UaeEmbassy.stamping_requested') }}"><i class="fa fa-arrow-circle-right"></i> Stamping Requests</a></li>
-                        <li><a href="{{ route('UaeEmbassy.stamping_approved') }}"><i class="fa fa-arrow-circle-right"></i> Stamping Approved</a></li>
-                        <li><a href="{{ route('UaeEmbassy.stamping_rejected') }}"><i class="fa fa-arrow-circle-right"></i> Stamping Rejected</a></li>
+                        <li><a href="{{ route('UaeEmbassy.stampingRequested') }}"><i class="fa fa-arrow-circle-right"></i> Stamping Requests</a></li>
+                        <li><a href="{{ route('UaeEmbassy.stampingApproved') }}"><i class="fa fa-arrow-circle-right"></i> Stamping Approved</a></li>
+                        <li><a href="{{ route('UaeEmbassy.stampingRejected') }}"><i class="fa fa-arrow-circle-right"></i> Stamping Rejected</a></li>
                     </ul>
                 </li>
             </ul>

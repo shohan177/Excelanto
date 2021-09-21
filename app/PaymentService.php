@@ -11,7 +11,7 @@ class PaymentService extends Model
         'candidate_id',
         'company_id',
         'wsc_id',
-        'salary_type',
+        'service_type',
         'cpr',
         'comments',
         'payment_application',
@@ -25,4 +25,13 @@ class PaymentService extends Model
         'created_id',
         'deleted'
     ];
+
+    public function candidate()
+    {
+        return $this->belongsTo(Candidate::class, 'candidate_id');
+    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
 }

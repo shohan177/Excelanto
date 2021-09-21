@@ -68,21 +68,21 @@
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Registration </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.registration_certificate_requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.certificate_registration_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.registration_certificate') }}"><i class="fa fa-arrow-circle-right"></i> Certificate status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.registration_delivery_status') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.registrationCertificate.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.registrationCertificate.payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.registrationCertificate.paids') }}"><i class="fa fa-arrow-circle-right"></i> Certificate status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.registrationCertificate.delivered') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.charity_request') }}">
+                            <a href="{{ route('WelfareCentre.charity.request') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Charity request
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.adr_request') }}">
+                            <a href="{{ route('WelfareCentre.adr.request') }}">
                                 <i class="fa fa-arrow-circle-right"></i>ADR request
                             </a>
                         </li>
@@ -92,44 +92,44 @@
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> By Government Amnesty </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.legal_by_govt_request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.legal_by_govt_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.legal_by_govt_paid') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.legal_by_govt_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.legalByGovt.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.legalByGovt.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.legalByGovt.paids') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.legalByGovt.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
 
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Regular by penalty </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.legal_regular_request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.legal_regular_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.legal_regular_paid') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.legal_regular_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.legalByRegular.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.legalByRegular.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.legalByRegular.paids') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.legalByRegular.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Change of employer </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.change_emp_request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.change_emp_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.change_emp_paid') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.change_emp_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfEmployer.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfEmployer.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfEmployer.paids') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfEmployer.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Change of visa status </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.change_visa_request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.change_visa_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.change_visa_paid') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.change_visa_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfVisa.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfVisa.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfVisa.paids') }}"><i class="fa fa-arrow-circle-right"></i> Legalisation status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.changeOfVisa.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.legal_aid_request') }}">
+                            <a href="{{ route('WelfareCentre.legalAid.request') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Legal aid request
                             </a>
                         </li>
@@ -139,28 +139,28 @@
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> New passport </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.new_passport_request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.new_passport_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.new_passport_status') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.new_passport_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.newPassport.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.newPassport.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.newPassport.status') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.newPassport.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Lost passport </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.lost_passport_request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.lost_passport_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.lost_passport_status') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.lost_passport_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.lostPassport.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.lostPassport.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.lostPassport.status') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.lostPassport.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                                 <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Extension - Renewal </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ route('WelfareCentre.renew_passport_request') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
-                                        <li><a href="{{ route('WelfareCentre.renew_passport_payment') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
-                                        <li><a href="{{ route('WelfareCentre.renew_passport_status') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
-                                        <li><a href="{{ route('WelfareCentre.renew_passport_delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.extensionPassport.requests') }}"><i class="fa fa-arrow-circle-right"></i>  Requests</a></li>
+                                        <li><a href="{{ route('WelfareCentre.extensionPassport.payments') }}"><i class="fa fa-arrow-circle-right"></i> Payment receipt</a></li>
+                                        <li><a href="{{ route('WelfareCentre.extensionPassport.status') }}"><i class="fa fa-arrow-circle-right"></i> Passport status</a></li>
+                                        <li><a href="{{ route('WelfareCentre.extensionPassport.delivery') }}"><i class="fa fa-arrow-circle-right"></i> Delivery status</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -174,17 +174,17 @@
                         </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="{{ route('WelfareCentre.awarenessevent.create') }}">
+                            <a href="{{ route('WelfareCentre.awarenessEvent.create') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Create new event
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.awarenessevent.upcoming_events') }}">
+                            <a href="{{ route('WelfareCentre.awarenessEvent.upcoming_events') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Upcoming events
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('WelfareCentre.awarenessevent.total_events') }}">
+                            <a href="{{ route('WelfareCentre.awarenessEvent.total_events') }}">
                                 <i class="fa fa-arrow-circle-right"></i>Total events
                             </a>
                         </li>

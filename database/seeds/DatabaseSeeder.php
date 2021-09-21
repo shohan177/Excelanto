@@ -20,11 +20,18 @@ class DatabaseSeeder extends Seeder
         $this->call(JobPostSeeder::class);
         $this->call(AppliedJobSeeder::class);
         $this->call(CandidateSeeder::class);
-        $this->call(NewPassportSeeder::class);
-        $this->call(LostPassportSeeder::class);
-        $this->call(ExtensionPassportSeeder::class);
+        $this->call(NewPassportServiceSeeder::class);
+        $this->call(LostPassportServiceSeeder::class);
+        $this->call(ExtensionPassportServiceSeeder::class);
         $this->call(SubmittedTravelEnquirySeeder::class);
         $this->call(TravelEnquirySeeder::class);
+        $this->call(LegalAidServiceSeeder::class);
+        $this->call(ChangeVisaServiceSeeder::class);
+        $this->call(ChangeEmployerServiceSeeder::class);
+        $this->call(PaymentServiceSeeder::class);
+        $this->call(AmnestyServiceSeeder::class);
+        $this->call(ADRServiceSeeder::class);
+        $this->call(CharityServiceSeeder::class);
         $this->call(MeetAndGreetSeeder::class);
         $this->call(JailDeportationSeeder::class);
         $this->call(DeadbodyTransferSeeder::class);
@@ -32,5 +39,6 @@ class DatabaseSeeder extends Seeder
         $this->call(InsuranceServiceSeeder::class);
         $this->call(IssuanceCertificateSeeder::class);
         $this->call(AttestationCertificateSeeder::class);
+        $this->call(RegistrationCertificateSeeder::class);
     }
 }

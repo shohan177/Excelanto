@@ -80,7 +80,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $attestationCertificate->candidate->offered_candidate->id) }}"><i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-info btn-xs" href="{{ asset($attestationCertificate->document) }}" target="_blank"><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

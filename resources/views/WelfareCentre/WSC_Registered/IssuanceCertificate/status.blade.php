@@ -35,7 +35,7 @@
                             <div class="row">
                                 <dl class="row">
                                     <dt class="col-sm-4">Name</dt>
-                                    <dd class="col-sm-8">{{ $issuanceCertificate->candidate->candidate_name }}</dd>                                    <br>
+                                    <dd class="col-sm-8">{{ $issuanceCertificate->candidate->candidate_name }}</dd><br>
                                     <dt class="col-sm-4">Type of service</dt>
                                     <dd class="col-sm-8">{{ $issuanceCertificate->service_type }}</dd><br>
                                     <dt class="col-sm-4">Message</dt>

@@ -23,99 +23,192 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     Route::get('/show-candidate-profile/{offered_candidate_id}', 'CandidateController@showCandidateProfile')->name('showCandidateProfile');
     //WSC registered
     Route::get('/meet-greet-request', 'MeetAndGreetController@meet_greet_request')->name('meetGreet.request');
-    Route::get('/meet-greet-status/{id}', 'MeetAndGreetController@meetGreetStatus')->name('meetGreet.Status');
-    Route::post('/meet-greet-status-update/{id}', 'MeetAndGreetController@meetGreetStatusUpdete')->name('meetGreet.StatusUpdete');
+    Route::get('/meet-greet-status/{id}', 'MeetAndGreetController@meetGreetStatus')->name('meetGreet.status');
+    Route::post('/meet-greet-status-update/{id}', 'MeetAndGreetController@meetGreetStatusUpdete')->name('meetGreet.statusUpdete');
+
     // Jail deportation
     Route::get('/jail-deportation-request', 'JailDeportationController@request')->name('jailDeportation.request');
-    Route::get('/jail-deportation-status/{id}', 'JailDeportationController@jailDeportationStatus')->name('jailDeportation.Status');
-    Route::post('/jail-deportation-status-update/{id}', 'JailDeportationController@jailDeportationStatusUpdete')->name('jailDeportation.StatusUpdete');
+    Route::get('/jail-deportation-status/{id}', 'JailDeportationController@jailDeportationStatus')->name('jailDeportation.status');
+    Route::post('/jail-deportation-status-update/{id}', 'JailDeportationController@jailDeportationStatusUpdete')->name('jailDeportation.statusUpdete');
+
     // deadbody transfer
     Route::get('/deadbody-transfer-request', 'DeadbodyTransferController@request')->name('deadbodyTransfer.request');
     Route::get('/deadbody-transfer-status/{id}', 'DeadbodyTransferController@deadbodyTransferStatus')->name('deadbodyTransfer.Status');
     Route::post('/deadbody-transfer-status-update/{id}', 'DeadbodyTransferController@deadbodyTransferStatusUpdete')->name('deadbodyTransfer.StatusUpdete');
+
     // medical compensation
     Route::get('/medical-compensation-request', 'MedicalCompensationController@request')->name('medicalCompensation.request');
     Route::get('/medical-compensation-status/{id}', 'MedicalCompensationController@medicalCompensationStatus')->name('medicalCompensation.Status');
     Route::post('/medical-compensation-status-update/{id}', 'MedicalCompensationController@medicalCompensationStatusUpdete')->name('medicalCompensation.StatusUpdete');
+
     // insurance compensation
     Route::get('/insurance-request', 'InsuranceController@request')->name('insurance.request');
     Route::get('/insurance-status/{id}', 'InsuranceController@insuranceStatus')->name('insurance.Status');
     Route::post('/insurance-status-update/{id}', 'InsuranceController@insuranceStatusUpdete')->name('insurance.StatusUpdete');
 
     // issuance certificate
-    Route::get('/issuance-certificate-requests', 'IssuanceCertificateController@requests')->name('issuanceCertificate.requests');
-    Route::get('/issuance-certificate-status/{id}', 'IssuanceCertificateController@status')->name('issuanceCertificate.status');
-    Route::get('/issuance-certificate-upload/{id}', 'IssuanceCertificateController@upload')->name('issuanceCertificate.upload');
-    Route::post('/issuance-certificate-update/{id}', 'IssuanceCertificateController@update')->name('issuanceCertificate.update');
-    Route::post('/issuance-certificate-details-update/{id}', 'IssuanceCertificateController@detailsUpdate')->name('issuanceCertificate.detailsUpdate');
-    Route::post('/issuance-certificate-status-update/{id}', 'IssuanceCertificateController@statusUpdete')->name('issuanceCertificate.statusUpdete');
-    Route::get('/certificate-issue-payment', 'IssuanceCertificateController@payment')->name('issuanceCertificate.payment');
-    Route::get('/view-issuance-receipt/{id}', 'IssuanceCertificateController@viewIssuanceReceipt')->name('issuanceCertificate.receipt');
-    Route::get('/issuance-certificate-paids', 'IssuanceCertificateController@paids')->name('attestationCertificate.paids');
-    Route::get('/issuance-certificate-delivered', 'IssuanceCertificateController@delivered')->name('attestationCertificate.delivered');
+    Route::group(['prefix' => '/issuance-certificate', 'as' => 'issuanceCertificate.'], function () {
+        Route::get('requests', 'IssuanceCertificateController@requests')->name('requests');
+        Route::get('status/{id}', 'IssuanceCertificateController@status')->name('status');
+        Route::get('upload/{id}', 'IssuanceCertificateController@upload')->name('upload');
+        Route::post('update/{id}', 'IssuanceCertificateController@update')->name('update');
+        Route::post('details-update/{id}', 'IssuanceCertificateController@detailsUpdate')->name('detailsUpdate');
+        Route::post('status-update/{id}', 'IssuanceCertificateController@statusUpdete')->name('statusUpdete');
+        Route::get('payment', 'IssuanceCertificateController@payment')->name('payment');
+        Route::get('receipt/{id}', 'IssuanceCertificateController@viewReceipt')->name('receipt');
+        Route::get('paids', 'IssuanceCertificateController@paids')->name('paids');
+        Route::get('delivered', 'IssuanceCertificateController@delivered')->name('delivered');
+    });
+
     // attestation-certificate
-    Route::get('/attestation-certificate-requests', 'AttestationCertificateController@requests')->name('attestationCertificate.requests');
-    Route::get('/attestation-certificate-upload/{id}', 'AttestationCertificateController@upload')->name('attestationCertificate.upload');
-    Route::post('/attestation-certificate-update/{id}', 'AttestationCertificateController@update')->name('attestationCertificate.update');
-    Route::get('/attestation-certificate-payment', 'AttestationCertificateController@payment')->name('attestationCertificate.payment');
-    Route::get('/attestation-certificate-receipt/{id}', 'AttestationCertificateController@viewIssuanceReceipt')->name('attestationCertificate.receipt');
-    Route::post('/attestation-certificate-status-update/{id}', 'AttestationCertificateController@statusUpdete')->name('attestationCertificate.statusUpdete');
-    Route::get('/attestation-certificate-paids', 'AttestationCertificateController@paids')->name('attestationCertificate.paids');
-    Route::get('/attestation-certificate-status/{id}', 'AttestationCertificateController@status')->name('attestationCertificate.status');
-    Route::post('/attestation-certificate-details-update/{id}', 'AttestationCertificateController@detailsUpdate')->name('attestationCertificate.detailsUpdate');
-    Route::get('/attestation-certificate-delivered', 'AttestationCertificateController@delivered')->name('attestationCertificate.delivered');
+    Route::group(['prefix' => '/attestation-certificate', 'as' => 'attestationCertificate.'], function () {
+        Route::get('requests', 'AttestationCertificateController@requests')->name('requests');
+        Route::get('upload/{id}', 'AttestationCertificateController@upload')->name('upload');
+        Route::post('update/{id}', 'AttestationCertificateController@update')->name('update');
+        Route::get('payment', 'AttestationCertificateController@payment')->name('payment');
+        Route::get('receipt/{id}', 'AttestationCertificateController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'AttestationCertificateController@statusUpdete')->name('statusUpdete');
+        Route::get('paids', 'AttestationCertificateController@paids')->name('paids');
+        Route::get('status/{id}', 'AttestationCertificateController@status')->name('status');
+        Route::post('details-update/{id}', 'AttestationCertificateController@detailsUpdate')->name('detailsUpdate');
+        Route::get('delivered', 'AttestationCertificateController@delivered')->name('delivered');
+    });
 
-    Route::get('/registration_certificate_requests', 'WSC_RegisteredController@registration_certificate_requests')->name('registration_certificate_requests');
-    Route::get('/certificate_registration_payment', 'WSC_RegisteredController@certificate_registration_payment')->name('certificate_registration_payment');
-    Route::get('/registration_certificate', 'WSC_RegisteredController@registration_certificate')->name('registration_certificate');
-    Route::get('/registration_delivery_status', 'WSC_RegisteredController@registration_delivery_status')->name('registration_delivery_status');
+    // registration certificates
+    Route::group(['prefix' => '/registration-certificate', 'as' => 'registrationCertificate.'], function () {
+        Route::get('request', 'RegistrationCertificateController@requests')->name('requests');
+        Route::get('upload/{id}', 'RegistrationCertificateController@upload')->name('upload');
+        Route::post('update/{id}', 'RegistrationCertificateController@update')->name('update');
+        Route::get('payment', 'RegistrationCertificateController@payment')->name('payment');
+        Route::get('receipt/{id}', 'RegistrationCertificateController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'RegistrationCertificateController@statusUpdete')->name('statusUpdete');
+        Route::get('paids', 'RegistrationCertificateController@paids')->name('paids');
+        Route::get('status/{id}', 'RegistrationCertificateController@status')->name('status');
+        Route::post('details-update/{id}', 'RegistrationCertificateController@detailsUpdate')->name('detailsUpdate');
+        Route::get('delivered', 'RegistrationCertificateController@delivered')->name('delivered');
+    });
 
-    Route::get('/charity_request', 'WSC_RegisteredController@charity_request')->name('charity_request');
-    Route::get('/adr_request', 'WSC_RegisteredController@adr_request')->name('adr_request');
+    // charity service
+    Route::get('/charity-request', 'CharityServiceController@request')->name('charity.request');
+    Route::get('/charity-request-status/{id}', 'CharityServiceController@charityStatus')->name('charity.status');
+    Route::post('/charity-request-status-update/{id}', 'CharityServiceController@charityStatusUpdete')->name('charity.statusUpdete');
 
-    Route::get('/legal_by_govt_request', 'WSC_RegisteredController@legal_by_govt_request')->name('legal_by_govt_request');
-    Route::get('/legal_by_govt_payment', 'WSC_RegisteredController@legal_by_govt_payment')->name('legal_by_govt_payment');
-    Route::get('/legal_by_govt_paid', 'WSC_RegisteredController@legal_by_govt_paid')->name('legal_by_govt_paid');
-    Route::get('/legal_by_govt_delivery', 'WSC_RegisteredController@legal_by_govt_delivery')->name('legal_by_govt_delivery');
+    // adr service
+    Route::get('/adr-request', 'ADRServiceController@request')->name('adr.request');
+    Route::get('/adr-request-status/{id}', 'ADRServiceController@adrStatus')->name('adr.status');
+    Route::post('/adr-request-status-update/{id}', 'ADRServiceController@adrStatusUpdete')->name('adr.statusUpdete');
 
-    Route::get('/legal_regular_request', 'WSC_RegisteredController@legal_regular_request')->name('legal_regular_request');
-    Route::get('/legal_regular_payment', 'WSC_RegisteredController@legal_regular_payment')->name('legal_regular_payment');
-    Route::get('/legal_regular_paid', 'WSC_RegisteredController@legal_regular_paid')->name('legal_regular_paid');
-    Route::get('/legal_regular_delivery', 'WSC_RegisteredController@legal_regular_delivery')->name('legal_regular_delivery');
+    // legal-by-govt
+    Route::group(['prefix' => '/legal-by-govt', 'as' => 'legalByGovt.'], function () {
+        Route::get('requests', 'AmnestyServiceController@requests')->name('requests');
+        Route::get('upload/{id}', 'AmnestyServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'AmnestyServiceController@update')->name('update');
+        Route::get('payments', 'AmnestyServiceController@payments')->name('payments');
+        Route::get('receipt/{id}', 'AmnestyServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'AmnestyServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('paids', 'AmnestyServiceController@paids')->name('paids');
+        Route::get('status/{id}', 'AmnestyServiceController@status')->name('status');
+        Route::post('details-update/{id}', 'AmnestyServiceController@detailsUpdate')->name('detailsUpdate');
+        Route::get('delivery', 'AmnestyServiceController@delivery')->name('delivery');
+    });
 
-    Route::get('/change_emp_request', 'WSC_RegisteredController@change_emp_request')->name('change_emp_request');
-    Route::get('/change_emp_payment', 'WSC_RegisteredController@change_emp_payment')->name('change_emp_payment');
-    Route::get('/change_emp_paid', 'WSC_RegisteredController@change_emp_paid')->name('change_emp_paid');
-    Route::get('/change_emp_delivery', 'WSC_RegisteredController@change_emp_delivery')->name('change_emp_delivery');
+    // legal-by-regular
+    Route::group(['prefix' => '/legal-by-regular', 'as' => 'legalByRegular.'], function () {
+        Route::get('requests', 'PaymentServiceController@requests')->name('requests');
+        Route::get('upload/{id}', 'PaymentServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'PaymentServiceController@update')->name('update');
+        Route::get('payments', 'PaymentServiceController@payments')->name('payments');
+        Route::get('receipt/{id}', 'PaymentServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'PaymentServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('paids', 'PaymentServiceController@paids')->name('paids');
+        Route::get('status/{id}', 'PaymentServiceController@status')->name('status');
+        Route::post('details-update/{id}', 'PaymentServiceController@detailsUpdate')->name('detailsUpdate');
+        Route::get('delivery', 'PaymentServiceController@delivery')->name('delivery');
+    });
 
-    Route::get('/change_visa_request', 'WSC_RegisteredController@change_visa_request')->name('change_visa_request');
-    Route::get('/change_visa_payment', 'WSC_RegisteredController@change_visa_payment')->name('change_visa_payment');
-    Route::get('/change_visa_paid', 'WSC_RegisteredController@change_visa_paid')->name('change_visa_paid');
-    Route::get('/change_visa_delivery', 'WSC_RegisteredController@change_visa_delivery')->name('change_visa_delivery');
+    // change-of-employer
+    Route::group(['prefix' => '/change-of-employer', 'as' => 'changeOfEmployer.'], function () {
+        Route::get('requests', 'ChangeEmployerServiceController@requests')->name('requests');
+        Route::get('upload/{id}', 'ChangeEmployerServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'ChangeEmployerServiceController@update')->name('update');
+        Route::get('payments', 'ChangeEmployerServiceController@payments')->name('payments');
+        Route::get('receipt/{id}', 'ChangeEmployerServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'ChangeEmployerServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('paids', 'ChangeEmployerServiceController@paids')->name('paids');
+        Route::get('status/{id}', 'ChangeEmployerServiceController@status')->name('status');
+        Route::post('details-update/{id}', 'ChangeEmployerServiceController@detailsUpdate')->name('detailsUpdate');
+        Route::get('delivery', 'ChangeEmployerServiceController@delivery')->name('delivery');
+    });
 
-    Route::get('/legal_aid_request', 'WSC_RegisteredController@legal_aid_request')->name('legal_aid_request');
+    // change-of-visa
+    Route::group(['prefix' => '/change-of-visa', 'as' => 'changeOfVisa.'], function () {
+        Route::get('requests', 'ChangeVisaServiceController@requests')->name('requests');
+        Route::get('upload/{id}', 'ChangeVisaServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'ChangeVisaServiceController@update')->name('update');
+        Route::get('payments', 'ChangeVisaServiceController@payments')->name('payments');
+        Route::get('receipt/{id}', 'ChangeVisaServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'ChangeVisaServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('paids', 'ChangeVisaServiceController@paids')->name('paids');
+        Route::get('status/{id}', 'ChangeVisaServiceController@status')->name('status');
+        Route::post('details-update/{id}', 'ChangeVisaServiceController@detailsUpdate')->name('detailsUpdate');
+        Route::get('delivery', 'ChangeVisaServiceController@delivery')->name('delivery');
+    });
 
-    Route::get('/new_passport_request', 'WSC_RegisteredController@new_passport_request')->name('new_passport_request');
-    Route::get('/new_passport_payment', 'WSC_RegisteredController@new_passport_payment')->name('new_passport_payment');
-    Route::get('/new_passport_status', 'WSC_RegisteredController@new_passport_status')->name('new_passport_status');
-    Route::get('/new_passport_delivery', 'WSC_RegisteredController@new_passport_delivery')->name('new_passport_delivery');
+    // legal-aid-service
+    Route::get('/legal-aid-request', 'LegalAidServiceController@request')->name('legalAid.request');
+    Route::get('/legal-aid-status/{id}', 'LegalAidServiceController@status')->name('legalAid.status');
+    Route::post('/legal-aid-status-update/{id}', 'LegalAidServiceController@statusUpdete')->name('legalAid.statusUpdete');
 
-    Route::get('/lost_passport_request', 'WSC_RegisteredController@lost_passport_request')->name('lost_passport_request');
-    Route::get('/lost_passport_payment', 'WSC_RegisteredController@lost_passport_payment')->name('lost_passport_payment');
-    Route::get('/lost_passport_status', 'WSC_RegisteredController@lost_passport_status')->name('lost_passport_status');
-    Route::get('/lost_passport_delivery', 'WSC_RegisteredController@lost_passport_delivery')->name('lost_passport_delivery');
+    // new-passport-service
+    Route::group(['prefix' => '/new-passport', 'as' => 'newPassport.'], function () {
+        Route::get('requests', 'NewPassportServiceController@requests')->name('requests');
+        Route::get('payments', 'NewPassportServiceController@payments')->name('payments');
+        Route::get('status', 'NewPassportServiceController@status')->name('status');
+        Route::get('delivery', 'NewPassportServiceController@delivery')->name('delivery');
+        Route::get('upload/{id}', 'NewPassportServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'NewPassportServiceController@update')->name('update');
+        Route::get('receipt/{id}', 'NewPassportServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'NewPassportServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('delivery-status/{id}', 'NewPassportServiceController@deliveryStatus')->name('deliveryStatus');
+        Route::post('details-update/{id}', 'NewPassportServiceController@detailsUpdate')->name('detailsUpdate');
+    });
 
-    Route::get('/renew_passport_request', 'WSC_RegisteredController@renew_passport_request')->name('renew_passport_request');
-    Route::get('/renew_passport_payment', 'WSC_RegisteredController@renew_passport_payment')->name('renew_passport_payment');
-    Route::get('/renew_passport_status', 'WSC_RegisteredController@renew_passport_status')->name('renew_passport_status');
-    Route::get('/renew_passport_delivery', 'WSC_RegisteredController@renew_passport_delivery')->name('renew_passport_delivery');
+    // lost-passport-service
+    Route::group(['prefix' => '/lost-passport', 'as' => 'lostPassport.'], function () {
+        Route::get('requests', 'LostPassportServiceController@requests')->name('requests');
+        Route::get('payments', 'LostPassportServiceController@payments')->name('payments');
+        Route::get('status', 'LostPassportServiceController@status')->name('status');
+        Route::get('delivery', 'LostPassportServiceController@delivery')->name('delivery');
+        Route::get('upload/{id}', 'LostPassportServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'LostPassportServiceController@update')->name('update');
+        Route::get('receipt/{id}', 'LostPassportServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'LostPassportServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('delivery-status/{id}', 'LostPassportServiceController@deliveryStatus')->name('deliveryStatus');
+        Route::post('details-update/{id}', 'LostPassportServiceController@detailsUpdate')->name('detailsUpdate');
+    });
+
+    // extension-passport-service
+    Route::group(['prefix' => '/extension-passport', 'as' => 'extensionPassport.'], function () {
+        Route::get('requests', 'ExtensionPassportServiceController@requests')->name('requests');
+        Route::get('payments', 'ExtensionPassportServiceController@payments')->name('payments');
+        Route::get('status', 'ExtensionPassportServiceController@status')->name('status');
+        Route::get('delivery', 'ExtensionPassportServiceController@delivery')->name('delivery');
+        Route::get('upload/{id}', 'ExtensionPassportServiceController@upload')->name('upload');
+        Route::post('update/{id}', 'ExtensionPassportServiceController@update')->name('update');
+        Route::get('receipt/{id}', 'ExtensionPassportServiceController@viewReceipt')->name('receipt');
+        Route::post('status-update/{id}', 'ExtensionPassportServiceController@statusUpdete')->name('statusUpdete');
+        Route::get('delivery-status/{id}', 'ExtensionPassportServiceController@deliveryStatus')->name('deliveryStatus');
+        Route::post('details-update/{id}', 'ExtensionPassportServiceController@detailsUpdate')->name('detailsUpdate');
+    });
 
     //awareness event
-    Route::get('/create-awareness-event', 'AwarenessEventController@create')->name('awarenessevent.create');
-    Route::post('/store-awareness-event', 'AwarenessEventController@store')->name('awarenessevent.store');
-    Route::get('/show-awareness-event/{id}', 'AwarenessEventController@show')->name('awarenessevent.show');
-    Route::get('/edit-awareness-event/{id}', 'AwarenessEventController@edit')->name('awarenessevent.edit');
-    Route::post('/update-awareness-event/{id}', 'AwarenessEventController@update')->name('awarenessevent.update');
-    Route::get('/upcoming-events', 'AwarenessEventController@upcoming_events')->name('awarenessevent.upcoming_events');
-    Route::get('/total-events', 'AwarenessEventController@total_events')->name('awarenessevent.total_events');
+    Route::group(['prefix' => '/awareness-event', 'as' => 'awarenessEvent.'], function () {
+        Route::get('/create', 'AwarenessEventController@create')->name('create');
+        Route::post('/store', 'AwarenessEventController@store')->name('store');
+        Route::get('/show/{id}', 'AwarenessEventController@show')->name('show');
+        Route::get('/edit/{id}', 'AwarenessEventController@edit')->name('edit');
+        Route::post('/update/{id}', 'AwarenessEventController@update')->name('update');
+        Route::get('/upcoming-events', 'AwarenessEventController@upcoming_events')->name('upcoming_events');
+        Route::get('/total-events', 'AwarenessEventController@total_events')->name('total_events');
+    });
 });

@@ -16,6 +16,7 @@ class CreateRegistrationCertificatesTable extends Migration
         Schema::create('registration_certificates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id')->nullable();
+            $table->unsignedBigInteger('candidate_id')->nullable();
             $table->unsignedBigInteger('wsc_id')->nullable();
             $table->string('service_type')->nullable();
             $table->text('comments')->nullable();
@@ -24,6 +25,7 @@ class CreateRegistrationCertificatesTable extends Migration
             $table->string('delivery_charge')->nullable();
             $table->string('document')->nullable();
             $table->string('delivery_to')->nullable();
+            $table->string('delivery_status')->nullable();
             $table->float('fees')->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
             $table->string('deleted')->nullable();

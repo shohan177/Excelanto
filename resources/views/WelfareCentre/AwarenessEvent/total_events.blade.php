@@ -60,7 +60,7 @@
                                             <td>{{ $totalEvent->updated_at }}</td>
                                             <td><button type="button" name="Visa-Applied" class="btn btn-success btn-xs update">{{ $totalEvent->event_status }}</button></td>
                                             <td>
-                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.awarenessevent.show', $totalEvent->id) }}">
+                                                <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.awarenessEvent.show', $totalEvent->id) }}">
                                                     <i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
