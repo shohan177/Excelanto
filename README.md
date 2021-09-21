@@ -9,17 +9,17 @@
 
 ## Credintials to login
 * __Password:__ Password is ```12345``` for all portal
-* __Super admin:__ ```sa@gmail.com`` 
-* __Bangladesh admin:__ ```ba@gmail.com``` 
-* __Recruiting agency:__ ```rea@gmail.com``` 
-* __Welfare sevice centre:__ ```wsc@gmail.com``` 
-* __Master One stop service:__ ```moss@gmail.com``` 
-* __Bangladesh Embassy:__ ```be@gmail.com``` 
-* __Uae Admin:__ ```uaeadmin@gmail.com``` 
-* __Child One Stop Service:__ ```coss@gmail.com``` 
-* __Medical Agency:__ ```ma@gmail.com``` 
-* __Training Agency:__ ```ta@gmail.com``` 
-* __Travel Agency:__ ```travel@gmail.com``` 
-* __Biometric Agency:__ ```bio@gmail.com``` 
-* __Uae Embassy:__ ```ue@gmail.com``` 
-* __Candidate:__ ```candidate@gmail.com``` 
+* __Super admin:__ ```sa@gmail.com```
+* __Bangladesh admin:__ ```ba@gmail.com```
+* __Recruiting agency:__ ```rea@gmail.com```
+* __Welfare sevice centre:__ ```wsc@gmail.com```
+* __Master One stop service:__ ```moss@gmail.com```
+* __Bangladesh Embassy:__ ```be@gmail.com```
+* __Uae Admin:__ ```uaeadmin@gmail.com```
+* __Child One Stop Service:__ ```coss@gmail.com```
+* __Medical Agency:__ ```ma@gmail.com```
+* __Training Agency:__ ```ta@gmail.com```
+* __Travel Agency:__ ```travel@gmail.com```
+* __Biometric Agency:__ ```bio@gmail.com```
+* __Uae Embassy:__ ```ue@gmail.com```
+* __Candidate:__ ```candidate@gmail.com```
