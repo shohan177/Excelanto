@@ -91,7 +91,7 @@
     <!--End content -->
 @endsection
 
-@section(' DataTableJs')
+@section('DataTableJs')
    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
