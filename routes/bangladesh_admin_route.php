@@ -11,7 +11,6 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     Route::post('company-request-approve/{company_id}', 'CompanyController@approveNow')->name('company.approveNow');
     Route::post('company-request-reject/{company_id}', 'CompanyController@rejectNow')->name('company.rejectNow');
 
-
     //    Recruiting agency
     Route::get('company_request', 'RecruitingAgencieController@company_request')->name('company_request');
     Route::post('company_request-approve/{company_id}', 'RecruitingAgencieController@approveNow')->name('company_requestApprove');
