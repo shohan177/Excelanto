@@ -55,7 +55,7 @@
                                     @foreach ($offeredCandidates as $candidate)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $offeredCandidate->travelAgency->company_name }} </td>
+                                            <td>{{ $candidate->travelAgency->company_name }} </td>
                                             <td>{{ $candidate->candidate_name }}</td>
                                             <td>{{ $candidate->job_category->category_name }}</td>
                                             <td>{{ $candidate->phone_number }}</td>
