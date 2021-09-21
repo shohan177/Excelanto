@@ -72,10 +72,10 @@
                                         <div class="form-group">
                                             <label for="medicalCenter">Medical Center</label>
                                             <select class="form-control" name="medicalCenter" required="">
-                                                <option value="">Select Medical Center</option>
+                                                <option selected disabled value="">Select Medical Center</option>
                                                 @foreach ($medicalAgencies as $medical)
                                                     <option
-                                                        {{ old('medicalCenter') == $medical->id ? 'selected' : '' }}
+                                                        {{ $offeredCandidate->post_medical_id == $medical->id ? 'selected' : '' }}
                                                         value="{{ $medical->id }}">{{ $medical->name }}
                                                     </option>
                                                 @endforeach
@@ -89,10 +89,10 @@
                                         <div class="form-group">
                                             <label for="trainingCenter">Training Center</label>
                                             <select class="form-control" name="trainingCenter" required="">
-                                                <option value="">Select Training Center</option>
+                                                <option selected disabled value="">Select Training Center</option>
                                                 @foreach ($trainingAgencies as $training)
                                                     <option
-                                                        {{ old('trainingCenter') == $training->id ? 'selected' : '' }}
+                                                        {{ $offeredCandidate->post_training_id == $training->id ? 'selected' : '' }}
                                                         value="{{ $training->id }}">{{ $training->name }}
                                                     </option>
                                                 @endforeach
