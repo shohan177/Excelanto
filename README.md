@@ -3,10 +3,7 @@
 * __Run:__ ```cp .env.example .env``` then configure your database
 * __Run:__ ```composer install```
 * __Run:__ ```php artisan key:generate```
-* __Run:__ 
-```
-php artisan migrate:fresh --seed
-```
+* __Run:__ ```php artisan migrate:fresh --seed```
 
 ## Now you are ready to go  :).
 
