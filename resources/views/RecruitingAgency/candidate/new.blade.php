@@ -113,7 +113,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="passport">Passport</label>
-                                                    <input type="file" class="form-control" id="passport" name="passport">
+                                                    <input type="file" accept="application/pdf" class="form-control" id="passport" name="passport">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="preMedicalCertificate">Pre-Medical Certificate (Only PDF)</label>
@@ -121,7 +121,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="preTrainingCertificate">Pre-Training Certificate (Only PDF)</label>
-                                                    <input type="file" class="form-control" id="preTrainingCertificate" name="preTrainingCertificate">
+                                                    <input type="file" accept="application/pdf" class="form-control" id="preTrainingCertificate" name="preTrainingCertificate">
                                                 </div>
                                             </div> <!-- panel-body -->
                                     </div> <!-- col -->

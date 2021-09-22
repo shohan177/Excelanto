@@ -41,20 +41,17 @@ class CandidateController extends Controller
     }
 
     public function store(Request $request){
-        // return $request;
         $request->validate([
             'candidateName' => ['required', 'string', 'max:255'],
             'jobCategory' =>  'required',
             'dateOfBirth' =>  'required',
             'gender' => 'required',
             'passportNo' => 'required',
+            'passport' => 'mimes:pdf',
             'phoneNo' => 'required',
             'email' =>  'email',
             'status' =>  'required'
         ]);
-
-        // return $request;
-
 
         $candidate = new Candidate();
         $candidate->candidate_name    =   $request->candidateName;
@@ -92,12 +89,12 @@ class CandidateController extends Controller
         }
 
         if ($request->hasFile('passport')) {
-            $image             = $request->file('passport');
-            $folder_path       = 'uploads/candidate/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $candidate->passport   = $folder_path . $image_new_name;
+            $pdf             = $request->file('passport');
+            $folder_path       = 'uploads/passport/';
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->passport->move(public_path($folder_path), $pdf_new_name);
+            $candidate->passport   = $folder_path . $pdf_new_name;
         }
 
         if ($request->hasFile('preMedicalCertificate')) {

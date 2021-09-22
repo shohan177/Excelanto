@@ -98,20 +98,23 @@ class LostPassportServiceController extends Controller
         $request->validate([
             'deliveryType' => 'required',
             'deliveryStatus' => 'required',
+            'passport' => 'mimes:pdf',
         ]);
 
         $lostPassportService = LostPassportService::findOrFail($id);
 
         $lostPassportService->delivery_status = $request->deliveryStatus;
         $lostPassportService->delivery_to = $request->deliveryTo;
+
         if ($request->hasFile('passport')) {
-            $image = $request->file('passport');
-            $folder_path = 'uploads/passport/';
-            $image_new_name = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $lostPassportService->new_passport = $folder_path . $image_new_name;
+            $pdf             = $request->file('passport');
+            $folder_path       = 'uploads/passport/';
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->passport->move(public_path($folder_path), $pdf_new_name);
+            $lostPassportService->new_passport   = $folder_path . $pdf_new_name;
         }
+
         try {
             $lostPassportService->save();
             return back()->withToastSuccess('Successfully Updated.');

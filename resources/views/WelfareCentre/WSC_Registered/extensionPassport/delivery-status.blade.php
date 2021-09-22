@@ -68,7 +68,7 @@
                                     <div class="panel-body">
                                         <div class="form-group">
                                             <label for="passport">Passport</label>
-                                            <input type="file" class="form-control" name="passport" id="passport">
+                                            <input type="file" accept="application/pdf" class="form-control" name="passport" id="passport">
                                         </div>
                                         <div class="form-group">
                                             <label for="deliveryType">Delivery Type</label>

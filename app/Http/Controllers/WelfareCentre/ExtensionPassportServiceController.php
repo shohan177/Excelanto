@@ -78,6 +78,7 @@ class ExtensionPassportServiceController extends Controller
     {
         $request->validate([
             'fees' => 'required|numeric',
+            'passport' => 'mimes:pdf',
         ]);
 
         $extensionPassportService = ExtensionPassportService::findOrFail($id);
@@ -103,14 +104,16 @@ class ExtensionPassportServiceController extends Controller
 
         $extensionPassportService->delivery_status = $request->deliveryStatus;
         $extensionPassportService->delivery_to = $request->deliveryTo;
+
         if ($request->hasFile('passport')) {
-            $image = $request->file('passport');
-            $folder_path = 'uploads/passport/';
-            $image_new_name = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $extensionPassportService->new_passport = $folder_path . $image_new_name;
+            $pdf             = $request->file('passport');
+            $folder_path       = 'uploads/passport/';
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->passport->move(public_path($folder_path), $pdf_new_name);
+            $extensionPassportService->new_passport   = $folder_path . $pdf_new_name;
         }
+
         try {
             $extensionPassportService->save();
             return back()->withToastSuccess('Successfully Updated.');
