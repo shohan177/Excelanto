@@ -67,7 +67,7 @@
                                     <div class="panel-body">
                                         <div class="form-group">
                                             <label for="photo">Photo</label>
-                                            <input name="photo" type="file" class="form-control" id="photo">
+                                            <input name="photo" type="file" accept="image/*" class="form-control" id="photo">
                                         </div>
                                         <div class="form-group">
                                             <label for="biometric">Biometric</label>

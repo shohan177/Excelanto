@@ -32,18 +32,21 @@ class CandidateController extends Controller
     }
 
     public function  add_medical_report(Request $request, $id){
-        // return $request;
+        $request->validate([
+            'post_medical_report' =>'mimes:pdf',
+        ]);
+
         $offeredCandidate = OfferedCandidate::findOrFail($id);
         $offeredCandidate->post_medical_status = $request->post_medical_status;
         $offeredCandidate->post_medical_comments = $request->post_medical_comments;
 
         if ($request->hasFile('post_medical_report')) {
-            $image             = $request->file('post_medical_report');
+            $pdf             = $request->file('post_medical_report');
             $folder_path       = 'uploads/candidate/post_medical_report/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $offeredCandidate->post_medical_report   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->post_medical_report->move(public_path($folder_path), $pdf_new_name);
+            $offeredCandidate->post_medical_report   = $folder_path . $pdf_new_name;
         }
 
         try {
