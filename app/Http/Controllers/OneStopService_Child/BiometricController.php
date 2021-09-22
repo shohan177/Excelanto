@@ -98,6 +98,7 @@ class BiometricController extends Controller
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
     }
+
     public function assignMedicalTrainingStore(Request $request, $offered_candidate_id)
     {
         $request->validate([

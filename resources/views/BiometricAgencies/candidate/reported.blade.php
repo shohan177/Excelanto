@@ -34,7 +34,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Candidates selected by employer</h3>
+                            <h3 class="panel-title">Biometric Report Submitted</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
@@ -67,16 +67,8 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($candidate->result_status == 'Selected')
-                                                    <a class="btn btn-info btn-sm"
-                                                        href="{{ route('OneStopService.candidate.assignSelectedCandidate', $candidate->id) }}">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                @else
-
-                                                @endif
                                                 <a class="btn btn-info btn-sm"
-                                                    href="{{ route('OneStopService.candidate.showReviewedCandidate', $candidate->id) }}">
+                                                    href="{{ route('BiometricAgencies.candidate.showCandidateProfile', $candidate->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                             </td>
