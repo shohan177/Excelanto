@@ -1,4 +1,4 @@
-@extends("OneStopService_Child/master")
+@extends("BiometricAgencies/master")
 
 @section('title', 'Upload Biometric')
 @section('DataTableCss')
@@ -35,7 +35,7 @@
                     </div>
                     <div class="panel-body">
                         <form role="form"
-                            action="{{ route('OneStopService_Child.biometric.uploadBiometricStore', $offeredCandidate->id) }}"
+                            action="{{ route('BiometricAgencies.candidate.uploadBiometricStore', $offeredCandidate->id) }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             @include('includes.errors')
@@ -66,7 +66,7 @@
                                     <div class="panel-body">
                                         <div class="form-group">
                                             <label for="biometricFees">Biometric Fees</label>
-                                            <input type="text" class="form-control" id="biometricFees"
+                                            <input type="text" value="{{ $offeredCandidate->biometric_fee }}" class="form-control" id="biometricFees"
                                                 name="biometricFees">
                                         </div>
                                         <div class="form-group">

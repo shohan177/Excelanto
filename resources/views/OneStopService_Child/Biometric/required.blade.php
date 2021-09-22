@@ -76,9 +76,14 @@
                                                 <a class="btn btn-info btn-xs"
                                                     href="{{ route('OneStopService_Child.biometric.uploadBiometric', $candidate->id) }}">
                                                     <i class="fa fa-edit"></i>Upload</a>
-                                                <a class="btn btn-info btn-xs"
-                                                    href="{{ route('OneStopService_Child.biometric.assignBioAgency', $candidate->id) }}">
-                                                    <i class="fa fa-check"></i>Or Assign</a>
+                                                @if ($candidate->post_biometric_id == null)
+                                                    <a class="btn btn-info btn-xs"
+                                                        href="{{ route('OneStopService_Child.biometric.assignBiometricAgency', $candidate->id) }}">
+                                                        <i class="fa fa-check"></i>Or Assign</a>
+                                                @else
+                                                    <button class="btn btn-seccess">Assigned</button>
+                                                @endif
+
                                             </td>
                                         </tr>
                                     @endforeach

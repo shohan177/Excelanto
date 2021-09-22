@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="form-group" id="offerLetterGroup">
                                                 <label for="offerLetter">Upload Offer Letter (Only PDF)</label>
-                                                <input type="file" class="form-control" id="offerLetter" name="offerLetter">
+                                                <input type="file" accept="application/pdf" class="form-control" id="offerLetter" name="offerLetter">
                                             </div>
                                         </div> <!-- panel-body -->
                                     </div> <!-- col -->

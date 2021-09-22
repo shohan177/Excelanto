@@ -37,8 +37,9 @@ Route::group(['prefix' => 'child-one-stop-service/', 'namespace' => 'OneStopServ
     Route::post('assign-medical-training-store/{offered_candidate_id}', 'BiometricController@assignMedicalTrainingStore')->name('biometric.assignMedicalTrainingStore');
     Route::get('show-paid-candidate-profile/{offered_candidate_id}', 'BiometricController@showPaidCandidateProfile')->name('biometric.showPaidCandidateProfile');
     Route::get('upload-biometric/{offered_candidate_id}', 'BiometricController@uploadBiometric')->name('biometric.uploadBiometric');
-    Route::get('assign-biometric-agency/{offered_candidate_id}', 'BiometricController@assignBioAgency')->name('biometric.assignBioAgency');
     Route::post('upload-biometric-store/{offered_candidate_id}', 'BiometricController@uploadBiometricStore')->name('biometric.uploadBiometricStore');
+    Route::get('assign-biometric-agency/{offered_candidate_id}', 'BiometricController@assignBiometricAgency')->name('biometric.assignBiometricAgency');
+    Route::post('assign-biometric-agency-store/{offered_candidate_id}', 'BiometricController@assignBiometricAgencyStore')->name('biometric.assignBiometricAgencyStore');
 
     // Visa Process
     Route::get('requested-visa', 'VisaProcessController@requested')->name('visa.requested');

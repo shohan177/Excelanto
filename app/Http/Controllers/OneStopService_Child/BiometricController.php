@@ -18,6 +18,7 @@ class BiometricController extends Controller
     public function required(){
         $offeredCandidates = OfferedCandidate::where('result_status', 'Recommended')
                                              ->where('selected_osc_id', Auth::user()->id)
+                                             ->where('post_biometric_id', null)
                                              ->orderBy('id','DESC')->get();
         return view('OneStopService_Child.biometric.required', compact('offeredCandidates'));
     }
@@ -39,9 +40,29 @@ class BiometricController extends Controller
         return view('OneStopService_Child.biometric.upload-biometric', compact('offeredCandidate'));
     }
 
-    public function assignBioAgency($offered_candidate_id){
+    public function assignBiometricAgency($offered_candidate_id){
+        $biometricAgencies = User::where('user_type','biometric-agency')
+                                    ->where('active_status', 'Approved')
+                                    ->orderBy('id','DESC')->get();
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
-        return view('OneStopService_Child.biometric.assign-biometric', compact('offeredCandidate'));
+        return view('OneStopService_Child.biometric.assign-biometric-agency', compact('offeredCandidate','biometricAgencies'));
+    }
+
+    public function assignBiometricAgencyStore(Request $request, $offered_candidate_id)
+    {
+        $request->validate([
+            'biometricCenter' => 'required',
+            'biometricFees' => 'required',
+        ]);
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        $offeredCandidate->biometric_fee = $request->biometricFees;
+        $offeredCandidate->post_biometric_id = $request->biometricCenter;
+        try {
+            $offeredCandidate->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
     }
 
     public function assignMedicalTraining($offered_candidate_id){
@@ -57,18 +78,22 @@ class BiometricController extends Controller
 
     public function uploadBiometricStore(Request $request, $offered_candidate_id)
     {
+        $request->validate([
+            'biometric' =>'mimes:pdf',
+        ]);
+
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         $offeredCandidate->result_status = 'Bio-Completed';
         $offeredCandidate->biometric_fee = $request->biometricFees;
         $offeredCandidate->bio_status = 'Success';
 
         if ($request->hasFile('biometric')) {
-            $image             = $request->file('biometric');
+            $pdf             = $request->file('biometric');
             $folder_path       = 'uploads/biometric/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $offeredCandidate->bio_report   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->biometric->move(public_path($folder_path), $pdf_new_name);
+            $offeredCandidate->bio_report   = $folder_path . $pdf_new_name;
         }
         try {
             $offeredCandidate->save();
@@ -77,6 +102,7 @@ class BiometricController extends Controller
             return back()->withErrors('Something going wrong. ' . $exception->getMessage());
         }
     }
+
     public function assignMedicalTrainingStore(Request $request, $offered_candidate_id)
     {
         $request->validate([

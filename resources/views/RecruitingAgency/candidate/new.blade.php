@@ -105,7 +105,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="photo">Photo</label>
-                                                    <input type="file" class="form-control" id="photo" name="photo">
+                                                    <input type="file" accept="image/*" class="form-control" id="photo" name="photo">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="bioData">Bio-data(Resume)</label>
@@ -117,7 +117,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="preMedicalCertificate">Pre-Medical Certificate (Only PDF)</label>
-                                                    <input type="file" class="form-control" id="preMedicalCertificate" name="preMedicalCertificate">
+                                                    <input type="file" accept="application/pdf" class="form-control" id="preMedicalCertificate" name="preMedicalCertificate">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="preTrainingCertificate">Pre-Training Certificate (Only PDF)</label>

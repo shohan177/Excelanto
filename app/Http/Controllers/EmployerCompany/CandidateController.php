@@ -77,6 +77,7 @@ class CandidateController extends Controller
     {
         $request->validate([
             'resultStatus' =>  'required',
+            'offerLetter' => 'mimes:pdf',
         ]);
         $candidate = Candidate::findOrFail($id);
         $candidate->status = "Reviewed";
@@ -95,12 +96,12 @@ class CandidateController extends Controller
         $offeredCandidate->created_id = Auth::user()->id;
 
         if ($request->hasFile('offerLetter')) {
-            $image             = $request->file('offerLetter');
+            $pdf             = $request->file('offerLetter');
             $folder_path       = 'uploads/offer-letter/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $offeredCandidate->offer_letter   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->offerLetter->move(public_path($folder_path), $pdf_new_name);
+            $offeredCandidate->offer_letter   = $folder_path . $pdf_new_name;
         }
 
         try {
@@ -124,12 +125,12 @@ class CandidateController extends Controller
         $offeredCandidate->result_status = $request->resultStatus;
         $offeredCandidate->employer_comments = $request->comments;
         if ($request->hasFile('offerLetter')) {
-            $image             = $request->file('offerLetter');
+            $pdf             = $request->file('offerLetter');
             $folder_path       = 'uploads/offer-letter/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $offeredCandidate->offer_letter   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->offerLetter->move(public_path($folder_path), $pdf_new_name);
+            $offeredCandidate->offer_letter   = $folder_path . $pdf_new_name;
         }
         try {
             $offeredCandidate->save();

@@ -80,10 +80,10 @@
                                                 <textarea class="form-control" rows="4" name="post_training_comments"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="Pre-training Report">Post-training Report</label>
+                                                <label for="post_training_report">Post-training Report</label>
                                                 <div class="input-group">
                                                   <div class="col-sm-4" style="padding-top:6px;">
-                                                    <input type="file" name="post_training_report">
+                                                    <input type="file" accept="application/pdf" name="post_training_report" id="post_training_report">
                                                   </div>
                                                 </div>
                                             </div>

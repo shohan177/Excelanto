@@ -66,8 +66,8 @@
                                 <div class="offset-lg-1"></div>
                                 <div class="col-lg-10 col-md-12 col-sm-12">
                                     <div class="form-group">
-                                        <label for="document">Document</label>
-                                        <input type="file" class="form-control" name="document" id="document">
+                                        <label for="document">Document (Only PDF)</label>
+                                        <input type="file" accept="application/pdf" class="form-control" name="document" id="document">
                                     </div>
                                     <div class="form-group">
                                         <label for="deliveryType">Delivery Type</label>

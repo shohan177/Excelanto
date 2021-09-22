@@ -68,6 +68,7 @@ class CandidateSeeder extends Seeder
             $offeredCandidate->candidate_name = $candidate->candidate_name;
             $offeredCandidate->phone_number = $candidate->phone_number;
             $offeredCandidate->selected_osc_id = 11;
+            // $offeredCandidate->post_biometric_id = 4;
             $offeredCandidate->candidate_email = $candidate->candidate_email;
             $offeredCandidate->travel_status = 'Ticket-Issued';
             $offeredCandidate->job_category_id = $candidate->job_category_id;

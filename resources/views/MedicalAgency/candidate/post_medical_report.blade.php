@@ -80,10 +80,10 @@
                                                 <textarea class="form-control" rows="4" name="post_medical_comments"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="Pre-Medical Report">Post-Medical Report</label>
+                                                <label for="post_medical_report">Post-Medical Report</label>
                                                 <div class="input-group">
                                                   <div class="col-sm-4" style="padding-top:6px;">
-                                                    <input type="file" name="post_medical_report">
+                                                    <input type="file" accept="application/pdf" name="post_medical_report" id="post_medical_report">
                                                   </div>
                                                 </div>
                                             </div>

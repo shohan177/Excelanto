@@ -8,9 +8,13 @@ Route::group(['prefix' => 'travel-agency/', 'namespace' => 'TravelAgency', 'as' 
     Route::get('/company-profile-view', 'TravelAgencyDashboardController@companyPrfileView')->name('companyPrfileView');
     Route::post('/company-profile-submit', 'TravelAgencyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
+
     //Enquiries
-    Route::get('/new_enquiries', 'EnquiriesController@new_enquiries')->name('new_enquiries');
-    Route::get('/expired_enquiries', 'EnquiriesController@expired_enquiries')->name('expired_enquiries');
+    Route::group(['prefix' => 'enquiries/', 'as' => 'enquiries.'], function () {
+        Route::get('/new', 'EnquiriesController@new')->name('new');
+        Route::get('/expired', 'EnquiriesController@expired')->name('expired');
+        Route::get('/view/{id}', 'EnquiriesController@view')->name('view');
+    });
 
     // Quotations
     Route::get('/submitted_quotations', 'QuotationsController@submitted_quotations')->name('submitted_quotations');

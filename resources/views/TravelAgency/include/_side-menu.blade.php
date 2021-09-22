@@ -10,8 +10,8 @@
                <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-building"></i></i> <span> Enquiries </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('TravelAgency.new_enquiries') }}"><i class="fa fa-arrow-circle-right"></i> New Enquiries</a></li>
-                        <li><a href="{{ route('TravelAgency.expired_enquiries') }}"><i class="fa fa-arrow-circle-right"></i> Expired Enquiries</a></li>
+                        <li><a href="{{ route('TravelAgency.enquiries.new') }}"><i class="fa fa-arrow-circle-right"></i> New Enquiries</a></li>
+                        <li><a href="{{ route('TravelAgency.enquiries.expired') }}"><i class="fa fa-arrow-circle-right"></i> Expired Enquiries</a></li>
                     </ul>
                 </li>
 

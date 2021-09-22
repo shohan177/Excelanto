@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TravelAgency;
 
 use App\Http\Controllers\Controller;
+use App\TravelEnquiry;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Str;
@@ -12,11 +13,13 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class EnquiriesController extends Controller
 {
-    public function new_enquiries(){
-
-            return view('TravelAgency.Enquiries.new');
+    public function new()
+    {
+        $travelEnquiries = TravelEnquiry::where('enquiry_status', 'New')->orderBy('id', 'DESC')->get();
+        return view('TravelAgency.Enquiries.new', compact('travelEnquiries'));
     }
-    public function expired_enquiries(){
+    public function expired()
+    {
         return view('TravelAgency.Enquiries.expired');
     }
 }

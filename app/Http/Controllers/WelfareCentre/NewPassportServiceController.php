@@ -78,6 +78,7 @@ class NewPassportServiceController extends Controller
     {
         $request->validate([
             'fees' => 'required|numeric',
+            'biometric' =>'mimes:pdf',
         ]);
 
         $newPassportService = NewPassportService::findOrFail($id);
@@ -95,13 +96,14 @@ class NewPassportServiceController extends Controller
         }
 
         if ($request->hasFile('biometric')) {
-            $image             = $request->file('biometric');
+            $pdf             = $request->file('biometric');
             $folder_path       = 'uploads/biometric/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $newPassportService->biometric   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->biometric->move(public_path($folder_path), $pdf_new_name);
+            $newPassportService->biometric   = $folder_path . $pdf_new_name;
         }
+
         try {
             $newPassportService->save();
             return back()->withToastSuccess('Successfully Updated.');

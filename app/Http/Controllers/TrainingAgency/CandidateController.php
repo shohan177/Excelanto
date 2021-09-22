@@ -31,17 +31,21 @@ class CandidateController extends Controller
     }
     public function add_training_report(Request $request, $id)
     {
+        $request->validate([
+            'post_training_report' =>'mimes:pdf',
+        ]);
+
         $offeredCandidate = OfferedCandidate::findOrFail($id);
         $offeredCandidate->post_training_status = $request->post_training_status;
         $offeredCandidate->post_training_comments = $request->post_training_comments;
 
         if ($request->hasFile('post_training_report')) {
-            $image = $request->file('post_training_report');
-            $folder_path = 'uploads/candidate/post_training_report/';
-            $image_new_name = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $offeredCandidate->post_training_report = $folder_path . $image_new_name;
+            $pdf             = $request->file('post_training_report');
+            $folder_path       = 'uploads/candidate/post_training_report/';
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->post_training_report->move(public_path($folder_path), $pdf_new_name);
+            $offeredCandidate->post_training_report   = $folder_path . $pdf_new_name;
         }
 
         try {
