@@ -1,0 +1,72 @@
+.dropdown-menu{
+    margin-top: 10px;
+    width: 350px;
+}
+.nav-link img{
+ width: 60px;
+ height: 60px;
+ vertical-align: middle;
+ border-style: none;
+ padding: 10px;
+}
+.user-header{
+    height: 160PX;
+    width: 350px;
+}
+
+.user-header img{
+    height: 90px;
+    width: 90px;
+    border: 4px solid;
+    border-color: rgb(7, 247, 255);
+    margin-top: 20px;
+    text-align: center;
+    margin-left: 129px;
+
+}
+
+.user-header p{
+    font-size: 25px;
+    text-shadow: 2px 2px 3px #333333;
+    margin-top: 10px;
+    color: rgb(0, 25, 78);
+    text-align: center;
+
+
+}
+.user-header small{
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+
+}
+.user-footer {
+    margin-top: 10px;
+}
+.user-footer .log{
+    margin-left: 50px;
+}
+
+.user-footer .left{
+    margin-left: 5px;
+    float:left;
+    padding: 10px;
+    background-color: white;
+}
+.user-footer .left img{
+    width: 37px;
+    margin-left: 20px;
+}
+.user-footer .right{
+    float: right;
+    padding: 10px;
+    margin-right: 20px;
+    background-color: white;
+}
+.user-footer .right img{
+    width: 40px;
+    margin-right: 20px;
+}
+@media screen {
+
+}
