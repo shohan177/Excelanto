@@ -18,6 +18,7 @@ class BiometricController extends Controller
     public function required(){
         $offeredCandidates = OfferedCandidate::where('result_status', 'Recommended')
                                              ->where('selected_osc_id', Auth::user()->id)
+                                             ->where('post_biometric_id', null)
                                              ->orderBy('id','DESC')->get();
         return view('OneStopService_Child.biometric.required', compact('offeredCandidates'));
     }
@@ -39,9 +40,29 @@ class BiometricController extends Controller
         return view('OneStopService_Child.biometric.upload-biometric', compact('offeredCandidate'));
     }
 
-    public function assignBioAgency($offered_candidate_id){
+    public function assignBiometricAgency($offered_candidate_id){
+        $biometricAgencies = User::where('user_type','biometric-agency')
+                                    ->where('active_status', 'Approved')
+                                    ->orderBy('id','DESC')->get();
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
-        return view('OneStopService_Child.biometric.assign-biometric', compact('offeredCandidate'));
+        return view('OneStopService_Child.biometric.assign-biometric-agency', compact('offeredCandidate','biometricAgencies'));
+    }
+
+    public function assignBiometricAgencyStore(Request $request, $offered_candidate_id)
+    {
+        $request->validate([
+            'biometricCenter' => 'required',
+            'biometricFees' => 'required',
+        ]);
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        $offeredCandidate->biometric_fee = $request->biometricFees;
+        $offeredCandidate->post_biometric_id = $request->biometricCenter;
+        try {
+            $offeredCandidate->save();
+            return back()->withToastSuccess('Successfully saved.');
+        } catch (\Exception $exception) {
+            return back()->withErrors('Something going wrong. ' . $exception->getMessage());
+        }
     }
 
     public function assignMedicalTraining($offered_candidate_id){
