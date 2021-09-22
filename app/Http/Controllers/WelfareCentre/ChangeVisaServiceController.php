@@ -105,13 +105,14 @@ class ChangeVisaServiceController extends Controller
         $changeVisaService->delivery_type = $request->deliveryStatus;
         $changeVisaService->delivery_to = $request->deliveryTo;
         $changeVisaService->service_status = $request->legalStatus;
+        
         if ($request->hasFile('document')) {
-            $image = $request->file('document');
-            $folder_path = 'uploads/document/';
-            $image_new_name = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $changeVisaService->document = $folder_path . $image_new_name;
+            $pdf             = $request->file('document');
+            $folder_path       = 'uploads/document/';
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->document->move(public_path($folder_path), $pdf_new_name);
+            $changeVisaService->document   = $folder_path . $pdf_new_name;
         }
         try {
             $changeVisaService->save();

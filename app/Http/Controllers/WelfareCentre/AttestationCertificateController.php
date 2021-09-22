@@ -105,13 +105,14 @@ class AttestationCertificateController extends Controller
         $attestationCertificate->delivery_type = $request->deliveryStatus;
         $attestationCertificate->delivery_to = $request->deliveryTo;
         $attestationCertificate->service_status = $request->legalStatus;
+        
         if ($request->hasFile('document')) {
-            $image = $request->file('document');
-            $folder_path = 'uploads/document/';
-            $image_new_name = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $attestationCertificate->document = $folder_path . $image_new_name;
+            $pdf             = $request->file('document');
+            $folder_path       = 'uploads/document/';
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->document->move(public_path($folder_path), $pdf_new_name);
+            $attestationCertificate->document   = $folder_path . $pdf_new_name;
         }
         try {
             $attestationCertificate->save();

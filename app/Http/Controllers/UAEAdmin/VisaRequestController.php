@@ -56,13 +56,14 @@ class VisaRequestController extends Controller
         $offeredCandidate->result_status = $request->resultStatus;
         $offeredCandidate->visa_document = $request->comments;
         $offeredCandidate->visa_reason = $request->rejectReason;
+
         if ($request->hasFile('document')) {
-            $image             = $request->file('document');
+            $pdf             = $request->file('document');
             $folder_path       = 'uploads/document/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $offeredCandidate->visa_document   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->document->move(public_path($folder_path), $pdf_new_name);
+            $offeredCandidate->visa_document   = $folder_path . $pdf_new_name;
         }
         try {
             $offeredCandidate->save();
