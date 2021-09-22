@@ -77,16 +77,16 @@
                     <li class="nav-item dropdown user-menu">
                         <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
                           <img src="{{asset('assets/images/users/avatar-1.jpg')}}" class="user-image img-circle "   alt="User Image">
-                          <span class="d-none d-md-inline"> Bangladesh Admin </span>
+                          <span class="d-none d-md-inline"> {{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                           <!-- User image -->
                           <li class="user-header ">
                             <img src="{{asset('assets/images/users/avatar-1.jpg')}}" class="img-circle " alt="User Image">
                             <p>
-                                Bangladesh Admin
+                                {{ Auth::user()->name }}
                             </p>
-                           <center><small>recruiter@gmail.com</small></center>
+                           <center><small>{{ Auth::user()->email }}</small></center>
                           </li>
                           <!-- Menu Footer-->
                           <li class="user-footer">
