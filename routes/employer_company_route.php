@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'employer-company/', 'namespace' => 'EmployerCompany', 'as' => 'EmployerCompany.', 'middleware' => ['auth', 'employer-company']], function () {
     Route::get('/dashboard', 'EmployerCompanyDashboardController@dashboard')->name('dashboard');
     Route::post('/company-prfile-submit', 'EmployerCompanyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+    Route::get('/company-profile-view', 'EmployerCompanyDashboardController@companyPrfileView')->name('companyPrfileView');
 
     // job post
     Route::resource('job_post', 'PostJobController', [

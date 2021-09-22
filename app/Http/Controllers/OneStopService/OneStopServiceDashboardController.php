@@ -21,6 +21,11 @@ class OneStopServiceDashboardController extends Controller
         return view('OneStopService.welcome');
     }
 
+    public function companyPrfileView(){
+        $user = User::find(Auth::user()->id);
+        return view('OneStopService.profile', compact('user'));
+    }
+
     public function companyPrfileSubmit(Request $request)
     {
         $request->validate([

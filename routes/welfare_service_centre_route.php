@@ -7,6 +7,8 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
 
     Route::get('/dashboard', 'WelfareDashboardController@dashboard')->name('dashboard');
     Route::post('/company-prfile-submit', 'WelfareDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+    Route::get('/company-profile-view', 'WelfareDashboardController@companyPrfileView')->name('companyPrfileView');
+
 
     //Job Approval
     Route::get('/new-job-posts', 'JobApprovalController@NewJobPost')->name('NewJobPost');

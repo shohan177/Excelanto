@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // Bangladesh Admin route
 Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin', 'as' => 'BangladeshAdmin.', 'middleware' => ['auth', 'bangladesh-admin']], function () {
     Route::get('/dashboard', 'BangladeshAdminDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'BangladeshAdminDashboardController@companyPrfileView')->name('companyPrfileView');
 
     // company
     Route::get('show-company-profile/{user_id}', 'CompanyController@showCompanyProfile')->name('company.showCompanyProfile');

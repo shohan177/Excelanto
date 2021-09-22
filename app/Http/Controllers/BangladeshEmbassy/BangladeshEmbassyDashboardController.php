@@ -20,6 +20,11 @@ class BangladeshEmbassyDashboardController extends Controller
         return view('BangladeshEmbassy.welcome');
     }
 
+    public function companyPrfileView(){
+        $user = User::find(Auth::user()->id);
+        return view('BangladeshEmbassy.profile', compact('user'));
+    }
+
     public function companyPrfileSubmit(Request $request)
     {
         $request->validate([
