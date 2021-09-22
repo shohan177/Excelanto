@@ -39,6 +39,11 @@ class BiometricController extends Controller
         return view('OneStopService_Child.biometric.upload-biometric', compact('offeredCandidate'));
     }
 
+    public function assignBioAgency($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('OneStopService_Child.biometric.assign-biometric', compact('offeredCandidate'));
+    }
+
     public function assignMedicalTraining($offered_candidate_id){
         $medicalAgencies = User::where('user_type','medical-agency')
                                 ->where('active_status', 'Approved')

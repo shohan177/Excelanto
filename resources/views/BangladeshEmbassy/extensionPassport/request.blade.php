@@ -48,7 +48,6 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 @foreach ($extensionPassports as $extensionPassport)
                                     <tr>
