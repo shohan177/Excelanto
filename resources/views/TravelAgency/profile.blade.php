@@ -82,8 +82,8 @@
                                                         rows="3"> {{ $user->address2}} </textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="logo" accept="image/*">Logo</label>
-                                                    <input name="logo" type="file" class="form-control" id="logo">
+                                                    <label for="logo">Logo</label>
+                                                    <input name="logo" type="file" accept="image/*" class="form-control" id="logo">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="document1">Document 1(Only PDF)</label>
