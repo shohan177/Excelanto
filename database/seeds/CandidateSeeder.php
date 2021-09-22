@@ -67,11 +67,13 @@ class CandidateSeeder extends Seeder
             $offeredCandidate->candidate_id = $candidate->id;
             $offeredCandidate->candidate_name = $candidate->candidate_name;
             $offeredCandidate->phone_number = $candidate->phone_number;
+            $offeredCandidate->selected_osc_id = 11;
             $offeredCandidate->candidate_email = $candidate->candidate_email;
             $offeredCandidate->travel_status = 'Ticket-Issued';
             $offeredCandidate->job_category_id = $candidate->job_category_id;
             $offeredCandidate->job_post_id = $candidate->job_id;
-            $offeredCandidate->result_status = ($i == 11 ? 'Post-Processing' : 'Selected');
+            // $offeredCandidate->result_status = ($i == 11 ? 'Post-Processing' : 'Selected');
+            $offeredCandidate->result_status = 'Recommended';
             $offeredCandidate->post_medical_status = $i == 11 ? 'New' : null;
             $offeredCandidate->employer_comments = Str::random(10);
             $offeredCandidate->created_at = Carbon::now();

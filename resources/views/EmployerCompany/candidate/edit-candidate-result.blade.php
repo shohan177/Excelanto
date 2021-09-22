@@ -32,7 +32,7 @@
                             <h3 class="panel-title">Update result for the candidate</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" action="{{ route('EmployerCompany.candidate.updateCandidateResult', $candidate->id) }}" method="POST"
+                            <form role="form" action="{{ route('EmployerCompany.candidates.updateCandidateResult', $candidate->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @include('includes.errors')

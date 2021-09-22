@@ -76,7 +76,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-sm"
-                                                    href="{{ route('EmployerCompany.candidate.show', $candidate->id) }}">
+                                                    href="{{ route('EmployerCompany.candidates.show', $candidate->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                             </td>

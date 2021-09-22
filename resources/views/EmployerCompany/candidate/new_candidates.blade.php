@@ -57,7 +57,7 @@
                                             <td>{{ $appliedJob->jobPost->job_category->category_name }}</td>
                                             <td>{{ $appliedJob->approved_vacancy }}</td>
                                             <td>
-                                                <a class="btn btn-info btn-sm" href="{{ route('EmployerCompany.candidate.newCandidateList', $appliedJob->id) }}"><i class="fa fa-users"></i>
+                                                <a class="btn btn-info btn-sm" href="{{ route('EmployerCompany.candidates.newCandidateList', $appliedJob->id) }}"><i class="fa fa-users"></i>
                                                 </a>
                                             </td>
                                         </tr>

@@ -32,7 +32,7 @@
                             <h3 class="panel-title">Vacancy Allocations</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" action="{{ route('EmployerCompany.candidate.update', $candidate->id ) }}" method="POST" enctype="multipart/form-data">
+                            <form role="form" action="{{ route('EmployerCompany.candidates.update', $candidate->id ) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row">

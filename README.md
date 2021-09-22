@@ -22,4 +22,5 @@
 * __Travel Agency:__ ```travel@gmail.com```
 * __Biometric Agency:__ ```bio@gmail.com```
 * __Uae Embassy:__ ```ue@gmail.com```
+* __Employer Company:__ ```ec@gmail.com```
 * __Candidate:__ ```candidate@gmail.com```
