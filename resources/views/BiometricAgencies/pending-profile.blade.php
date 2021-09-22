@@ -87,7 +87,7 @@
                                                                         </textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="logo">Logo</label>
+                                                    <label for="logo" accept="image/*">Logo</label>
                                                     <input name="logo" type="file" class="form-control" id="logo">
                                                 </div>
                                                 <div class="form-group">

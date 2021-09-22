@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="biometric">Upload Biometric (Only PDF)</label>
-                                            <input type="file" class="form-control" id="biometric" name="biometric">
+                                            <input type="file" accept="application/pdf" class="form-control" id="biometric" name="biometric">
                                         </div>
                                     </div> <!-- panel-body -->
                                 </div> <!-- col -->

@@ -78,7 +78,7 @@
                                           <label for="Further Medical Test">Upload Offer Letter (Only PDF)</label>
                                            <div class="input-group">
                                             <div class="col-sm-4" style="padding-top:6px;">
-                                              <input type="file" name="offer_letter">
+                                              <input type="file" accept="application/pdf" name="offer_letter">
                                             </div>
                                           </div>
                                         </div>
