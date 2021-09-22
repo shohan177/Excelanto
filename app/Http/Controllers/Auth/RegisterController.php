@@ -143,9 +143,6 @@ class RegisterController extends Controller
             echo "some this wrong";
         }
 
-        //$user = new User();
-
-        //dd($data['name']." ".$data['email']." ".$data['password']." ".$data['role']." ".$userType." ".$data['country']);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

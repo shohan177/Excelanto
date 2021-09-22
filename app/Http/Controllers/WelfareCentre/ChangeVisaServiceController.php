@@ -98,6 +98,7 @@ class ChangeVisaServiceController extends Controller
     {
         $request->validate([
             'deliveryType' => 'required',
+            'document' => 'mimes:pdf',
         ]);
         $changeVisaService = ChangeVisaService::findOrFail($id);
 

@@ -49,6 +49,9 @@ class VisaRequestController extends Controller
     }
 
     public function visaStatusOfferedCandidateUpdate(Request $request, $offered_candidate_id){
+        $request->validate([
+            'document' => 'mimes:pdf',
+        ]);
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         $offeredCandidate->result_status = $request->resultStatus;
         $offeredCandidate->visa_document = $request->comments;

@@ -98,6 +98,7 @@ class PaymentServiceController extends Controller
     {
         $request->validate([
             'deliveryType' => 'required',
+            'document' => 'mimes:pdf',
         ]);
         $paymentService = PaymentService::findOrFail($id);
 

@@ -98,6 +98,7 @@ class RegistrationCertificateController extends Controller
     {
         $request->validate([
             'deliveryType' => 'required',
+            'document' => 'mimes:pdf',
         ]);
         $registrationCertificate = RegistrationCertificate::findOrFail($id);
 

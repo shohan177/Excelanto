@@ -98,6 +98,7 @@ class AmnestyServiceController extends Controller
     {
         $request->validate([
             'deliveryType' => 'required',
+            'document' => 'mimes:pdf',
         ]);
         $amnestyService = AmnestyService::findOrFail($id);
 

@@ -28,10 +28,12 @@ class TrainingAgencyDashboardController extends Controller
 
     public function companyPrfileSubmit(Request $request)
     {
-        // return $request;
+        $request->validate([
+            'document1' => 'mimes:pdf',
+            'document2' => 'mimes:pdf',
+        ]);
 
         $user = User::find(Auth::user()->id);
-        // dd($user->active_status);
 
         $user->company_name    =   $request->companyName;
         $user->active_status    ="Pending";

@@ -98,6 +98,7 @@ class ChangeEmployerServiceController extends Controller
     {
         $request->validate([
             'deliveryType' => 'required',
+            'document' => 'mimes:pdf',
         ]);
         $changeEmployerService = ChangeEmployerService::findOrFail($id);
 

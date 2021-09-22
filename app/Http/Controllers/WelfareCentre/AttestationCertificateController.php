@@ -98,6 +98,7 @@ class AttestationCertificateController extends Controller
     {
         $request->validate([
             'deliveryType' => 'required',
+            'document' => 'mimes:pdf',
         ]);
         $attestationCertificate = AttestationCertificate::findOrFail($id);
 
