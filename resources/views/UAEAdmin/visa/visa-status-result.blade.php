@@ -78,11 +78,10 @@
                                                 </select>
                                             </div>
                                             <div class="form-group" id="documentDiv" style="display: none;">
-                                                <label for="document">Upload visa approval document (Only
-                                                    PDF)</label>
+                                                <label for="document">Upload visa approval document (Only PDF)</label>
                                                 <div class="input-group">
                                                     <div class="col-sm-4" style="padding-top:6px;">
-                                                        <input type="file" name="document">
+                                                        <input type="file" accept="application/pdf" name="document">
                                                     </div>
                                                 </div>
                                             </div>

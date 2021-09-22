@@ -86,12 +86,12 @@
                                                     <input name="logo" type="file" class="form-control" id="logo">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="document1">Document 1</label>
-                                                    <input name="document1" type="file" class="form-control" id="document1">
+                                                    <label for="document1">Document 1(Only PDF)</label>
+                                                     <input name="document1"  type="file"  accept="application/pdf" class="form-control" id="document1">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="document2">Document 2</label>
-                                                    <input name="document2" type="file" class="form-control" id="document2">
+                                                    <label for="document2">Document 2(Only PDF)</label>
+                                                    <input name="document2"  type="file"  accept="application/pdf" class="form-control" id="document2">
                                                 </div>
                                             </div> <!-- panel-body -->
                                         </div> <!-- col -->
