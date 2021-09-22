@@ -39,18 +39,22 @@ class EmployerDemandController extends Controller
     }
 
     public function update(Request $request , $id){
+        $request->validate([
+            'demandLetter' => 'mimes:pdf',
+        ]);
+
         $job_post = JobPost::findOrFail($id);
 
         $job_post->status    =   $request->jobPostStatus;
         $job_post->rejection_reason    =  $request->reasonToReject;
 
         if ($request->hasFile('demandLetter')) {
-            $image             = $request->file('demandLetter');
+            $pdf             = $request->file('demandLetter');
             $folder_path       = 'uploads/demand-letter/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $job_post->demand_letter   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->demandLetter->move(public_path($folder_path), $pdf_new_name);
+            $job_post->demand_letter   = $folder_path . $pdf_new_name;
         }
 
         try {

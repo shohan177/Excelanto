@@ -74,11 +74,11 @@
                                             @endif
                                           </select>
                                         </div>
-                                        <div class="form-group input-to-hide" id="OfferLetter" style="display: none;">
+                                        <div class="form-group input-to-hide" id="offerLetter" style="display: none;">
                                           <label for="Further Medical Test">Upload Offer Letter (Only PDF)</label>
                                            <div class="input-group">
                                             <div class="col-sm-4" style="padding-top:6px;">
-                                              <input type="file" accept="application/pdf" name="offer_letter">
+                                              <input type="file" accept="application/pdf" name="offerLetter">
                                             </div>
                                           </div>
                                         </div>

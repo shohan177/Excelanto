@@ -78,18 +78,22 @@ class BiometricController extends Controller
 
     public function uploadBiometricStore(Request $request, $offered_candidate_id)
     {
+        $request->validate([
+            'biometric' =>'mimes:pdf',
+        ]);
+
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         $offeredCandidate->result_status = 'Bio-Completed';
         $offeredCandidate->biometric_fee = $request->biometricFees;
         $offeredCandidate->bio_status = 'Success';
 
         if ($request->hasFile('biometric')) {
-            $image             = $request->file('biometric');
+            $pdf             = $request->file('biometric');
             $folder_path       = 'uploads/biometric/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $offeredCandidate->bio_report   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->biometric->move(public_path($folder_path), $pdf_new_name);
+            $offeredCandidate->bio_report   = $folder_path . $pdf_new_name;
         }
         try {
             $offeredCandidate->save();

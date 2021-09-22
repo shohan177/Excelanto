@@ -56,7 +56,7 @@ class PostJobController extends Controller
             'jobCategory' => 'required',
             'jobVacancy' => 'required|numeric',
             'endDate' => 'required',
-            'demandLetter' => 'nullable',
+            'demandLetter' => 'mimes:pdf',
             'wsc' => 'required',
             'appointmentDate' => 'required',
             'appointmentTime' => 'required',
@@ -78,12 +78,12 @@ class PostJobController extends Controller
         $job_post ->appointment_time = $request->appointmentTime;
 
         if ($request->hasFile('demandLetter')) {
-            $image             = $request->file('demandLetter');
+            $pdf             = $request->file('demandLetter');
             $folder_path       = 'uploads/demand-letter/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $job_post->demand_letter   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->demandLetter->move(public_path($folder_path), $pdf_new_name);
+            $job_post->demand_letter   = $folder_path . $pdf_new_name;
         }
 
         try {

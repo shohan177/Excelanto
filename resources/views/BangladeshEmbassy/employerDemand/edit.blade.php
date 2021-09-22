@@ -60,7 +60,7 @@
                                                 <label for="demandLetter">Demand Letter</label>
                                                 <div class="input-group">
                                                     <div class="col-sm-4" style="padding-top:6px;">
-                                                        <input type="file" name="demandLetter">
+                                                        <input type="file" accept="application/pdf" name="demandLetter">
                                                     </div>
                                                 </div>
                                             </div>

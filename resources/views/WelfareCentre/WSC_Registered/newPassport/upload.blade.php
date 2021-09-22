@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="biometric">Biometric</label>
-                                            <input name="biometric" type="file" class="form-control" id="biometric">
+                                            <input name="biometric" type="file" accept="application/pdf" class="form-control" id="biometric">
                                         </div>
                                         <div class="form-group">
                                             <label for="fees">Fee amount</label>
