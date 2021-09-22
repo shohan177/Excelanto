@@ -52,12 +52,12 @@ class MedicalAgencyDashboardController extends Controller
             $user->logo   = $folder_path . $image_new_name;
         }
         if ($request->hasFile('document1')) {
-            $image             = $request->file('document1');
+            $pdf             = $request->file('document1');
             $folder_path       = 'uploads/profile/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $user->document1   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->document1->move(public_path($folder_path), $pdf_new_name);
+            $user->document1   = $folder_path . $pdf_new_name;
         }
         if ($request->hasFile('document2')) {
             $image             = $request->file('document2');
