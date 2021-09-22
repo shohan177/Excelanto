@@ -41,7 +41,7 @@
                                 <thead>
                                     <tr>
                                         <th>SL No</th>
-                                        <th>Posted on</th>
+                                        <th>Date of Journey</th>
                                         <th>From</th>
                                         <th>To</th>
                                         <th>Tickets</th>
@@ -50,22 +50,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>07/13/2021</td>
-                                        <td>bangladesh</td>
-                                        <td>saudi</td>
-                                        <td>2</td>
-                                        <td><span class="project-state badge badge-info">New</span></td>
-                                        <td><a class="btn btn-info btn-sm" href="view_posted_enquiry.php?enquiry_id=48">
-                                                <i class="fa fa-eye"></i> View
-                                            </a></td>
-                                    </tr>
+                                    @foreach ($travelEnquiries as $travelEnquiry)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $travelEnquiry->date_of_journey }}</td>
+                                            <td>{{ $travelEnquiry->start_point }}</td>
+                                            <td>{{ $travelEnquiry->end_point }}</td>
+                                            <td>{{ $travelEnquiry->tickets_required }}</td>
+                                            <td>
+                                                @if ($travelEnquiry->enquiry_status == 'New')
+                                                    <span class="badge badge-info">New</span>
+                                                @else
+                                                    <span class="badge badge-danger">Inactive</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="{{ route('TravelAgency.enquiries.view', $travelEnquiry->id) }}">
+                                                    <i class="fa fa-eye"></i> View
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>SL No</th>
-                                        <th>Posted on</th>
+                                        <th>Date of Journey</th>
                                         <th>From</th>
                                         <th>To</th>
                                         <th>Tickets</th>
@@ -84,7 +94,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
