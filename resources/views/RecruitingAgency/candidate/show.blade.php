@@ -107,15 +107,21 @@
                                         </a>
                                     @endif
                                     <hr>
-                                    <strong><i class="fa fa-camera mr-1"></i>Passport</strong>
-                                    <div class="mailbox-attachment-info"> <a
-                                            href="../candidates_passport/{{ $candidate->candidate_passport }}"
-                                            class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                            {{ $candidate->candidate_passport }}</a>
-                                        <a href="../candidates_passport/{{ $candidate->candidate_passport }}" download
-                                            class="btn btn-default btn-xs float-right"><i
-                                                class="fa fa-cloud-download"></i></a>
-                                    </div>
+                                    @if($candidate->candidate_passport)
+                                        <a href="{{ asset($candidate->candidate_passport) }}" target="_blank">
+                                            <strong><i class="fa fa-file mr-1"></i> Passport</strong>
+                                        </a>
+                                        <div class="mailbox-attachment-info">
+                                            <a href="{{ asset($candidate->candidate_passport) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    @else
+                                        <a title="Sorry there is no document">
+                                            <strong><i class="fa fa-file mr-1"></i> Passport</strong>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            </div>
+                                        </a>
+                                    @endif
                                     <hr>
                                     @if($candidate->pre_medical_certificate)
                                         <a href="{{ asset($candidate->pre_medical_certificate) }}" target="_blank">
