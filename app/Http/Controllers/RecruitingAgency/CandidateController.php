@@ -80,12 +80,12 @@ class CandidateController extends Controller
         }
 
         if ($request->hasFile('bioData')) {
-            $image             = $request->file('bioData');
+            $pdf             = $request->file('bioData');
             $folder_path       = 'uploads/candidate/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $candidate->candidate_resume   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->bioData->move(public_path($folder_path), $pdf_new_name);
+            $candidate->candidate_resume   = $folder_path . $pdf_new_name;
         }
 
         if ($request->hasFile('passport')) {

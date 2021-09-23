@@ -109,7 +109,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="bioData">Bio-data(Resume)</label>
-                                                    <input type="file" class="form-control" id="bioData" name="bioData">
+                                                    <input type="file" accept="application/pdf" class="form-control" id="bioData" name="bioData">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="passport">Passport</label>
