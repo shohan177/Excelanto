@@ -97,7 +97,8 @@ class ExtensionPassportServiceController extends Controller
     public function detailsUpdate(Request $request, $id)
     {
         $request->validate([
-            'deliveryStatus' => 'required',
+            'deliveryStatus'=> 'required',
+            'passport'      => 'mimes:pdf',
         ]);
 
         $extensionPassportService = ExtensionPassportService::findOrFail($id);

@@ -79,6 +79,7 @@ class NewPassportServiceController extends Controller
         $request->validate([
             'fees' => 'required|numeric',
             'biometric' =>'mimes:pdf',
+            'photo' =>'image',
         ]);
 
         $newPassportService = NewPassportService::findOrFail($id);
