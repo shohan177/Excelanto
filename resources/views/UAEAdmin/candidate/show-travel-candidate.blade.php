@@ -227,15 +227,21 @@
                                                 class="fa fa-cloud-download"></i></a>
                                     </div>
                                     <hr>
-                                    <strong><i class="fa fa-camera mr-1"></i>Visa Approval Document</strong>
-                                    <div class="mailbox-attachment-info"> <a
-                                            href="../visa_documents/{{ $offeredCandidate->visa_document }}"
-                                            class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                            {{ $offeredCandidate->visa_document }}</a>
-                                        <a href="../visa_documents/{{ $offeredCandidate->visa_document }}" download
-                                            class="btn btn-default btn-xs float-right"> <i
-                                                class="fa fa-cloud-download"></i></a>
-                                    </div>
+                                    @if($offeredCandidate->visa_document)
+                                        <a href="{{ asset($offeredCandidate->visa_document) }}" target="_blank">
+                                            <strong><i class="fa fa-file mr-1"></i> Visa Approval Document</strong>
+                                        </a>
+                                        <div class="mailbox-attachment-info">
+                                            <a href="{{ asset($offeredCandidate->visa_document) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    @else
+                                        <a title="Sorry there is no document">
+                                            <strong><i class="fa fa-file mr-1"></i> Visa Approval Document</strong>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            </div>
+                                        </a>
+                                    @endif
                                 </div> <!-- /.tab-content -->
                             </div><!-- /.card-body -->
                         </div> <!-- /.nav-tabs-custom -->
