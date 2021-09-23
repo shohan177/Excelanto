@@ -26,7 +26,7 @@ class AttestationCertificateSeeder extends Seeder
                 'delivery_charge' => rand(1000, 2000),
                 'delivery_type' => 'Door delivery',
                 'delivery_to'  => 'Bonani Dhaka',
-                'document'  => 'assets/images/users/avatar-1.jpg',
+                'document'  => null,
                 'legal_status'  => 'Approved',
                 'delivery_status'  => rand(11, 19),
                 'created_at'  => Carbon::now(),

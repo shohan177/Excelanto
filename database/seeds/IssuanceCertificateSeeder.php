@@ -25,7 +25,7 @@ class IssuanceCertificateSeeder extends Seeder
                 'delivery_charge' => rand(100, 200),
                 'fees' => rand(1000, 2000),
                 'delivery_to' => 'Dhaka bonani',
-                'document'  => 'assets/images/users/avatar-1.jpg',
+                'document'  => null,
                 'delivery_type'  => 'Door delivery',
                 'created_id'  => rand(11, 19),
                 'created_at'  => Carbon::now(),
