@@ -124,15 +124,21 @@
                                             class="fa fa-cloud-download"></i></a>
                                 </div>
                                 <hr>
-                                <strong><i class="fa fa-camera mr-1"></i>Pre-Medical Certificate</strong>
-                                <div class="mailbox-attachment-info"> <a
-                                        href="../pre_medical_certificate/{{ $offeredCandidate->pre_medical_certificate }}"
-                                        class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                        {{ $offeredCandidate->candidate->pre_medical_certificate }}</a>
-                                    <a href="../pre_medical_certificate/{{ $offeredCandidate->pre_medical_certificate }}"
-                                        download class="btn btn-default btn-xs float-right"><i
-                                            class="fa fa-cloud-download"></i></a>
-                                </div>
+                                @if($offeredCandidate->post_medical_report)
+                                        <a href="{{ asset($offeredCandidate->post_medical_report) }}" target="_blank">
+                                            <strong><i class="fa fa-file mr-1"></i> Pre-Medical Certificate</strong>
+                                        </a>
+                                        <div class="mailbox-attachment-info">
+                                            <a href="{{ asset($offeredCandidate->post_medical_report) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    @else
+                                        <a title="Sorry there is no document">
+                                            <strong><i class="fa fa-file mr-1"></i> Pre-Medical Certificate</strong>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            </div>
+                                        </a>
+                                    @endif
                                 <hr>
                                 <strong><i class="fa fa-camera mr-1"></i>Pre-Training Certificate</strong>
                                 <div class="mailbox-attachment-info"> <a
@@ -155,20 +161,20 @@
                                 </div></strong>
                                 <hr>
                                 @if($offeredCandidate->post_medical_report)
-                                    <a href="{{ asset($offeredCandidate->post_medical_report) }}" target="_blank">
-                                        <strong><i class="fa fa-file mr-1"></i> Pre-Medical Certificate</strong>
-                                    </a>
-                                    <div class="mailbox-attachment-info">
-                                        <a href="{{ asset($offeredCandidate->post_medical_report) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
-                                    </div>
-                                @else
-                                    <a title="Sorry there is no document">
-                                        <strong><i class="fa fa-file mr-1"></i> Pre-Medical Certificate</strong>
+                                        <a href="{{ asset($offeredCandidate->post_medical_report) }}" target="_blank">
+                                            <strong><i class="fa fa-file mr-1"></i> Pre-Medical Certificate</strong>
+                                        </a>
                                         <div class="mailbox-attachment-info">
-                                            <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            <a href="{{ asset($offeredCandidate->post_medical_report) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
                                         </div>
-                                    </a>
-                                @endif
+                                    @else
+                                        <a title="Sorry there is no document">
+                                            <strong><i class="fa fa-file mr-1"></i> Pre-Medical Certificate</strong>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            </div>
+                                        </a>
+                                    @endif
                                 <hr>
                                 <strong><i class="fa fa-camera mr-1"></i>Biometric</strong>
                                 <div class="mailbox-attachment-info"> <a

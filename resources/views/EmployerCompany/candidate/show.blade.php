@@ -119,15 +119,21 @@
                                                 class="fa fa-cloud-download"></i></a>
                                     </div>
                                     <hr>
-                                    <strong><i class="fa fa-camera mr-1"></i>Pre-Medical Certificate</strong>
-                                    <div class="mailbox-attachment-info"> <a
-                                            href="../pre_medical_certificate/{{ $candidate->pre_medical_certificate }}"
-                                            class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                            {{ $candidate->pre_medical_certificate }}</a>
-                                        <a href="../pre_medical_certificate/{{ $candidate->pre_medical_certificate }}"
-                                            download class="btn btn-default btn-xs float-right"><i
-                                                class="fa fa-cloud-download"></i></a>
-                                    </div>
+                                    @if($candidate->post_medical_report)
+                                        <a href="{{ asset($candidate->post_medical_report) }}" target="_blank">
+                                            <strong><i class="fa fa-file mr-1"></i> Pre-Medical Certificate</strong>
+                                        </a>
+                                        <div class="mailbox-attachment-info">
+                                            <a href="{{ asset($candidate->post_medical_report) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    @else
+                                        <a title="Sorry there is no document">
+                                            <strong><i class="fa fa-file mr-1"></i> Pre-Medical Certificate</strong>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            </div>
+                                        </a>
+                                    @endif
                                     <hr>
                                     <strong><i class="fa fa-camera mr-1"></i>Pre-Training Certificate</strong>
                                     <div class="mailbox-attachment-info"> <a
