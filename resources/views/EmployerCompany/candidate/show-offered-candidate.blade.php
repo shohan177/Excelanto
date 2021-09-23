@@ -114,10 +114,10 @@
                                     <hr>
                                     <strong><i class="fa fa-camera mr-1"></i>Pre-Medical Certificate</strong>
                                     <div class="mailbox-attachment-info"> <a
-                                            href="../pre_medical_certificate/{{ $offeredCandidate->pre_medical_certificate }}"
+                                            href="../pre_medical_certificate/{{ $offeredCandidate->candidate->pre_medical_certificate }}"
                                             class="mailbox-attachment-name"><i class="fa fa-file"></i>
                                             {{ $offeredCandidate->candidate->pre_medical_certificate }}</a>
-                                        <a href="../pre_medical_certificate/{{ $offeredCandidate->pre_medical_certificate }}"
+                                        <a href="../pre_medical_certificate/{{ $offeredCandidate->candidate->pre_medical_certificate }}"
                                             download class="btn btn-default btn-xs float-right"><i
                                                 class="fa fa-cloud-download"></i></a>
                                     </div>

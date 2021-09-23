@@ -119,12 +119,12 @@
                                                 class="fa fa-cloud-download"></i></a>
                                     </div>
                                     <hr>
-                                    @if($offeredCandidate->pre_medical_certificate)
-                                        <a href="{{ asset($offeredCandidate->pre_medical_certificate) }}" target="_blank">
+                                    @if($offeredCandidate->candidate->pre_medical_certificate)
+                                        <a href="{{ asset($offeredCandidate->candidate->pre_medical_certificate) }}" target="_blank">
                                             <strong><i class="fa fa-file mr-1"></i> Pre-Medical Certificate</strong>
                                         </a>
                                         <div class="mailbox-attachment-info">
-                                            <a href="{{ asset($offeredCandidate->pre_medical_certificate) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            <a href="{{ asset($offeredCandidate->candidate->pre_medical_certificate) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
                                         </div>
                                     @else
                                         <a title="Sorry there is no document">
