@@ -108,24 +108,24 @@
                             <div class="tab-pane" id="timeline">
                                 <strong><i class="fa fa-user mr-1"></i> Present City/Town</strong>
                                 <p class="text-muted">{{ $offeredCandidate->createdUser->city }}</p>
-      
+
                                 <hr>
-      
+
                                 <strong><i class="fa fa-flag mr-1"></i> State</strong>
                                 <p class="text-muted">{{ $offeredCandidate->createdUser->state }}</p>
-      
+
                                 <hr>
-      
+
                                 <strong><i class="fa fa-flag mr-1"></i> Country</strong>
                                 <p class="text-muted">{{ $offeredCandidate->createdUser->country->country_name }}</p>
-      
+
                                 <hr>
-      
+
                                 <strong><i class="fa fa-file mr-1"></i> Company Name</strong>
                                 <p class="text-muted">{{ $offeredCandidate->createdUser->company_name }}</p>
-      
+
                                 <hr>
-      
+
                                 <strong><i class="fa fa-map-marker mr-1"></i> Present Address</strong>
                                 <p class="text-muted">{{ $offeredCandidate->createdUser->address1 }}</p>
                             </div>

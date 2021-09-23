@@ -103,16 +103,22 @@
                                     <strong><i class="fa fa-map-marker mr-1"></i> Permanent Address</strong>
                                     <p class="text-muted">{{ $candidate->permanent_address }}</p>
                                 </div> <!-- /.tab-pane -->
-                                <div class="tab-pane" id="timeline"> <strong><i
-                                            class="fa fa-camera mr-1"></i>Bio-data</strong>
-                                    <div class="mailbox-attachment-info"> <a
-                                            href="../candidates_resume/{{ $candidate->candidate_resume }}"
-                                            class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                            {{ $candidate->candidate_resume }}</a>
-                                        <a href="../candidates_resume/{{ $candidate->candidate_resume }}" download
-                                            class="btn btn-default btn-xs float-right"> <i
-                                                class="fa fa-cloud-download"></i></a>
-                                    </div>
+                                <div class="tab-pane" id="timeline">
+                                    @if($candidate->candidate_resume)
+                                        <a href="{{ asset($candidate->candidate_resume) }}" target="_blank">
+                                            <strong><i class="fa fa-file mr-1"></i> Bio-data</strong>
+                                        </a>
+                                        <div class="mailbox-attachment-info">
+                                            <a href="{{ asset($candidate->candidate_resume) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    @else
+                                        <a title="Sorry there is no document">
+                                            <strong><i class="fa fa-file mr-1"></i> Bio-data</strong>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            </div>
+                                        </a>
+                                    @endif
                                     <hr>
                                     <strong><i class="fa fa-camera mr-1"></i>Passport</strong>
                                     <div class="mailbox-attachment-info"> <a
