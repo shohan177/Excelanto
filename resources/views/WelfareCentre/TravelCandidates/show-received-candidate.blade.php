@@ -172,15 +172,21 @@
                                         </a>
                                     @endif
                                     <hr>
-                                    <strong><i class="fa fa-camera mr-1"></i>Post-Training Certificate</strong>
-                                    <div class="mailbox-attachment-info"> <a
-                                            href="../pre_training_certificate/ {{ $offeredCandidate->candidate->pre_training_certificate }}"
-                                            class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                            {{ $offeredCandidate->candidate->pre_training_certificate }}</a>
-                                        <a href="../pre_training_certificate/ {{ $offeredCandidate->candidate->pre_training_certificate }}"
-                                            download class="btn btn-default btn-xs float-right"><i
-                                                class="fa fa-cloud-download"></i></a>
-                                    </div>
+                                    @if($offeredCandidate->post_training_report)
+                                        <a href="{{ asset($offeredCandidate->post_training_report) }}" target="_blank">
+                                            <strong><i class="fa fa-file mr-1"></i> Post-Training Certificate</strong>
+                                        </a>
+                                        <div class="mailbox-attachment-info">
+                                            <a href="{{ asset($offeredCandidate->post_training_report) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    @else
+                                        <a title="Sorry there is no document">
+                                            <strong><i class="fa fa-file mr-1"></i> Post-Training Certificate</strong>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            </div>
+                                        </a>
+                                    @endif
                                 </div>
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane" id="results">
