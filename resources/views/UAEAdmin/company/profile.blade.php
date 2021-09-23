@@ -102,21 +102,37 @@
                                     <p class="text-muted">{{ $user->address2 }}</p>
                                 </div> <!-- /.tab-pane -->
                                 <div class="tab-pane" id="Documents">
-                                    <strong><i class="fa fa-file mr-1"></i> Document 1</strong>
-                                    <div class="mailbox-attachment-info">
-
-                                      <a href="documentOne/{{ $user->document1 }}" class="mailbox-attachment-name">{{ $user->document1 }}</a>
-
-                                      <a href="documentOne/{{ $user->document1 }}" class="btn btn-default btn-xs float-right" download><i class="fa fa-cloud-download"></i></a>
-                                    </div>
+                                    @if($user->document1)
+                                        <a href="{{ asset($user->document1) }}" target="_blank">
+                                            <strong><i class="fa fa-file mr-1"></i> Document 1</strong>
+                                        </a>
+                                        <div class="mailbox-attachment-info">
+                                            <a href="{{ asset($user->document1) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    @else
+                                        <a title="Sorry there is no document">
+                                            <strong><i class="fa fa-file mr-1"></i> Document 1</strong>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            </div>
+                                        </a>
+                                    @endif
                                     <hr>
-                                    <strong><i class="fa fa-file mr-1"></i> Document 2</strong>
-                                    <div class="mailbox-attachment-info">
-
-                                      <a href="documentTwo/{{ $user->document2 }}" class="mailbox-attachment-name">{{ $user->document2 }}</a>
-
-                                      <a href="documentTwo/{{ $user->document2 }}" class="btn btn-default btn-xs float-right" download><i class="fa fa-cloud-download"></i></a>
-                                    </div>
+                                    @if($user->document2)
+                                        <a href="{{ asset($user->document2) }}" target="_blank">
+                                            <strong><i class="fa fa-file mr-1"></i> Document 2</strong>
+                                        </a>
+                                        <div class="mailbox-attachment-info">
+                                            <a href="{{ asset($user->document2) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    @else
+                                        <a title="Sorry there is no document">
+                                            <strong><i class="fa fa-file mr-1"></i> Document 2</strong>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            </div>
+                                        </a>
+                                    @endif
                                 </div> <!-- /.tab-content -->
                             </div><!-- /.card-body -->
                         </div> <!-- /.nav-tabs-custom -->

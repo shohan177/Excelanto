@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'one-stop-service/', 'namespace' => 'OneStopService', 'as' => 'OneStopService.', 'middleware' => ['auth', 'one-stop-service']], function () {
     Route::get('/dashboard', 'OneStopServiceDashboardController@dashboard')->name('dashboard');
     Route::post('/company-prfile-submit', 'OneStopServiceDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
+    Route::get('/company-profile-view', 'OneStopServiceDashboardController@companyPrfileView')->name('companyPrfileView');
+
 
     Route::get('show-company-profile/{user_id}', 'CompanyController@showCompanyProfile')->name('company.showCompanyProfile');
     Route::post('company-request-approve/{company_id}', 'CompanyController@approveNow')->name('company.approveNow');

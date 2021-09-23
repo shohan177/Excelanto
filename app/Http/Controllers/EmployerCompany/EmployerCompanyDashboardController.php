@@ -20,15 +20,20 @@ class EmployerCompanyDashboardController extends Controller
         return view('EmployerCompany.welcome');
     }
 
+    public function companyPrfileView(){
+        $user = User::find(Auth::user()->id);
+        return view('EmployerCompany.profile', compact('user'));
+    }
+
     public function companyPrfileSubmit(Request $request)
     {
         $request->validate([
             'document1' => 'mimes:pdf',
             'document2' => 'mimes:pdf',
+            'logo'      => 'image',
         ]);
 
         $user = User::find(Auth::user()->id);
-
 
         $user->company_name    =   $request->companyName;
         $user->active_status    ="Pending";

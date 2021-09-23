@@ -20,11 +20,17 @@ class WelfareDashboardController extends Controller
         return view('WelfareCentre.dashboard');
     }
 
+    public function companyPrfileView(){
+        $user = User::find(Auth::user()->id);
+        return view('WelfareCentre.profile', compact('user'));
+    }
+
     public function companyPrfileSubmit(Request $request)
     {
         $request->validate([
             'document1' => 'mimes:pdf',
             'document2' => 'mimes:pdf',
+            'logo'      => 'image',
         ]);
 
         $user = User::find(Auth::user()->id);

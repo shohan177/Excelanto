@@ -22,11 +22,17 @@ class RecruitingAgencyDashboardController extends Controller
         return view('RecruitingAgency.welcome');
     }
 
+    public function companyPrfileView(){
+        $user = User::find(Auth::user()->id);
+        return view('RecruitingAgency.profile', compact('user'));
+    }
+
     public function companyPrfileSubmit(Request $request)
     {
         $request->validate([
             'document1' => 'mimes:pdf',
             'document2' => 'mimes:pdf',
+            'logo'      => 'image',
         ]);
 
         $user = User::find(Auth::user()->id);

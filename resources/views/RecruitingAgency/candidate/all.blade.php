@@ -61,10 +61,13 @@
                                             <td>{{ $candidate->candidate_email }}</td>
                                             <td>
                                                 @if ($candidate->candidate_picture)
-                                                    <img height="70px;" src="{{ asset($candidate->candidate_picture) }}"
-                                                        width="70px;" class="rounded-circle" />
+                                                    <a href="{{ asset($candidate->candidate_picture) }}" target="_blank">
+                                                        <img height="70px;" src="{{ asset($candidate->candidate_picture) }}" width="70px;" class="rounded-circle" />
+                                                    </a>
                                                 @else
-                                                    <img class="rounded-circle" height="70px;" src="{{asset('assets/images/users/avatar-1.jpg')}}" width="70px;" />
+                                                    <abbr title="Sorry There in no picture">
+                                                        <img class="rounded-circle" height="70px;" src="{{asset('assets/images/users/avatar-1.jpg')}}" width="70px;" />
+                                                    </abbr>
                                                 @endif
                                             </td>
                                             <td>

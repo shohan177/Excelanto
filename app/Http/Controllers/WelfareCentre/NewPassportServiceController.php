@@ -79,6 +79,7 @@ class NewPassportServiceController extends Controller
         $request->validate([
             'fees' => 'required|numeric',
             'biometric' =>'mimes:pdf',
+            'photo' =>'image',
         ]);
 
         $newPassportService = NewPassportService::findOrFail($id);
@@ -117,20 +118,23 @@ class NewPassportServiceController extends Controller
         $request->validate([
             'deliveryType' => 'required',
             'deliveryStatus' => 'required',
+            'passport' => 'mimes:pdf',
         ]);
 
         $newPassportService = NewPassportService::findOrFail($id);
 
         $newPassportService->delivery_status = $request->deliveryStatus;
         $newPassportService->delivery_to = $request->deliveryTo;
+
         if ($request->hasFile('passport')) {
-            $image = $request->file('passport');
-            $folder_path = 'uploads/passport/';
-            $image_new_name = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $newPassportService->new_passport = $folder_path . $image_new_name;
+            $pdf             = $request->file('passport');
+            $folder_path       = 'uploads/passport/';
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->passport->move(public_path($folder_path), $pdf_new_name);
+            $newPassportService->new_passport   = $folder_path . $pdf_new_name;
         }
+
         try {
             $newPassportService->save();
             return back()->withToastSuccess('Successfully Updated.');

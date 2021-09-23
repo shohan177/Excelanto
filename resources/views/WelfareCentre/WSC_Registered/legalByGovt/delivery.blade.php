@@ -79,7 +79,11 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-info btn-xs" href="{{ asset($amnestyService->document) }}" target="_blank"><i class="fa fa-eye"></i></a>
+                                                @if($amnestyService->document)
+                                                    <a class="btn btn-info btn-xs" href="{{ asset($amnestyService->document) }}" target="_blank"><i class="fa fa-eye"></i></a>
+                                                @else
+                                                    <a title="There is no document" class="btn btn-info btn-xs" href="#"><i class="fa fa-eye"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

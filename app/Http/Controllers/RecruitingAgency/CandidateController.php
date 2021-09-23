@@ -41,20 +41,21 @@ class CandidateController extends Controller
     }
 
     public function store(Request $request){
-        // return $request;
         $request->validate([
             'candidateName' => ['required', 'string', 'max:255'],
-            'jobCategory' =>  'required',
-            'dateOfBirth' =>  'required',
-            'gender' => 'required',
-            'passportNo' => 'required',
-            'phoneNo' => 'required',
-            'email' =>  'email',
-            'status' =>  'required'
+            'jobCategory'   =>  'required',
+            'dateOfBirth'   =>  'required',
+            'gender'    => 'required',
+            'passportNo'=> 'required',
+            'passport'  => 'mimes:pdf',
+            'phoneNo'   => 'required',
+            'email'     =>  'email',
+            'status'    =>  'required',
+            'photo'     =>  'image',
+            'bioData'   =>  'mimes:pdf',
+            'preMedicalCertificate'   =>  'mimes:pdf',
+            'preTrainingCertificate'  =>  'mimes:pdf',
         ]);
-
-        // return $request;
-
 
         $candidate = new Candidate();
         $candidate->candidate_name    =   $request->candidateName;
@@ -83,41 +84,40 @@ class CandidateController extends Controller
         }
 
         if ($request->hasFile('bioData')) {
-            $image             = $request->file('bioData');
+            $pdf             = $request->file('bioData');
             $folder_path       = 'uploads/candidate/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $candidate->candidate_resume   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->bioData->move(public_path($folder_path), $pdf_new_name);
+            $candidate->candidate_resume   = $folder_path . $pdf_new_name;
         }
 
         if ($request->hasFile('passport')) {
-            $image             = $request->file('passport');
-            $folder_path       = 'uploads/candidate/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $candidate->passport   = $folder_path . $image_new_name;
+            $pdf             = $request->file('passport');
+            $folder_path       = 'uploads/passport/';
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->passport->move(public_path($folder_path), $pdf_new_name);
+            $candidate->passport   = $folder_path . $pdf_new_name;
         }
 
         if ($request->hasFile('preMedicalCertificate')) {
-            $image             = $request->file('preMedicalCertificate');
+            $pdf             = $request->file('preMedicalCertificate');
             $folder_path       = 'uploads/candidate/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $candidate->pre_medical_certificate   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->preMedicalCertificate->move(public_path($folder_path), $pdf_new_name);
+            $candidate->pre_medical_certificate   = $folder_path . $pdf_new_name;
         }
 
         if ($request->hasFile('preTrainingCertificate')) {
-            $image             = $request->file('preTrainingCertificate');
+            $pdf             = $request->file('preTrainingCertificate');
             $folder_path       = 'uploads/candidate/';
-            $image_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $image->getClientOriginalExtension();
-            //resize and save to server
-            Image::make($image->getRealPath())->save($folder_path . $image_new_name);
-            $candidate->pre_traning_certificate   = $folder_path . $image_new_name;
+            $pdf_new_name    = Str::random(20) . '-' . now()->timestamp . '.' . $pdf->getClientOriginalExtension();
+            // save to server
+            $request->preTrainingCertificate->move(public_path($folder_path), $pdf_new_name);
+            $candidate->pre_traning_certificate   = $folder_path . $pdf_new_name;
         }
-
 
         try {
             $candidate->save();

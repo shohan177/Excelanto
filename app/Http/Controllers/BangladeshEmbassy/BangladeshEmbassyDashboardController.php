@@ -20,15 +20,20 @@ class BangladeshEmbassyDashboardController extends Controller
         return view('BangladeshEmbassy.welcome');
     }
 
+    public function companyPrfileView(){
+        $user = User::find(Auth::user()->id);
+        return view('BangladeshEmbassy.profile', compact('user'));
+    }
+
     public function companyPrfileSubmit(Request $request)
     {
         $request->validate([
             'document1' => 'mimes:pdf',
             'document2' => 'mimes:pdf',
+            'logo'      => 'image',
         ]);
 
         $user = User::find(Auth::user()->id);
-
 
         $user->company_name    =   $request->companyName;
         $user->active_status    ="Pending";

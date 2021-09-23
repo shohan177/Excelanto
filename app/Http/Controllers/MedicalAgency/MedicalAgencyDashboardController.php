@@ -30,6 +30,7 @@ class MedicalAgencyDashboardController extends Controller
         $request->validate([
             'document1' => 'mimes:pdf',
             'document2' => 'mimes:pdf',
+            'logo'      => 'image',
         ]);
 
         $user = User::find(Auth::user()->id);

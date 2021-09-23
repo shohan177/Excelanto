@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // Bangladesh Embassy route
 Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbassy', 'as' => 'BangladeshEmbassy.', 'middleware' => ['auth', 'bangladesh-embassy']], function () {
     Route::get('/dashboard', 'BangladeshEmbassyDashboardController@dashboard')->name('dashboard');
+    Route::get('/company-profile-view', 'BangladeshEmbassyDashboardController@companyPrfileView')->name('companyPrfileView');
 
     Route::post('/company-prfile-submit', 'BangladeshEmbassyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
