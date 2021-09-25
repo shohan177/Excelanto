@@ -52,7 +52,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
                                     @foreach ($appliedVacancies as $appliedVacancy)
                                         <tr>

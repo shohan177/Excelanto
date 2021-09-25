@@ -69,7 +69,6 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-
                                 <tfoot>
                                     <tr>
                                         <th>SL No</th>
