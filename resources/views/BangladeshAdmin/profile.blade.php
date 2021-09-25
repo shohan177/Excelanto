@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-             @if ($user->active_status == 'New')
+            @if ($user->active_status == 'New')
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-primary">
@@ -25,7 +25,8 @@
                             </div>
                             <div class="panel-body">
                                 <form role="form" method="POST" enctype="multipart/form-data"
-                                    action="{{ route('OneStopService_Child.companyPrfileSubmit') }}">
+                                    {{-- action="{{ route('OneStopService_Child.companyPrfileSubmit') }}"> --}}
+                                    action="#">
                                     @csrf
                                     <div class="row">
                                         <!-- Basic example -->
