@@ -30,23 +30,25 @@ Route::group(['prefix' => 'child-one-stop-service/', 'namespace' => 'OneStopServ
     Route::post('candidate-status-change/{offered_candidate_id}/{result_status}', 'CandidateController@candidateStatusChange')->name('candidate.candidateStatusChange');
 
     //Biometric Candidate
-    Route::get('required-biometric', 'BiometricController@required')->name('biometric.required');
-    Route::get('completed-biometric', 'BiometricController@completed')->name('biometric.completed');
-
-    Route::get('assign-medical-training/{offered_candidate_id}', 'BiometricController@assignMedicalTraining')->name('biometric.assignMedicalTraining');
-    Route::post('assign-medical-training-store/{offered_candidate_id}', 'BiometricController@assignMedicalTrainingStore')->name('biometric.assignMedicalTrainingStore');
-    Route::get('show-paid-candidate-profile/{offered_candidate_id}', 'BiometricController@showPaidCandidateProfile')->name('biometric.showPaidCandidateProfile');
-    Route::get('upload-biometric/{offered_candidate_id}', 'BiometricController@uploadBiometric')->name('biometric.uploadBiometric');
-    Route::post('upload-biometric-store/{offered_candidate_id}', 'BiometricController@uploadBiometricStore')->name('biometric.uploadBiometricStore');
-    Route::get('assign-biometric-agency/{offered_candidate_id}', 'BiometricController@assignBiometricAgency')->name('biometric.assignBiometricAgency');
-    Route::post('assign-biometric-agency-store/{offered_candidate_id}', 'BiometricController@assignBiometricAgencyStore')->name('biometric.assignBiometricAgencyStore');
+    Route::group(['prefix' => 'biometric-candidate/', 'as' => 'biometric.'], function () {
+        Route::get('required', 'BiometricController@required')->name('required');
+        Route::get('completed', 'BiometricController@completed')->name('completed');
+        Route::get('assign-medical-training/{offered_candidate_id}', 'BiometricController@assignMedicalTraining')->name('assignMedicalTraining');
+        Route::post('assign-medical-training-store/{offered_candidate_id}', 'BiometricController@assignMedicalTrainingStore')->name('assignMedicalTrainingStore');
+        Route::get('show-paid-profile/{offered_candidate_id}', 'BiometricController@showPaidCandidateProfile')->name('showPaidCandidateProfile');
+        Route::get('upload/{offered_candidate_id}', 'BiometricController@uploadBiometric')->name('uploadBiometric');
+        Route::post('upload-store/{offered_candidate_id}', 'BiometricController@uploadBiometricStore')->name('uploadBiometricStore');
+        Route::get('assign-agency/{offered_candidate_id}', 'BiometricController@assignBiometricAgency')->name('assignBiometricAgency');
+        Route::post('assign-agency-store/{offered_candidate_id}', 'BiometricController@assignBiometricAgencyStore')->name('assignBiometricAgencyStore');
+    });
 
     // Visa Process
-    Route::get('requested-visa', 'VisaProcessController@requested')->name('visa.requested');
-    Route::get('show-visa-requested-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaRequestedCandidate')->name('visa.showVisaRequestedCandidate');
-    Route::get('approved-visa', 'VisaProcessController@approved')->name('visa.approved');
-    Route::get('show-visa-approved-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaApprovedCandidate')->name('visa.showVisaApprovedCandidate');
-    Route::get('rejected-visa', 'VisaProcessController@rejected')->name('visa.rejected');
-    Route::get('show-visa-rejected-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaRejectedCandidate')->name('visa.showVisaRejectedCandidate');
-
+    Route::group(['prefix' => 'visa-process/', 'as' => 'visa.'], function () {
+        Route::get('requested', 'VisaProcessController@requested')->name('requested');
+        Route::get('show-requested-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaRequestedCandidate')->name('showVisaRequestedCandidate');
+        Route::get('approved', 'VisaProcessController@approved')->name('approved');
+        Route::get('show-approved-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaApprovedCandidate')->name('showVisaApprovedCandidate');
+        Route::get('rejected', 'VisaProcessController@rejected')->name('rejected');
+        Route::get('show-rejected-candidate/{offered_candidate_id}', 'VisaProcessController@showVisaRejectedCandidate')->name('showVisaRejectedCandidate');
+    });
 });
