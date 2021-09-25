@@ -49,7 +49,11 @@
                                         <dt class="col-sm-6">Visa expire date</dt>
                                         <dd class="col-sm-6">{{ $jailDeportation->visa_expirydate }}</dd><br>
                                         <dt class="col-sm-6">Arrested person passport</dt>
-                                        <dd class="col-sm-6"><a href="{{ $jailDeportation->passport_copy }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @if($jailDeportation->passport_copy)
+                                            <dd class="col-sm-6"><a href="{{ asset($jailDeportation->passport_copy) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @else
+                                            <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @endif
                                     </dl>
                                 </div>
                                 <div class="col-md-6">

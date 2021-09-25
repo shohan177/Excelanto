@@ -48,11 +48,14 @@
                                         <dt class="col-sm-6">Applied on</dt>
                                         <dd class="col-sm-6">{{ $changeVisaService->created_at }}</dd><br>
                                         <dt class="col-sm-6">Application</dt>
-                                        <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @if($changeVisaService->document)
+                                            <dd class="col-sm-6"><a href="{{ asset($changeVisaService->document) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @else
+                                            <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @endif
                                     </dl>
                                 </div>
                                 <div class="col-md-3"></div>
-
                             </div>
                         </div>
                         <!-- /.panel-body -->

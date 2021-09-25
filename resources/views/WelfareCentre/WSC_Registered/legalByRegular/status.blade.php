@@ -45,7 +45,11 @@
                                     <dt class="col-sm-4">Applied on</dt>
                                     <dd class="col-sm-8">{{ $paymentService->created_at }}</dd><br>
                                     <dt class="col-sm-6">Application</dt>
-                                    <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                    @if($paymentService->payment_application)
+                                        <dd class="col-sm-6"><a href="{{ asset($paymentService->payment_application) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                    @else
+                                        <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                    @endif
                                 </dl>
                             </div>
                         </div>

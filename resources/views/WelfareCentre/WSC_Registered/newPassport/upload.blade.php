@@ -45,9 +45,11 @@
                                     <dt class="col-sm-6">Message</dt>
                                     <dd class="col-sm-6">{{ $newPassportService->comments }}</dd><br>
                                     <dt class="col-sm-6">Application</dt>
-                                    <dd class="col-sm-6"><a href="#"
-                                            class="btn btn-outline-warning btn-xs"><b>View</b></a>
-                                    </dd><br>
+                                    @if($newPassportService->new_offer_application)
+                                        <dd class="col-sm-6"><a href="{{ asset($newPassportService->new_offer_application) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                    @else
+                                        <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                    @endif
                                 </dl>
                         </div>
                         <!-- /.panel-body -->

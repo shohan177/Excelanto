@@ -42,7 +42,11 @@
                                         <dt class="col-sm-6">Insurance number (if any)</dt>
                                         <dd class="col-sm-6">{{ $insuranceService->insurance_number }}</dd><br>
                                         <dt class="col-sm-6">Insurance card</dt>
-                                        <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @if($insuranceService->document)
+                                            <dd class="col-sm-6"><a href="{{ asset($insuranceService->document) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @else
+                                            <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @endif
                                     </dl>
                                 </div>
                                 <div class="col-md-6">
