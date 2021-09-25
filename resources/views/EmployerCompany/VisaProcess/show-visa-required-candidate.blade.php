@@ -3,7 +3,6 @@
 @section('title', 'Candidate Profile')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

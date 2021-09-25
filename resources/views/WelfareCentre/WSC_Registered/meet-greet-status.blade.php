@@ -3,7 +3,6 @@
 @section('title', 'Meet and Greet request')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

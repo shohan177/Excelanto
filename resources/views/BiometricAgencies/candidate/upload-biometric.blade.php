@@ -3,7 +3,6 @@
 @section('title', 'Upload Biometric')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

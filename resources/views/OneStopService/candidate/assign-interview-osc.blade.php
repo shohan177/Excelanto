@@ -3,7 +3,6 @@
 @section('title', 'Assign One Stop Centre')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

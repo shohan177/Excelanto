@@ -3,7 +3,6 @@
 @section('title', 'Jail deportation request')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

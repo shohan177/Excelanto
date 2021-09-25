@@ -3,7 +3,6 @@
 @section('title', 'Insurance Compensation request')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

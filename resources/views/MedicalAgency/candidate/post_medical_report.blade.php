@@ -3,7 +3,6 @@
 @section('title', 'Update Candidates medical report')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

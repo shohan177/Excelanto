@@ -3,7 +3,6 @@
 @section('title', 'Deadbody transfer request')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

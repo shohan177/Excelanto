@@ -3,7 +3,6 @@
 @section('title', 'Assign Medical and Training')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

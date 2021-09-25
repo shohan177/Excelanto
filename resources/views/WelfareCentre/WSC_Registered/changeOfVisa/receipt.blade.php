@@ -3,7 +3,6 @@
 @section('title', 'Change of visa status')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

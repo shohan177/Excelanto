@@ -3,7 +3,6 @@
 @section('title', 'By Government Amnesty')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

@@ -3,7 +3,6 @@
 @section('title', 'Legalisation Regular by penalty')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

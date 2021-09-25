@@ -3,7 +3,6 @@
 @section('title', 'Assign Biometric Agency')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

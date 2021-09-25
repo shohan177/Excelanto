@@ -3,7 +3,6 @@
 @section('title', 'Legal Aid Request')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')
