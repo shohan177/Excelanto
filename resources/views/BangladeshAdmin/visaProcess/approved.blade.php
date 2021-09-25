@@ -83,7 +83,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-xs"
-                                                    href="{{ route('BangladeshAdmin.visa_process.visaApprovedCandidate', $offeredCandidate->id) }}"><i
+                                                    href="{{ route('BangladeshAdmin.visaProcess.visaApprovedCandidate', $offeredCandidate->id) }}"><i
                                                         class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>

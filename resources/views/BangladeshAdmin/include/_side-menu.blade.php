@@ -9,17 +9,17 @@
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users"></i> <span> Recruiting Agencies </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('BangladeshAdmin.company_request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
-                        <li><a href="{{ route('BangladeshAdmin.company_approved_request') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
-                        <li><a href="{{ route('BangladeshAdmin.company_rejected_request') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
+                        <li><a href="{{ route('BangladeshAdmin.recruitingAgency.request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
+                        <li><a href="{{ route('BangladeshAdmin.recruitingAgency.approved') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
+                        <li><a href="{{ route('BangladeshAdmin.recruitingAgency.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users"></i> <span> One Stop Service </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('BangladeshAdmin.request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
-                        <li><a href="{{ route('BangladeshAdmin.approved') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
+                        <li><a href="{{ route('BangladeshAdmin.oneStopService.request') }}"><i class="fa fa-arrow-circle-right"></i> New Requests</a></li>
+                        <li><a href="{{ route('BangladeshAdmin.oneStopService.approved') }}"><i class="fa fa-arrow-circle-right"></i> Approved Requests</a></li>
                         <li><a href="{{ route('BangladeshAdmin.oneStopService.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Rejected Requests</a></li>
                     </ul>
                 </li>
@@ -65,9 +65,9 @@
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tachometer"></i> <span> Visa Process </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('BangladeshAdmin.visa_process.requests') }}"><i class="fa fa-arrow-circle-right"></i> Visa Requested</a></li>
-                        <li><a href="{{ route('BangladeshAdmin.visa_process.approved') }}"><i class="fa fa-arrow-circle-right"></i> Visa Approved</a></li>
-                        <li><a href="{{ route('BangladeshAdmin.visa_process.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Visa Rejected</a></li>
+                        <li><a href="{{ route('BangladeshAdmin.visaProcess.requests') }}"><i class="fa fa-arrow-circle-right"></i> Visa Requested</a></li>
+                        <li><a href="{{ route('BangladeshAdmin.visaProcess.approved') }}"><i class="fa fa-arrow-circle-right"></i> Visa Approved</a></li>
+                        <li><a href="{{ route('BangladeshAdmin.visaProcess.rejected') }}"><i class="fa fa-arrow-circle-right"></i> Visa Rejected</a></li>
                     </ul>
 
                 </li>

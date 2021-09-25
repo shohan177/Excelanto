@@ -12,51 +12,41 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     Route::post('company-request-approve/{company_id}', 'CompanyController@approveNow')->name('company.approveNow');
     Route::post('company-request-reject/{company_id}', 'CompanyController@rejectNow')->name('company.rejectNow');
 
-    //    Recruiting agency
-    Route::get('company_request', 'RecruitingAgencieController@company_request')->name('company_request');
-    Route::post('company_request-approve/{company_id}', 'RecruitingAgencieController@approveNow')->name('company_requestApprove');
-    Route::post('company_request-reject/{company_id}', 'RecruitingAgencieController@rejectNow')->name('company_requestReject');
-    Route::get('company-approved-request', 'RecruitingAgencieController@company_approved_request')->name('company_approved_request');
-    Route::get('company-rejected-request', 'RecruitingAgencieController@company_rejected_request')->name('company_rejected_request');
+    // Recruiting agency
+    Route::group(['prefix' => 'recruiting-agency/', 'as' => 'recruitingAgency.'], function () {
+        Route::post('approve/{company_id}', 'RecruitingAgencieController@approveNow')->name('approveNow');
+        Route::post('reject/{company_id}', 'RecruitingAgencieController@rejectNow')->name('rejectNow');
+        Route::get('request', 'RecruitingAgencieController@request')->name('request');
+        Route::get('approved', 'RecruitingAgencieController@approved')->name('approved');
+        Route::get('rejected', 'RecruitingAgencieController@rejected')->name('rejected');
+    });
 
-    //    one stop services
-    Route::post('oss-company-request-approve/{company_id}', 'OneStopServiceController@approveNow')->name('oneStopService.approveNow');
-    Route::post('oss-company-request-reject/{company_id}', 'OneStopServiceController@rejectNow')->name('oneStopService.rejectNow');
-    Route::get('oss-company-request', 'OneStopServiceController@request')->name('request');
-    Route::get('oss-approved-request', 'OneStopServiceController@approved')->name('approved');
-    Route::get('oss-rejected-request', 'OneStopServiceController@rejected')->name('oneStopService.rejected');
+    // One stop services
+    Route::group(['prefix' => 'one-stop-services/', 'as' => 'oneStopService.'], function () {
+        Route::post('approve/{company_id}', 'OneStopServiceController@approveNow')->name('approveNow');
+        Route::post('reject/{company_id}', 'OneStopServiceController@rejectNow')->name('rejectNow');
+        Route::get('request', 'OneStopServiceController@request')->name('request');
+        Route::get('approved', 'OneStopServiceController@approved')->name('approved');
+        Route::get('rejected', 'OneStopServiceController@rejected')->name('rejected');
+    });
 
-    //    Welfare service centers
-    Route::post('welfare-company-request-approve/{company_id}', 'WelfareServiceCenterController@approveNow')->name('welfareServiceCenter.approveNow');
-    Route::post('welfare-company-request-reject/{company_id}', 'WelfareServiceCenterController@rejectNow')->name('welfareServiceCenter.rejectNow');
-    Route::get('welfare-company-request', 'WelfareServiceCenterController@request')->name('welfareServiceCenter.request');
-    Route::get('welfare-approved-request', 'WelfareServiceCenterController@approved')->name('welfareServiceCenter.approved');
-    Route::get('welfare-rejected-request', 'WelfareServiceCenterController@rejected')->name('welfareServiceCenter.rejected');
+    // Welfare service centers
+    Route::group(['prefix' => 'welfare-service-center/', 'as' => 'welfareServiceCenter.'], function () {
+        Route::post('approve/{company_id}', 'WelfareServiceCenterController@approveNow')->name('approveNow');
+        Route::post('reject/{company_id}', 'WelfareServiceCenterController@rejectNow')->name('rejectNow');
+        Route::get('request', 'WelfareServiceCenterController@request')->name('request');
+        Route::get('approved', 'WelfareServiceCenterController@approved')->name('approved');
+        Route::get('rejected', 'WelfareServiceCenterController@rejected')->name('rejected');
+    });
 
-    //    Bangladesh Embassy
-    Route::post('bangladesh-embassy-request-approve/{company_id}', 'BangladeshEmbassyController@approveNow')->name('bangladeshEmbassy.approveNow');
-    Route::post('bangladesh-embassy-request-reject/{company_id}', 'BangladeshEmbassyController@rejectNow')->name('bangladeshEmbassy.rejectNow');
-    Route::get('bangladesh-embassy-request', 'BangladeshEmbassyController@request')->name('bangladeshEmbassy.request');
-    Route::get('bangladesh-embassy-approved-request', 'BangladeshEmbassyController@approved')->name('bangladeshEmbassy.approved');
-    Route::get('bangladesh-embassy-rejected-request', 'BangladeshEmbassyController@rejected')->name('bangladeshEmbassy.rejected');
-
-    Route::get('company_request', 'RecruitingAgencieController@company_request')->name('company_request');
-
-    //    one stop services
-    Route::get('oss_company_request', 'OneStopServiceController@oss_company_request')->name('oss_company_request');
-    Route::get('oss_approved_request', 'OneStopServiceController@oss_approved_request')->name('oss_approved_request');
-    Route::get('oss_rejected_request', 'OneStopServiceController@oss_rejected_request')->name('oss_rejected_request');
-
-    //    Welfare service centers
-    Route::get('welfare_company_request', 'WelfareServiceCenterController@welfare_company_request')->name('welfare_company_request');
-    Route::get('welfare_approved_request', 'WelfareServiceCenterController@welfare_approved_request')->name('welfare_approved_request');
-    Route::get('welfare_rejected_request', 'WelfareServiceCenterController@welfare_rejected_request')->name('welfare_rejected_request');
-
-    //    Bangladesh Embassy
-    Route::get('bangladesh_embassy_request', 'BangladeshEmbassyController@bangladesh_embassy_request')->name('bangladesh_embassy_request');
-    Route::get('bangladesh_embassy_approved_request', 'BangladeshEmbassyController@bangladesh_embassy_approved_request')->name('bangladesh_embassy_approved_request');
-    Route::get('bangladesh_embassy_rejected_request', 'BangladeshEmbassyController@bangladesh_embassy_rejected_request')->name('bangladesh_embassy_rejected_request');
-
+    // Bangladesh Embassy
+    Route::group(['prefix' => 'bangladesh-embassy/', 'as' => 'bangladeshEmbassy.'], function () {
+        Route::post('approve/{company_id}', 'BangladeshEmbassyController@approveNow')->name('approveNow');
+        Route::post('reject/{company_id}', 'BangladeshEmbassyController@rejectNow')->name('rejectNow');
+        Route::get('request', 'BangladeshEmbassyController@request')->name('request');
+        Route::get('approved', 'BangladeshEmbassyController@approved')->name('approved');
+        Route::get('rejected', 'BangladeshEmbassyController@rejected')->name('rejected');
+    });
 
     //job posts
     Route::get('total-job-post', 'JobPostController@index')->name('total_job_post.index');
@@ -68,24 +58,28 @@ Route::group(['prefix' => 'bangladesh-admin/', 'namespace' => 'BangladeshAdmin',
     Route::post('reject-vacancy/{applied_job_id}', 'JobPostController@rejectVacancy')->name('jobPost.rejectVacancy');
 
     //Candidate
-    Route::get('candidate-requests', 'CandidateController@requests')->name('candidate.requests');
-    Route::get('view-requested-candidates/{applied_job_id}', 'CandidateController@viewRequested')->name('candidate.viewRequested');
-
-    Route::get('show-candidate/{id}', 'CandidateController@show')->name('candidate.show');
-    Route::get('show-final-candidate-profile/{offered_candidate_id}', 'CandidateController@showFinalCandidate')->name('candidate.showFinalCandidate');
-    Route::get('show-booked-candidate-profile/{offered_candidate_id}', 'CandidateController@showBookedCandidate')->name('candidate.showBookedCandidate');
-    Route::post('forward-candidate/{id}', 'CandidateController@forwardNow')->name('candidate.forwardNow');
-    Route::post('forward-to-uae/{offered_candidate_id}', 'CandidateController@forwardToUae')->name('candidate.forwardToUae');
-    Route::get('candidate-forwarded', 'CandidateController@forwarded')->name('candidate.forwarded');
-    Route::get('candidate-reviewed', 'CandidateController@reviewed')->name('candidate.reviewed');
-    Route::get('candidate-finalized', 'CandidateController@finalized')->name('candidate.finalized');
-    Route::get('tickets-booked-List', 'CandidateController@tickets_booked_List')->name('candidate.tickets_booked_List');
+    Route::group(['prefix' => 'candidate/', 'as' => 'candidate.'], function () {
+        Route::get('requests', 'CandidateController@requests')->name('requests');
+        Route::get('view-requested/{applied_job_id}', 'CandidateController@viewRequested')->name('viewRequested');
+        Route::get('show/{id}', 'CandidateController@show')->name('show');
+        Route::get('show-final-profile/{offered_candidate_id}', 'CandidateController@showFinalCandidate')->name('showFinalCandidate');
+        Route::get('show-booked-profile/{offered_candidate_id}', 'CandidateController@showBookedCandidate')->name('showBookedCandidate');
+        Route::post('forward/{id}', 'CandidateController@forwardNow')->name('forwardNow');
+        Route::post('forward-to-uae/{offered_candidate_id}', 'CandidateController@forwardToUae')->name('forwardToUae');
+        Route::get('forwarded', 'CandidateController@forwarded')->name('forwarded');
+        Route::get('reviewed', 'CandidateController@reviewed')->name('reviewed');
+        Route::get('finalized', 'CandidateController@finalized')->name('finalized');
+        Route::get('tickets-booked-List', 'CandidateController@tickets_booked_List')->name('tickets_booked_List');
+    });
 
     //Visa Process
-    Route::get('visa-request-candidate/{offered_candidate_id}', 'VisaProcessController@visaRequestCandidate')->name('visa_process.visaRequestCandidate');
-    Route::get('visa-approved-candidate/{offered_candidate_id}', 'VisaProcessController@visaApprovedCandidate')->name('visa_process.visaApprovedCandidate');
-    Route::get('visa-rejected-candidate/{offered_candidate_id}', 'VisaProcessController@visaRejectedCandidate')->name('visa_process.visaRejectedCandidate');
-    Route::get('visa-process-requests', 'VisaProcessController@requests')->name('visa_process.requests');
-    Route::get('visa-process-approved', 'VisaProcessController@approved')->name('visa_process.approved');
-    Route::get('visa-process-rejected', 'VisaProcessController@rejected')->name('visa_process.rejected');
+    Route::group(['prefix' => 'visa-process/', 'as' => 'visaProcess.'], function () {
+        Route::get('visa-request-candidate/{offered_candidate_id}', 'VisaProcessController@visaRequestCandidate')->name('visaRequestCandidate');
+        Route::get('visa-approved-candidate/{offered_candidate_id}', 'VisaProcessController@visaApprovedCandidate')->name('visaApprovedCandidate');
+        Route::get('visa-rejected-candidate/{offered_candidate_id}', 'VisaProcessController@visaRejectedCandidate')->name('visaRejectedCandidate');
+        Route::get('requests', 'VisaProcessController@requests')->name('requests');
+        Route::get('approved', 'VisaProcessController@approved')->name('approved');
+        Route::get('rejected', 'VisaProcessController@rejected')->name('rejected');
+    });
+
 });
