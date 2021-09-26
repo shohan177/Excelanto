@@ -9,15 +9,20 @@ Route::group(['prefix' => 'recruiting-agency/', 'namespace' => 'RecruitingAgency
     Route::get('/company-profile-view', 'RecruitingAgencyDashboardController@companyPrfileView')->name('companyPrfileView');
 
 
-    //Job Posts
-    Route::get('all-job-post', 'JobPostController@all')->name('jobPost.all');
-    Route::get('show-job-post/{id}', 'JobPostController@show')->name('jobPost.show');
-    Route::get('select-candidates/{applied_job_id}', 'JobPostController@selectCandidates')->name('jobPost.selectCandidates');
-    Route::get('edit-job-post/{id}', 'JobPostController@edit')->name('jobPost.edit');
-    Route::post('update-job-post/{id}', 'JobPostController@update')->name('jobPost.update');
+    // Job Posts
+    Route::group(['prefix' => 'job-post/', 'as' => 'jobPost.'], function () {
+        Route::get('all', 'JobPostController@all')->name('all');
+        Route::get('show/{id}', 'JobPostController@show')->name('show');
+        Route::get('select-candidates/{applied_job_id}', 'JobPostController@selectCandidates')->name('selectCandidates');
+        Route::get('edit/{id}', 'JobPostController@edit')->name('edit');
+        Route::post('update/{id}', 'JobPostController@update')->name('update');
+    });
 
-    Route::get('applied-job', 'AppliedJobController@applied')->name('appliedJob.applied');
-    Route::get('show-applied-job/{id}', 'AppliedJobController@show')->name('appliedJob.show');
+    // Applied job
+    Route::group(['prefix' => 'applied-job/', 'as' => 'appliedJob.'], function () {
+        Route::get('/', 'AppliedJobController@applied')->name('applied');
+        Route::get('show/{id}', 'AppliedJobController@show')->name('show');
+    });
 
     //Candidates
     Route::group(['prefix' => 'candidate/', 'as' => 'candidate.'], function () {

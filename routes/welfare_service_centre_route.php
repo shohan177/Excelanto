@@ -23,30 +23,43 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
 
     //candidate
     Route::get('/show-candidate-profile/{offered_candidate_id}', 'CandidateController@showCandidateProfile')->name('showCandidateProfile');
+
     //WSC registered
-    Route::get('/meet-greet-request', 'MeetAndGreetController@meet_greet_request')->name('meetGreet.request');
-    Route::get('/meet-greet-status/{id}', 'MeetAndGreetController@meetGreetStatus')->name('meetGreet.status');
-    Route::post('/meet-greet-status-update/{id}', 'MeetAndGreetController@meetGreetStatusUpdete')->name('meetGreet.statusUpdete');
+
+    // Meet & Greet
+    Route::group(['prefix' => 'jail-deportation/', 'as' => 'meetGreet.'], function () {
+        Route::get('/request', 'MeetAndGreetController@meet_greet_request')->name('request');
+        Route::get('/status/{id}', 'MeetAndGreetController@meetGreetStatus')->name('status');
+        Route::post('/status-update/{id}', 'MeetAndGreetController@meetGreetStatusUpdete')->name('statusUpdete');
+    });
 
     // Jail deportation
-    Route::get('/jail-deportation-request', 'JailDeportationController@request')->name('jailDeportation.request');
-    Route::get('/jail-deportation-status/{id}', 'JailDeportationController@jailDeportationStatus')->name('jailDeportation.status');
-    Route::post('/jail-deportation-status-update/{id}', 'JailDeportationController@jailDeportationStatusUpdete')->name('jailDeportation.statusUpdete');
+    Route::group(['prefix' => 'jail-deportation/', 'as' => 'jailDeportation.'], function () {
+        Route::get('/request', 'JailDeportationController@request')->name('request');
+        Route::get('/status/{id}', 'JailDeportationController@jailDeportationStatus')->name('status');
+        Route::post('/status-update/{id}', 'JailDeportationController@jailDeportationStatusUpdete')->name('statusUpdete');
+    });
 
     // deadbody transfer
-    Route::get('/deadbody-transfer-request', 'DeadbodyTransferController@request')->name('deadbodyTransfer.request');
-    Route::get('/deadbody-transfer-status/{id}', 'DeadbodyTransferController@deadbodyTransferStatus')->name('deadbodyTransfer.Status');
-    Route::post('/deadbody-transfer-status-update/{id}', 'DeadbodyTransferController@deadbodyTransferStatusUpdete')->name('deadbodyTransfer.StatusUpdete');
+    Route::group(['prefix' => 'deadbody-transfer/', 'as' => 'deadbodyTransfer.'], function () {
+        Route::get('/request', 'DeadbodyTransferController@request')->name('request');
+        Route::get('/status/{id}', 'DeadbodyTransferController@deadbodyTransferStatus')->name('Status');
+        Route::post('/status-update/{id}', 'DeadbodyTransferController@deadbodyTransferStatusUpdete')->name('StatusUpdete');
+    });
 
     // medical compensation
-    Route::get('/medical-compensation-request', 'MedicalCompensationController@request')->name('medicalCompensation.request');
-    Route::get('/medical-compensation-status/{id}', 'MedicalCompensationController@medicalCompensationStatus')->name('medicalCompensation.Status');
-    Route::post('/medical-compensation-status-update/{id}', 'MedicalCompensationController@medicalCompensationStatusUpdete')->name('medicalCompensation.StatusUpdete');
+    Route::group(['prefix' => 'medical-compensation/', 'as' => 'medicalCompensation.'], function () {
+        Route::get('/request', 'MedicalCompensationController@request')->name('request');
+        Route::get('/status/{id}', 'MedicalCompensationController@medicalCompensationStatus')->name('Status');
+        Route::post('/status-update/{id}', 'MedicalCompensationController@medicalCompensationStatusUpdete')->name('StatusUpdete');
+    });
 
     // insurance compensation
-    Route::get('/insurance-request', 'InsuranceController@request')->name('insurance.request');
-    Route::get('/insurance-status/{id}', 'InsuranceController@insuranceStatus')->name('insurance.Status');
-    Route::post('/insurance-status-update/{id}', 'InsuranceController@insuranceStatusUpdete')->name('insurance.StatusUpdete');
+    Route::group(['prefix' => 'insurance/', 'as' => 'insurance.'], function () {
+        Route::get('/request', 'InsuranceController@request')->name('request');
+        Route::get('/status/{id}', 'InsuranceController@insuranceStatus')->name('Status');
+        Route::post('/status-update/{id}', 'InsuranceController@insuranceStatusUpdete')->name('StatusUpdete');
+    });
 
     // issuance certificate
     Route::group(['prefix' => '/issuance-certificate', 'as' => 'issuanceCertificate.'], function () {
@@ -91,14 +104,19 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     });
 
     // charity service
-    Route::get('/charity-request', 'CharityServiceController@request')->name('charity.request');
-    Route::get('/charity-request-status/{id}', 'CharityServiceController@charityStatus')->name('charity.status');
-    Route::post('/charity-request-status-update/{id}', 'CharityServiceController@charityStatusUpdete')->name('charity.statusUpdete');
+    Route::group(['prefix' => 'charity/', 'as' => 'charity.'], function () {
+        Route::get('/request', 'CharityServiceController@request')->name('request');
+        Route::get('/request-status/{id}', 'CharityServiceController@charityStatus')->name('status');
+        Route::post('/request-status-update/{id}', 'CharityServiceController@charityStatusUpdete')->name('statusUpdete');
+    });
+
 
     // adr service
-    Route::get('/adr-request', 'ADRServiceController@request')->name('adr.request');
-    Route::get('/adr-request-status/{id}', 'ADRServiceController@adrStatus')->name('adr.status');
-    Route::post('/adr-request-status-update/{id}', 'ADRServiceController@adrStatusUpdete')->name('adr.statusUpdete');
+    Route::group(['prefix' => 'adr/', 'as' => 'adr.'], function () {
+        Route::get('/request', 'ADRServiceController@request')->name('request');
+        Route::get('/request-status/{id}', 'ADRServiceController@adrStatus')->name('status');
+        Route::post('/request-status-update/{id}', 'ADRServiceController@adrStatusUpdete')->name('statusUpdete');
+    });
 
     // legal-by-govt
     Route::group(['prefix' => '/legal-by-govt', 'as' => 'legalByGovt.'], function () {
@@ -157,9 +175,11 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     });
 
     // legal-aid-service
-    Route::get('/legal-aid-request', 'LegalAidServiceController@request')->name('legalAid.request');
-    Route::get('/legal-aid-status/{id}', 'LegalAidServiceController@status')->name('legalAid.status');
-    Route::post('/legal-aid-status-update/{id}', 'LegalAidServiceController@statusUpdete')->name('legalAid.statusUpdete');
+    Route::group(['prefix' => 'legal-aid/', 'as' => 'legalAid.'], function () {
+        Route::get('/request', 'LegalAidServiceController@request')->name('request');
+        Route::get('/status/{id}', 'LegalAidServiceController@status')->name('status');
+        Route::post('/status-update/{id}', 'LegalAidServiceController@statusUpdete')->name('statusUpdete');
+    });
 
     // new-passport-service
     Route::group(['prefix' => '/new-passport', 'as' => 'newPassport.'], function () {
