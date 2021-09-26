@@ -22,4 +22,10 @@ class EnquiriesController extends Controller
     {
         return view('TravelAgency.Enquiries.expired');
     }
+
+    public function view($id){
+        $travelEnquiry = TravelEnquiry::findOrFail($id);
+        $user = User::find($travelEnquiry->oss_id);
+        return view('TravelAgency.Enquiries.view', compact('travelEnquiry','user'));
+    }
 }

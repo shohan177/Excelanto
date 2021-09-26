@@ -2,14 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-  // TravelAgency
+// TravelAgency
 Route::group(['prefix' => 'travel-agency/', 'namespace' => 'TravelAgency', 'as' => 'TravelAgency.', 'middleware' => ['auth', 'travel-agency']], function () {
     Route::get('/dashboard', 'TravelAgencyDashboardController@dashboard')->name('dashboard');
     Route::get('/company-profile-view', 'TravelAgencyDashboardController@companyPrfileView')->name('companyPrfileView');
     Route::post('/company-profile-submit', 'TravelAgencyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
-
-    //Enquiries
+    // Enquiries
     Route::group(['prefix' => 'enquiries/', 'as' => 'enquiries.'], function () {
         Route::get('/new', 'EnquiriesController@new')->name('new');
         Route::get('/expired', 'EnquiriesController@expired')->name('expired');
