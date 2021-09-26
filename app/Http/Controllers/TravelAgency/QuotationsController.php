@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TravelAgency;
 
 use App\Http\Controllers\Controller;
+use App\SubmittedTravelEnquiry;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Str;
@@ -12,12 +13,19 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class QuotationsController extends Controller
 {
-    public function submitted_quotations(){
-
-            return view('TravelAgency.Quotations.submitted');
+    public function submitted()
+    {
+        $submittedTravelEnquiries  = SubmittedTravelEnquiry::orderBy('id', 'DESC')->get();
+        return view('TravelAgency.Quotations.submitted', compact('submittedTravelEnquiries'));
     }
-    public function approved_quotations(){
+
+    public function view($id){
+        $submittedTravelEnquiry = SubmittedTravelEnquiry::findOrFail($id);
+        return view('TravelAgency.Quotations.view', compact('submittedTravelEnquiry'));
+    }
+
+    public function approved()
+    {
         return view('TravelAgency.Quotations.approved');
     }
-
 }

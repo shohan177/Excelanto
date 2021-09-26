@@ -21,7 +21,7 @@ class SubmittedTravelEnquirySeeder extends Seeder
                 'total_tickets' => 2,
                 'submitted_cost' => 20000,
                 'travel_agency_comments'  => 'Demo Comments',
-                'travel_agency_id'  => 13,
+                'travel_agency_id'  => 3,
                 'submitted_date'  => Carbon::now(),
                 'submitted_status'  => 'New',
             ]);
