@@ -16,20 +16,23 @@ Route::group(['prefix' => 'child-one-stop-service/', 'namespace' => 'OneStopServ
     // training-agency
     Route::get('training-agencies', 'TrainingAgencyController@all')->name('trainingAgency.all');
 
-    //Candidate
-    Route::get('show-candidate-profile/{offered_candidate_id}', 'CandidateController@showCandidateProfile')->name('candidate.showCandidateProfile');
-    Route::get('show-final-candidate-profile/{offered_candidate_id}', 'CandidateController@showFinalCandidateProfile')->name('candidate.showFinalCandidateProfile');
-    Route::get('show-biometric-candidate-profile/{offered_candidate_id}', 'CandidateController@showBiometricCandidateProfile')->name('candidate.showBiometricCandidateProfile');
-    Route::get('interview-status/{offered_candidate_id}', 'CandidateController@interviewStatus')->name('candidate.interviewStatus');
-    Route::post('interview-status-store/{offered_candidate_id}', 'CandidateController@interviewStatusStore')->name('candidate.interviewStatusStore');
-    Route::post('initial-payment-store/{offered_candidate_id}', 'CandidateController@initialPaymentStore')->name('candidate.initialPaymentStore');
-    Route::get('initial-payment/{offered_candidate_id}', 'CandidateController@initialPayment')->name('candidate.initialPayment');
-    Route::get('selected-candidate', 'CandidateController@selected')->name('candidate.request');
-    Route::get('interview-candidate', 'CandidateController@interview')->name('candidate.approved');
-    Route::get('finalized-candidate', 'CandidateController@finalized')->name('candidate.finalized');
-    Route::post('candidate-status-change/{offered_candidate_id}/{result_status}', 'CandidateController@candidateStatusChange')->name('candidate.candidateStatusChange');
+    // Candidate
+    Route::group(['prefix' => 'candidate/', 'as' => 'candidate.'], function () {
+        Route::get('show-profile/{offered_candidate_id}', 'CandidateController@showCandidateProfile')->name('showCandidateProfile');
+        Route::get('show-final-profile/{offered_candidate_id}', 'CandidateController@showFinalCandidateProfile')->name('showFinalCandidateProfile');
+        Route::get('show-biometric-profile/{offered_candidate_id}', 'CandidateController@showBiometricCandidateProfile')->name('showBiometricCandidateProfile');
+        Route::get('interview-status/{offered_candidate_id}', 'CandidateController@interviewStatus')->name('interviewStatus');
+        Route::post('interview-status-store/{offered_candidate_id}', 'CandidateController@interviewStatusStore')->name('interviewStatusStore');
+        Route::post('initial-payment-store/{offered_candidate_id}', 'CandidateController@initialPaymentStore')->name('initialPaymentStore');
+        Route::get('initial-payment/{offered_candidate_id}', 'CandidateController@initialPayment')->name('initialPayment');
+        Route::get('selected', 'CandidateController@selected')->name('request');
+        Route::get('interview', 'CandidateController@interview')->name('approved');
+        Route::get('finalized', 'CandidateController@finalized')->name('finalized');
+        Route::post('status-change/{offered_candidate_id}/{result_status}', 'CandidateController@candidateStatusChange')->name('candidateStatusChange');
+    });
 
-    //Biometric Candidate
+
+    // Biometric Candidate
     Route::group(['prefix' => 'biometric-candidate/', 'as' => 'biometric.'], function () {
         Route::get('required', 'BiometricController@required')->name('required');
         Route::get('completed', 'BiometricController@completed')->name('completed');
