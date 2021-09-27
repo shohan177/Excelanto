@@ -55,7 +55,7 @@
                                 <li class="list-group-item">
                                     <b>Email</b> <a class="float-right">{{ $offeredCandidate->candidate_email }}</a>
                                 </li>
-                                @if ($offeredCandidate->result_status == 'Visa-Approved')
+                                {{-- @if ($offeredCandidate->result_status == 'Visa-Approved')
                                     <li class="list-group-item">
                                         <b>Status</b> <a class="float-right"> <button type="button"
                                                 class="btn btn-primary btn-xs update">Visa-Approved</button>
@@ -66,7 +66,7 @@
                                         <b>Status</b> <a class="float-right"> <button type="button"
                                                 class="btn btn-success btn-xs update">{{ $offeredCandidate->result_status }}</button>
                                     </li>
-                                @endif
+                                @endif --}}
                             </ul>
                         </div>
                         <!-- /.panel-body -->

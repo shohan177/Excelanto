@@ -36,6 +36,7 @@ Route::group(['prefix' => 'travel-agency/', 'namespace' => 'TravelAgency', 'as' 
     Route::group(['prefix' => 'travel/', 'as' => 'travel.'], function () {
         Route::get('/required', 'TravelTicketsController@required')->name('required');
         Route::get('/add-ticket/{offered_candidate_id}', 'TravelTicketsController@addTicket')->name('addTicket');
+        Route::post('/ticket-store/{offered_candidate_id}', 'TravelTicketsController@ticketStore')->name('ticketStore');
         Route::get('/view-stamping-approve/{offered_candidate_id}', 'TravelTicketsController@viewStampingApprove')->name('viewStampingApprove');
         Route::get('/booked', 'TravelTicketsController@booked')->name('booked');
     });

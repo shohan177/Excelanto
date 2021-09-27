@@ -53,7 +53,7 @@ class CreateOfferedCandidatesTable extends Migration
             $table->text('visa_reason')->nullable();
             $table->string('travel_status')->nullable();
 
-            $table->string('date_of_jounney')->nullable();
+            $table->string('date_of_journey')->nullable();
             $table->string('flight_number')->nullable();
             $table->string('ticket_cost')->nullable();
             $table->string('ticket_pdf')->nullable();
