@@ -34,7 +34,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Ticket Booked candidates</h3>
+                            <h3 class="panel-title">Ticket Booked Candidates List</h3>
                         </div>
                         <div class="panel-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered">
@@ -50,17 +50,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>07/13/2021</td>
-                                        <td>bangladesh</td>
-                                        <td>saudi</td>
-                                        <td>2</td>
-                                        <td><span class="project-state badge badge-info">New</span></td>
-                                        <td><a class="btn btn-info btn-sm" href="view_posted_enquiry.php?enquiry_id=48">
-                                                <i class="fa fa-eye"></i> View
-                                            </a></td>
-                                    </tr>
+                                    @foreach ($offeredCandidates as $offeredCandidate)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $offeredCandidate->candidate_name }}</td>
+                                            <td>{{ $offeredCandidate->job_category->category_name }}</td>
+                                            <td>{{ $offeredCandidate->candidate_email }}</td>
+                                            <td>{{ $offeredCandidate->phone_number }}</td>
+                                            <td>
+                                                @if ($offeredCandidate->travel_status == 'Pending')
+                                                    <button type="button" class="btn btn-warning btn-xs">Pending</button>
+                                                @elseif($offeredCandidate->travel_status == 'Ticket-Issued')
+                                                    <button type="button" class="btn btn-success btn-xs">Ticket-Issued</button>
+                                                @else
+                                                    <span class="project-state badge badge-info">{{ $offeredCandidate->travel_status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info btn-xs" href="{{ route('TravelAgency.travel.viewBookedCandidate', $offeredCandidate->id) }}">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                                @if ($offeredCandidate->travel_status == 'Pending')
+                                                    <a class="btn btn-success btn-xs" href="{{ route('TravelAgency.travel.addTicket', $offeredCandidate->id) }}">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

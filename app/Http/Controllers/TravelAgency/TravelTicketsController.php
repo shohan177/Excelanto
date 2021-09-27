@@ -25,6 +25,11 @@ class TravelTicketsController extends Controller
         return view('TravelAgency.TravelTickets.view-stamping-approve', compact('offeredCandidate'));
     }
 
+    public function viewBookedCandidate($offered_candidate_id){
+        $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
+        return view('TravelAgency.TravelTickets.view-booked-candidate', compact('offeredCandidate'));
+    }
+
     public function addTicket($offered_candidate_id){
         $offeredCandidate = OfferedCandidate::findOrFail($offered_candidate_id);
         return view('TravelAgency.TravelTickets.add-ticket', compact('offeredCandidate'));
@@ -61,6 +66,7 @@ class TravelTicketsController extends Controller
 
     public function booked()
     {
-        return view('TravelAgency.TravelTickets.booked');
+        $offeredCandidates = OfferedCandidate::where('travel_status', 'Ticket-Issued')->where('travel_agency_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('TravelAgency.TravelTickets.booked', compact('offeredCandidates'));
     }
 }

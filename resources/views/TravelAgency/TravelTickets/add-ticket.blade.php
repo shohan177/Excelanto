@@ -82,7 +82,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="ticket">Ticket (Only PDF)</label>
-                                                 <input name="ticket" type="file"  accept="application/pdf" class="form-control" id="ticket">
+                                                <input name="ticket" type="file"  accept="application/pdf" class="form-control" id="ticket">
                                             </div>
                                         </div> <!-- panel-body -->
                                     </div> <!-- col -->
