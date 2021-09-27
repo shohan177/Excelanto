@@ -223,15 +223,21 @@
                                 <strong><i class="fa fa-pencil mr-1"></i> Employer Comments</strong>
                                 <p class="text-muted">{{ $offeredCandidate->employer_comments }}</p>
                                 <hr>
-                                <strong><i class="fa fa-camera mr-1"></i>Candidate-OfferLetter</strong>
-                                <div class="mailbox-attachment-info"> <a
-                                        href="../offer_letter/{{ $offeredCandidate->offer_letter }}"
-                                        class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                        {{ $offeredCandidate->offer_letter }}</a>
-                                    <a href="../offer_letter/{{ $offeredCandidate->offer_letter }}" download
-                                        class="btn btn-default btn-xs float-right"> <i
-                                            class="fa fa-cloud-download"></i></a>
-                                </div>
+                                @if($offeredCandidate->offer_letter)
+                                    <a href="{{ asset($offeredCandidate->offer_letter) }}" target="_blank">
+                                        <strong><i class="fa fa-file mr-1"></i> Candidate-OfferLetter</strong>
+                                    </a>
+                                    <div class="mailbox-attachment-info">
+                                        <a href="{{ asset($offeredCandidate->offer_letter) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                    </div>
+                                @else
+                                    <a title="Sorry there is no document">
+                                        <strong><i class="fa fa-file mr-1"></i> Candidate-OfferLetter</strong>
+                                        <div class="mailbox-attachment-info">
+                                            <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    </a>
+                                @endif
                                 <hr>
                                 <strong><i class="fa fa-user mr-1"></i> One Stop Center</strong>
                                 <p><a href="{{ route('OneStopService_Child.company.showCompanyProfile', $offeredCandidate->selected_osc_id) }}"

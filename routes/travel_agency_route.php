@@ -31,7 +31,6 @@ Route::group(['prefix' => 'travel-agency/', 'namespace' => 'TravelAgency', 'as' 
         Route::get('/approved', 'QuotationsController@approved')->name('approved');
     });
 
-
     // Travel Tickets
     Route::group(['prefix' => 'travel/', 'as' => 'travel.'], function () {
         Route::get('/required', 'TravelTicketsController@required')->name('required');

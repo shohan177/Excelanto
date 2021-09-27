@@ -219,15 +219,21 @@
                                     <strong><i class="fa fa-pencil mr-1"></i> Visa Rejected Reason</strong>
                                     <p class="text-muted">{{ $offeredCandidate->visa_reason }}</p>
                                     <hr>
-                                    <strong><i class="fa fa-camera mr-1"></i>Candidate-OfferLetter</strong>
-                                    <div class="mailbox-attachment-info"> <a
-                                            href="../offer_letter/{{ $offeredCandidate->offer_letter }}"
-                                            class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                            {{ $offeredCandidate->offer_letter }}</a>
-                                        <a href="../offer_letter/{{ $offeredCandidate->offer_letter }}" download
-                                            class="btn btn-default btn-xs float-right"> <i
-                                                class="fa fa-cloud-download"></i></a>
+                                    @if($offeredCandidate->offer_letter)
+                                    <a href="{{ asset($offeredCandidate->offer_letter) }}" target="_blank">
+                                        <strong><i class="fa fa-file mr-1"></i> Candidate-OfferLetter</strong>
+                                    </a>
+                                    <div class="mailbox-attachment-info">
+                                        <a href="{{ asset($offeredCandidate->offer_letter) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
                                     </div>
+                                @else
+                                    <a title="Sorry there is no document">
+                                        <strong><i class="fa fa-file mr-1"></i> Candidate-OfferLetter</strong>
+                                        <div class="mailbox-attachment-info">
+                                            <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    </a>
+                                @endif
                                 </div> <!-- /.tab-content -->
                             </div><!-- /.card-body -->
                         </div> <!-- /.nav-tabs-custom -->
