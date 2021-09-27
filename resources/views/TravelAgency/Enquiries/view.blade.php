@@ -89,7 +89,7 @@
                                                     <hr>
                                                     <span class="username">
                                                         <a
-                                                            href="{{ route('OneStopService.company.showCompanyProfile', $user->id) }}">{{ $user->company_name }}
+                                                            href="{{ route('TravelAgency.company.showCompanyProfile', $user->id) }}">{{ $user->company_name }}
                                                             ({{ $user->username }})</a>
                                                     </span>
                                                     <br>
