@@ -106,7 +106,6 @@
                                                         <i class="mdi mdi-eye"></i>
                                                     </a>
                                                 @endif
-
                                             </td>
                                         </tr>
                                     @endforeach

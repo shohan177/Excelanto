@@ -97,7 +97,6 @@
                                                         <i class="fa fa-eye"></i>
                                                     </a>
                                                 @endif
-
                                             </td>
                                         </tr>
                                     @endforeach

@@ -45,7 +45,7 @@
                                         <th>From</th>
                                         <th>To</th>
                                         <th>Tickets</th>
-                                        <th> Status</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -78,7 +78,7 @@
                                         <th>From</th>
                                         <th>To</th>
                                         <th>Tickets</th>
-                                        <th> Status</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
