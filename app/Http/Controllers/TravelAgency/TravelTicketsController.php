@@ -12,11 +12,13 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class TravelTicketsController extends Controller
 {
-    public function travel_required(){
-
-            return view('TravelAgency.TravelTickets.travel_required');
+    public function required()
+    {
+        return view('TravelAgency.TravelTickets.required');
     }
-    public function travel_booked(){
-        return view('TravelAgency.TravelTickets.travel_booked');
+
+    public function booked()
+    {
+        return view('TravelAgency.TravelTickets.booked');
     }
 }

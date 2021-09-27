@@ -26,11 +26,15 @@ Route::group(['prefix' => 'travel-agency/', 'namespace' => 'TravelAgency', 'as' 
     Route::group(['prefix' => 'quotations/', 'as' => 'quotations.'], function () {
         Route::get('/submitted', 'QuotationsController@submitted')->name('submitted');
         Route::get('/view/{id}', 'QuotationsController@view')->name('view');
+        Route::get('/view-approved/{id}', 'QuotationsController@viewApproved')->name('viewApproved');
+        Route::get('/view-travel-candidates/{id}', 'QuotationsController@viewTravelCandidates')->name('viewTravelCandidates');
         Route::get('/approved', 'QuotationsController@approved')->name('approved');
     });
 
 
     // Travel Tickets
-    Route::get('/travel_required', 'TravelTicketsController@travel_required')->name('travel_required');
-    Route::get('/travel_booked', 'TravelTicketsController@travel_booked')->name('travel_booked');
+    Route::group(['prefix' => 'travel/', 'as' => 'travel.'], function () {
+        Route::get('/required', 'TravelTicketsController@required')->name('required');
+        Route::get('/booked', 'TravelTicketsController@booked')->name('booked');
+    });
 });

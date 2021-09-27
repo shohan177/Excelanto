@@ -19,13 +19,27 @@ class QuotationsController extends Controller
         return view('TravelAgency.Quotations.submitted', compact('submittedTravelEnquiries'));
     }
 
-    public function view($id){
+    public function view($id)
+    {
         $submittedTravelEnquiry = SubmittedTravelEnquiry::findOrFail($id);
         return view('TravelAgency.Quotations.view', compact('submittedTravelEnquiry'));
     }
 
+    public function viewApproved($id)
+    {
+        $submittedTravelEnquiry = SubmittedTravelEnquiry::findOrFail($id);
+        return view('TravelAgency.Quotations.view-approved', compact('submittedTravelEnquiry'));
+    }
+
+    public function viewTravelCandidates($id)
+    {
+        $submittedTravelEnquiry = SubmittedTravelEnquiry::findOrFail($id);
+        return view('TravelAgency.Quotations.view-travel-candidates', compact('submittedTravelEnquiry'));
+    }
+
     public function approved()
     {
-        return view('TravelAgency.Quotations.approved');
+        $submittedTravelEnquiries  = SubmittedTravelEnquiry::where('submitted_status', 'Approved')->orderBy('id', 'DESC')->get();
+        return view('TravelAgency.Quotations.approved', compact('submittedTravelEnquiries'));
     }
 }
