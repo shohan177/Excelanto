@@ -6,10 +6,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header-title">
-                        <h4 class="pull-left page-title">Uae Embassy</h4>
+                        <h4 class="pull-left page-title">Travel Agency</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li class="active">Uae Embassy</li>
+                            <li class="active">Travel Agency</li>
                             <li><a href="#">Dashboard</a></li>
                         </ol>
                         <div class="clearfix"></div>
