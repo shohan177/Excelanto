@@ -19,7 +19,7 @@ Route::group(['prefix' => 'travel-agency/', 'namespace' => 'TravelAgency', 'as' 
         Route::get('/expired', 'EnquiriesController@expired')->name('expired');
         Route::get('/view/{id}', 'EnquiriesController@view')->name('view');
         Route::get('/apply/{id}', 'EnquiriesController@apply')->name('apply');
-        Route::get('/apply-store/{id}', 'EnquiriesController@applyStore')->name('applyStore');
+        Route::post('/apply-store/{id}', 'EnquiriesController@applyStore')->name('applyStore');
     });
 
     // Quotations

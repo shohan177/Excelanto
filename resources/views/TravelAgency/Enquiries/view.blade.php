@@ -121,14 +121,11 @@
                                     </div>
 
                                     <div class="text-center mt-5 mb-3">
-                                        @if ($travelEnquiry->date_of_jounney <= Carbon\Carbon::now())
+                                        @if ($travelEnquiry->end_date <= Carbon\Carbon::now())
                                             <button disabled class="btn btn-sm btn-danger">Sorry ! Expired</button>
-
                                         @else
-                                            <a href="{{ route('TravelAgency.enquiries.apply', $travelEnquiry) }}"
-                                                class="btn btn-sm btn-primary">Apply</a>
+                                            <a href="{{ route('TravelAgency.enquiries.apply', $travelEnquiry) }}" class="btn btn-sm btn-primary">Apply</a>
                                         @endif
-
                                     </div>
                                 </div>
                             </div>

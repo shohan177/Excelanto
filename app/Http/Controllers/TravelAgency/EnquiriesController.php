@@ -22,7 +22,7 @@ class EnquiriesController extends Controller
     }
     public function expired()
     {
-        $travelEnquiries = TravelEnquiry::whereDate('date_of_journey', '<=', Carbon::now())->orderBy('id', 'DESC')->get();
+        $travelEnquiries = TravelEnquiry::whereDate('end_date', '<=', Carbon::now())->orderBy('id', 'DESC')->get();
         return view('TravelAgency.Enquiries.expired', compact('travelEnquiries'));
     }
 

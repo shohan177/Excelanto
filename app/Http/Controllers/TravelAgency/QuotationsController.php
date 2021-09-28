@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TravelAgency;
 
 use App\Http\Controllers\Controller;
+use App\OfferedCandidate;
 use App\SubmittedTravelEnquiry;
 use Illuminate\Http\Request;
 use App\User;
@@ -33,8 +34,9 @@ class QuotationsController extends Controller
 
     public function viewTravelCandidates($id)
     {
+        $offeredCandidates = OfferedCandidate::where('travel_status', 'Ticket-Issued')->where('travel_agency_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
         $submittedTravelEnquiry = SubmittedTravelEnquiry::findOrFail($id);
-        return view('TravelAgency.Quotations.view-travel-candidates', compact('submittedTravelEnquiry'));
+        return view('TravelAgency.Quotations.view-travel-candidates', compact('offeredCandidates'));
     }
 
     public function approved()

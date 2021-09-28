@@ -132,9 +132,7 @@
                                 </div>
                                 <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
                                     <h3 class="text-primary"><i class="fa fa-edit"></i> Note</h3>
-                                    <p class="text-muted">Submitted quotations need approval from the owner. Please wait
-                                        for
-                                        the approval.</p>
+                                    <p class="text-muted">Submitted quotations need approval from the owner. Please wait for the approval.</p>
                                     <br>
                                     <div class="text-muted">
                                         <p class="text-sm">Date of journey<br>
