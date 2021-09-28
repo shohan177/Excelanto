@@ -8,6 +8,9 @@ Route::group(['prefix' => 'travel-agency/', 'namespace' => 'TravelAgency', 'as' 
     Route::get('/company-profile-view', 'TravelAgencyDashboardController@companyPrfileView')->name('companyPrfileView');
     Route::post('/company-profile-submit', 'TravelAgencyDashboardController@companyPrfileSubmit')->name('companyPrfileSubmit');
 
+    // Candidate
+    Route::get('show-candidate-profile/{offered_candidate_id}', 'CandidateController@showCandidateProfile')->name('candidate.showCandidateProfile');
+
     // Company
     Route::get('show-company-profile/{user_id}', 'CompanyController@showCompanyProfile')->name('company.showCompanyProfile');
     Route::post('company-request-approve/{company_id}', 'CompanyController@approveNow')->name('company.approveNow');

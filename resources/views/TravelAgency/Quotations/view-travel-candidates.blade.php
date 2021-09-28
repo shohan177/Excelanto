@@ -1,4 +1,4 @@
-@extends("BangladeshAdmin/master")
+@extends("TravelAgency/master")
 
 @section('title', 'Selected Candidates')
 @section('DataTableCss')
@@ -22,7 +22,7 @@
                         <h4 class="pull-left page-title">Selected Candidates</h4>
                         <ol class="breadcrumb pull-right">
                             <li><a href="#">Excelanto</a></li>
-                            <li><a href="#">Candidates</a></li>
+                            <li><a href="#">Travel People</a></li>
                             <li class="active"> Selected Candidates</li>
                         </ol>
                         <div class="clearfix"></div>
@@ -57,27 +57,21 @@
                                             <td>{{ $offeredCandidate->candidate_email }}</td>
                                             <td>{{ $offeredCandidate->phone_number }}</td>
                                             <td>
-                                                @if ($offeredCandidate->result_status == 'Selected')
-                                                    <span class="btn btn-success btn-sm">Selected</span>
-                                                @elseif ($offeredCandidate->result_status == "Interview")
-                                                    <span class="btn btn-primary btn-sm">Interview</span>
-                                                @elseif ($offeredCandidate->result_status == "Rejected")
-                                                    <span class="btn btn-danger btn-sm">Rejected</span>
-                                                @elseif ($offeredCandidate->result_status == "Under-Interview-Process")
-                                                    <span class="btn btn-danger btn-sm">Under-Interview-Process</span>
-                                                @elseif ($offeredCandidate->result_status == "Updated")
-                                                    <span class="btn btn-info btn-sm">Updated</span>
-                                                @elseif ($offeredCandidate->result_status == "Finalized")
-                                                    <span class="btn btn-warning btn-sm">Finalized</span>
-                                                @elseif ($offeredCandidate->result_status == "Assigned")
-                                                    <span class="btn btn-warning btn-sm">Post-Selection</span>
+                                                @if ($offeredCandidate->travel_status == 'Pending')
+                                                    <span class="badge badge-warning">Pending</span>
+                                                @elseif ($offeredCandidate->travel_status == 'Ticket-Issued')
+                                                    <span class="badge badge-success">Ticket-Issued</span>
+                                                @elseif ($offeredCandidate->travel_status == 'Forwarded')
+                                                    <span class="badge badge-primary">Sent To UAE</span>
+                                                @elseif ($offeredCandidate->travel_status == 'Activated')
+                                                    <span class="badge badge-warning">Appointed</span>
                                                 @else
-                                                    <span class="btn btn-warning btn-sm">Under-Process</span>
+                                                    <span class="badge badge-info">{{ $offeredCandidate->travel_status }}</span>
                                                 @endif
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-sm"
-                                                    href="{{ route('BangladeshAdmin.candidate.showFinalCandidate', $offeredCandidate->id) }}">
+                                                    href="{{ route('TravelAgency.candidate.showCandidateProfile', $offeredCandidate->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                             </td>
