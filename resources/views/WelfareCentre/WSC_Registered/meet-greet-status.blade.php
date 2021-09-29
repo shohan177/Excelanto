@@ -3,7 +3,6 @@
 @section('title', 'Meet and Greet request')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')
@@ -47,7 +46,11 @@
                                         <dt class="col-sm-5">Flight time</dt>
                                         <dd class="col-sm-7">{{ $meetAndGreet->flight_time }}</dd><br>
                                         <dt class="col-sm-5">Guest passport</dt>
-                                        <dd class="col-sm-7"><a href="#" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @if($meetAndGreet->passport_copy)
+                                            <dd class="col-sm-7"><a href="{{ asset($meetAndGreet->passport_copy) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @else
+                                            <dd class="col-sm-7"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @endif
                                     </dl>
                                 </div>
                                 <div class="col-md-6">

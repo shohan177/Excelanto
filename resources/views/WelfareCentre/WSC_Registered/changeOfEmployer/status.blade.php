@@ -3,7 +3,6 @@
 @section('title', 'Legalisation Change of employer')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')
@@ -43,7 +42,11 @@
                                     <dt class="col-sm-4">Applied on</dt>
                                     <dd class="col-sm-8">{{ $changeEmployerService->created_at }}</dd><br>
                                     <dt class="col-sm-6">New offer letter</dt>
-                                    <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                    @if($changeEmployerService->new_offer_letter)
+                                        <dd class="col-sm-6"><a href="{{ asset($changeEmployerService->new_offer_letter) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                    @else
+                                        <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                    @endif
                                 </dl>
                             </div>
                         </div>

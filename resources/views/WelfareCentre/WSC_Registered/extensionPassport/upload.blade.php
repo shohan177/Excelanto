@@ -3,7 +3,6 @@
 @section('title', 'Passport Renewal request')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')
@@ -45,7 +44,11 @@
                                         <dt class="col-sm-6">Message</dt>
                                         <dd class="col-sm-6">{{ $extensionPassportService->comments }}</dd><br>
                                         <dt class="col-sm-6">Application</dt>
-                                        <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @if($extensionPassportService->extension_passport)
+                                            <dd class="col-sm-6"><a href="{{ asset($extensionPassportService->extension_passport) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @else
+                                            <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @endif
                                     </dl>
                                 </div>
                                 <div class="col-md-3"></div>

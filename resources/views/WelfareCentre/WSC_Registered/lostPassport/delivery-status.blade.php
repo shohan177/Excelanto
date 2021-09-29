@@ -3,7 +3,6 @@
 @section('title', 'Lost Passport request')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')
@@ -44,8 +43,11 @@
                                     <dt class="col-sm-6">BHR mobile</dt>
                                     <dd class="col-sm-6">{{ $lostPassportService->bhr_mobile_no }}</dd><br>
                                     <dt class="col-sm-6">Receipt</dt>
-                                    <dd class="col-sm-6"><a href="#"
-                                            class="btn btn-outline-warning btn-xs"><b>View</b></a>
+                                    @if($lostPassportService->passport)
+                                        <dd class="col-sm-6"><a href="{{ asset($lostPassportService->passport) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                    @else
+                                        <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                    @endif
                                     </dd><br>
                                 </dl>
                         </div>

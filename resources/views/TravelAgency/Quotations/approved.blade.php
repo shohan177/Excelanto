@@ -50,17 +50,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>07/13/2021</td>
-                                        <td>bangladesh</td>
-                                        <td>saudi</td>
-                                        <td>2</td>
-                                        <td><span class="project-state badge badge-info">New</span></td>
-                                        <td><a class="btn btn-info btn-sm" href="view_posted_enquiry.php?enquiry_id=48">
-                                                <i class="fa fa-eye"></i> View
-                                            </a></td>
-                                    </tr>
+                                    @foreach ($submittedTravelEnquiries as $submittedTravelEnquiry)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $submittedTravelEnquiry->submitted_date }}</td>
+                                            <td>{{ $submittedTravelEnquiry->travelEnquiry->start_point }}</td>
+                                            <td>{{ $submittedTravelEnquiry->travelEnquiry->end_point }}</td>
+                                            <td>{{ $submittedTravelEnquiry->total_tickets }}</td>
+                                            <td>
+                                                @if ($submittedTravelEnquiry->submitted_status == 'Approved')
+                                                    <span class="project-state badge badge-success">Approved</span>
+                                                @else
+                                                    <span class="project-state badge badge-danger">Inactive</span>
+                                                @endif
+                                            </td>
+                                            <td><a class="btn btn-info btn-sm"
+                                                    href="{{ route('TravelAgency.quotations.viewApproved', $submittedTravelEnquiry->id) }}">
+                                                    <i class="fa fa-eye"></i> View
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -84,7 +94,7 @@
 @endsection
 
 @section('DataTableJs')
-   <!-- Datatables-->
+    <!-- Datatables-->
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>

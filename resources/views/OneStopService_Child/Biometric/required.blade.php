@@ -83,7 +83,6 @@
                                                 @else
                                                     <button class="btn btn-seccess">Assigned</button>
                                                 @endif
-
                                             </td>
                                         </tr>
                                     @endforeach

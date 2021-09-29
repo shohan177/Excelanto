@@ -45,7 +45,7 @@
                                         <th>Job Category</th>
                                         <th>Email</th>
                                         <th>Phone</th>
-                                        <th> Status</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -94,7 +94,7 @@
                                         <th>Job Category</th>
                                         <th>Email</th>
                                         <th>Phone</th>
-                                        <th> Status</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>

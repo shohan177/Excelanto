@@ -3,7 +3,6 @@
 @section('title', 'Attestation Certificate')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

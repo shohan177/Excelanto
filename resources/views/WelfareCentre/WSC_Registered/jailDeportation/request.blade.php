@@ -71,7 +71,6 @@
                                                     <button type="button"
                                                         class="btn btn-info btn-xs">{{ $jailDeportation->active_status }}</button>
                                                 @endif
-
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-xs" href="{{ route('WelfareCentre.showCandidateProfile', $jailDeportation->candidate->offered_candidate->id) }}">

@@ -3,7 +3,6 @@
 @section('title', 'Deadbody transfer request')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')
@@ -49,7 +48,11 @@
                                         <dt class="col-sm-6">Visa expire date</dt>
                                         <dd class="col-sm-6">{{ $deadbodyTransfer->visa_expirydate }}</dd><br>
                                         <dt class="col-sm-6">Died person passport</dt>
-                                        <dd class="col-sm-6"><a href="#" {{ $deadbodyTransfer->passport_copy }} class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @if($deadbodyTransfer->passport_copy)
+                                            <dd class="col-sm-6"><a href="{{ asset($deadbodyTransfer->passport_copy) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @else
+                                            <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @endif
                                     </dl>
                                 </div>
                                 <div class="col-md-6">

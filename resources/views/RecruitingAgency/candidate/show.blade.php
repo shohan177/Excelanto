@@ -3,7 +3,6 @@
 @section('title', 'Candidate Profile')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')
@@ -163,15 +162,21 @@
                                     <strong><i class="fa fa-pencil mr-1"></i> Employer Comments</strong>
                                     <p class="text-muted">{{ $candidate->employer_comments }}</p>
                                     <hr>
-                                    <strong><i class="fa fa-camera mr-1"></i>Candidate-OfferLetter</strong>
-                                    <div class="mailbox-attachment-info"> <a
-                                            href="../offer_letter/{{ $candidate->offer_letter }}"
-                                            class="mailbox-attachment-name"><i class="fa fa-file"></i>
-                                            {{ $candidate->offer_letter }}</a>
-                                        <a href="../offer_letter/{{ $candidate->offer_letter }}" download
-                                            class="btn btn-default btn-xs float-right"> <i
-                                                class="fa fa-cloud-download"></i></a>
-                                    </div>
+                                    @if($candidate->offer_letter)
+                                        <a href="{{ asset($candidate->offer_letter) }}" target="_blank">
+                                            <strong><i class="fa fa-file mr-1"></i> Candidate-OfferLetter</strong>
+                                        </a>
+                                        <div class="mailbox-attachment-info">
+                                            <a href="{{ asset($candidate->offer_letter) }}" download class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    @else
+                                        <a title="Sorry there is no document">
+                                            <strong><i class="fa fa-file mr-1"></i> Candidate-OfferLetter</strong>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="btn btn-default btn-xs float-right"><i class="fa fa-cloud-download"></i></a>
+                                            </div>
+                                        </a>
+                                    @endif
                                 </div> <!-- /.tab-content -->
                             </div><!-- /.card-body -->
                         </div> <!-- /.nav-tabs-custom -->

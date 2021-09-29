@@ -3,7 +3,6 @@
 @section('title', 'Alternative Dispute Resolution (ADR)')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

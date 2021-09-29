@@ -25,7 +25,8 @@
                             </div>
                             <div class="panel-body">
                                 <form role="form" method="POST" enctype="multipart/form-data"
-                                    action="{{ route('OneStopService_Child.companyPrfileSubmit') }}">
+                                    {{-- action="{{ route('OneStopService_Child.companyPrfileSubmit') }}"> --}}
+                                    action="#">
                                     @csrf
                                     <div class="row">
                                         <!-- Basic example -->

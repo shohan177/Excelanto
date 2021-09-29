@@ -15,7 +15,7 @@ class CompanySeeder extends Seeder
         for ($i=0; $i < 10; $i++) {
             Company::create([
                 'user_id' => $i+1,
-                'user_name' => 'minar khan '.$i,
+                'user_name' => 'kamrulGroup'.$i,
                 'company_name' => 'kamrul Group '.$i,
                 'company_email' => 'company'.$i.'@gmail.com',
                 'status' => 'Active',

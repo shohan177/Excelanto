@@ -45,7 +45,7 @@ class OfferedCandidate extends Model
         'visa_document',
         'visa_reason',
         'travel_status',
-        'date_of_jounney',
+        'date_of_journey',
         'flight_number',
         'ticket_cost',
         'ticket_pdf',

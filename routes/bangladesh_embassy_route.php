@@ -12,32 +12,40 @@ Route::group(['prefix' => 'bangladesh-embassy/', 'namespace' => 'BangladeshEmbas
     // candidate profile show
     Route::get('show-candidate-profile/{candidate_id}', 'CandidateController@showCandidateProfile')->name('candidate.showCandidateProfile');
 
-    // Visa Process
-    Route::get('received-employer-demand', 'EmployerDemandController@received')->name('employerDemand.received');
-    Route::get('edit-employer-demand/{id}', 'EmployerDemandController@edit')->name('employerDemand.edit');
-    Route::post('update-employer-demand/{id}', 'EmployerDemandController@update')->name('employerDemand.update');
-    Route::get('approved-employer-demand', 'EmployerDemandController@approved')->name('employerDemand.approved');
-    Route::get('rejected-employer-demand', 'EmployerDemandController@rejected')->name('employerDemand.rejected');
-    Route::get('show-employer-demand/{id}', 'EmployerDemandController@show')->name('employerDemand.show');
+    // Employer demand
+    Route::group(['prefix' => 'employer-demand/', 'as' => 'employerDemand.'], function () {
+        Route::get('received', 'EmployerDemandController@received')->name('received');
+        Route::get('edit/{id}', 'EmployerDemandController@edit')->name('edit');
+        Route::post('update/{id}', 'EmployerDemandController@update')->name('update');
+        Route::get('approved', 'EmployerDemandController@approved')->name('approved');
+        Route::get('rejected', 'EmployerDemandController@rejected')->name('rejected');
+        Route::get('show/{id}', 'EmployerDemandController@show')->name('show');
+    });
 
     // New Passport Service
-    Route::get('requested-new-passport', 'NewPassportController@request')->name('newPassport.request');
-    Route::get('approved-new-passport', 'NewPassportController@approved')->name('newPassport.approved');
-    Route::get('rejected-new-passport', 'NewPassportController@rejected')->name('newPassport.rejected');
-    Route::get('new-passport-status/{new_passport_service_id}', 'NewPassportController@status')->name('newPassport.status');
-    Route::post('new-passport-status-update/{new_passport_service_id}', 'NewPassportController@statusUpdate')->name('newPassport.statusUpdate');
+    Route::group(['prefix' => 'new-passport/', 'as' => 'newPassport.'], function () {
+        Route::get('requested', 'NewPassportController@request')->name('request');
+        Route::get('approved', 'NewPassportController@approved')->name('approved');
+        Route::get('rejected', 'NewPassportController@rejected')->name('rejected');
+        Route::get('status/{new_passport_service_id}', 'NewPassportController@status')->name('status');
+        Route::post('status-update/{new_passport_service_id}', 'NewPassportController@statusUpdate')->name('statusUpdate');
+    });
 
     // Lost Passport Service
-    Route::get('requested-lost-passport', 'LostPassportController@request')->name('lostPassport.request');
-    Route::get('approved-lost-passport', 'LostPassportController@approved')->name('lostPassport.approved');
-    Route::get('rejected-lost-passport', 'LostPassportController@rejected')->name('lostPassport.rejected');
-    Route::get('lost-passport-status/{lost_passport_service_id}', 'LostPassportController@status')->name('lostPassport.status');
-    Route::post('lost-passport-status-update/{lost_passport_service_id}', 'LostPassportController@statusUpdate')->name('lostPassport.statusUpdate');
+    Route::group(['prefix' => 'lost-passport/', 'as' => 'lostPassport.'], function () {
+        Route::get('requested', 'LostPassportController@request')->name('request');
+        Route::get('approved', 'LostPassportController@approved')->name('approved');
+        Route::get('rejected', 'LostPassportController@rejected')->name('rejected');
+        Route::get('status/{lost_passport_service_id}', 'LostPassportController@status')->name('status');
+        Route::post('status-update/{lost_passport_service_id}', 'LostPassportController@statusUpdate')->name('statusUpdate');
+    });
 
     // Extension Passport Service
-    Route::get('requested-extension-passport', 'ExtensionPassportController@request')->name('extensionPassport.request');
-    Route::get('approved-extension-passport', 'ExtensionPassportController@approved')->name('extensionPassport.approved');
-    Route::get('rejected-extension-passport', 'ExtensionPassportController@rejected')->name('extensionPassport.rejected');
-    Route::get('extension-passport-status/{extension_passport_service_id}', 'ExtensionPassportController@status')->name('extensionPassport.status');
-    Route::post('extension-passport-status-update/{extension_passport_service_id}', 'ExtensionPassportController@statusUpdate')->name('extensionPassport.statusUpdate');
+    Route::group(['prefix' => 'extension-passport/', 'as' => 'extensionPassport.'], function () {
+        Route::get('requested', 'ExtensionPassportController@request')->name('request');
+        Route::get('approved', 'ExtensionPassportController@approved')->name('approved');
+        Route::get('rejected', 'ExtensionPassportController@rejected')->name('rejected');
+        Route::get('status/{extension_passport_service_id}', 'ExtensionPassportController@status')->name('status');
+        Route::post('status-update/{extension_passport_service_id}', 'ExtensionPassportController@statusUpdate')->name('statusUpdate');
+    });
 });

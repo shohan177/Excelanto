@@ -8,19 +8,19 @@ use App\User;
 
 class RecruitingAgencieController extends Controller
 {
-    public function company_request(){
+    public function request(){
         $users = User::where('user_type','recruiting-agency')->where('active_status', 'Pending')->orderBy('id','DESC')->get();
-        return view('BangladeshAdmin.recruiting_agencies.company_request', compact('users'));
+        return view('BangladeshAdmin.recruitingAgency.request', compact('users'));
     }
 
-    public function company_approved_request(){
+    public function approved(){
         $users = User::where('user_type','recruiting-agency')->where('active_status', 'Approved')->orderBy('id','DESC')->get();
-        return view('BangladeshAdmin.recruiting_agencies.company_approved_request', compact('users'));
+        return view('BangladeshAdmin.recruitingAgency.approved', compact('users'));
     }
 
-    public function company_rejected_request(){
+    public function rejected(){
         $users = User::where('user_type','recruiting-agency')->where('active_status', 'Rejected')->orderBy('id','DESC')->get();
-        return view('BangladeshAdmin.recruiting_agencies.company_rejected_request', compact('users'));
+        return view('BangladeshAdmin.recruitingAgency.rejected', compact('users'));
     }
 
     public function approveNow($id){

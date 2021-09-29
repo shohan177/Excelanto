@@ -3,7 +3,6 @@
 @section('title', 'Passport Renewal / Extension')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

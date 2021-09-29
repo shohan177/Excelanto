@@ -24,4 +24,9 @@ class TravelEnquiry extends Model
     {
         return $this->hasOne(SubmittedTravelEnquiry::class, 'enquiry_id');
     }
+
+    public function oss()
+    {
+        return $this->belongsTo(User::class, 'oss_id');
+    }
 }

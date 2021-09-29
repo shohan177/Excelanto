@@ -3,7 +3,6 @@
 @section('title', 'Medical Compensation request')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')
@@ -43,9 +42,17 @@
                                         <dt class="col-sm-6">Insurance number (if any)</dt>
                                         <dd class="col-sm-6">{{ $medicalCompensation->insurance_number }}</dd><br>
                                         <dt class="col-sm-6">Insurance card</dt>
-                                        <dd class="col-sm-6"><a href="../insurance_cards/" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @if($medicalCompensation->insurance_card)
+                                            <dd class="col-sm-6"><a href="{{ asset($medicalCompensation->insurance_card) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @else
+                                            <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @endif
                                         <dt class="col-sm-6">Prescription</dt>
-                                        <dd class="col-sm-6"><a href="../prescriptions/" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @if($medicalCompensation->prescription)
+                                            <dd class="col-sm-6"><a href="{{ asset($medicalCompensation->prescription) }}" target="_blank" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @else
+                                            <dd class="col-sm-6"><a href="#" class="btn btn-outline-warning btn-xs"><b>View</b></a></dd><br>
+                                        @endif
                                         <dt class="col-sm-6">Name and detail of visited doctor</dt>
                                         <dd class="col-sm-6">{{ $medicalCompensation->doctor_name }}</dd><br>
                                     </dl>

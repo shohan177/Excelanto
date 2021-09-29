@@ -3,7 +3,6 @@
 @section('title', 'Received Quotations')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

@@ -3,7 +3,6 @@
 @section('title', 'Initial Payment')
 @section('DataTableCss')
 
-
 @endsection
 
 @section('main-content')

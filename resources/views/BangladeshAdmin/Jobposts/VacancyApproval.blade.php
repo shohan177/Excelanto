@@ -52,7 +52,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
                                     @foreach ($appliedVacancies as $appliedVacancy)
                                         <tr>
@@ -98,7 +97,6 @@
                                                         <i class="fa fa-eye"></i>
                                                     </a>
                                                 @endif
-
                                             </td>
                                         </tr>
                                     @endforeach
