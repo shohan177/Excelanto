@@ -27,7 +27,7 @@ Route::group(['prefix' => 'welfare-centre/', 'namespace' => 'WelfareCentre', 'as
     //WSC registered
 
     // Meet & Greet
-    Route::group(['prefix' => 'jail-deportation/', 'as' => 'meetGreet.'], function () {
+    Route::group(['prefix' => 'meet-greet/', 'as' => 'meetGreet.'], function () {
         Route::get('/request', 'MeetAndGreetController@meet_greet_request')->name('request');
         Route::get('/status/{id}', 'MeetAndGreetController@meetGreetStatus')->name('status');
         Route::post('/status-update/{id}', 'MeetAndGreetController@meetGreetStatusUpdete')->name('statusUpdete');
